@@ -264,6 +264,83 @@
     .prin-num { font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--t3); margin-bottom:5px; }
     .prin-title { font-family:var(--serif); font-style:italic; font-size:15px; color:var(--t); line-height:1.3; }
 
+    /* ══════════════════════════════════════════════════════════
+       PLATFORM UI MOCKUP — light theme, matches real myTReDS
+       ══════════════════════════════════════════════════════════ */
+    .plat { background:#fff; border-radius:16px; overflow:hidden; border:1px solid rgba(0,0,0,0.10); width:100%; height:100%; display:flex; flex-direction:column; font-family:var(--sans); color:#1a2744; position:relative; }
+    .plat-topbar { display:flex; justify-content:flex-end; gap:8px; padding:10px 14px; border-bottom:1px solid #e8eaed; flex-shrink:0; }
+    .plat-btn-p { border:1px solid #d0d5dd; background:#fff; border-radius:100px; padding:6px 14px; font-size:11px; font-weight:500; color:#344054; cursor:pointer; display:flex; align-items:center; gap:5px; font-family:var(--sans); transition:all 0.15s; }
+    .plat-btn-p.primary { background:#1a2744; color:#fff; border-color:#1a2744; }
+    .plat-btn-p:disabled { opacity:0.35; cursor:not-allowed; }
+    .plat-tabs { display:flex; border-bottom:1px solid #e8eaed; padding:0 14px; flex-shrink:0; overflow-x:auto; }
+    .plat-tab { padding:9px 12px; font-size:11px; font-weight:500; color:#6b7280; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; white-space:nowrap; transition:color 0.15s; }
+    .plat-tab.active { color:#1a2744; border-bottom-color:#1a2744; font-weight:600; }
+    .plat-filters { display:flex; gap:6px; padding:8px 14px; align-items:center; border-bottom:1px solid #f0f0f0; flex-shrink:0; }
+    .plat-filter { border:1px solid #d0d5dd; background:#fff; border-radius:100px; padding:4px 10px; font-size:10px; color:#344054; cursor:pointer; font-family:var(--sans); }
+    .plat-clear { margin-left:auto; font-size:10px; color:#2563eb; cursor:pointer; font-weight:500; }
+    .plat-banner { background:#eff6ff; padding:7px 14px; font-size:11px; color:#1a2744; font-weight:500; text-align:center; display:none; border-bottom:1px solid #bfdbfe; flex-shrink:0; }
+    .plat-banner.show { display:block; }
+    .plat-tbl { flex:1; overflow:hidden; display:flex; flex-direction:column; min-height:0; }
+    .plat-thead { display:grid; padding:7px 14px; background:#f5f6f7; border-bottom:1.5px solid #e0e0e0; font-size:10px; font-weight:600; color:#4b5563; flex-shrink:0; }
+    .plat-tbody { flex:1; overflow-y:auto; }
+    .plat-row { display:grid; padding:9px 14px; border-bottom:1px solid #f0f0f0; align-items:center; cursor:pointer; transition:background 0.12s; }
+    .plat-row:hover { background:#fafafa; }
+    .plat-row.sel { background:#eff6ff; }
+    .plat-cb { width:13px; height:13px; border:1.5px solid #d0d5dd; border-radius:3px; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+    .plat-cb.on { background:#16a34a; border-color:#16a34a; }
+    .plat-cb.on::after { content:'✓'; color:#fff; font-size:8px; font-weight:700; }
+    .plat-cell { font-size:10px; color:#1a2744; padding-right:6px; line-height:1.3; }
+    .plat-ftu { color:#2563eb; font-weight:600; font-size:10px; }
+    .plat-ftu-sub { font-size:8px; color:#9ca3af; margin-top:1px; }
+    .plat-rate { font-weight:700; font-size:12px; color:#1a2744; }
+    .plat-badge { display:inline-flex; align-items:center; padding:2px 7px; border-radius:100px; font-size:9px; font-weight:600; border:1px solid; white-space:nowrap; }
+    .plat-badge.auction { color:#2563eb; border-color:#bfdbfe; background:#eff6ff; }
+    .plat-badge.pending { color:#d97706; border-color:#fde68a; background:#fffbeb; }
+    .plat-badge.lost { color:#dc2626; border-color:#fecaca; background:#fef2f2; }
+    .plat-badge.won { color:#16a34a; border-color:#bbf7d0; background:#f0fdf4; }
+    .plat-empty { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; color:#9ca3af; padding:32px; }
+    .plat-empty-icon { font-size:32px; opacity:0.3; }
+    .plat-empty-txt { font-size:13px; text-align:center; line-height:1.5; }
+    /* Modal */
+    .plat-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.38); display:flex; align-items:center; justify-content:center; z-index:20; opacity:0; pointer-events:none; transition:opacity 0.2s; border-radius:16px; }
+    .plat-overlay.show { opacity:1; pointer-events:all; }
+    .plat-modal { background:#fff; border-radius:14px; width:300px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.25); }
+    .plat-modal-hdr { padding:12px 16px; font-size:11px; color:#9ca3af; font-weight:500; border-bottom:1px solid #f0f0f0; }
+    .plat-modal-amt { padding:16px; background:#f5f6f7; }
+    .plat-modal-amt-num { font-size:20px; font-weight:700; color:#1a2744; }
+    .plat-modal-amt-lbl { font-size:11px; font-weight:600; color:#1a2744; margin-top:3px; }
+    .plat-modal-amt-sub { font-size:10px; color:#6b7280; margin-top:2px; }
+    .plat-modal-body { padding:14px 16px; display:flex; flex-direction:column; gap:12px; }
+    .plat-modal-row { display:flex; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:1px solid #f0f0f0; }
+    .plat-modal-row:last-child { border-bottom:none; padding-bottom:0; }
+    .plat-modal-lbl { font-size:11px; color:#6b7280; }
+    .plat-modal-input { border:1px solid #d0d5dd; border-radius:7px; padding:5px 10px; font-size:13px; font-weight:700; width:100px; text-align:right; font-family:var(--sans); color:#1a2744; outline:none; }
+    .plat-modal-input:focus { border-color:#2563eb; box-shadow:0 0 0 2px rgba(37,99,235,0.12); }
+    .plat-modal-val { font-size:12px; font-weight:600; color:#1a2744; }
+    .plat-modal-info { padding:9px 12px; background:#eff6ff; border-radius:7px; border:1px solid #bfdbfe; font-size:10px; color:#1d4ed8; line-height:1.5; }
+    .plat-modal-footer { display:flex; gap:8px; justify-content:flex-end; padding:12px 16px; border-top:1px solid #f0f0f0; }
+    .plat-modal-cancel { padding:7px 16px; border:1px solid #d0d5dd; background:#fff; border-radius:100px; font-size:11px; font-weight:500; cursor:pointer; font-family:var(--sans); }
+    .plat-modal-confirm { padding:7px 16px; border:none; background:#1a2744; color:#fff; border-radius:100px; font-size:11px; font-weight:600; cursor:pointer; font-family:var(--sans); }
+    /* Notification */
+    .plat-notif { position:absolute; top:14px; right:14px; background:#fff; border:1px solid #e8eaed; border-radius:10px; padding:10px 14px; box-shadow:0 4px 20px rgba(0,0,0,0.14); width:220px; transform:translateX(130%); transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1); z-index:15; }
+    .plat-notif.show { transform:translateX(0); }
+    .plat-notif-title { font-size:11px; font-weight:600; color:#16a34a; margin-bottom:3px; }
+    .plat-notif-body { font-size:10px; color:#6b7280; line-height:1.4; }
+    /* More row */
+    .plat-more { padding:8px 14px; font-size:10px; color:#9ca3af; text-align:center; border-top:1px solid #f0f0f0; font-style:italic; }
+    /* Decision overlay on left panel */
+    .sim-decision { margin-top:22px; padding:18px; background:rgba(229,57,53,0.06); border:1px solid rgba(229,57,53,0.18); border-radius:12px; }
+    .sim-decision-q { font-family:var(--serif); font-style:italic; font-size:18px; color:var(--t); margin-bottom:14px; line-height:1.4; }
+    .sim-decision-btns { display:flex; gap:10px; }
+    .sim-btn { flex:1; padding:10px; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; font-family:var(--sans); border:1px solid; transition:all 0.15s; }
+    .sim-btn.yes { background:rgba(102,187,106,0.10); border-color:rgba(102,187,106,0.3); color:var(--green); }
+    .sim-btn.no { background:rgba(229,57,53,0.08); border-color:rgba(229,57,53,0.25); color:var(--red); }
+    .sim-reveal { display:none; margin-top:16px; padding:12px 14px; background:rgba(229,57,53,0.08); border:1px solid rgba(229,57,53,0.22); border-radius:10px; font-size:12px; color:rgba(229,57,53,0.85); line-height:1.6; }
+    /* Grid column shorthand for simulation tables */
+    .plat-cols-ofb { grid-template-columns: 18px 110px 1fr 80px 72px 80px 40px 60px 60px 72px; }
+    .plat-cols-std { grid-template-columns: 18px 110px 1fr 80px 72px 80px 40px 55px 65px 72px; }
+    .plat-cols-bat { grid-template-columns: 18px 110px 1fr 80px 72px 80px 40px 55px 65px 72px; }
+
     /* ── CLOSING PANEL ── */
     .close-wrap { padding:40px; width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
     .close-inner { border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:40px; width:100%; }
@@ -534,60 +611,69 @@
     </div>
   </div>
 
-  <!-- ═══ 04 · THE INCIDENT ════════════════════════════════════ -->
-  <div class="slide" data-s="THE INCIDENT">
+  <!-- ═══ 04 · SIM — OPEN FOR BID ═════════════════════════════ -->
+  <div class="slide" data-s="THE INCIDENT · LIVE">
     <div class="row">
       <div class="lft">
-        <div class="lbl">The Incident</div>
-        <h1 class="h1">Two banks. Same rate. One invisible difference.</h1>
+        <div class="lbl">The Incident · You Are The Maker</div>
+        <h1 class="h1" style="font-size:clamp(34px,3.8vw,56px);">You are Bank B.<br>Today you bid on IOCL.</h1>
         <div class="body">
-          <p>Two public sector banks placed bulk bids on the same buyer on the same day. Both bid at <strong>5.5%</strong>. Both followed correct process. Both believed they were winning.</p>
-          <p>One bank's checker approved their bid a few seconds earlier. That timestamp difference — invisible to both parties, undocumented anywhere in the UI — determined the entire outcome.</p>
-          <p>The other bank lost every single FU in that bulk bid.</p>
+          <p>You are a Maker at a public sector bank. 13 Factoring Units are open for bid on Indian Oil Corporation Limited.</p>
+          <p>Your bank's strategy: bid at <strong>5.5%</strong> across all FTUs. Select them and place the bulk bid.</p>
+        </div>
+        <div id="sim1-hint" style="margin-top:20px; padding:12px 14px; background:rgba(79,195,247,0.08); border:1px solid rgba(79,195,247,0.18); border-radius:10px; font-size:12px; color:rgba(79,195,247,0.8); line-height:1.5;">
+          ← Select FTUs on the right, then click <strong>Place Bid</strong>
         </div>
       </div>
       <div class="rgt">
-        <div class="panel" style="background:#0f0a0a;">
-          <div class="timeline">
-            <div class="tl-item">
-              <div class="tl-time">T + 0</div>
-              <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-              <div class="tl-content">
-                <div class="tl-label">Bank A — Maker</div>
-                <div class="tl-text">Places bulk bid at 5.5% across 12–13 FUs</div>
-              </div>
+        <div class="plat">
+          <div class="plat-topbar">
+            <button class="plat-btn-p primary" id="s1-place" disabled onclick="s1PlaceBid()">✓ Place Bid</button>
+          </div>
+          <div class="plat-tabs">
+            <div class="plat-tab active">Open For Bid</div>
+            <div class="plat-tab" style="color:#9ca3af;">Checker Pending</div>
+            <div class="plat-tab" style="color:#9ca3af;">My Bid In Auction</div>
+            <div class="plat-tab" style="color:#9ca3af;">Bid Accepted Today</div>
+          </div>
+          <div class="plat-banner" id="s1-banner"><span id="s1-count">0</span> Factoring Units selected</div>
+          <div class="plat-filters">
+            <button class="plat-filter">Buyer: All ▾</button>
+            <button class="plat-filter">Amount: ▾</button>
+            <button class="plat-filter">Tenor: ▾</button>
+            <span class="plat-clear">Clear All</span>
+          </div>
+          <div class="plat-tbl">
+            <div class="plat-thead plat-cols-ofb">
+              <div></div><div>Factoring Unit</div><div>Buyer</div><div>Supplier</div>
+              <div>Amount</div><div>Due Date</div><div>Tenor*</div>
+              <div>Lowest Bid</div><div>Place Bid</div><div>Status</div>
             </div>
-            <div class="tl-item">
-              <div class="tl-time">T + 1s</div>
-              <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-              <div class="tl-content">
-                <div class="tl-label">Bank B — Maker</div>
-                <div class="tl-text">Places bulk bid at 5.5% — same buyer, same FUs</div>
+            <div class="plat-tbody" id="s1-tbody"></div>
+          </div>
+          <!-- Modal -->
+          <div class="plat-overlay" id="s1-overlay">
+            <div class="plat-modal">
+              <div class="plat-modal-hdr">Place Bid</div>
+              <div class="plat-modal-amt">
+                <div class="plat-modal-amt-num">₹ 8,97,23,840.00</div>
+                <div class="plat-modal-amt-lbl">Total Factoring Unit Amount</div>
+                <div class="plat-modal-amt-sub">of selected 13 FTUs · IOCL</div>
               </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">T + 4s</div>
-              <div class="tl-line"><div class="tl-dot green"></div><div class="tl-connector"></div></div>
-              <div class="tl-content">
-                <div class="tl-label">Bank A — Checker approves</div>
-                <div class="tl-text" style="color:var(--green);">Bid goes live. Bank A is first at 5.5%.</div>
+              <div class="plat-modal-body">
+                <div class="plat-modal-row">
+                  <span class="plat-modal-lbl">Bid Rate (%)</span>
+                  <input class="plat-modal-input" id="s1-rate" type="text" value="5.5" placeholder="e.g. 5.5">
+                </div>
+                <div class="plat-modal-row">
+                  <span class="plat-modal-lbl">Tenor</span>
+                  <span class="plat-modal-val">33 Days</span>
+                </div>
+                <div class="plat-modal-info">ⓘ Bid moves to Checker Pending until your Checker approves.</div>
               </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">T + 7s</div>
-              <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-              <div class="tl-content">
-                <div class="tl-label">Bank B — Checker approves</div>
-                <div class="tl-text">Bid goes live. Also 5.5% — but 3 seconds late.</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">Close</div>
-              <div class="tl-line"><div class="tl-dot red"></div></div>
-              <div class="tl-content">
-                <div class="tl-label">Auction closes</div>
-                <div class="tl-text" style="color:var(--red);">Bank A wins all FUs. Bank B loses ₹8.97 Cr.</div>
-                <div class="tl-sub">Platform never communicated why.</div>
+              <div class="plat-modal-footer">
+                <button class="plat-modal-cancel" onclick="s1CloseModal()">Cancel</button>
+                <button class="plat-modal-confirm" onclick="s1Confirm()">Place Bid</button>
               </div>
             </div>
           </div>
@@ -596,40 +682,150 @@
     </div>
   </div>
 
-  <!-- ═══ 05 · WHAT THE SCREEN SHOWED ═════════════════════════ -->
-  <div class="slide" data-s="THE INCIDENT">
+  <!-- ═══ 05 · SIM — CHECKER PENDING ══════════════════════════ -->
+  <div class="slide" data-s="THE INCIDENT · LIVE">
     <div class="row">
       <div class="lft">
-        <div class="lbl">The Incident</div>
-        <h1 class="h1">Two identical numbers. One catastrophic misreading.</h1>
+        <div class="lbl">The Incident · Checker Pending</div>
+        <h1 class="h1" style="font-size:clamp(34px,3.8vw,56px);">Bid submitted.<br>Checker must approve.</h1>
         <div class="body">
-          <p>This is what Bank B's screen showed at the exact moment they were losing every FU.</p>
-          <p>The bank assumed the lowest bid was theirs. It wasn't. The platform knew the truth. <strong>It just never communicated it.</strong></p>
-          <p>By the time anyone understood what had happened — the auction had closed, the FUs were gone, and ₹8.97 Cr had evaporated.</p>
+          <p>Your bid is not live. It sits in Checker Pending. The auction continues. Bank A's Checker is also reviewing their bid right now.</p>
+          <p>Until your Checker approves — <strong>your bid does not exist on the platform.</strong></p>
+        </div>
+        <div id="s2-status" style="margin-top:20px; padding:12px 14px; background:rgba(255,183,77,0.08); border:1px solid rgba(255,183,77,0.18); border-radius:10px; font-size:12px; color:rgba(255,183,77,0.8); line-height:1.5; transition:all 0.4s;">
+          ⏳ Waiting for Checker approval...
         </div>
       </div>
       <div class="rgt">
-        <div class="panel" style="background:#0f0808;">
-          <div class="ambig-wrap">
-            <div class="ambig-inner">
-              <div style="font-size:9px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--t3); margin-bottom:16px; text-align:center;">Bank B's screen — Live auction view</div>
-              <div class="ambig-row">
-                <div class="ambig-cell neutral">
-                  <div class="ambig-cell-tag">My Bid</div>
-                  <div class="ambig-cell-val">5.5%</div>
-                </div>
-                <div class="ambig-cell neutral">
-                  <div class="ambig-cell-tag">Lowest Bid</div>
-                  <div class="ambig-cell-val">5.5%</div>
-                </div>
-              </div>
-              <div class="ambig-note">
-                Technically accurate. Completely misleading.<br>
-                No indicator of ownership. No tiebreaker visible. No position signal.<br>
-                <br>
-                <strong style="color:rgba(229,57,53,0.9);">The column was answering the wrong question.</strong>
-              </div>
+        <div class="plat">
+          <div class="plat-topbar">
+            <button class="plat-btn-p">🗑 Withdraw</button>
+            <button class="plat-btn-p">↺ Revise Bid</button>
+          </div>
+          <div class="plat-tabs">
+            <div class="plat-tab" style="color:#9ca3af;">Open For Bid</div>
+            <div class="plat-tab active" id="s2-tab-cp">Checker Pending</div>
+            <div class="plat-tab" style="color:#9ca3af;" id="s2-tab-mba">My Bid In Auction</div>
+            <div class="plat-tab" style="color:#9ca3af;">Bid Accepted Today</div>
+          </div>
+          <div class="plat-filters">
+            <button class="plat-filter">Buyer: All ▾</button>
+            <button class="plat-filter">Amount: ▾</button>
+            <span class="plat-clear">Clear All</span>
+          </div>
+          <div class="plat-tbl" id="s2-tbl-cp">
+            <div class="plat-thead plat-cols-std">
+              <div></div><div>Factoring Unit</div><div>Buyer</div><div>Supplier</div>
+              <div>Amount</div><div>Due Date</div><div>Tenor*</div>
+              <div>My Bid</div><div>Lowest Bid</div><div>Status</div>
             </div>
+            <div class="plat-tbody" id="s2-tbody-cp"></div>
+          </div>
+          <div class="plat-tbl" id="s2-tbl-mba" style="display:none;">
+            <div class="plat-thead plat-cols-std">
+              <div></div><div>Factoring Unit</div><div>Buyer</div><div>Supplier</div>
+              <div>Amount</div><div>Due Date</div><div>Tenor*</div>
+              <div>My Bid</div><div>Lowest Bid</div><div>Status</div>
+            </div>
+            <div class="plat-tbody">
+              <div class="plat-empty"><div class="plat-empty-icon">📋</div><div class="plat-empty-txt">No Active Bids currently.</div></div>
+            </div>
+          </div>
+          <div class="plat-notif" id="s2-notif">
+            <div class="plat-notif-title">✓ Bid Approved &amp; Live</div>
+            <div class="plat-notif-body">Your bid of 5.5% on IOCL is now active in the auction.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 06 · SIM — THE CRITICAL MOMENT ══════════════════════ -->
+  <div class="slide" data-s="THE INCIDENT · LIVE">
+    <div class="row">
+      <div class="lft">
+        <div class="lbl">The Incident · The Critical Moment</div>
+        <h1 class="h1" style="font-size:clamp(34px,3.8vw,56px);">Your bid is live.<br>Check your position.</h1>
+        <div class="body">
+          <p>Checker approved. You switch to <strong>My Bid In Auction</strong>. The screen looks right. Both columns show 5.5%.</p>
+        </div>
+        <div class="sim-decision" id="s3-decision">
+          <div class="sim-decision-q">"Are you leading this auction?"</div>
+          <div class="sim-decision-btns">
+            <button class="sim-btn yes" onclick="s3Answer()">Yes — I'm leading</button>
+            <button class="sim-btn no" onclick="s3Answer()">No — I'm not sure</button>
+          </div>
+        </div>
+        <div class="sim-reveal" id="s3-reveal">
+          The auction just closed. Bank A's Checker approved 3 seconds before yours. Check <strong>Bid Accepted Today →</strong>
+        </div>
+      </div>
+      <div class="rgt">
+        <div class="plat">
+          <div class="plat-topbar">
+            <button class="plat-btn-p">🗑 Withdraw</button>
+            <button class="plat-btn-p">↺ Revise Bid</button>
+          </div>
+          <div class="plat-tabs">
+            <div class="plat-tab" style="color:#9ca3af;">Open For Bid</div>
+            <div class="plat-tab" style="color:#9ca3af;">Checker Pending</div>
+            <div class="plat-tab active">My Bid In Auction</div>
+            <div class="plat-tab" style="color:#9ca3af;">Bid Accepted Today</div>
+          </div>
+          <div class="plat-filters">
+            <button class="plat-filter">Buyer: All ▾</button>
+            <button class="plat-filter">Amount: ▾</button>
+            <span class="plat-clear">Clear All</span>
+          </div>
+          <div class="plat-tbl">
+            <div class="plat-thead plat-cols-std">
+              <div></div><div>Factoring Unit</div><div>Buyer</div><div>Supplier</div>
+              <div>Amount</div><div>Due Date</div><div>Tenor*</div>
+              <div>My Bid</div><div>Lowest Bid</div><div>Status</div>
+            </div>
+            <div class="plat-tbody" id="s3-tbody"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 07 · SIM — BID LOST ══════════════════════════════════ -->
+  <div class="slide" data-s="THE INCIDENT · LIVE">
+    <div class="row">
+      <div class="lft">
+        <div class="lbl">The Incident · The Loss</div>
+        <h1 class="h1" style="font-size:clamp(34px,3.8vw,56px); color:var(--red);">₹8.97 Cr.<br>Gone.</h1>
+        <div class="body">
+          <p>The buyer accepted bids. The auction closed. You check Bid Accepted Today.</p>
+          <p>My Bid: 5.5%. Lowest Bid: 5.5%. Status: <strong style="color:var(--red);">Bid Lost.</strong></p>
+          <p>Same rate. Same column. Lost every single FU. The platform never told you why.</p>
+          <p style="color:var(--t3); font-size:13px; margin-top:8px;">Bank A's Checker approved 3 seconds before yours. That timestamp — invisible to you, undocumented anywhere in the UI — determined the entire outcome.</p>
+        </div>
+      </div>
+      <div class="rgt">
+        <div class="plat">
+          <div class="plat-topbar" style="justify-content:flex-start;">
+            <span style="font-size:11px; color:#dc2626; font-weight:600; padding:5px 12px; background:#fef2f2; border-radius:100px; border:1px solid #fecaca;">● Auction Closed</span>
+          </div>
+          <div class="plat-tabs">
+            <div class="plat-tab" style="color:#9ca3af;">Open For Bid</div>
+            <div class="plat-tab" style="color:#9ca3af;">Checker Pending</div>
+            <div class="plat-tab" style="color:#9ca3af;">My Bid In Auction</div>
+            <div class="plat-tab active">Bid Accepted Today</div>
+          </div>
+          <div class="plat-filters">
+            <button class="plat-filter">Buyer: All ▾</button>
+            <button class="plat-filter">Amount: ▾</button>
+            <span class="plat-clear">Clear All</span>
+          </div>
+          <div class="plat-tbl">
+            <div class="plat-thead plat-cols-bat">
+              <div></div><div>Factoring Unit</div><div>Buyer</div><div>Supplier</div>
+              <div>Amount</div><div>Due Date</div><div>Tenor*</div>
+              <div>My Bid</div><div>Lowest Bid</div><div>Status</div>
+            </div>
+            <div class="plat-tbody" id="s4-tbody"></div>
           </div>
         </div>
       </div>
@@ -1260,7 +1456,7 @@
 </div>
 
 <script>
-  const TOTAL = 21;
+  const TOTAL = 23;
   let cur = 0, busy = false;
   const slides = Array.from(document.querySelectorAll('.slide'));
   const counter = document.getElementById('counter');
@@ -1343,6 +1539,193 @@
       }
     };
     requestAnimationFrame(tick);
+  }
+
+  /* ══════════════════════════════════════════════════════════
+     SIMULATION ENGINE
+     ══════════════════════════════════════════════════════════ */
+
+  const SIM_FTUS = [
+    { id:'FTU000164440', amt:'₹68,63,372', date:'Apr 23rd, 2026', tenor:33 },
+    { id:'FTU000164402', amt:'₹68,63,370', date:'Apr 23rd, 2026', tenor:33 },
+    { id:'FTU000164438', amt:'₹68,63,368', date:'Apr 23rd, 2026', tenor:33 },
+    { id:'FTU000164435', amt:'₹68,63,365', date:'Apr 23rd, 2026', tenor:33 },
+    { id:'FTU000164430', amt:'₹68,63,362', date:'Apr 23rd, 2026', tenor:33 },
+    { id:'FTU000164425', amt:'₹68,63,360', date:'Apr 23rd, 2026', tenor:33 },
+    { id:'FTU000164420', amt:'₹68,63,358', date:'Apr 23rd, 2026', tenor:33 },
+    { id:'FTU000164418', amt:'₹68,63,355', date:'Apr 23rd, 2026', tenor:33 },
+    { id:'FTU000164415', amt:'₹68,63,352', date:'Apr 23rd, 2026', tenor:33 },
+    { id:'FTU000164410', amt:'₹68,63,349', date:'Apr 23rd, 2026', tenor:33 },
+    { id:'FTU000164408', amt:'₹68,63,346', date:'Apr 23rd, 2026', tenor:33 },
+    { id:'FTU000164405', amt:'₹68,63,343', date:'Apr 23rd, 2026', tenor:33 },
+    { id:'FTU000164400', amt:'₹68,63,340', date:'Apr 23rd, 2026', tenor:33 },
+  ];
+
+  function makePlatRow(cols, cells) {
+    const d = document.createElement('div');
+    d.className = 'plat-row ' + cols;
+    d.innerHTML = cells; return d;
+  }
+
+  /* ── SCENE 1 — Open For Bid ── */
+  let s1Sel = new Set();
+
+  function s1Init() {
+    const tb = document.getElementById('s1-tbody');
+    if (!tb || tb.children.length > 0) return;
+    SIM_FTUS.forEach((f, i) => {
+      const r = makePlatRow('plat-cols-ofb', `
+        <div class="plat-cb" id="cb${i}"></div>
+        <div><div class="plat-ftu">${f.id}</div><div class="plat-ftu-sub">ERP Source</div></div>
+        <div class="plat-cell">INDIAN OIL CORPORATION LIMITED</div>
+        <div class="plat-cell">IOCL Supplier 1<br><span style="font-size:8px;color:#9ca3af;">MICRO</span></div>
+        <div class="plat-cell">${f.amt}</div>
+        <div class="plat-cell">${f.date}</div>
+        <div class="plat-cell">${f.tenor}</div>
+        <div class="plat-rate">5.5%</div>
+        <div><button class="plat-btn-p" style="font-size:9px;padding:3px 8px;">Place Bid</button></div>
+        <div><span class="plat-badge auction">In Auction</span></div>
+      `);
+      r.onclick = () => s1Toggle(i, r);
+      document.getElementById('s1-tbody').appendChild(r);
+    });
+  }
+
+  function s1Toggle(i, row) {
+    if (s1Sel.has(i)) { s1Sel.delete(i); row.classList.remove('sel'); document.getElementById('cb'+i).classList.remove('on'); }
+    else { s1Sel.add(i); row.classList.add('sel'); document.getElementById('cb'+i).classList.add('on'); }
+    const n = s1Sel.size;
+    const banner = document.getElementById('s1-banner');
+    const btn = document.getElementById('s1-place');
+    if (n > 0) { banner.classList.add('show'); document.getElementById('s1-count').textContent = n; btn.disabled = false; }
+    else { banner.classList.remove('show'); btn.disabled = true; }
+    document.getElementById('s1-hint').style.opacity = n >= 13 ? '0' : '1';
+  }
+
+  function s1PlaceBid() { document.getElementById('s1-overlay').classList.add('show'); }
+  function s1CloseModal() { document.getElementById('s1-overlay').classList.remove('show'); }
+  function s1Confirm() {
+    s1CloseModal();
+    bn.disabled = true; bp.disabled = true;
+    setTimeout(() => { go(cur + 1, 1); setTimeout(s2Start, 600); }, 300);
+  }
+
+  /* ── SCENE 2 — Checker Pending ── */
+  function s2Init() {
+    const tb = document.getElementById('s2-tbody-cp');
+    if (!tb || tb.children.length > 0) return;
+    SIM_FTUS.slice(0, 4).forEach(f => {
+      tb.appendChild(makePlatRow('plat-cols-std', `
+        <div></div>
+        <div><div class="plat-ftu">${f.id}</div><div class="plat-ftu-sub">ERP Source</div></div>
+        <div class="plat-cell">INDIAN OIL CORPORATION LIMITED</div>
+        <div class="plat-cell">IOCL Supplier 1<br><span style="font-size:8px;color:#9ca3af;">MICRO</span></div>
+        <div class="plat-cell">${f.amt}</div>
+        <div class="plat-cell">${f.date}</div>
+        <div class="plat-cell">${f.tenor}</div>
+        <div class="plat-rate">5.5%</div>
+        <div class="plat-cell" style="color:#9ca3af;">—</div>
+        <div><span class="plat-badge pending">Pending</span></div>
+      `));
+    });
+    const more = document.createElement('div');
+    more.className = 'plat-more'; more.textContent = '+ 9 more Factoring Units pending approval';
+    tb.appendChild(more);
+  }
+
+  function s2Start() {
+    s2Init();
+    const stat = document.getElementById('s2-status');
+    const notif = document.getElementById('s2-notif');
+    // After 3s — checker approves
+    setTimeout(() => {
+      if (notif) notif.classList.add('show');
+      if (stat) { stat.style.background='rgba(102,187,106,0.08)'; stat.style.borderColor='rgba(102,187,106,0.2)'; stat.style.color='rgba(102,187,106,0.9)'; stat.textContent='✓ Checker approved. Your bid is now live.'; }
+      // After 2s — dismiss, switch to My Bid In Auction tab
+      setTimeout(() => {
+        if (notif) notif.classList.remove('show');
+        setTimeout(() => {
+          const tcp = document.getElementById('s2-tab-cp');
+          const tmba = document.getElementById('s2-tab-mba');
+          const tblcp = document.getElementById('s2-tbl-cp');
+          const tblmba = document.getElementById('s2-tbl-mba');
+          if (tcp) { tcp.classList.remove('active'); tcp.style.color='#9ca3af'; }
+          if (tmba) { tmba.classList.add('active'); tmba.style.color=''; }
+          if (tblcp) tblcp.style.display='none';
+          if (tblmba) tblmba.style.display='flex';
+          // After 1.5s — advance to scene 3
+          setTimeout(() => { go(cur + 1, 1); setTimeout(s3Init, 600); }, 1500);
+        }, 400);
+      }, 2200);
+    }, 3000);
+  }
+
+  /* ── SCENE 3 — My Bid In Auction (critical moment) ── */
+  function s3Init() {
+    const tb = document.getElementById('s3-tbody');
+    if (!tb || tb.children.length > 0) return;
+    SIM_FTUS.slice(0, 4).forEach(f => {
+      tb.appendChild(makePlatRow('plat-cols-std', `
+        <div></div>
+        <div><div class="plat-ftu">${f.id}</div><div class="plat-ftu-sub">ERP Source</div></div>
+        <div class="plat-cell">INDIAN OIL CORPORATION LIMITED</div>
+        <div class="plat-cell">IOCL Supplier 1<br><span style="font-size:8px;color:#9ca3af;">MICRO</span></div>
+        <div class="plat-cell">${f.amt}</div>
+        <div class="plat-cell">${f.date}</div>
+        <div class="plat-cell">${f.tenor}</div>
+        <div class="plat-rate" style="color:#1a2744;">5.5%</div>
+        <div class="plat-rate" style="color:#1a2744;">5.5%</div>
+        <div><span class="plat-badge auction">In Auction</span></div>
+      `));
+    });
+    const more = document.createElement('div');
+    more.className = 'plat-more'; more.textContent = '+ 9 more Factoring Units';
+    tb.appendChild(more);
+    bn.disabled = false; bp.disabled = false;
+  }
+
+  function s3Answer() {
+    const dec = document.getElementById('s3-decision');
+    const rev = document.getElementById('s3-reveal');
+    if (dec) dec.style.display = 'none';
+    if (rev) rev.style.display = 'block';
+    // Flash the rate cells red
+    document.querySelectorAll('#s3-tbody .plat-rate').forEach(c => { c.style.transition='color 0.3s'; c.style.color='#dc2626'; });
+    bn.disabled = true;
+    setTimeout(() => { go(cur + 1, 1); setTimeout(s4Init, 600); }, 2200);
+  }
+
+  /* ── SCENE 4 — Bid Accepted Today (Bid Lost) ── */
+  function s4Init() {
+    const tb = document.getElementById('s4-tbody');
+    if (!tb || tb.children.length > 0) return;
+    SIM_FTUS.slice(0, 4).forEach(f => {
+      tb.appendChild(makePlatRow('plat-cols-bat', `
+        <div></div>
+        <div><div class="plat-ftu">${f.id}</div><div class="plat-ftu-sub">ERP Source</div></div>
+        <div class="plat-cell">INDIAN OIL CORPORATION LIMITED</div>
+        <div class="plat-cell">IOCL Supplier 1<br><span style="font-size:8px;color:#9ca3af;">MICRO</span></div>
+        <div class="plat-cell">${f.amt}</div>
+        <div class="plat-cell">${f.date}</div>
+        <div class="plat-cell">${f.tenor}</div>
+        <div class="plat-rate" style="color:#1a2744;">5.5%</div>
+        <div class="plat-rate" style="color:#1a2744;">5.5%</div>
+        <div><span class="plat-badge lost">Bid Lost</span></div>
+      `));
+    });
+    const more = document.createElement('div');
+    more.className = 'plat-more'; more.textContent = '+ 9 more Factoring Units — all Bid Lost';
+    tb.appendChild(more);
+    bn.disabled = false; bp.disabled = false;
+  }
+
+  /* ── Hook simulation inits to slide transitions ── */
+  const _origPlace = place;
+  function place() {
+    _origPlace();
+    if (cur === 3) s1Init();
+    if (cur === 5) s3Init();
+    if (cur === 6) s4Init();
   }
 
   /* ── INIT ── */
