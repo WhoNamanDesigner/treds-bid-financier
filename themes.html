@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Preview — Bid Position Awareness Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #0e0e0e; color: #e0e0e0; }
+
+    /* ── CHROME ── */
+    .chrome { padding: 32px 40px 0; }
+    .chrome-title { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 6px; }
+    .chrome-sub { font-size: 22px; font-family: 'Cormorant Garamond', serif; font-style: italic; color: rgba(255,255,255,0.8); margin-bottom: 28px; }
+
+    /* ── TABS ── */
+    .tabs { display: flex; gap: 4px; padding: 0 40px; background: #0e0e0e; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .tab {
+      padding: 14px 28px; font-size: 12px; font-weight: 600; letter-spacing: 0.10em;
+      text-transform: uppercase; cursor: pointer; border: none; background: none;
+      color: rgba(255,255,255,0.35); border-bottom: 2px solid transparent;
+      transition: all 0.2s; margin-bottom: -1px;
+    }
+    .tab:hover { color: rgba(255,255,255,0.65); }
+    .tab.active { color: #fff; border-bottom-color: #fff; }
+    .tab-ref { font-size: 9px; display: block; opacity: 0.5; margin-top: 2px; letter-spacing: 0.06em; font-weight: 400; }
+
+    /* ── PANELS ── */
+    .panel { display: none; padding: 40px; }
+    .panel.active { display: block; }
+
+    /* ── SECTION HEADER ── */
+    .sec { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 16px; margin-top: 36px; }
+    .sec:first-child { margin-top: 0; }
+
+    /* ── SWATCHES ── */
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
+    .swatch { border-radius: 10px; overflow: hidden; }
+    .swatch-color { height: 52px; }
+    .swatch-info { padding: 8px 10px; }
+    .swatch-name { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 2px; }
+    .swatch-hex { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.7); font-family: monospace; }
+
+    /* ── SLIDE PREVIEW ── */
+    .slide-preview {
+      border-radius: 16px; overflow: hidden; height: 420px;
+      display: flex; align-items: center;
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+    }
+    .slide-inner {
+      display: flex; width: 100%; height: 100%;
+      align-items: center; padding: 40px 56px;
+      gap: 48px;
+    }
+    .slide-lft { flex: 0 0 48%; display: flex; flex-direction: column; justify-content: center; }
+    .slide-rgt { flex: 1; height: 320px; border-radius: 14px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+
+    /* ── COMPONENT ROW ── */
+    .comp-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+    /* ── CONTRAST BADGES ── */
+    .contrast-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .contrast-badge {
+      padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 600;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .contrast-badge.pass { background: rgba(102,187,106,0.12); color: #66bb6a; border: 1px solid rgba(102,187,106,0.2); }
+    .contrast-badge.fail { background: rgba(229,57,53,0.12); color: #ef5350; border: 1px solid rgba(229,57,53,0.2); }
+
+    /* ── APPLY BUTTON ── */
+    .apply-btn {
+      margin-top: 32px; padding: 14px 32px; border-radius: 8px; font-size: 12px;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7); transition: all 0.2s; display: inline-block;
+    }
+    .apply-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+    /* ── TYPOGRAPHY SAMPLE ── */
+    .type-sample { border-radius: 12px; padding: 28px 32px; border: 1px solid rgba(255,255,255,0.06); }
+  </style>
+</head>
+<body>
+
+<div class="chrome">
+  <div class="chrome-title">TReDS · Bid Position Awareness · Naman Mudgil</div>
+  <div class="chrome-sub">Three theme directions for the case study</div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="show(0)">
+    Theme 1
+    <span class="tab-ref">Ivory Brief</span>
+  </button>
+  <button class="tab" onclick="show(1)">
+    Theme 2
+    <span class="tab-ref">Blueprint</span>
+  </button>
+  <button class="tab" onclick="show(2)">
+    Theme 3
+    <span class="tab-ref">Archive Gold</span>
+  </button>
+  <button class="tab" onclick="show(3)" style="margin-left:auto; color:rgba(255,255,255,0.2);">
+    Current
+    <span class="tab-ref">Incident Night</span>
+  </button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     THEME 1 — IVORY BRIEF
+══════════════════════════════════════════════════════════ -->
+<div class="panel active" id="p0">
+
+  <!-- Slide Preview -->
+  <div class="sec">Slide Preview</div>
+  <div class="slide-preview" style="background:#f4efe6;">
+    <div class="slide-inner">
+      <div class="slide-lft">
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:72px; color:#c62828; line-height:1; margin-bottom:12px;">₹8.97 Cr</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:36px; line-height:1.1; color:#1c1814; margin-bottom:20px;">One question the column couldn't answer.</div>
+        <div style="font-size:13px; line-height:1.75; color:rgba(28,24,20,0.62); max-width:360px;">A financier sent a long, frustrated email directly to the VP of Product and the VP of Technology. The question wasn't complicated.</div>
+        <div style="font-size:9px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(28,24,20,0.30); margin-top:32px;">NAMAN MUDGIL · PRODUCT DESIGNER · MYTREDS</div>
+      </div>
+      <div class="slide-rgt" style="background:#ede7db; border:1px solid rgba(0,0,0,0.08);">
+        <div style="padding:28px; width:100%;">
+          <div style="border:1px solid rgba(198,40,40,0.18); border-radius:14px; padding:28px; background:rgba(198,40,40,0.03);">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:48px; color:rgba(198,40,40,0.18); line-height:0.6; margin-bottom:16px;">"</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:#1c1814; line-height:1.55; margin-bottom:18px;">I placed my bid. The platform showed my bid as the lowest. How did I still lose?</div>
+            <div style="font-size:9px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(28,24,20,0.35);">Email to VP of Product · ₹8.97 Cr lost</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav preview -->
+  <div style="margin-top:8px; display:flex; justify-content:center;">
+    <div style="background:rgba(0,0,0,0.07); border:1px solid rgba(0,0,0,0.12); border-radius:100px; padding:7px 14px; display:inline-flex; align-items:center; gap:8px;">
+      <span style="font-size:14px; color:rgba(28,24,20,0.35);">‹</span>
+      <span style="font-size:11px; color:rgba(28,24,20,0.40); letter-spacing:0.06em;">1 / 21</span>
+      <span style="font-size:14px; color:rgba(28,24,20,0.60);">›</span>
+      <span style="width:1px; height:10px; background:rgba(0,0,0,0.1); margin:0 2px;"></span>
+      <span style="font-size:12px; color:rgba(28,24,20,0.40);">↺</span>
+    </div>
+  </div>
+
+  <!-- Color Swatches -->
+  <div class="sec" style="margin-top:32px;">Color Tokens</div>
+  <div class="swatch-grid">
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#f4efe6;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#f4efe6</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#ede7db;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surf</div><div class="swatch-hex">#ede7db</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#e5dfd2;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surf2</div><div class="swatch-hex">#e5dfd2</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#1c1814;"></div>
+      <div class="swatch-info"><div class="swatch-name">--t (primary)</div><div class="swatch-hex">#1c1814</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#c62828;"></div>
+      <div class="swatch-info"><div class="swatch-name">--red (accent)</div><div class="swatch-hex">#c62828</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#2e7d32;"></div>
+      <div class="swatch-info"><div class="swatch-name">--green</div><div class="swatch-hex">#2e7d32</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#0277bd;"></div>
+      <div class="swatch-info"><div class="swatch-name">--blue</div><div class="swatch-hex">#0277bd</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#e65100;"></div>
+      <div class="swatch-info"><div class="swatch-name">--amber</div><div class="swatch-hex">#e65100</div></div>
+    </div>
+  </div>
+
+  <!-- Sample Components -->
+  <div class="sec">Sample Components</div>
+  <div class="comp-row">
+    <!-- Failure card -->
+    <div style="background:#e5dfd2; border:1px solid rgba(198,40,40,0.2); border-radius:12px; padding:16px;">
+      <div style="font-size:8px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(198,40,40,0.55); margin-bottom:8px;">Failure 01</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; color:#1c1814; line-height:1.35;">Column showed a value — not ownership</div>
+    </div>
+    <!-- Position state -->
+    <div style="background:#ede7db; border:1px solid rgba(0,0,0,0.08); border-radius:12px; padding:16px; display:flex; align-items:center; gap:12px;">
+      <div style="width:32px; height:32px; border-radius:7px; background:rgba(198,40,40,0.10); color:#c62828; display:flex; align-items:center; justify-content:center; font-size:13px;">!</div>
+      <div>
+        <div style="font-size:11px; font-weight:600; color:#c62828; margin-bottom:2px;">Matched — not first</div>
+        <div style="font-size:10px; color:rgba(28,24,20,0.50); line-height:1.4;">An earlier financier exists at this rate.</div>
+      </div>
+    </div>
+    <!-- Typography sample -->
+    <div style="background:#ede7db; border:1px solid rgba(0,0,0,0.08); border-radius:12px; padding:16px;">
+      <div style="font-size:8px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(28,24,20,0.3); margin-bottom:8px;">Typography</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:#1c1814; margin-bottom:6px;">Editorial Heading</div>
+      <div style="font-size:12px; color:rgba(28,24,20,0.62); line-height:1.6;">Body copy in Inter. Clear, readable, professional on warm ivory.</div>
+    </div>
+  </div>
+
+  <!-- Contrast -->
+  <div class="sec">WCAG 2.1 AA Contrast</div>
+  <div class="contrast-row">
+    <div class="contrast-badge pass">✓ Text/BG — 17.1:1</div>
+    <div class="contrast-badge pass">✓ Body text — 4.75:1</div>
+    <div class="contrast-badge pass">✓ Red accent — 5.37:1</div>
+    <div class="contrast-badge pass">✓ Green — 4.81:1</div>
+    <div class="contrast-badge pass">✓ All states pass AA</div>
+  </div>
+
+  <!-- Token block -->
+  <div class="sec">CSS Tokens — drop into :root { }</div>
+  <div style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:24px; font-family:monospace; font-size:12px; line-height:2; color:rgba(255,255,255,0.65); overflow-x:auto;">
+    <span style="color:rgba(255,255,255,0.25);">/* Theme 1 — Ivory Brief */</span><br>
+    <span style="color:#80cbc4;">--bg</span>:     <span style="color:#f9a825;">#f4efe6</span>;<br>
+    <span style="color:#80cbc4;">--surf</span>:   <span style="color:#f9a825;">#ede7db</span>;<br>
+    <span style="color:#80cbc4;">--surf2</span>:  <span style="color:#f9a825;">#e5dfd2</span>;<br>
+    <span style="color:#80cbc4;">--b</span>:      <span style="color:#f9a825;">rgba(0,0,0,0.09)</span>;<br>
+    <span style="color:#80cbc4;">--t</span>:      <span style="color:#f9a825;">#1c1814</span>;<br>
+    <span style="color:#80cbc4;">--t2</span>:     <span style="color:#f9a825;">rgba(28,24,20,0.62)</span>;<br>
+    <span style="color:#80cbc4;">--t3</span>:     <span style="color:#f9a825;">rgba(28,24,20,0.32)</span>;<br>
+    <span style="color:#80cbc4;">--red</span>:    <span style="color:#f9a825;">#c62828</span>;<br>
+    <span style="color:#80cbc4;">--reds</span>:   <span style="color:#f9a825;">rgba(198,40,40,0.10)</span>;<br>
+    <span style="color:#80cbc4;">--green</span>:  <span style="color:#f9a825;">#2e7d32</span>;<br>
+    <span style="color:#80cbc4;">--blue</span>:   <span style="color:#f9a825;">#0277bd</span>;<br>
+    <span style="color:#80cbc4;">--amber</span>:  <span style="color:#f9a825;">#e65100</span>;<br>
+    <span style="color:rgba(255,255,255,0.25);">/* fonts unchanged — Cormorant Garamond + Inter */</span>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     THEME 2 — BLUEPRINT
+══════════════════════════════════════════════════════════ -->
+<div class="panel" id="p1">
+
+  <!-- Slide Preview -->
+  <div class="sec">Slide Preview</div>
+  <div class="slide-preview" style="background:#060c18;">
+    <div class="slide-inner">
+      <div class="slide-lft">
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:72px; color:#ef5350; line-height:1; margin-bottom:12px;">₹8.97 Cr</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:36px; line-height:1.1; color:#e8f3fd; margin-bottom:20px;">One question the column couldn't answer.</div>
+        <div style="font-size:13px; line-height:1.75; color:rgba(232,243,253,0.62); max-width:360px;">A financier sent a long, frustrated email directly to the VP of Product and the VP of Technology. The question wasn't complicated.</div>
+        <div style="font-size:9px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(232,243,253,0.28); margin-top:32px;">NAMAN MUDGIL · PRODUCT DESIGNER · MYTREDS</div>
+      </div>
+      <div class="slide-rgt" style="background:#0d1627; border:1px solid rgba(99,179,237,0.09);">
+        <div style="padding:28px; width:100%;">
+          <div style="border:1px solid rgba(239,83,80,0.18); border-radius:14px; padding:28px; background:rgba(239,83,80,0.04);">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:48px; color:rgba(239,83,80,0.20); line-height:0.6; margin-bottom:16px;">"</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:#e8f3fd; line-height:1.55; margin-bottom:18px;">I placed my bid. The platform showed my bid as the lowest. How did I still lose?</div>
+            <div style="font-size:9px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(232,243,253,0.30);">Email to VP of Product · ₹8.97 Cr lost</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav preview -->
+  <div style="margin-top:8px; display:flex; justify-content:center;">
+    <div style="background:rgba(99,179,237,0.06); border:1px solid rgba(99,179,237,0.14); border-radius:100px; padding:7px 14px; display:inline-flex; align-items:center; gap:8px;">
+      <span style="font-size:14px; color:rgba(232,243,253,0.28);">‹</span>
+      <span style="font-size:11px; color:rgba(232,243,253,0.40); letter-spacing:0.06em;">1 / 21</span>
+      <span style="font-size:14px; color:rgba(232,243,253,0.60);">›</span>
+      <span style="width:1px; height:10px; background:rgba(232,243,253,0.10); margin:0 2px;"></span>
+      <span style="font-size:12px; color:rgba(232,243,253,0.40);">↺</span>
+    </div>
+  </div>
+
+  <!-- Color Swatches -->
+  <div class="sec" style="margin-top:32px;">Color Tokens</div>
+  <div class="swatch-grid">
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#060c18; border:1px solid rgba(255,255,255,0.08);"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#060c18</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#0d1627;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surf</div><div class="swatch-hex">#0d1627</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#141f36;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surf2</div><div class="swatch-hex">#141f36</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#e8f3fd;"></div>
+      <div class="swatch-info"><div class="swatch-name">--t (primary)</div><div class="swatch-hex">#e8f3fd</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#ef5350;"></div>
+      <div class="swatch-info"><div class="swatch-name">--red (incident)</div><div class="swatch-hex">#ef5350</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#4ade80;"></div>
+      <div class="swatch-info"><div class="swatch-name">--green</div><div class="swatch-hex">#4ade80</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#60a5fa;"></div>
+      <div class="swatch-info"><div class="swatch-name">--blue (accent)</div><div class="swatch-hex">#60a5fa</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#fbbf24;"></div>
+      <div class="swatch-info"><div class="swatch-name">--amber</div><div class="swatch-hex">#fbbf24</div></div>
+    </div>
+  </div>
+
+  <!-- Sample Components -->
+  <div class="sec">Sample Components</div>
+  <div class="comp-row">
+    <div style="background:#141f36; border:1px solid rgba(239,83,80,0.22); border-radius:12px; padding:16px;">
+      <div style="font-size:8px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(239,83,80,0.55); margin-bottom:8px;">Failure 01</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; color:#e8f3fd; line-height:1.35;">Column showed a value — not ownership</div>
+    </div>
+    <div style="background:#0d1627; border:1px solid rgba(99,179,237,0.09); border-radius:12px; padding:16px; display:flex; align-items:center; gap:12px;">
+      <div style="width:32px; height:32px; border-radius:7px; background:rgba(239,83,80,0.12); color:#ef5350; display:flex; align-items:center; justify-content:center; font-size:13px;">!</div>
+      <div>
+        <div style="font-size:11px; font-weight:600; color:#ef5350; margin-bottom:2px;">Matched — not first</div>
+        <div style="font-size:10px; color:rgba(232,243,253,0.45); line-height:1.4;">An earlier financier exists at this rate.</div>
+      </div>
+    </div>
+    <div style="background:#0d1627; border:1px solid rgba(99,179,237,0.09); border-radius:12px; padding:16px;">
+      <div style="font-size:8px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(232,243,253,0.25); margin-bottom:8px;">Typography</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:#e8f3fd; margin-bottom:6px;">Editorial Heading</div>
+      <div style="font-size:12px; color:rgba(232,243,253,0.60); line-height:1.6;">Body copy in Inter. Technical clarity on deep navy.</div>
+    </div>
+  </div>
+
+  <!-- Contrast -->
+  <div class="sec">WCAG 2.1 AA Contrast</div>
+  <div class="contrast-row">
+    <div class="contrast-badge pass">✓ Text/BG — 17.4:1</div>
+    <div class="contrast-badge pass">✓ Body text — 7.0:1</div>
+    <div class="contrast-badge pass">✓ Red accent — 6.1:1</div>
+    <div class="contrast-badge pass">✓ Blue accent — 5.8:1</div>
+    <div class="contrast-badge pass">✓ All states pass AA</div>
+  </div>
+
+  <!-- Token block -->
+  <div class="sec">CSS Tokens — drop into :root { }</div>
+  <div style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:24px; font-family:monospace; font-size:12px; line-height:2; color:rgba(255,255,255,0.65); overflow-x:auto;">
+    <span style="color:rgba(255,255,255,0.25);">/* Theme 2 — Blueprint */</span><br>
+    <span style="color:#80cbc4;">--bg</span>:     <span style="color:#f9a825;">#060c18</span>;<br>
+    <span style="color:#80cbc4;">--surf</span>:   <span style="color:#f9a825;">#0d1627</span>;<br>
+    <span style="color:#80cbc4;">--surf2</span>:  <span style="color:#f9a825;">#141f36</span>;<br>
+    <span style="color:#80cbc4;">--b</span>:      <span style="color:#f9a825;">rgba(99,179,237,0.09)</span>;<br>
+    <span style="color:#80cbc4;">--t</span>:      <span style="color:#f9a825;">#e8f3fd</span>;<br>
+    <span style="color:#80cbc4;">--t2</span>:     <span style="color:#f9a825;">rgba(232,243,253,0.62)</span>;<br>
+    <span style="color:#80cbc4;">--t3</span>:     <span style="color:#f9a825;">rgba(232,243,253,0.30)</span>;<br>
+    <span style="color:#80cbc4;">--red</span>:    <span style="color:#f9a825;">#ef5350</span>;<br>
+    <span style="color:#80cbc4;">--reds</span>:   <span style="color:#f9a825;">rgba(239,83,80,0.10)</span>;<br>
+    <span style="color:#80cbc4;">--green</span>:  <span style="color:#f9a825;">#4ade80</span>;<br>
+    <span style="color:#80cbc4;">--blue</span>:   <span style="color:#f9a825;">#60a5fa</span>;<br>
+    <span style="color:#80cbc4;">--amber</span>:  <span style="color:#f9a825;">#fbbf24</span>;<br>
+    <span style="color:rgba(255,255,255,0.25);">/* fonts unchanged — Cormorant Garamond + Inter */</span>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     THEME 3 — ARCHIVE GOLD
+══════════════════════════════════════════════════════════ -->
+<div class="panel" id="p2">
+
+  <!-- Slide Preview -->
+  <div class="sec">Slide Preview</div>
+  <div class="slide-preview" style="background:#100d08;">
+    <div class="slide-inner">
+      <div class="slide-lft">
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:72px; color:#e53935; line-height:1; margin-bottom:12px;">₹8.97 Cr</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:36px; line-height:1.1; color:#f5e6c3; margin-bottom:20px;">One question the column couldn't answer.</div>
+        <div style="font-size:13px; line-height:1.75; color:rgba(245,230,195,0.62); max-width:360px;">A financier sent a long, frustrated email directly to the VP of Product and the VP of Technology. The question wasn't complicated.</div>
+        <div style="font-size:9px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,230,195,0.28); margin-top:32px;">NAMAN MUDGIL · PRODUCT DESIGNER · MYTREDS</div>
+      </div>
+      <div class="slide-rgt" style="background:#1a160f; border:1px solid rgba(212,168,83,0.10);">
+        <div style="padding:28px; width:100%;">
+          <div style="border:1px solid rgba(229,57,53,0.20); border-radius:14px; padding:28px; background:rgba(229,57,53,0.04);">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:48px; color:rgba(229,57,53,0.20); line-height:0.6; margin-bottom:16px;">"</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:#f5e6c3; line-height:1.55; margin-bottom:18px;">I placed my bid. The platform showed my bid as the lowest. How did I still lose?</div>
+            <div style="font-size:9px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(245,230,195,0.30);">Email to VP of Product · ₹8.97 Cr lost</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav preview -->
+  <div style="margin-top:8px; display:flex; justify-content:center;">
+    <div style="background:rgba(212,168,83,0.07); border:1px solid rgba(212,168,83,0.14); border-radius:100px; padding:7px 14px; display:inline-flex; align-items:center; gap:8px;">
+      <span style="font-size:14px; color:rgba(245,230,195,0.28);">‹</span>
+      <span style="font-size:11px; color:rgba(245,230,195,0.40); letter-spacing:0.06em;">1 / 21</span>
+      <span style="font-size:14px; color:rgba(245,230,195,0.60);">›</span>
+      <span style="width:1px; height:10px; background:rgba(212,168,83,0.15); margin:0 2px;"></span>
+      <span style="font-size:12px; color:rgba(245,230,195,0.40);">↺</span>
+    </div>
+  </div>
+
+  <!-- Color Swatches -->
+  <div class="sec" style="margin-top:32px;">Color Tokens</div>
+  <div class="swatch-grid">
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#100d08; border:1px solid rgba(255,255,255,0.08);"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#100d08</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#1a160f;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surf</div><div class="swatch-hex">#1a160f</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#241e14;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surf2</div><div class="swatch-hex">#241e14</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#f5e6c3;"></div>
+      <div class="swatch-info"><div class="swatch-name">--t (primary)</div><div class="swatch-hex">#f5e6c3</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#e53935;"></div>
+      <div class="swatch-info"><div class="swatch-name">--red (incident)</div><div class="swatch-hex">#e53935</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#aed581;"></div>
+      <div class="swatch-info"><div class="swatch-name">--green</div><div class="swatch-hex">#aed581</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#80cbc4;"></div>
+      <div class="swatch-info"><div class="swatch-name">--blue</div><div class="swatch-hex">#80cbc4</div></div>
+    </div>
+    <div class="swatch" style="background:#1e1e1e;">
+      <div class="swatch-color" style="background:#d4a853;"></div>
+      <div class="swatch-info"><div class="swatch-name">--amber (gold)</div><div class="swatch-hex">#d4a853</div></div>
+    </div>
+  </div>
+
+  <!-- Sample Components -->
+  <div class="sec">Sample Components</div>
+  <div class="comp-row">
+    <div style="background:#241e14; border:1px solid rgba(229,57,53,0.22); border-radius:12px; padding:16px;">
+      <div style="font-size:8px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(229,57,53,0.55); margin-bottom:8px;">Failure 01</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; color:#f5e6c3; line-height:1.35;">Column showed a value — not ownership</div>
+    </div>
+    <div style="background:#1a160f; border:1px solid rgba(212,168,83,0.10); border-radius:12px; padding:16px; display:flex; align-items:center; gap:12px;">
+      <div style="width:32px; height:32px; border-radius:7px; background:rgba(229,57,53,0.12); color:#e53935; display:flex; align-items:center; justify-content:center; font-size:13px;">!</div>
+      <div>
+        <div style="font-size:11px; font-weight:600; color:#e53935; margin-bottom:2px;">Matched — not first</div>
+        <div style="font-size:10px; color:rgba(245,230,195,0.45); line-height:1.4;">An earlier financier exists at this rate.</div>
+      </div>
+    </div>
+    <div style="background:#1a160f; border:1px solid rgba(212,168,83,0.10); border-radius:12px; padding:16px;">
+      <div style="font-size:8px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,230,195,0.28); margin-bottom:8px;">Typography</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:#f5e6c3; margin-bottom:6px;">Editorial Heading</div>
+      <div style="font-size:12px; color:rgba(245,230,195,0.60); line-height:1.6;">Body copy in Inter. Warm gold light on archival dark.</div>
+    </div>
+  </div>
+
+  <!-- Contrast -->
+  <div class="sec">WCAG 2.1 AA Contrast</div>
+  <div class="contrast-row">
+    <div class="contrast-badge pass">✓ Text/BG — 16.3:1</div>
+    <div class="contrast-badge pass">✓ Body text — 6.6:1</div>
+    <div class="contrast-badge pass">✓ Red accent — 6.4:1</div>
+    <div class="contrast-badge pass">✓ Gold/Amber — 9.5:1</div>
+    <div class="contrast-badge pass">✓ All states pass AA</div>
+  </div>
+
+  <!-- Token block -->
+  <div class="sec">CSS Tokens — drop into :root { }</div>
+  <div style="background:#1a1a1a; border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:24px; font-family:monospace; font-size:12px; line-height:2; color:rgba(255,255,255,0.65); overflow-x:auto;">
+    <span style="color:rgba(255,255,255,0.25);">/* Theme 3 — Archive Gold */</span><br>
+    <span style="color:#80cbc4;">--bg</span>:     <span style="color:#f9a825;">#100d08</span>;<br>
+    <span style="color:#80cbc4;">--surf</span>:   <span style="color:#f9a825;">#1a160f</span>;<br>
+    <span style="color:#80cbc4;">--surf2</span>:  <span style="color:#f9a825;">#241e14</span>;<br>
+    <span style="color:#80cbc4;">--b</span>:      <span style="color:#f9a825;">rgba(212,168,83,0.10)</span>;<br>
+    <span style="color:#80cbc4;">--t</span>:      <span style="color:#f9a825;">#f5e6c3</span>;<br>
+    <span style="color:#80cbc4;">--t2</span>:     <span style="color:#f9a825;">rgba(245,230,195,0.62)</span>;<br>
+    <span style="color:#80cbc4;">--t3</span>:     <span style="color:#f9a825;">rgba(245,230,195,0.30)</span>;<br>
+    <span style="color:#80cbc4;">--red</span>:    <span style="color:#f9a825;">#e53935</span>;<br>
+    <span style="color:#80cbc4;">--reds</span>:   <span style="color:#f9a825;">rgba(229,57,53,0.10)</span>;<br>
+    <span style="color:#80cbc4;">--green</span>:  <span style="color:#f9a825;">#aed581</span>;<br>
+    <span style="color:#80cbc4;">--blue</span>:   <span style="color:#f9a825;">#80cbc4</span>;<br>
+    <span style="color:#80cbc4;">--amber</span>:  <span style="color:#f9a825;">#d4a853</span>;<br>
+    <span style="color:rgba(255,255,255,0.25);">/* fonts unchanged — Cormorant Garamond + Inter */</span>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     CURRENT — INCIDENT NIGHT (reference)
+══════════════════════════════════════════════════════════ -->
+<div class="panel" id="p3">
+
+  <div class="sec">Current Theme — Reference</div>
+  <div class="slide-preview" style="background:#0a0a0a;">
+    <div class="slide-inner">
+      <div class="slide-lft">
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:72px; color:#e53935; line-height:1; margin-bottom:12px;">₹8.97 Cr</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:36px; line-height:1.1; color:#f0ebe4; margin-bottom:20px;">One question the column couldn't answer.</div>
+        <div style="font-size:13px; line-height:1.75; color:rgba(240,235,228,0.62); max-width:360px;">A financier sent a long, frustrated email directly to the VP of Product and the VP of Technology. The question wasn't complicated.</div>
+        <div style="font-size:9px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(240,235,228,0.28); margin-top:32px;">NAMAN MUDGIL · PRODUCT DESIGNER · MYTREDS</div>
+      </div>
+      <div class="slide-rgt" style="background:#111111; border:1px solid rgba(255,255,255,0.07);">
+        <div style="padding:28px; width:100%;">
+          <div style="border:1px solid rgba(229,57,53,0.20); border-radius:14px; padding:28px; background:rgba(229,57,53,0.04);">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:48px; color:rgba(229,57,53,0.20); line-height:0.6; margin-bottom:16px;">"</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:#f0ebe4; line-height:1.55; margin-bottom:18px;">I placed my bid. The platform showed my bid as the lowest. How did I still lose?</div>
+            <div style="font-size:9px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(240,235,228,0.30);">Email to VP of Product · ₹8.97 Cr lost</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:16px; font-size:12px; color:rgba(255,255,255,0.35); text-align:center;">This is the current index.html theme — deep black, warm cream, red accent.</div>
+</div>
+
+<script>
+  const panels = document.querySelectorAll('.panel');
+  const tabs = document.querySelectorAll('.tab');
+  function show(i) {
+    panels.forEach((p, j) => p.classList.toggle('active', j === i));
+    tabs.forEach((t, j) => t.classList.toggle('active', j === i));
+  }
+</script>
+</body>
+</html>

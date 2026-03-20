@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INC-2024-0847 — Bid Position Misrepresentation · MyTReDS IMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #0b0d0f;
+      --hdr:    #0e1014;
+      --surf:   #13161b;
+      --surf2:  #1a1e26;
+      --b:      rgba(255,255,255,0.07);
+      --b2:     rgba(255,255,255,0.11);
+      --t:      #e8edf2;
+      --t2:     rgba(232,237,242,0.58);
+      --t3:     rgba(232,237,242,0.27);
+      --mono:   'JetBrains Mono', 'Courier New', monospace;
+      --sans:   'Inter', sans-serif;
+      --serif:  'Cormorant Garamond', Georgia, serif;
+      --red:    #e53935;
+      --reds:   rgba(229,57,53,0.09);
+      --green:  #4caf50;
+      --greens: rgba(76,175,80,0.09);
+      --amber:  #ff9800;
+      --blue:   #4fc3f7;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--t);
+      line-height: 1.6;
+      padding-top: 52px;
+    }
+
+    /* ── STICKY HEADER ── */
+    .plat-hdr {
+      position: fixed; top: 0; left: 0; right: 0; height: 52px;
+      background: var(--hdr); border-bottom: 1px solid var(--b2);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; z-index: 200;
+    }
+    .plat-left { display: flex; align-items: center; gap: 28px; }
+    .plat-logo { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--t); }
+    .plat-logo em { color: var(--t3); font-style: normal; font-weight: 400; }
+    .plat-divider { width: 1px; height: 16px; background: var(--b2); }
+    .plat-inc { font-family: var(--mono); font-size: 11px; color: var(--t3); letter-spacing: 0.07em; }
+    .plat-right { display: flex; align-items: center; gap: 20px; }
+    .status-pill {
+      display: flex; align-items: center; gap: 7px;
+      font-family: var(--mono); font-size: 10px; font-weight: 600;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--green); padding: 5px 12px;
+      background: var(--greens); border: 1px solid rgba(76,175,80,0.18);
+      border-radius: 100px;
+    }
+    .status-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--green);
+      box-shadow: 0 0 0 2px rgba(76,175,80,0.25);
+    }
+    .sev-pill {
+      font-family: var(--mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--red); padding: 4px 10px;
+      background: var(--reds); border: 1px solid rgba(229,57,53,0.18);
+      border-radius: 100px;
+    }
+
+    /* Progress bar */
+    #pbar {
+      position: fixed; top: 52px; left: 0;
+      height: 2px; background: var(--red);
+      width: 0%; z-index: 200; transition: width 0.08s linear;
+    }
+
+    /* ── LAYOUT ── */
+    .doc {
+      max-width: 980px; margin: 0 auto;
+      padding: 56px 48px 120px;
+    }
+
+    /* ── INCIDENT BANNER ── */
+    .inc-banner {
+      border: 1px solid var(--b2);
+      border-left: 3px solid var(--red);
+      border-radius: 0 8px 8px 0;
+      padding: 28px 32px 24px;
+      background: var(--surf);
+      margin-bottom: 40px;
+    }
+    .inc-sev-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: var(--mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--red); background: var(--reds);
+      border: 1px solid rgba(229,57,53,0.2); border-radius: 4px;
+      padding: 4px 10px; margin-bottom: 14px;
+    }
+    .inc-title {
+      font-size: 26px; font-weight: 500; color: var(--t);
+      margin-bottom: 22px; line-height: 1.25;
+    }
+    .inc-meta {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;
+    }
+    .meta-lbl {
+      font-family: var(--mono); font-size: 9px; font-weight: 500;
+      letter-spacing: 0.11em; text-transform: uppercase;
+      color: var(--t3); margin-bottom: 5px;
+    }
+    .meta-val {
+      font-family: var(--mono); font-size: 11px; color: var(--t2);
+    }
+
+    /* ── METRICS STRIP ── */
+    .metrics {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-bottom: 60px;
+    }
+    .metric {
+      background: var(--surf); border: 1px solid var(--b);
+      border-radius: 8px; padding: 18px 20px;
+    }
+    .metric-lbl {
+      font-family: var(--mono); font-size: 9px; font-weight: 500;
+      letter-spacing: 0.11em; text-transform: uppercase;
+      color: var(--t3); margin-bottom: 8px;
+    }
+    .metric-val {
+      font-family: var(--mono); font-size: 22px;
+      font-weight: 600; color: var(--t); line-height: 1;
+    }
+    .metric-val.red { color: var(--red); }
+    .metric-val.green { color: var(--green); }
+    .metric-sub {
+      font-family: var(--mono); font-size: 10px;
+      color: var(--t3); margin-top: 6px;
+    }
+
+    /* ── SECTION ── */
+    .sec { margin-bottom: 68px; }
+    .sec-hdr {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 12px; border-bottom: 1px solid var(--b2);
+      margin-bottom: 28px;
+    }
+    .sec-title {
+      font-family: var(--mono); font-size: 11px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--t2);
+    }
+    .sec-num {
+      font-family: var(--mono); font-size: 10px;
+      color: var(--t3); letter-spacing: 0.1em;
+    }
+    .sec-intro {
+      font-size: 14px; color: var(--t2); line-height: 1.82;
+      margin-bottom: 24px; max-width: 720px;
+    }
+
+    /* ── TIMELINE ── */
+    .tl { display: flex; flex-direction: column; font-family: var(--mono); }
+    .tl-row {
+      display: grid; grid-template-columns: 128px 88px 1fr auto;
+      gap: 0; padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.035);
+      font-size: 11.5px; align-items: center;
+      transition: background 0.15s;
+    }
+    .tl-row:hover { background: rgba(255,255,255,0.02); }
+    .tl-row:last-child { border-bottom: none; }
+    .tl-ts { color: var(--t3); }
+    .tl-actor { color: var(--blue); opacity: 0.8; }
+    .tl-event { color: var(--t2); padding-left: 16px; }
+    .tl-badge {
+      font-size: 9px; font-weight: 600; letter-spacing: 0.1em;
+      padding: 3px 8px; border-radius: 3px; white-space: nowrap;
+      justify-self: end;
+    }
+    .tl-badge.live   { background: rgba(76,175,80,0.10); color: var(--green); }
+    .tl-badge.lost   { background: rgba(229,57,53,0.10); color: var(--red); }
+    .tl-badge.pend   { background: rgba(255,152,0,0.10); color: var(--amber); }
+    .tl-badge.sys    { background: rgba(255,255,255,0.04); color: var(--t3); }
+    .tl-row.crit {
+      background: rgba(229,57,53,0.05);
+      border-left: 2px solid rgba(229,57,53,0.4);
+      border-bottom: none; margin: 2px 0;
+      padding-left: 10px;
+    }
+    .tl-row.crit .tl-ts  { color: rgba(229,57,53,0.55); }
+    .tl-row.crit .tl-actor { color: rgba(229,57,53,0.7); }
+    .tl-row.crit .tl-event { color: rgba(232,237,242,0.8); }
+
+    /* ── SCREEN CAPTURE ── */
+    .sc-wrap { margin-bottom: 14px; }
+    .sc-evidence {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,152,0,0.65); background: rgba(255,152,0,0.06);
+      border: 1px solid rgba(255,152,0,0.14); border-radius: 4px;
+      padding: 4px 10px; margin-bottom: 12px;
+    }
+    .sc-frame {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; overflow: hidden;
+    }
+    .sc-chrome {
+      background: var(--surf2); padding: 9px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--b);
+    }
+    .sc-dots { display: flex; gap: 5px; }
+    .sc-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.10); }
+    .sc-url { font-family: var(--mono); font-size: 10px; color: var(--t3); }
+    .sc-ts  { font-family: var(--mono); font-size: 9px; color: rgba(255,152,0,0.6); }
+    .sc-body { background: #0f1115; padding: 28px 32px; }
+    .sc-fu {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px; background: rgba(255,255,255,0.025);
+      border: 1px solid var(--b); border-radius: 6px; margin-bottom: 22px;
+    }
+    .sc-fu-id  { font-family: var(--mono); font-size: 11px; color: var(--t3); }
+    .sc-fu-st  { font-family: var(--mono); font-size: 10px; font-weight: 600; color: rgba(79,195,247,0.7); letter-spacing: 0.08em; }
+    .sc-vals { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .sc-val {
+      background: rgba(255,255,255,0.025); border: 1px solid var(--b);
+      border-radius: 8px; padding: 20px 24px; text-align: center;
+    }
+    .sc-val-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--t3); margin-bottom: 10px; }
+    .sc-val-num { font-family: var(--mono); font-size: 42px; font-weight: 600; color: var(--t); line-height: 1; }
+    .sc-assess {
+      padding: 12px 16px; background: rgba(229,57,53,0.055);
+      border: 1px solid rgba(229,57,53,0.14); border-radius: 6px;
+      font-family: var(--mono); font-size: 11px; color: rgba(229,57,53,0.65); line-height: 1.7;
+    }
+    .sc-note {
+      margin-top: 12px; padding: 12px 16px;
+      background: rgba(255,152,0,0.035); border: 1px solid rgba(255,152,0,0.11);
+      border-radius: 6px; font-family: var(--mono); font-size: 10.5px;
+      color: rgba(255,152,0,0.55); line-height: 1.7;
+    }
+
+    /* ── FINDINGS ── */
+    .finding {
+      border: 1px solid var(--b); border-radius: 8px;
+      overflow: hidden; margin-bottom: 10px;
+      transition: border-color 0.18s;
+    }
+    .finding:hover { border-color: rgba(229,57,53,0.22); }
+    .finding-hdr {
+      background: var(--surf); padding: 13px 18px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .finding-id {
+      font-family: var(--mono); font-size: 10px; font-weight: 600;
+      letter-spacing: 0.11em; color: var(--t3); white-space: nowrap;
+    }
+    .finding-title { font-size: 13.5px; font-weight: 500; color: var(--t); flex: 1; }
+    .finding-sev {
+      font-family: var(--mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 0.10em; text-transform: uppercase;
+      color: var(--red); background: var(--reds);
+      border: 1px solid rgba(229,57,53,0.18); border-radius: 3px;
+      padding: 3px 8px; white-space: nowrap;
+    }
+    .finding-sev.med { color: var(--amber); background: rgba(255,152,0,0.08); border-color: rgba(255,152,0,0.18); }
+    .finding-body {
+      padding: 16px 18px; font-size: 13px; color: var(--t2);
+      line-height: 1.75; border-top: 1px solid var(--b);
+    }
+
+    /* ── INVESTIGATOR NOTES ── */
+    .inv-block {
+      background: var(--surf); border: 1px solid var(--b);
+      border-left: 3px solid rgba(255,152,0,0.35);
+      border-radius: 0 8px 8px 0; padding: 26px 30px;
+    }
+    .inv-meta {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 18px; padding-bottom: 14px;
+      border-bottom: 1px solid var(--b);
+    }
+    .inv-author { font-family: var(--mono); font-size: 10px; color: rgba(255,152,0,0.65); letter-spacing: 0.07em; }
+    .inv-ts     { font-family: var(--mono); font-size: 10px; color: var(--t3); }
+    .inv-body   { font-size: 14px; color: var(--t2); line-height: 1.82; }
+    .inv-body p { margin-bottom: 14px; }
+    .inv-body p:last-child { margin-bottom: 0; }
+    .inv-body strong { color: var(--t); font-weight: 500; }
+    .inv-pull {
+      font-family: var(--serif); font-style: italic;
+      font-size: 19px; color: var(--t); line-height: 1.55;
+      padding: 20px 24px; margin: 20px 0;
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+      background: rgba(255,255,255,0.015);
+    }
+
+    /* ── FIXES ── */
+    .fix {
+      border: 1px solid var(--b); border-radius: 8px;
+      overflow: hidden; margin-bottom: 10px;
+    }
+    .fix-hdr {
+      background: var(--surf); padding: 13px 18px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .fix-id {
+      font-family: var(--mono); font-size: 10px; font-weight: 600;
+      letter-spacing: 0.11em; color: var(--t3); white-space: nowrap;
+    }
+    .fix-title { font-size: 13.5px; font-weight: 500; color: var(--t); flex: 1; }
+    .fix-shipped {
+      font-family: var(--mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 0.10em; text-transform: uppercase;
+      color: var(--green); background: var(--greens);
+      border: 1px solid rgba(76,175,80,0.18); border-radius: 3px;
+      padding: 3px 8px; white-space: nowrap;
+    }
+    .fix-resolves {
+      padding: 8px 18px; background: rgba(76,175,80,0.025);
+      border-top: 1px solid rgba(76,175,80,0.07);
+      font-family: var(--mono); font-size: 9.5px;
+      color: rgba(76,175,80,0.45); letter-spacing: 0.05em;
+    }
+    .fix-body {
+      padding: 16px 18px; font-size: 13px; color: var(--t2);
+      line-height: 1.75; border-top: 1px solid var(--b);
+    }
+    .fix-states { display: flex; flex-direction: column; gap: 5px; margin-top: 12px; }
+    .fix-state {
+      display: grid; grid-template-columns: 116px 14px 1fr; gap: 8px;
+      align-items: center; font-family: var(--mono); font-size: 11px;
+      padding: 7px 11px; background: rgba(255,255,255,0.02);
+      border-radius: 4px; border: 1px solid var(--b);
+    }
+    .lead  { color: var(--green); font-weight: 600; }
+    .lead2 { color: rgba(76,175,80,0.55); font-weight: 600; }
+    .match { color: var(--amber); font-weight: 600; }
+    .trail { color: var(--red); font-weight: 600; }
+    .sep   { color: var(--t3); }
+    .fix-state-desc { font-size: 10px; color: var(--t2); }
+    .fix-inline-note {
+      margin-top: 10px; padding: 9px 13px;
+      background: rgba(255,152,0,0.04); border: 1px solid rgba(255,152,0,0.11);
+      border-radius: 5px; font-family: var(--mono); font-size: 10px;
+      color: rgba(255,152,0,0.6); line-height: 1.6;
+    }
+    .fix-notif-cols {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px;
+    }
+    .notif-col {
+      background: rgba(255,255,255,0.02); border: 1px solid var(--b);
+      border-radius: 5px; padding: 12px 14px;
+    }
+    .notif-col-lbl {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .notif-col-lbl.maker   { color: rgba(79,195,247,0.6); }
+    .notif-col-lbl.checker { color: rgba(76,175,80,0.6); }
+    .notif-col-body { font-size: 12px; color: var(--t2); line-height: 1.65; }
+
+    /* ── PLATFORM RULE ── */
+    .rule-block {
+      border: 1px solid var(--b2); border-radius: 8px;
+      padding: 28px 32px; background: var(--surf);
+    }
+    .rule-tag {
+      font-family: var(--mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--t3); margin-bottom: 16px;
+    }
+    .rule-text {
+      font-family: var(--serif); font-style: italic;
+      font-size: 21px; color: var(--t); line-height: 1.55; margin-bottom: 20px;
+    }
+    .rule-applies { font-size: 13px; color: var(--t2); margin-bottom: 14px; }
+    .rule-qs { display: flex; flex-direction: column; gap: 6px; }
+    .rule-q {
+      font-family: var(--mono); font-size: 11px; color: var(--t3);
+      padding: 8px 12px; background: rgba(255,255,255,0.02);
+      border-radius: 4px; border: 1px solid var(--b);
+    }
+    .rule-q strong { color: var(--t2); }
+
+    /* ── CLOSURE ── */
+    .closure {
+      border-top: 1px solid var(--b2); padding-top: 44px;
+      display: flex; flex-direction: column; gap: 22px;
+    }
+    .closure-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .closure-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--green); background: var(--greens);
+      border: 1px solid rgba(76,175,80,0.2); border-radius: 6px;
+      padding: 8px 16px;
+    }
+    .closure-ts { font-family: var(--mono); font-size: 11px; color: var(--t3); }
+    .closure-quote {
+      font-family: var(--serif); font-style: italic;
+      font-size: 18px; color: var(--t2); line-height: 1.65; max-width: 620px;
+    }
+    .closure-sig { font-family: var(--mono); font-size: 11px; color: var(--t3); }
+  </style>
+</head>
+<body>
+
+<!-- ═══ STICKY HEADER ═════════════════════════════════════════ -->
+<header class="plat-hdr">
+  <div class="plat-left">
+    <div class="plat-logo">MYTREDS <em>/ Incident Management System</em></div>
+    <div class="plat-divider"></div>
+    <div class="plat-inc">INC-2024-0847</div>
+  </div>
+  <div class="plat-right">
+    <div class="sev-pill">SEVERITY P0</div>
+    <div class="status-pill"><span class="status-dot"></span>RESOLVED</div>
+  </div>
+</header>
+<div id="pbar"></div>
+
+<!-- ═══ DOCUMENT BODY ════════════════════════════════════════ -->
+<main class="doc">
+
+  <!-- INCIDENT BANNER -->
+  <div class="inc-banner">
+    <div class="inc-sev-tag">● P0 — CRITICAL · FINANCIAL LOSS EVENT</div>
+    <div class="inc-title">Bid Position Misrepresentation — Financier Loss Event</div>
+    <div class="inc-meta">
+      <div><div class="meta-lbl">Incident ID</div><div class="meta-val">INC-2024-0847</div></div>
+      <div><div class="meta-lbl">Reported by</div><div class="meta-val">Financier Ops</div></div>
+      <div><div class="meta-lbl">Reported at</div><div class="meta-val">2024-10-15  09:47 IST</div></div>
+      <div><div class="meta-lbl">Assigned to</div><div class="meta-val">Naman Mudgil — Design</div></div>
+      <div><div class="meta-lbl">Resolved at</div><div class="meta-val">2024-11-26  18:00 IST</div></div>
+    </div>
+  </div>
+
+  <!-- IMPACT METRICS -->
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-lbl">Financial impact</div>
+      <div class="metric-val red">₹8.97 Cr</div>
+      <div class="metric-sub">Single-day loss event</div>
+    </div>
+    <div class="metric">
+      <div class="metric-lbl">FUs affected</div>
+      <div class="metric-val">12–13</div>
+      <div class="metric-sub">Bulk bid, single buyer</div>
+    </div>
+    <div class="metric">
+      <div class="metric-lbl">Root failures found</div>
+      <div class="metric-val">5</div>
+      <div class="metric-sub">Compounding, not isolated</div>
+    </div>
+    <div class="metric">
+      <div class="metric-lbl">Backend changes req.</div>
+      <div class="metric-val green">0</div>
+      <div class="metric-sub">Display problem only</div>
+    </div>
+  </div>
+
+  <!-- ── § 01 TIMELINE ── -->
+  <div class="sec">
+    <div class="sec-hdr">
+      <div class="sec-title">Timeline of Events</div>
+      <div class="sec-num">§ 01</div>
+    </div>
+    <div class="tl">
+      <div class="tl-row">
+        <span class="tl-ts">09:12:33 IST</span>
+        <span class="tl-actor">BANK-A</span>
+        <span class="tl-event">Maker placed bulk bid — Rate: 5.5% — 12 FUs — Large-Cap Manufacturing Buyer</span>
+        <span class="tl-badge pend">PENDING</span>
+      </div>
+      <div class="tl-row">
+        <span class="tl-ts">09:12:41 IST</span>
+        <span class="tl-actor">BANK-B</span>
+        <span class="tl-event">Maker placed bulk bid — Rate: 5.5% — 13 FUs — same buyer</span>
+        <span class="tl-badge pend">PENDING</span>
+      </div>
+      <div class="tl-row">
+        <span class="tl-ts">09:12:44 IST</span>
+        <span class="tl-actor">BANK-A</span>
+        <span class="tl-event">Checker approved bid — Bid now live and competing on platform</span>
+        <span class="tl-badge live">LIVE</span>
+      </div>
+      <div class="tl-row">
+        <span class="tl-ts">09:12:47 IST</span>
+        <span class="tl-actor">BANK-B</span>
+        <span class="tl-event">Checker approved bid — Also 5.5%, now live — 3 seconds after BANK-A</span>
+        <span class="tl-badge live">LIVE</span>
+      </div>
+      <div class="tl-row">
+        <span class="tl-ts">09:12:47 IST</span>
+        <span class="tl-actor" style="color:var(--t3);">SYSTEM</span>
+        <span class="tl-event" style="color:var(--t3); padding-left:16px;">Tiebreaker applied — Equal bids awarded to earliest approval timestamp — BANK-A leads</span>
+        <span class="tl-badge sys">AUTO</span>
+      </div>
+      <div class="tl-row">
+        <span class="tl-ts">09:12:47 IST</span>
+        <span class="tl-actor" style="color:var(--t3);">SYSTEM</span>
+        <span class="tl-event" style="color:var(--t3); padding-left:16px;">BANK-B not notified. BANK-B screen unchanged. Tiebreaker rule: not surfaced in UI. Ever.</span>
+        <span class="tl-badge sys">SILENT</span>
+      </div>
+      <div class="tl-row crit">
+        <span class="tl-ts">14:00:00 IST</span>
+        <span class="tl-actor">BANK-B</span>
+        <span class="tl-event" style="padding-left:16px;">Auction closed — BID LOST — All 12–13 FUs lost — Financial loss: ₹8.97 Crore</span>
+        <span class="tl-badge lost">LOST</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── § 02 WHAT THE SCREEN SHOWED ── -->
+  <div class="sec">
+    <div class="sec-hdr">
+      <div class="sec-title">What the Screen Showed</div>
+      <div class="sec-num">§ 02</div>
+    </div>
+    <p class="sec-intro">
+      The following is the state of BANK-B's auction screen at the time of the incident. The condition that produced the misreading. Two identical numbers. No ownership indicator. No tiebreaker rule visible anywhere on the platform.
+    </p>
+    <div class="sc-wrap">
+      <div class="sc-evidence">⬤ SCREEN EVIDENCE — INC-2024-0847</div>
+      <div class="sc-frame">
+        <div class="sc-chrome">
+          <div class="sc-dots"><span></span><span></span><span></span></div>
+          <div class="sc-url">mytreds.in / auction / fu-0847 / live-view</div>
+          <div class="sc-ts">CAPTURED · 09:23:14 IST · 2024-10-15</div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-fu">
+            <div class="sc-fu-id">FU #0847 · Large-Cap Manufacturing Buyer · ₹8.97 Cr · 90 days</div>
+            <div class="sc-fu-st">● AUCTION LIVE</div>
+          </div>
+          <div class="sc-vals">
+            <div class="sc-val">
+              <div class="sc-val-lbl">My Bid</div>
+              <div class="sc-val-num">5.5%</div>
+            </div>
+            <div class="sc-val">
+              <div class="sc-val-lbl">Lowest Bid</div>
+              <div class="sc-val-num">5.5%</div>
+            </div>
+          </div>
+          <div class="sc-assess">
+            ASSESSMENT · Technically accurate. Completely misleading. No ownership indicator. No tiebreaker logic surfaced. No competitive position signal at any layer of this screen. The platform's answer to "Am I winning?" — silence.
+          </div>
+        </div>
+      </div>
+      <div class="sc-note">
+        NOTE · The 3-second timestamp difference that decided the outcome existed in the system. The tiebreaker rule existed in the system. Neither was communicated to the user at any point — before, during, or after the auction closed.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── § 03 ROOT CAUSE ANALYSIS ── -->
+  <div class="sec">
+    <div class="sec-hdr">
+      <div class="sec-title">Root Cause Analysis — Findings</div>
+      <div class="sec-num">§ 03</div>
+    </div>
+    <p class="sec-intro">
+      Initial assessment assumed a single point of failure. Full lifecycle mapping revealed five compounding failures — each independent, each reasonable in isolation, collectively catastrophic.
+    </p>
+
+    <div class="finding">
+      <div class="finding-hdr">
+        <span class="finding-id">FINDING-001</span>
+        <span class="finding-title">Column showed value — not ownership</span>
+        <span class="finding-sev">HIGH</span>
+      </div>
+      <div class="finding-body">
+        The Lowest Bid column communicated the lowest rate on the FU. It did not communicate whether that rate belonged to the viewing financier or a competitor. When both values are identical — as in this incident — the column is technically accurate and entirely misleading at the same time. The system was answering a different question than the one the financier was asking.
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-hdr">
+        <span class="finding-id">FINDING-002</span>
+        <span class="finding-title">No notification when a counter-bid was placed</span>
+        <span class="finding-sev">HIGH</span>
+      </div>
+      <div class="finding-body">
+        When a competing financier's bid was approved on a contested FU, the affected party received nothing. No in-app alert, no email, no visual state change. The competitive landscape changed in real time. The platform said nothing. A financier managing 20–40 FUs simultaneously had no mechanism to detect a newly contested position on any one of them.
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-hdr">
+        <span class="finding-id">FINDING-003</span>
+        <span class="finding-title">Bid status invisible during Checker Pending window</span>
+        <span class="finding-sev">CRITICAL</span>
+      </div>
+      <div class="finding-body">
+        A bid in Checker Pending is a draft — not live, not competing. The UI presented no indication of this. The Maker saw their bid rate and had no basis to conclude it was not actively competing. This is the exact window in which the ₹8.97 Cr incident occurred: two bids sitting in separate Checker Pending queues, neither party aware the other existed.
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-hdr">
+        <span class="finding-id">FINDING-004</span>
+        <span class="finding-title">Checker approved without competitive context</span>
+        <span class="finding-sev">HIGH</span>
+      </div>
+      <div class="finding-body">
+        The Checker's Pending Review tab displayed one thing: a bid rate. A single number. For a revision, the Checker received no indication it was a revision, no visibility into the previously approved bid still live on the platform, no current lowest bid, and no projected position if approved. Financial approval was executed with a fraction of the information required to make it.
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-hdr">
+        <span class="finding-id">FINDING-005</span>
+        <span class="finding-title">State transitions happened silently across all tabs</span>
+        <span class="finding-sev med">MEDIUM</span>
+      </div>
+      <div class="finding-body">
+        FUs moving between tabs produced no explanation of why, what bid was honored, or what happened to pending actions. Every transition was treated as a technical event. The user experienced it as a disappearance. On a regulated financial platform, unexplained disappearances are not a minor UX gap — they are a trust and audit failure.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── § 04 INVESTIGATOR NOTES ── -->
+  <div class="sec">
+    <div class="sec-hdr">
+      <div class="sec-title">Investigator Notes</div>
+      <div class="sec-num">§ 04</div>
+    </div>
+    <div class="inv-block">
+      <div class="inv-meta">
+        <span class="inv-author">Naman Mudgil — Product Design</span>
+        <span class="inv-ts">Assigned 2024-10-15 · Staff Eng + PM triage confirmed: design problem</span>
+      </div>
+      <div class="inv-body">
+        <p>My first instinct — like everyone else's — was a notification problem. Add an alert when a counter-bid is placed. Brief the engineers. Done. I was wrong. I am glad I didn't stop there.</p>
+        <p>When I sat with the staff engineer to map the full bid lifecycle — every tab, every state, every transition for both the Maker and Checker — what emerged was not one problem but five failures that had been invisible because nobody had mapped the system end to end before.</p>
+        <div class="inv-pull">"This was not a notification problem. It was a systematic invisibility problem. The platform had built a real-time auction engine and then left its participants flying blind inside it."</div>
+        <p>Two pushbacks shaped the final solution. The PM's initial brief was narrow: add a counter-bid notification and close the ticket. I pushed back. After mapping the five failures, I showed that a notification alone solved Finding-002 and left Findings 001, 003, 004, and 005 untouched. A financier could receive the alert, check the screen, see My Bid 5.5% and Lowest Bid 5.5%, and still not know they were losing. The scope was expanded.</p>
+        <p>The compliance constraint around competitor identity — which initially appeared to block the position indicator entirely — forced a more elegant solution. The indicator requires zero competitor data. The session already knows the financier's own approved bids. The platform already knows the lowest bid. The comparison is a binary: is this mine or not? No competitor name. No rate. No identifying information of any kind.</p>
+        <p>One edge case was caught during revision flow mapping that had no ticket against it: if a buyer closes an auction while a revised bid is in Checker Pending, the system correctly honors the last confirmed approved bid — but the Bid Lost tab was showing the draft revision value. A financier could lose an FU and see a bid rate on their screen that the platform never treated as real. Flagged as P0 before the revision flow went to development. Not in the original brief. Would have shipped undetected.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── § 05 RESOLUTION ── -->
+  <div class="sec">
+    <div class="sec-hdr">
+      <div class="sec-title">Resolution — Applied Fixes</div>
+      <div class="sec-num">§ 05</div>
+    </div>
+    <p class="sec-intro">Three solution layers. Each maps directly to specific findings. No fix is decorative.</p>
+
+    <div class="fix">
+      <div class="fix-hdr">
+        <span class="fix-id">FIX-001</span>
+        <span class="fix-title">Bid Position Indicator — Four-State Signal</span>
+        <span class="fix-shipped">SHIPPED</span>
+      </div>
+      <div class="fix-resolves">Resolves FINDING-001 · FINDING-003 (partial)</div>
+      <div class="fix-body">
+        The Lowest Bid column redesigned from a value display into a competitive position signal. System compares the financier's own approved bid against the platform lowest bid and returns one of four states. Zero competitor data exposed at any layer. Backend requirement: one four-state position flag per FU per session — LEADING, MATCHED_FIRST, MATCHED_NOT_FIRST, TRAILING. Data to compute it already existed. No new data pipeline required.
+        <div class="fix-states">
+          <div class="fix-state"><span class="lead">LEADING</span><span class="sep">·</span><span class="fix-state-desc">Sole bidder — no other approved bids exist on this FU</span></div>
+          <div class="fix-state"><span class="lead2">LEADING</span><span class="sep">·</span><span class="fix-state-desc">Matched, first timestamp — equal bid exists, you hold earliest approval</span></div>
+          <div class="fix-state"><span class="match">MATCHED</span><span class="sep">·</span><span class="fix-state-desc">Not first timestamp — an earlier financier exists at this same rate</span></div>
+          <div class="fix-state"><span class="trail">TRAILING</span><span class="sep">·</span><span class="fix-state-desc">A lower approved bid exists — you are not leading</span></div>
+        </div>
+        <div class="fix-inline-note">
+          INLINE RULE SURFACE — "Equal bids are awarded to the earliest approved bid." Shown directly on equal-bid states. Not in a tooltip. Not in a help article. Not behind a hover. At the exact moment the rule matters, on the exact screen where it is needed.
+        </div>
+      </div>
+    </div>
+
+    <div class="fix">
+      <div class="fix-hdr">
+        <span class="fix-id">FIX-002</span>
+        <span class="fix-title">Counter-bid Notification — Dual Channel, Checker-Triggered</span>
+        <span class="fix-shipped">SHIPPED</span>
+      </div>
+      <div class="fix-resolves">Resolves FINDING-002</div>
+      <div class="fix-body">
+        Trigger: a competitor's Checker approves a bid on an FU where the financier holds an active approved bid. Notification fires to both Maker and Checker independently. Trigger is Checker approval — not Maker placement. A Maker-placed bid is a draft. Notifying on placement would generate alerts for bids that never become real — flooding the channel and training participants to ignore it. The notification needs to land with weight. That only works if it is not competing with noise.
+        <div class="fix-notif-cols">
+          <div class="notif-col">
+            <div class="notif-col-lbl maker">→ Maker alert</div>
+            <div class="notif-col-body">Which FU, current competitive position, reminder that any revision requires Checker re-approval before going live on platform.</div>
+          </div>
+          <div class="notif-col">
+            <div class="notif-col-lbl checker">→ Checker alert</div>
+            <div class="notif-col-body">Preparatory signal — counter-bid occurred on an FU they approved. Maker may submit revision. Primes Checker before the revision arrives, reducing approval lag at the most time-sensitive moment.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fix">
+      <div class="fix-hdr">
+        <span class="fix-id">FIX-003</span>
+        <span class="fix-title">Real-time Attention Hierarchy — Four-Level Cascade</span>
+        <span class="fix-shipped">SHIPPED</span>
+      </div>
+      <div class="fix-resolves">Resolves FINDING-002 (partial) · FINDING-003 (partial)</div>
+      <div class="fix-body">
+        The Lowest Bid column already updated in real time at the row level. The update was a silent number swap — too fast to register while the Maker was scanning other rows. Real-time data that updates silently is not a feature. It is noise. Designed a four-level attention cascade so the signal finds the user regardless of where they are looking in the interface.
+        <div class="fix-states" style="margin-top:12px;">
+          <div class="fix-state"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--amber);">LEVEL 1</span><span class="sep">·</span><span class="fix-state-desc">Cell flashes amber when Lowest Bid value changes — immediate, local signal</span></div>
+          <div class="fix-state"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--amber);">LEVEL 2</span><span class="sep">·</span><span class="fix-state-desc">Row holds persistent visual state if position deteriorates — does not silently return to normal</span></div>
+          <div class="fix-state"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--amber);">LEVEL 3</span><span class="sep">·</span><span class="fix-state-desc">Pagination flags pages where competitive events occurred on FUs not currently in view</span></div>
+          <div class="fix-state"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--amber);">LEVEL 4</span><span class="sep">·</span><span class="fix-state-desc">Tab carries counter badge of FUs needing attention — visible from anywhere in the session</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── § 06 PLATFORM RULE ── -->
+  <div class="sec">
+    <div class="sec-hdr">
+      <div class="sec-title">Platform Rule Established</div>
+      <div class="sec-num">§ 06</div>
+    </div>
+    <p class="sec-intro">
+      Midway through fix design, the investigation identified a systemic pattern underlying all five findings. Individual fixes were expanded into a platform-wide rule to prevent recurrence across all future features. The scope expansion was argued and approved mid-sprint.
+    </p>
+    <div class="rule-block">
+      <div class="rule-tag">Platform UX Standard · Established 2024-11 · Scope: all tabs, both personas, all state transitions, now and future</div>
+      <div class="rule-text">"Every time an FU moves between tabs or disappears from a tab, the system must never let it transition silently."</div>
+      <div class="rule-applies">Every state change must answer three questions:</div>
+      <div class="rule-qs">
+        <div class="rule-q"><strong>Why did this move?</strong> — Reason for every tab transition, surfaced as a toast message</div>
+        <div class="rule-q"><strong>What was honored?</strong> — The confirmed bid explicitly shown, never implied or omitted</div>
+        <div class="rule-q"><strong>What happened to pending actions?</strong> — No pending action disappears without a documented resolution</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSURE -->
+  <div class="closure">
+    <div class="closure-row">
+      <span class="closure-badge">
+        <span class="status-dot"></span>
+        INCIDENT RESOLVED
+      </span>
+      <span class="closure-ts">Closed 2024-11-26 · 18:00 IST · Duration: 6 weeks · INC-2024-0847</span>
+    </div>
+    <div class="closure-quote">
+      "The financier who sent that long, frustrated email to the VPs deserved a platform that told them the truth about where they stood. That is what we built."
+    </div>
+    <div class="closure-sig">Naman Mudgil — Product Designer · MyTReDS · Bid Position Awareness</div>
+  </div>
+
+</main>
+
+<script>
+  const bar = document.getElementById('pbar');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = Math.round(window.scrollY / h * 100) + '%';
+  }, { passive: true });
+</script>
+</body>
+</html>
