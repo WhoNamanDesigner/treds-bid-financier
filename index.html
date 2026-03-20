@@ -1507,6 +1507,10 @@
         if (i !== cur) s.style.transform = i < cur ? 'translateX(-100%)' : 'translateX(100%)';
       });
       busy = false;
+      // Simulation scene inits
+      if (cur === 3) s1Init();
+      if (cur === 5) s3Init();
+      if (cur === 6) s4Init();
     }, 520);
   }
 
@@ -1719,17 +1723,9 @@
     bn.disabled = false; bp.disabled = false;
   }
 
-  /* ── Hook simulation inits to slide transitions ── */
-  const _origPlace = place;
-  function place() {
-    _origPlace();
-    if (cur === 3) s1Init();
-    if (cur === 5) s3Init();
-    if (cur === 6) s4Init();
-  }
-
   /* ── INIT ── */
   place();
+  s1Init();
   setTimeout(hero, 500);
 </script>
 </body>
