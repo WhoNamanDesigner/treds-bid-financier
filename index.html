@@ -382,6 +382,29 @@
     .sim-loss-body { padding:12px 15px; font-size:11px; color:#6b7280; line-height:1.55; }
     .sim-loss-foot { padding:9px 15px 13px; display:flex; justify-content:center; border-top:1px solid #f0f0f0; }
 
+    /* ── HERO SLIDE COPY ── */
+    .hero-copy { margin-bottom:32px; }
+    .hc-big { font-family:var(--serif); font-style:italic; font-size:clamp(24px,2.6vw,38px); line-height:1.15; color:var(--t); margin-bottom:18px; }
+    .hc-lines { display:flex; flex-direction:column; gap:5px; font-size:clamp(14px,1.5vw,17px); line-height:1.7; color:var(--t2); }
+    .hc-lines strong { color:var(--t); font-weight:600; }
+    /* Zoom layer */
+    .hero-zoom { flex-shrink:0; border-top:1px solid #f0f0f0; padding:9px 16px; background:#f9fafb; }
+    .hz-inner { display:flex; align-items:center; justify-content:center; gap:24px; }
+    .hz-cell { display:flex; flex-direction:column; align-items:center; gap:2px; }
+    .hz-key { font-size:9px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#9ca3af; }
+    .hz-val { font-size:20px; font-weight:700; color:#1a2744; }
+    .hz-vs { font-size:10px; color:#d1d5db; font-weight:500; }
+    /* Reveal panel */
+    .hero-reveal { flex-shrink:0; border-top:1px solid #fecaca; background:#fef2f2; padding:10px 16px; opacity:0; transition:opacity .5s; pointer-events:none; }
+    .hero-reveal.show { opacity:1; pointer-events:all; }
+    .hr-annot { display:inline-block; font-size:10px; color:#dc2626; font-weight:500; padding:3px 8px; background:rgba(220,38,38,.08); border:1px solid rgba(220,38,38,.18); border-radius:5px; margin-bottom:8px; }
+    .hr-verdict { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+    .hr-item { display:flex; flex-direction:column; gap:1px; }
+    .hr-label { font-size:9px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#9ca3af; }
+    .hr-val { font-size:13px; font-weight:700; }
+    .hr-arr { font-size:14px; color:#9ca3af; }
+    .hr-insight { font-size:10px; color:#6b7280; line-height:1.5; border-top:1px solid #fee2e2; padding-top:8px; }
+
     /* ── CLOSING PANEL ── */
     .close-wrap { padding:40px; width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
     .close-inner { border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:40px; width:100%; }
@@ -539,21 +562,84 @@
   <div class="slide is-visible" data-s="">
     <div class="row">
       <div class="lft">
-        <span id="hero-num">₹0</span>
-        <h1 class="h1" style="margin-top:14px; font-size:clamp(42px,4.6vw,68px);">One question the column couldn't answer.</h1>
-        <div class="body">
-          <p>A financier sent a long, frustrated email directly to the VP of Product and the VP of Technology. The question wasn't complicated.</p>
+        <div class="lbl">BID POSITION AWARENESS · MYTREDS</div>
+        <div class="hero-copy">
+          <div class="hc-big">₹8.97 Cr lost — in a single auction</div>
+          <div class="hc-lines">
+            <span>A financier placed the lowest bid</span>
+            <span>But couldn't tell it was theirs</span>
+            <span>They thought they were winning</span>
+            <strong>They lost every bid</strong>
+          </div>
         </div>
         <div class="byline">NAMAN MUDGIL &nbsp;·&nbsp; PRODUCT DESIGNER &nbsp;·&nbsp; MYTREDS &nbsp;·&nbsp; BID POSITION AWARENESS</div>
       </div>
       <div class="rgt">
-        <div class="panel" style="background:#0f0606;">
-          <div class="quote-wrap">
-            <div class="quote-inner">
-              <span class="quote-mark">"</span>
-              <div class="quote-text">I placed my bid. The platform showed my bid as the lowest. How did I still lose?</div>
-              <div class="quote-src">Email to VP of Product &amp; VP of Technology &nbsp;·&nbsp; ₹8.97 Cr lost in a single day</div>
+        <div class="plat" id="hero-plat">
+          <div class="plat-topbar" style="justify-content:space-between;align-items:center;">
+            <span style="font-size:11px;font-weight:700;color:#1a2744;letter-spacing:.04em;">myTReDS</span>
+            <div style="display:flex;gap:6px;">
+              <button class="pb">Withdraw</button>
+              <button class="pb dk">Revise Bid</button>
             </div>
+          </div>
+          <div class="plat-tabs">
+            <div class="plat-tab" style="color:#9ca3af;">Open For Bid</div>
+            <div class="plat-tab" style="color:#9ca3af;">Checker Pending</div>
+            <div class="plat-tab act">My Bid In Auction</div>
+            <div class="plat-tab" style="color:#9ca3af;">Bid Accepted Today</div>
+          </div>
+          <div class="plat-tbl">
+            <div class="plat-thead gc-mbia">
+              <div></div>
+              <div>Factoring Unit</div>
+              <div>Buyer</div>
+              <div>My Bid</div>
+              <div>Lowest Bid</div>
+              <div>Status</div>
+            </div>
+            <div class="plat-tbody" id="hero-tw"></div>
+          </div>
+          <div class="hero-zoom">
+            <div class="hz-inner">
+              <div class="hz-cell">
+                <div class="hz-key">My Bid</div>
+                <div class="hz-val">5.5%</div>
+              </div>
+              <div class="hz-vs">vs</div>
+              <div class="hz-cell">
+                <div class="hz-key">Lowest Bid</div>
+                <div class="hz-val">5.5%</div>
+              </div>
+            </div>
+          </div>
+          <div class="plat-ov gone" id="hero-ov">
+            <div class="ov-card">
+              <div class="ov-hdr">
+                <div class="ov-tag">My Bid In Auction</div>
+                <div class="ov-title">Are you leading this auction?</div>
+              </div>
+              <div class="ov-body">Your bid of 5.5% matches the lowest bid on all 13 FTUs. Both columns show the same value.</div>
+              <div class="ov-foot">
+                <button class="pb" onclick="heroAnswer('no')">No — can't tell</button>
+                <button class="pb dk" onclick="heroAnswer('yes')">Yes — I'm leading</button>
+              </div>
+            </div>
+          </div>
+          <div class="hero-reveal" id="hero-reveal">
+            <div class="hr-annot">Earlier identical bid approved (−3s)</div>
+            <div class="hr-verdict">
+              <div class="hr-item">
+                <div class="hr-label">Assumed</div>
+                <div class="hr-val" style="color:#16a34a;">Leading</div>
+              </div>
+              <div class="hr-arr">→</div>
+              <div class="hr-item">
+                <div class="hr-label">Reality</div>
+                <div class="hr-val" style="color:#dc2626;">Not leading</div>
+              </div>
+            </div>
+            <div class="hr-insight">The platform showed the lowest bid, but not who it belonged to</div>
           </div>
         </div>
       </div>
@@ -1563,6 +1649,7 @@
       });
       busy = false;
       // Simulation scene inits
+      if (cur === 0) heroInit();
       if (cur === 3) simInit();
       if (cur === 4) s2Init();
       if (cur === 5) s3Init();
@@ -1572,33 +1659,67 @@
 
   bn.addEventListener('click', () => go(cur + 1,  1));
   bp.addEventListener('click', () => go(cur - 1, -1));
-  br.addEventListener('click', () => { go(0, -1); setTimeout(hero, 600); });
+  br.addEventListener('click', () => { go(0, -1); setTimeout(heroInit, 600); });
 
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  go(cur + 1,  1);
     if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    go(cur - 1, -1);
   });
 
-  /* ── HERO COUNT-UP ── */
-  const heroEl = document.getElementById('hero-num');
-  function hero() {
-    heroEl.style.textDecoration = 'none';
-    const dur = 1900, start = performance.now();
-    const tick = now => {
-      const p = Math.min((now - start) / dur, 1);
-      const e = 1 - Math.pow(1 - p, 3);
-      if (p < 1) {
-        heroEl.textContent = '₹' + (e * 8.97).toFixed(2) + ' Cr';
-        requestAnimationFrame(tick);
-      } else {
-        heroEl.textContent = '₹8.97 Cr';
-        heroEl.style.textDecoration = 'underline';
-        heroEl.style.textDecorationColor = 'rgba(229,57,53,0.45)';
-        heroEl.style.textDecorationThickness = '2px';
-        heroEl.style.textUnderlineOffset = '7px';
+  /* ── HERO SLIDE ── */
+  function heroInit() {
+    const tw = document.getElementById('hero-tw');
+    if (!tw) return;
+    tw.innerHTML = '';
+    SIM_FTUS.forEach((f, i) => {
+      const r = simRow('gc-mbia', `
+        <div class="plat-cb on"></div>
+        <div><div class="plat-ftu">${f.id}</div><div class="plat-ftu-sub">MSME</div></div>
+        <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;">${f.buyer}</div>
+        <div class="plat-rate" style="font-size:11px;" data-hr="my">5.5%</div>
+        <div class="plat-rate" style="font-size:11px;" data-hr="low">5.5%</div>
+        <div><span class="plat-badge auction">In Auction</span></div>
+      `);
+      if (i === 0) { r.style.background = '#f0f9ff'; r.id = 'hero-focus-row'; }
+      else r.style.opacity = '0.35';
+      tw.appendChild(r);
+    });
+    const more = document.createElement('div');
+    more.className = 'plat-more';
+    more.textContent = '+ 8 more Factoring Units in auction';
+    tw.appendChild(more);
+    // Reset states
+    const ov  = document.getElementById('hero-ov');
+    const rev = document.getElementById('hero-reveal');
+    if (ov)  ov.classList.add('gone');
+    if (rev) rev.classList.remove('show');
+    tw.style.transition = '';
+    tw.style.opacity = '1';
+    // Decision overlay appears after user sees table
+    setTimeout(() => {
+      if (ov) { ov.classList.remove('gone'); requestAnimationFrame(() => ov.classList.add('show')); }
+    }, 800);
+  }
+
+  function heroAnswer(ans) {
+    if (ans === 'yes') { setTimeout(heroReveal, 300); }
+    else { heroReveal(); }
+  }
+
+  function heroReveal() {
+    const ov = document.getElementById('hero-ov');
+    if (ov) { ov.classList.remove('show'); setTimeout(() => ov.classList.add('gone'), 280); }
+    setTimeout(() => {
+      const tw = document.getElementById('hero-tw');
+      if (tw) { tw.style.transition = 'opacity .4s'; tw.style.opacity = '0.55'; }
+      const fr = document.getElementById('hero-focus-row');
+      if (fr) {
+        const lowCell = fr.querySelector('[data-hr="low"]');
+        if (lowCell) lowCell.innerHTML = '<div style="font-size:11px;font-weight:700;color:#1a2744;">5.5%</div><div style="font-size:8px;color:#dc2626;margin-top:2px;white-space:nowrap;">Earlier bid (−3s)</div>';
       }
-    };
-    requestAnimationFrame(tick);
+      const rev = document.getElementById('hero-reveal');
+      if (rev) requestAnimationFrame(() => rev.classList.add('show'));
+    }, 300);
   }
 
   /* ══════════════════════════════════════════════════════════
@@ -1909,8 +2030,8 @@
 
   /* ── INIT ── */
   place();
+  heroInit();
   simInit();
-  setTimeout(hero, 500);
 </script>
 </body>
 </html>
