@@ -169,10 +169,10 @@
     .mc2-line { width:1px; flex:1; min-height:10px; }
     /* content */
     .mc2-body { padding-bottom:6px; }
-    .mc2-title { font-size:12px; font-weight:600; color:#1a2744; margin-bottom:3px; }
-    .mc2-meta { font-size:10px; color:#9ca3af; display:flex; gap:8px; flex-wrap:wrap; margin-bottom:4px; }
+    .mc2-title { font-size:13px; font-weight:700; color:#1a2744; margin-bottom:3px; letter-spacing:-0.01em; }
+    .mc2-meta { font-size:10px; color:#9ca3af; display:flex; gap:6px; flex-wrap:wrap; margin-bottom:5px; }
     .mc2-meta span { display:flex; align-items:center; gap:3px; }
-    .mc2-sub { font-size:10px; color:#6b7280; line-height:1.5; }
+    .mc2-sub { font-size:10px; color:#6b7280; line-height:1.65; }
     .mc2-badge { font-size:8.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:100px; border:1px solid transparent; flex-shrink:0; align-self:start; margin-top:2px; }
     /* gap connector pill */
     .mc2-gap { display:grid; grid-template-columns:20px 1fr; gap:0 10px; }
@@ -713,11 +713,11 @@
     <div class="row">
       <div class="lft">
         <div class="lbl">CONTEXT · BID LIFECYCLE</div>
-        <div class="hc-big">Just enough to understand the problem.</div>
+        <div class="hc-big">A bid placed is not a bid live.</div>
         <div class="body">
-          <p>TReDS is a regulated invoice discounting auction platform. Suppliers upload invoices. Financiers bid on them. Lowest approved bid wins.</p>
-          <p>Financiers operate through a mandatory <strong>maker-checker workflow</strong>. A Maker places the bid. A Checker reviews and approves it. Until the Checker approves — the bid is a draft. It is not live. It does not influence the auction.</p>
-          <p>This detail — the maker-checker approval gap — is where everything in this case study lives.</p>
+          <p>TReDS is a regulated invoice discounting auction platform. Suppliers upload invoices. Financiers bid on them. Lowest approved bid wins — but only if the bid is actually in the auction.</p>
+          <p>Every financier operates through a mandatory <strong>maker-checker workflow</strong>. A Maker places the bid. A Checker reviews and approves it. Until approval — the bid is a draft. It is invisible to the auction. It holds no position.</p>
+          <p>Follow the timeline on the right. This is the exact lifecycle that produced a ₹8.97 Cr loss.</p>
         </div>
       </div>
       <div class="rgt">
@@ -754,7 +754,7 @@
                   <span>·</span>
                   <span>My Bid: <strong style="color:#1a2744;">5.50%</strong></span>
                 </div>
-                <div class="mc2-sub">Saved as draft — not submitted to the auction yet. No bid exists in the auction.</div>
+                <div class="mc2-sub">Bid saved as draft. Not submitted to the auction — our financier holds no position yet.</div>
               </div>
               <div class="mc2-badge" style="background:#ede9fe;color:#6366f1;">Draft</div>
             </div>
@@ -784,7 +784,11 @@
                   <span>·</span>
                   <span>My Bid: <strong style="color:#d97706;">5.50%</strong></span>
                 </div>
-                <div class="mc2-sub" style="color:#b45309;">Bid is a draft — invisible to the auction. During this window, another financier enters and places their bid at 5.50%.</div>
+                <div class="mc2-sub" style="color:#b45309;">Our bid is invisible — no position held in the auction.</div>
+                <div style="margin-top:7px;padding:6px 9px;background:rgba(251,191,36,0.18);border-radius:5px;border-left:2px solid #d97706;">
+                  <span style="font-size:10px;font-weight:700;color:#92400e;font-family:var(--sans);display:block;margin-bottom:1px;">↳ 11:58 AM — Financier B places bid at 5.50%</span>
+                  <span style="font-size:10px;color:#b45309;font-family:var(--sans);line-height:1.5;">No maker-checker delay on their side. Bid goes live immediately — they now hold the position we don't know exists.</span>
+                </div>
               </div>
               <div class="mc2-badge" style="background:#fef3c7;color:#d97706;border-color:#fde68a;">Waiting</div>
             </div>
@@ -816,7 +820,7 @@
                   <span>·</span>
                   <span>Lowest Bid: <strong style="color:#dc2626;">5.50%</strong></span>
                 </div>
-                <div class="mc2-sub">Bid is now live — but so is the other financier's. Both show 5.50%. Buyer accepts 5.50% — the other financier gets every FTU. Ours was invisible for 23 minutes.</div>
+                <div class="mc2-sub">Our bid enters the auction — but Financier B has held 5.50% since 11:58 AM. TReDS rule: equal rate, first-in wins. Buyer accepts 5.50% and Financier B gets every FTU. Our financier is allocated nothing.</div>
               </div>
               <div class="mc2-badge" style="background:#d1fae5;color:#065f46;">Live</div>
             </div>
@@ -827,7 +831,7 @@
           <!-- Note ribbon -->
           <div style="padding:8px 16px 10px; background:#fef9ec; display:flex; align-items:flex-start; gap:8px;">
             <span style="font-size:11px;color:#d97706;margin-top:1px;flex-shrink:0;">⚠</span>
-            <span style="font-size:10px;color:#92400e;line-height:1.6;">23 minutes of auction ran while this bid sat invisible. This is where ₹8.97 Cr was lost.</span>
+            <span style="font-size:10px;color:#92400e;line-height:1.6;">Same rate. Same amount. Financier B was 23 minutes earlier. TReDS gave them priority — and ₹8.97 Cr went with it.</span>
           </div>
 
         </div>
