@@ -405,8 +405,14 @@
     #hero-tw .plat-cell, #hero-tw [data-hr],
     #hero-plat .plat-thead.gc-hero > div { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     #hero-tw .plat-ftu { overflow:visible; white-space:nowrap; }
+    /* ── Pagination ── */
+    .hp-pg { flex-shrink:0; border-top:1px solid #f0f0f0; padding:5px 16px; display:flex; align-items:center; justify-content:space-between; background:#fff; }
+    .hp-pg-info { font-size:10px; color:#9ca3af; }
+    .hp-pg-btn { border:1px solid #e5e7eb; background:#fff; border-radius:4px; padding:2px 9px; font-size:12px; color:#374151; cursor:pointer; font-family:var(--sans); transition:background .12s; }
+    .hp-pg-btn:hover:not(:disabled) { background:#f3f4f6; }
+    .hp-pg-btn:disabled { opacity:0.32; cursor:not-allowed; }
     /* ── Bottom ribbon ── */
-    .hero-ribbon { flex-shrink:0; border-top:1.5px solid #e8eaed; background:#f9fafb; padding:7px 14px; display:flex; align-items:center; gap:8px; font-size:10px; color:#6b7280; font-family:var(--sans); }
+    .hero-ribbon { flex-shrink:0; border-top:1.5px solid #e8eaed; background:#f9fafb; padding:7px 16px; display:flex; align-items:center; gap:8px; font-size:10px; color:#6b7280; font-family:var(--sans); }
     .hero-ribbon strong { color:#1a2744; font-weight:700; }
     .hr-dot { color:#d1d5db; }
     /* ── Inline question panel below ribbon ── */
@@ -418,6 +424,8 @@
     .hq-btn { flex:1; padding:7px 8px; border-radius:6px; font-size:10px; font-weight:500; cursor:pointer; font-family:var(--sans); border:1px solid #e5e7eb; background:#f9fafb; color:#374151; text-align:center; transition:background .15s,color .15s; }
     .hq-btn.yes { background:#1a2744; color:#fff; border-color:#1a2744; font-weight:600; }
     .hq-btn:hover:not(.yes) { background:#f3f4f6; }
+    .hq-btn.cue { animation:hqcue 1.8s ease-in-out infinite; }
+    @keyframes hqcue { 0%,100%{box-shadow:0 0 0 0 rgba(26,39,68,.45)} 50%{box-shadow:0 0 0 7px rgba(26,39,68,0)} }
     /* ── Reveal panel ── */
     .hero-reveal { flex-shrink:0; border-top:1px solid #fecaca; background:#fef2f2; padding:10px 16px; opacity:0; transition:opacity .5s; pointer-events:none; }
     .hero-reveal.show { opacity:1; pointer-events:all; }
@@ -642,6 +650,15 @@
             <div class="plat-tbody" id="hero-tw"></div>
           </div>
 
+          <!-- Pagination -->
+          <div class="hp-pg" id="hero-pg">
+            <span class="hp-pg-info" id="hp-pg-info">1–5 of 13</span>
+            <div style="display:flex;gap:4px;">
+              <button class="hp-pg-btn" id="hp-prev" onclick="heroPrevPage()" disabled>←</button>
+              <button class="hp-pg-btn" id="hp-next" onclick="heroNextPage()">→</button>
+            </div>
+          </div>
+
           <!-- Bottom ribbon -->
           <div class="hero-ribbon">
             <span>13 Factoring Units</span>
@@ -651,13 +668,13 @@
             <span>Lowest Bid <strong>5.50%</strong></span>
           </div>
 
-          <!-- Question panel — inline below ribbon, no overlay -->
+          <!-- Question panel — inline below ribbon -->
           <div class="hero-q-panel" id="hero-q-panel">
             <div class="hq-label">One question</div>
             <div class="hq-question">Are they leading this auction?</div>
             <div class="hq-btns" id="hd-btns">
               <button class="hq-btn" onclick="heroAnswer('no')">Impossible to tell</button>
-              <button class="hq-btn yes" onclick="heroAnswer('yes')">Yes — they're leading</button>
+              <button class="hq-btn yes cue" onclick="heroAnswer('yes')">Yes — they're leading</button>
             </div>
           </div>
 
@@ -1693,7 +1710,17 @@
     { id:'FTU000187156', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹51,20,000', due:'12 May', tenor:'52d' },
     { id:'FTU000187089', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹45,80,000', due:'30 May', tenor:'70d' },
     { id:'FTU000187043', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹39,60,000', due:'10 Jun', tenor:'81d' },
+    { id:'FTU000187021', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹44,10,000', due:'14 Jun', tenor:'85d' },
+    { id:'FTU000186998', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹36,90,000', due:'05 Jun', tenor:'76d' },
+    { id:'FTU000186975', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹48,30,000', due:'20 May', tenor:'60d' },
+    { id:'FTU000186954', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹41,60,000', due:'08 May', tenor:'48d' },
+    { id:'FTU000186932', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹37,25,000', due:'02 May', tenor:'42d' },
+    { id:'FTU000186910', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹52,80,000', due:'25 Apr', tenor:'35d' },
+    { id:'FTU000186887', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹40,50,000', due:'18 Apr', tenor:'28d' },
+    { id:'FTU000186865', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹43,70,000', due:'05 May', tenor:'45d' },
   ];
+  const HERO_PER_PAGE = 5;
+  let heroPg = 0;
 
   let heroTimer = null;
 
@@ -1713,10 +1740,22 @@
     const btns = document.getElementById('hd-btns');
     if (btns) btns.innerHTML = `
       <button class="hq-btn" onclick="heroAnswer('no')">Impossible to tell</button>
-      <button class="hq-btn yes" onclick="heroAnswer('yes')">Yes — they're leading</button>`;
+      <button class="hq-btn yes cue" onclick="heroAnswer('yes')">Yes — they're leading</button>`;
 
-    // Build rows with stagger fade-in
-    HERO_FTUS.forEach((f, i) => {
+    heroPg = 0;
+    heroRenderPage(0, true);
+
+    // All rows loaded by ~1.2s → wait another 3.5s for reading → question at ~4.7s
+    heroTimer = setTimeout(heroShowDialog, 4700);
+  }
+
+  function heroRenderPage(page, stagger) {
+    const tw = document.getElementById('hero-tw');
+    if (!tw) return;
+    tw.innerHTML = '';
+    const start = page * HERO_PER_PAGE;
+    const slice = HERO_FTUS.slice(start, start + HERO_PER_PAGE);
+    slice.forEach((f, i) => {
       const r = simRow('gc-hero', `
         <div class="plat-cb"></div>
         <div class="plat-ftu" style="font-size:9px;">${f.id}</div>
@@ -1728,27 +1767,24 @@
         <div class="plat-rate" style="font-size:10px;" data-hr="my">5.50%</div>
         <div class="plat-rate" style="font-size:10px;" data-hr="low">5.50%</div>
       `);
-      if (i === 0) r.id = 'hero-focus-row';
-      r.style.cssText += 'opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s;';
+      if (stagger) {
+        r.style.cssText += 'opacity:0;transform:translateY(5px);transition:opacity .3s,transform .3s;';
+        setTimeout(() => { r.style.opacity='1'; r.style.transform='translateY(0)'; }, 200 + i * 160);
+      }
       tw.appendChild(r);
-      setTimeout(() => { r.style.opacity = '1'; r.style.transform = 'translateY(0)'; }, 250 + i * 180);
     });
-
-    // "+8 more" fades in after last row
-    const more = document.createElement('div');
-    more.className = 'plat-more';
-    more.textContent = '+ 8 more Factoring Units in auction';
-    more.style.cssText = 'opacity:0;transition:opacity .4s;';
-    tw.appendChild(more);
-    setTimeout(() => { more.style.opacity = '1'; }, 250 + 5 * 180);
-
-    // Reset question panel
-    const qp2 = document.getElementById('hero-q-panel');
-    if (qp2) qp2.classList.remove('show');
-
-    // All rows loaded by ~1.2s → wait another 3.5s for reading → dialog at ~4.7s
-    heroTimer = setTimeout(heroShowDialog, 4700);
+    // Update pagination controls
+    const total = HERO_FTUS.length;
+    const info = document.getElementById('hp-pg-info');
+    const prev = document.getElementById('hp-prev');
+    const next = document.getElementById('hp-next');
+    if (info) info.textContent = `${start+1}–${Math.min(start+HERO_PER_PAGE,total)} of ${total}`;
+    if (prev) prev.disabled = page === 0;
+    if (next) next.disabled = start + HERO_PER_PAGE >= total;
   }
+
+  function heroPrevPage() { heroPg--; heroRenderPage(heroPg, false); }
+  function heroNextPage() { heroPg++; heroRenderPage(heroPg, false); }
 
   function heroShowDialog() {
     const tw    = document.getElementById('hero-tw');
