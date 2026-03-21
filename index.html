@@ -712,14 +712,13 @@
   <div class="slide" data-s="CONTEXT">
     <div class="row">
       <div class="lft">
-        <div class="lbl">CONTEXT · BID LIFECYCLE · 2026</div>
+        <div class="lbl">CONTEXT · BID LIFECYCLE</div>
         <div class="hc-big">Just enough to understand the problem.</div>
-        <div class="body" style="font-size:clamp(13px,1.25vw,15px);">
+        <div class="body">
           <p>TReDS is a regulated invoice discounting auction platform. Suppliers upload invoices. Financiers bid on them. Lowest approved bid wins.</p>
           <p>Financiers operate through a mandatory <strong>maker-checker workflow</strong>. A Maker places the bid. A Checker reviews and approves it. Until the Checker approves — the bid is a draft. It is not live. It does not influence the auction.</p>
           <p>This detail — the maker-checker approval gap — is where everything in this case study lives.</p>
         </div>
-        <div class="byline">NAMAN MUDGIL · PRODUCT DESIGNER · MYTREDS · BID POSITION AWARENESS</div>
       </div>
       <div class="rgt">
         <div class="plat" style="max-width:400px; width:100%; height:auto;">
@@ -753,9 +752,9 @@
                   <span>·</span>
                   <span>₹42,50,000</span>
                   <span>·</span>
-                  <span>Rate: <strong style="color:#1a2744;">5.50%</strong></span>
+                  <span>My Bid: <strong style="color:#1a2744;">5.50%</strong></span>
                 </div>
-                <div class="mc2-sub">Saved as draft — not submitted to the auction yet</div>
+                <div class="mc2-sub">Saved as draft — not submitted to the auction yet. No bid exists in the auction.</div>
               </div>
               <div class="mc2-badge" style="background:#ede9fe;color:#6366f1;">Draft</div>
             </div>
@@ -782,8 +781,10 @@
                   <span>11:42 – 12:05 AM</span>
                   <span>·</span>
                   <span>₹42,50,000 idle</span>
+                  <span>·</span>
+                  <span>My Bid: <strong style="color:#d97706;">5.50%</strong></span>
                 </div>
-                <div class="mc2-sub" style="color:#b45309;">Auction live. This bid doesn't exist yet — no position held. Another financier is visible at 5.50%.</div>
+                <div class="mc2-sub" style="color:#b45309;">Bid is a draft — invisible to the auction. During this window, another financier enters and places their bid at 5.50%.</div>
               </div>
               <div class="mc2-badge" style="background:#fef3c7;color:#d97706;border-color:#fde68a;">Waiting</div>
             </div>
@@ -810,9 +811,12 @@
                   <span>12:05 PM</span>
                   <span>·</span>
                   <span>₹42,50,000</span>
-                  <span>Rate: <strong style="color:#1a2744;">5.50%</strong></span>
+                  <span>·</span>
+                  <span>My Bid: <strong style="color:#1a2744;">5.50%</strong></span>
+                  <span>·</span>
+                  <span>Lowest Bid: <strong style="color:#dc2626;">5.50%</strong></span>
                 </div>
-                <div class="mc2-sub">Visible to all auction participants. But auction closes at 12:10 PM.</div>
+                <div class="mc2-sub">Bid is now live — but so is the other financier's. Both show 5.50%. No way to tell them apart. Auction closes in 5 minutes.</div>
               </div>
               <div class="mc2-badge" style="background:#d1fae5;color:#065f46;">Live</div>
             </div>
