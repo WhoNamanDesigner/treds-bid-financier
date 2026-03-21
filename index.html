@@ -656,7 +656,7 @@
               <div class="hd-pre">A quick question before we continue</div>
               <div class="hd-q">Are they leading this auction?</div>
               <div class="hd-body">You're looking at a live auction screen. This financier bid 5.50% — and the lowest bid showing is also 5.50%.</div>
-              <div class="hd-btns">
+              <div class="hd-btns" id="hd-btns">
                 <button class="hd-btn" onclick="heroAnswer('no')">Impossible to tell</button>
                 <button class="hd-btn primary" onclick="heroAnswer('yes')">Yes — they're leading</button>
               </div>
@@ -1714,10 +1714,25 @@
     { id:'FTU000187043', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹39,60,000', due:'10 Jun 2026', tenor:'81d' },
   ];
 
+  let heroTimer = null;
+
   function heroInit() {
     const tw = document.getElementById('hero-tw');
     if (!tw) return;
+    clearTimeout(heroTimer);
     tw.innerHTML = '';
+
+    // Reset thead colours
+    const thead = document.querySelector('#hero-plat .plat-thead');
+    if (thead) Array.from(thead.children).forEach(c => { c.style.color = ''; c.style.fontWeight = ''; });
+
+    // Reset dialog buttons
+    const btns = document.getElementById('hd-btns');
+    if (btns) btns.innerHTML = `
+      <button class="hd-btn" onclick="heroAnswer('no')">Impossible to tell</button>
+      <button class="hd-btn primary" onclick="heroAnswer('yes')">Yes — they're leading</button>`;
+
+    // Build rows with stagger fade-in
     HERO_FTUS.forEach((f, i) => {
       const r = simRow('gc-hero', `
         <div class="plat-cb on"></div>
@@ -1731,44 +1746,96 @@
         <div class="plat-rate" style="font-size:10px;" data-hr="low">5.50%</div>
       `);
       if (i === 0) r.id = 'hero-focus-row';
+      r.style.cssText += 'opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s;';
       tw.appendChild(r);
+      setTimeout(() => { r.style.opacity = '1'; r.style.transform = 'translateY(0)'; }, 250 + i * 180);
     });
+
+    // "+8 more" fades in after last row
     const more = document.createElement('div');
     more.className = 'plat-more';
     more.textContent = '+ 8 more Factoring Units in auction';
+    more.style.cssText = 'opacity:0;transition:opacity .4s;';
     tw.appendChild(more);
-    // Reset states
+    setTimeout(() => { more.style.opacity = '1'; }, 250 + 5 * 180);
+
+    // Reset overlay + reveal
     const ov  = document.getElementById('hero-ov');
     const rev = document.getElementById('hero-reveal');
-    if (ov)  ov.classList.add('gone');
+    if (ov)  { ov.classList.remove('show'); ov.classList.add('gone'); }
     if (rev) rev.classList.remove('show');
-    tw.style.transition = '';
-    tw.style.opacity = '1';
-    // Give user time to read the full table before dialog appears
+
+    // All rows loaded by ~1.2s → wait another 3.5s for reading → dialog at ~4.7s
+    heroTimer = setTimeout(heroShowDialog, 4700);
+  }
+
+  function heroShowDialog() {
+    const tw   = document.getElementById('hero-tw');
+    const ov   = document.getElementById('hero-ov');
+    const thead = document.querySelector('#hero-plat .plat-thead');
+
+    // Grey out every cell except bid columns
+    if (tw) {
+      tw.querySelectorAll('.plat-cell, .plat-ftu').forEach(el => {
+        el.style.transition = 'color .5s';
+        el.style.color = 'rgba(26,39,68,0.18)';
+      });
+      tw.querySelectorAll('.plat-cb').forEach(el => {
+        el.style.transition = 'opacity .5s';
+        el.style.opacity = '0.15';
+      });
+      tw.querySelectorAll('.plat-more').forEach(el => {
+        el.style.transition = 'color .5s';
+        el.style.color = 'rgba(0,0,0,0.12)';
+      });
+    }
+
+    // Slight delay then fire red on bid cells — creates a beat
     setTimeout(() => {
-      if (ov) { ov.classList.remove('gone'); requestAnimationFrame(() => ov.classList.add('show')); }
-    }, 2500);
+      if (tw) {
+        tw.querySelectorAll('[data-hr]').forEach(el => {
+          el.style.transition = 'color .4s, font-size .3s';
+          el.style.color = '#dc2626';
+          el.style.fontWeight = '700';
+          el.style.fontSize = '11px';
+        });
+      }
+      // Red on thead bid headers too
+      if (thead) {
+        const cols = Array.from(thead.children);
+        cols.forEach(c => { c.style.transition = 'color .4s'; c.style.color = 'rgba(75,85,99,0.18)'; });
+        if (cols[7]) { cols[7].style.color = '#dc2626'; cols[7].style.fontWeight = '700'; }
+        if (cols[8]) { cols[8].style.color = '#dc2626'; cols[8].style.fontWeight = '700'; }
+      }
+    }, 400);
+
+    // Show dialog
+    if (ov) {
+      ov.classList.remove('gone');
+      requestAnimationFrame(() => ov.classList.add('show'));
+    }
+
+    // 10s no-response → replace buttons with Replay
+    heroTimer = setTimeout(() => {
+      const btns = document.getElementById('hd-btns');
+      if (btns) btns.innerHTML = `
+        <p style="font-size:10px;color:rgba(240,235,228,0.28);text-align:center;margin-bottom:10px;letter-spacing:.06em;text-transform:uppercase;">No response detected</p>
+        <button class="hd-btn primary" onclick="heroReplay()">↺ &nbsp; Replay</button>`;
+    }, 10000);
   }
 
   function heroAnswer(ans) {
-    if (ans === 'yes') { setTimeout(heroReveal, 300); }
-    else { heroReveal(); }
+    clearTimeout(heroTimer);
+    go(cur + 1, 1);
   }
 
-  function heroReveal() {
+  function heroReplay() {
+    clearTimeout(heroTimer);
     const ov = document.getElementById('hero-ov');
-    if (ov) { ov.classList.remove('show'); setTimeout(() => ov.classList.add('gone'), 280); }
-    setTimeout(() => {
-      const tw = document.getElementById('hero-tw');
-      if (tw) { tw.style.transition = 'opacity .4s'; tw.style.opacity = '0.55'; }
-      const fr = document.getElementById('hero-focus-row');
-      if (fr) {
-        const lowCell = fr.querySelector('[data-hr="low"]');
-        if (lowCell) lowCell.innerHTML = '<div style="font-size:11px;font-weight:700;color:#1a2744;">5.5%</div><div style="font-size:8px;color:#dc2626;margin-top:2px;white-space:nowrap;">Earlier bid (−3s)</div>';
-      }
-      const rev = document.getElementById('hero-reveal');
-      if (rev) requestAnimationFrame(() => rev.classList.add('show'));
-    }, 300);
+    if (ov) {
+      ov.classList.remove('show');
+      setTimeout(() => { ov.classList.add('gone'); heroInit(); }, 320);
+    }
   }
 
   /* ══════════════════════════════════════════════════════════
