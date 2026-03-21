@@ -398,23 +398,21 @@
     .hp-ctas { display:flex; justify-content:flex-end; gap:6px; padding:5px 14px; flex-shrink:0; }
     .hp-filters { display:flex; gap:5px; padding:6px 14px; flex-shrink:0; align-items:center; }
     .hp-filter { border:1px solid #e5e7eb; background:#fff; border-radius:100px; padding:3px 9px; font-size:9px; color:#374151; cursor:default; font-family:var(--sans); white-space:nowrap; }
-    /* ── Hero 9-col grid ── */
-    .gc-hero { grid-template-columns: 13px 76px 1fr 1fr 42px 38px 22px 26px 28px; gap:4px; }
+    /* ── Hero 9-col grid — widths calculated for ~460px usable ── */
+    .gc-hero { grid-template-columns: 13px 72px 1fr 1fr 50px 36px 20px 28px 28px; gap:4px; }
     /* ── Bottom ribbon ── */
     .hero-ribbon { flex-shrink:0; border-top:1.5px solid #e8eaed; background:#f9fafb; padding:7px 14px; display:flex; align-items:center; gap:8px; font-size:10px; color:#6b7280; font-family:var(--sans); }
     .hero-ribbon strong { color:#1a2744; font-weight:700; }
     .hr-dot { color:#d1d5db; }
-    /* ── Hero dialog — editorial dark card, not platform UI ── */
-    #hero-ov { background:rgba(248,249,250,0.95) !important; backdrop-filter:blur(4px); }
-    .hero-dialog-card { background:#0c0c0c; border:1px solid rgba(255,255,255,0.09); border-radius:16px; width:88%; max-width:292px; padding:22px 20px; box-shadow:0 28px 72px rgba(0,0,0,0.4); }
-    .hd-pre { font-size:9px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:rgba(240,235,228,0.32); margin-bottom:14px; font-family:var(--sans); }
-    .hd-q { font-family:var(--serif); font-style:italic; font-size:22px; color:var(--t); line-height:1.2; margin-bottom:12px; }
-    .hd-body { font-size:12px; color:var(--t2); line-height:1.65; margin-bottom:20px; font-family:var(--sans); }
-    .hd-btns { display:flex; flex-direction:column; gap:8px; }
-    .hd-btn { padding:10px 16px; border-radius:8px; font-size:12px; font-weight:500; cursor:pointer; font-family:var(--sans); border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:rgba(240,235,228,0.65); text-align:center; transition:all .15s; }
-    .hd-btn.primary { background:var(--red); color:#fff; border-color:var(--red); font-weight:600; }
-    .hd-btn:hover { background:rgba(255,255,255,0.1); color:var(--t); }
-    .hd-btn.primary:hover { background:#c62828; }
+    /* ── Inline question panel below ribbon ── */
+    .hero-q-panel { flex-shrink:0; border-top:1.5px solid #f0f0f0; background:#fff; padding:10px 14px 12px; opacity:0; transform:translateY(5px); transition:opacity .4s,transform .4s; pointer-events:none; }
+    .hero-q-panel.show { opacity:1; transform:translateY(0); pointer-events:all; }
+    .hq-label { font-size:9px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#9ca3af; margin-bottom:4px; }
+    .hq-question { font-size:12px; font-weight:600; color:#1a2744; margin-bottom:9px; }
+    .hq-btns { display:flex; gap:7px; }
+    .hq-btn { flex:1; padding:7px 8px; border-radius:6px; font-size:10px; font-weight:500; cursor:pointer; font-family:var(--sans); border:1px solid #e5e7eb; background:#f9fafb; color:#374151; text-align:center; transition:background .15s,color .15s; }
+    .hq-btn.yes { background:#1a2744; color:#fff; border-color:#1a2744; font-weight:600; }
+    .hq-btn:hover:not(.yes) { background:#f3f4f6; }
     /* ── Reveal panel ── */
     .hero-reveal { flex-shrink:0; border-top:1px solid #fecaca; background:#fef2f2; padding:10px 16px; opacity:0; transition:opacity .5s; pointer-events:none; }
     .hero-reveal.show { opacity:1; pointer-events:all; }
@@ -650,34 +648,14 @@
             <span>Lowest Bid <strong>5.50%</strong></span>
           </div>
 
-          <!-- Dialog — editorial style, not platform UI -->
-          <div class="plat-ov gone" id="hero-ov">
-            <div class="hero-dialog-card">
-              <div class="hd-pre">A quick question before we continue</div>
-              <div class="hd-q">Are they leading this auction?</div>
-              <div class="hd-body">You're looking at a live auction screen. This financier bid 5.50% — and the lowest bid showing is also 5.50%.</div>
-              <div class="hd-btns" id="hd-btns">
-                <button class="hd-btn" onclick="heroAnswer('no')">Impossible to tell</button>
-                <button class="hd-btn primary" onclick="heroAnswer('yes')">Yes — they're leading</button>
-              </div>
+          <!-- Question panel — inline below ribbon, no overlay -->
+          <div class="hero-q-panel" id="hero-q-panel">
+            <div class="hq-label">One question</div>
+            <div class="hq-question">Are they leading this auction?</div>
+            <div class="hq-btns" id="hd-btns">
+              <button class="hq-btn" onclick="heroAnswer('no')">Impossible to tell</button>
+              <button class="hq-btn yes" onclick="heroAnswer('yes')">Yes — they're leading</button>
             </div>
-          </div>
-
-          <!-- Reveal panel -->
-          <div class="hero-reveal" id="hero-reveal">
-            <div class="hr-annot">Earlier identical bid approved (−3s)</div>
-            <div class="hr-verdict">
-              <div class="hr-item">
-                <div class="hr-label">Assumed</div>
-                <div class="hr-val" style="color:#16a34a;">Leading</div>
-              </div>
-              <div class="hr-arr">→</div>
-              <div class="hr-item">
-                <div class="hr-label">Reality</div>
-                <div class="hr-val" style="color:#dc2626;">Not leading</div>
-              </div>
-            </div>
-            <div class="hr-insight">The platform showed the lowest bid, but not who it belonged to</div>
           </div>
 
         </div>
@@ -1707,11 +1685,11 @@
 
   /* ── HERO SLIDE ── */
   const HERO_FTUS = [
-    { id:'FTU000187234', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹42,50,000', due:'15 Apr 2026', tenor:'25d' },
-    { id:'FTU000187198', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹38,75,000', due:'28 Apr 2026', tenor:'38d' },
-    { id:'FTU000187156', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹51,20,000', due:'12 May 2026', tenor:'52d' },
-    { id:'FTU000187089', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹45,80,000', due:'30 May 2026', tenor:'70d' },
-    { id:'FTU000187043', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹39,60,000', due:'10 Jun 2026', tenor:'81d' },
+    { id:'FTU000187234', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹42,50,000', due:'15 Apr', tenor:'25d' },
+    { id:'FTU000187198', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹38,75,000', due:'28 Apr', tenor:'38d' },
+    { id:'FTU000187156', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹51,20,000', due:'12 May', tenor:'52d' },
+    { id:'FTU000187089', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹45,80,000', due:'30 May', tenor:'70d' },
+    { id:'FTU000187043', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹39,60,000', due:'10 Jun', tenor:'81d' },
   ];
 
   let heroTimer = null;
@@ -1726,11 +1704,13 @@
     const thead = document.querySelector('#hero-plat .plat-thead');
     if (thead) Array.from(thead.children).forEach(c => { c.style.color = ''; c.style.fontWeight = ''; });
 
-    // Reset dialog buttons
+    // Reset question panel
+    const qp = document.getElementById('hero-q-panel');
+    if (qp) qp.classList.remove('show');
     const btns = document.getElementById('hd-btns');
     if (btns) btns.innerHTML = `
-      <button class="hd-btn" onclick="heroAnswer('no')">Impossible to tell</button>
-      <button class="hd-btn primary" onclick="heroAnswer('yes')">Yes — they're leading</button>`;
+      <button class="hq-btn" onclick="heroAnswer('no')">Impossible to tell</button>
+      <button class="hq-btn yes" onclick="heroAnswer('yes')">Yes — they're leading</button>`;
 
     // Build rows with stagger fade-in
     HERO_FTUS.forEach((f, i) => {
@@ -1759,19 +1739,16 @@
     tw.appendChild(more);
     setTimeout(() => { more.style.opacity = '1'; }, 250 + 5 * 180);
 
-    // Reset overlay + reveal
-    const ov  = document.getElementById('hero-ov');
-    const rev = document.getElementById('hero-reveal');
-    if (ov)  { ov.classList.remove('show'); ov.classList.add('gone'); }
-    if (rev) rev.classList.remove('show');
+    // Reset question panel
+    const qp2 = document.getElementById('hero-q-panel');
+    if (qp2) qp2.classList.remove('show');
 
     // All rows loaded by ~1.2s → wait another 3.5s for reading → dialog at ~4.7s
     heroTimer = setTimeout(heroShowDialog, 4700);
   }
 
   function heroShowDialog() {
-    const tw   = document.getElementById('hero-tw');
-    const ov   = document.getElementById('hero-ov');
+    const tw    = document.getElementById('hero-tw');
     const thead = document.querySelector('#hero-plat .plat-thead');
 
     // Grey out every cell except bid columns
@@ -1809,18 +1786,16 @@
       }
     }, 400);
 
-    // Show dialog
-    if (ov) {
-      ov.classList.remove('gone');
-      requestAnimationFrame(() => ov.classList.add('show'));
-    }
+    // Show inline question panel
+    const qp = document.getElementById('hero-q-panel');
+    if (qp) requestAnimationFrame(() => qp.classList.add('show'));
 
     // 10s no-response → replace buttons with Replay
     heroTimer = setTimeout(() => {
       const btns = document.getElementById('hd-btns');
       if (btns) btns.innerHTML = `
-        <p style="font-size:10px;color:rgba(240,235,228,0.28);text-align:center;margin-bottom:10px;letter-spacing:.06em;text-transform:uppercase;">No response detected</p>
-        <button class="hd-btn primary" onclick="heroReplay()">↺ &nbsp; Replay</button>`;
+        <p style="font-size:9px;color:#9ca3af;text-align:center;margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase;">No response</p>
+        <button class="hq-btn yes" onclick="heroReplay()" style="flex:none;width:100%;">↺ &nbsp; Replay</button>`;
     }, 10000);
   }
 
@@ -1831,10 +1806,12 @@
 
   function heroReplay() {
     clearTimeout(heroTimer);
-    const ov = document.getElementById('hero-ov');
-    if (ov) {
-      ov.classList.remove('show');
-      setTimeout(() => { ov.classList.add('gone'); heroInit(); }, 320);
+    const qp = document.getElementById('hero-q-panel');
+    if (qp) {
+      qp.classList.remove('show');
+      setTimeout(heroInit, 320);
+    } else {
+      heroInit();
     }
   }
 
