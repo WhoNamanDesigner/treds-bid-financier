@@ -336,10 +336,51 @@
     .sim-btn.yes { background:rgba(102,187,106,0.10); border-color:rgba(102,187,106,0.3); color:var(--green); }
     .sim-btn.no { background:rgba(229,57,53,0.08); border-color:rgba(229,57,53,0.25); color:var(--red); }
     .sim-reveal { display:none; margin-top:16px; padding:12px 14px; background:rgba(229,57,53,0.08); border:1px solid rgba(229,57,53,0.22); border-radius:10px; font-size:12px; color:rgba(229,57,53,0.85); line-height:1.6; }
-    /* Grid column shorthand for simulation tables */
+    /* Grid column shorthand for simulation tables (legacy) */
     .plat-cols-ofb { grid-template-columns: 18px 110px 1fr 80px 72px 80px 40px 60px 60px 72px; }
     .plat-cols-std { grid-template-columns: 18px 110px 1fr 80px 72px 80px 40px 55px 65px 72px; }
     .plat-cols-bat { grid-template-columns: 18px 110px 1fr 80px 72px 80px 40px 55px 65px 72px; }
+
+    /* ── SIM v2 — compact 6-col grids ── */
+    .gc-ofb  { grid-template-columns: 13px 86px 1fr 58px 30px 44px; gap:5px; }
+    .gc-cp   { grid-template-columns: 13px 86px 1fr 30px 30px 98px; gap:5px; }
+    .gc-mbia { grid-template-columns: 13px 86px 1fr 30px 30px 62px; gap:5px; }
+    .gc-bat  { grid-template-columns: 13px 86px 1fr 30px 30px 58px; gap:5px; }
+    /* Compact pill button */
+    .pb { padding:4px 11px; border-radius:100px; border:1px solid #d1d5db; background:#fff; color:#6b7280; font-size:10px; font-weight:500; cursor:pointer; font-family:var(--sans); white-space:nowrap; }
+    .pb.dk { background:#1a2744; color:#fff; border-color:#1a2744; }
+    .pb.sm { padding:2px 7px; font-size:9px; }
+    .pb.cue { animation:pbcue 1.6s ease-in-out infinite; }
+    @keyframes pbcue { 0%,100%{box-shadow:0 0 0 0 rgba(26,39,68,.45)} 50%{box-shadow:0 0 0 8px rgba(26,39,68,0)} }
+    /* Active tab */
+    .plat-tab.act { color:#1a2744 !important; border-bottom-color:#1a2744 !important; font-weight:700 !important; }
+    /* Timer bar */
+    .plat-tbar { height:3px; background:#f3f4f6; flex-shrink:0; }
+    .plat-tfill { height:100%; background:#1d4ed8; width:0; }
+    /* Header checkbox cue */
+    .plat-cb.cue { animation:cbcue 1.6s ease-in-out infinite; }
+    @keyframes cbcue { 0%,100%{box-shadow:0 0 0 0 rgba(29,78,216,.5)} 50%{box-shadow:0 0 0 5px rgba(29,78,216,0)} }
+    /* Centered overlay (modal + notification) */
+    .plat-ov { position:absolute; inset:0; background:rgba(0,0,0,.44); display:flex; align-items:center; justify-content:center; z-index:40; opacity:0; transition:opacity .28s; pointer-events:none; border-radius:16px; }
+    .plat-ov.show { opacity:1; pointer-events:all; }
+    .plat-ov.gone { display:none !important; }
+    .ov-card { background:#fff; border-radius:14px; width:86%; max-width:288px; box-shadow:0 16px 48px rgba(0,0,0,.2); overflow:hidden; }
+    .ov-hdr { padding:13px 15px 9px; border-bottom:1px solid #f0f0f0; }
+    .ov-tag { font-size:9px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#9ca3af; margin-bottom:3px; }
+    .ov-title { font-size:13px; font-weight:700; color:#1a2744; }
+    .ov-body { padding:12px 15px; font-size:11px; color:#6b7280; line-height:1.55; }
+    .ov-foot { display:flex; justify-content:flex-end; gap:8px; padding:9px 15px 13px; border-top:1px solid #f0f0f0; }
+    /* Step hint in left panel */
+    .sim-step { margin-top:20px; padding:10px 14px; background:rgba(79,195,247,0.08); border:1px solid rgba(79,195,247,0.18); border-radius:9px; font-size:12px; color:rgba(79,195,247,0.8); line-height:1.5; transition:opacity .4s; }
+    /* Loss overlay on platform */
+    .sim-loss { position:absolute; inset:0; background:rgba(0,0,0,.58); display:flex; align-items:center; justify-content:center; z-index:40; opacity:0; transition:opacity .5s; pointer-events:none; border-radius:16px; }
+    .sim-loss.show { opacity:1; pointer-events:all; }
+    .sim-loss-card { background:#fff; border-radius:14px; width:86%; max-width:288px; overflow:hidden; box-shadow:0 20px 56px rgba(0,0,0,.28); }
+    .sim-loss-top { background:#fef2f2; padding:16px; text-align:center; border-bottom:1px solid #fecaca; }
+    .sim-loss-amt { font-family:var(--serif); font-style:italic; font-size:24px; color:#dc2626; line-height:1; }
+    .sim-loss-lbl { font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#dc2626; opacity:.6; margin-top:4px; }
+    .sim-loss-body { padding:12px 15px; font-size:11px; color:#6b7280; line-height:1.55; }
+    .sim-loss-foot { padding:9px 15px 13px; display:flex; justify-content:center; border-top:1px solid #f0f0f0; }
 
     /* ── CLOSING PANEL ── */
     .close-wrap { padding:40px; width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
@@ -616,66 +657,46 @@
     <div class="row">
       <div class="lft">
         <div class="lbl">The Incident · You Are The Maker</div>
-        <h1 class="h1" style="font-size:clamp(34px,3.8vw,56px);">You are Bank B.<br>Today you bid on IOCL.</h1>
+        <h1 class="h1" style="font-size:clamp(34px,3.8vw,56px);">You are Bank B.<br>13 FTUs are open.</h1>
         <div class="body">
-          <p>You are a Maker at a public sector bank. 13 Factoring Units are open for bid on Indian Oil Corporation Limited.</p>
-          <p>Your bank's strategy: bid at <strong>5.5%</strong> across all FTUs. Select them and place the bulk bid.</p>
+          <p>You are a Maker at a public sector bank. 13 Factoring Units are open for bid from <strong>Bharat Metals Ltd.</strong></p>
+          <p>Your bank's strategy: bid at <strong>5.5%</strong> across all FTUs. Select them all and place the bulk bid.</p>
         </div>
-        <div id="sim1-hint" style="margin-top:20px; padding:12px 14px; background:rgba(79,195,247,0.08); border:1px solid rgba(79,195,247,0.18); border-radius:10px; font-size:12px; color:rgba(79,195,247,0.8); line-height:1.5;">
-          ← Select FTUs on the right, then click <strong>Place Bid</strong>
-        </div>
+        <div id="sim-step" class="sim-step">← Use the header checkbox to select all 13 FTUs, then click <strong>Place Bid</strong></div>
       </div>
       <div class="rgt">
-        <div class="plat">
-          <div class="plat-topbar">
-            <button class="plat-btn-p primary" id="s1-place" disabled onclick="s1PlaceBid()">✓ Place Bid</button>
+        <div class="plat" id="sim-plat">
+          <div class="plat-topbar" style="justify-content:space-between;align-items:center;">
+            <span style="font-size:11px;font-weight:700;color:#1a2744;letter-spacing:.04em;">myTReDS</span>
+            <div id="sim-topbtns" style="display:flex;gap:6px;"></div>
           </div>
+          <div class="plat-tbar"><div class="plat-tfill" id="sim-tfill"></div></div>
           <div class="plat-tabs">
-            <div class="plat-tab active">Open For Bid</div>
-            <div class="plat-tab" style="color:#9ca3af;">Checker Pending</div>
-            <div class="plat-tab" style="color:#9ca3af;">My Bid In Auction</div>
-            <div class="plat-tab" style="color:#9ca3af;">Bid Accepted Today</div>
+            <div class="plat-tab act" id="sim-t0">Open For Bid</div>
+            <div class="plat-tab" id="sim-t1" style="color:#9ca3af;">Checker Pending</div>
+            <div class="plat-tab" id="sim-t2" style="color:#9ca3af;">My Bid In Auction</div>
+            <div class="plat-tab" id="sim-t3" style="color:#9ca3af;">Bid Accepted Today</div>
           </div>
-          <div class="plat-banner" id="s1-banner"><span id="s1-count">0</span> Factoring Units selected</div>
+          <div class="plat-banner" id="sim-banner"><span id="sim-bcount">0</span> of 13 Factoring Units selected</div>
           <div class="plat-filters">
             <button class="plat-filter">Buyer: All ▾</button>
             <button class="plat-filter">Amount: ▾</button>
-            <button class="plat-filter">Tenor: ▾</button>
             <span class="plat-clear">Clear All</span>
           </div>
           <div class="plat-tbl">
-            <div class="plat-thead plat-cols-ofb">
-              <div></div><div>Factoring Unit</div><div>Buyer</div><div>Supplier</div>
-              <div>Amount</div><div>Due Date</div><div>Tenor*</div>
-              <div>Lowest Bid</div><div>Place Bid</div><div>Status</div>
+            <div class="plat-thead gc-ofb" id="sim-thead">
+              <div class="plat-cb cue" id="sim-hcb" onclick="simSelectAll()" title="Select all 13 FTUs"></div>
+              <div>Factoring Unit</div>
+              <div>Buyer</div>
+              <div>Amount</div>
+              <div style="text-align:center;">Lowest Bid</div>
+              <div>Place Bid</div>
             </div>
-            <div class="plat-tbody" id="s1-tbody"></div>
+            <div class="plat-tbody" id="sim-tw"></div>
           </div>
-          <!-- Modal -->
-          <div class="plat-overlay" id="s1-overlay">
-            <div class="plat-modal">
-              <div class="plat-modal-hdr">Place Bid</div>
-              <div class="plat-modal-amt">
-                <div class="plat-modal-amt-num">₹ 8,97,23,840.00</div>
-                <div class="plat-modal-amt-lbl">Total Factoring Unit Amount</div>
-                <div class="plat-modal-amt-sub">of selected 13 FTUs · IOCL</div>
-              </div>
-              <div class="plat-modal-body">
-                <div class="plat-modal-row">
-                  <span class="plat-modal-lbl">Bid Rate (%)</span>
-                  <input class="plat-modal-input" id="s1-rate" type="text" value="5.5" placeholder="e.g. 5.5">
-                </div>
-                <div class="plat-modal-row">
-                  <span class="plat-modal-lbl">Tenor</span>
-                  <span class="plat-modal-val">33 Days</span>
-                </div>
-                <div class="plat-modal-info">ⓘ Bid moves to Checker Pending until your Checker approves.</div>
-              </div>
-              <div class="plat-modal-footer">
-                <button class="plat-modal-cancel" onclick="s1CloseModal()">Cancel</button>
-                <button class="plat-modal-confirm" onclick="s1Confirm()">Place Bid</button>
-              </div>
-            </div>
+          <!-- Centered overlay: modal or notification -->
+          <div class="plat-ov gone" id="sim-ov">
+            <div class="ov-card" id="sim-ov-card"></div>
           </div>
         </div>
       </div>
@@ -687,25 +708,29 @@
     <div class="row">
       <div class="lft">
         <div class="lbl">The Incident · Checker Pending</div>
-        <h1 class="h1" style="font-size:clamp(34px,3.8vw,56px);">Bid submitted.<br>Checker must approve.</h1>
+        <h1 class="h1" style="font-size:clamp(34px,3.8vw,56px);">Bid submitted.<br>Not yet live.</h1>
         <div class="body">
-          <p>Your bid is not live. It sits in Checker Pending. The auction continues. Bank A's Checker is also reviewing their bid right now.</p>
+          <p>Your bid is not active yet. It sits in Checker Pending. The auction continues around you.</p>
           <p>Until your Checker approves — <strong>your bid does not exist on the platform.</strong></p>
         </div>
-        <div id="s2-status" style="margin-top:20px; padding:12px 14px; background:rgba(255,183,77,0.08); border:1px solid rgba(255,183,77,0.18); border-radius:10px; font-size:12px; color:rgba(255,183,77,0.8); line-height:1.5; transition:all 0.4s;">
-          ⏳ Waiting for Checker approval...
+        <div style="margin-top:20px; padding:11px 14px; background:rgba(255,183,77,0.07); border:1px solid rgba(255,183,77,0.18); border-radius:9px; font-size:11px; color:rgba(255,183,77,0.75); line-height:1.55;">
+          ⏳ Waiting for Checker approval... (10 second window)
         </div>
       </div>
       <div class="rgt">
         <div class="plat">
-          <div class="plat-topbar">
-            <button class="plat-btn-p">🗑 Withdraw</button>
-            <button class="plat-btn-p">↺ Revise Bid</button>
+          <div class="plat-topbar" style="justify-content:space-between;align-items:center;">
+            <span style="font-size:11px;font-weight:700;color:#1a2744;letter-spacing:.04em;">myTReDS</span>
+            <div style="display:flex;gap:6px;">
+              <button class="plat-btn-p">🗑 Withdraw</button>
+              <button class="plat-btn-p">↺ Revise Bid</button>
+            </div>
           </div>
+          <div class="plat-tbar"><div class="plat-tfill" id="s2-tfill"></div></div>
           <div class="plat-tabs">
             <div class="plat-tab" style="color:#9ca3af;">Open For Bid</div>
-            <div class="plat-tab active" id="s2-tab-cp">Checker Pending</div>
-            <div class="plat-tab" style="color:#9ca3af;" id="s2-tab-mba">My Bid In Auction</div>
+            <div class="plat-tab act">Checker Pending</div>
+            <div class="plat-tab" style="color:#9ca3af;">My Bid In Auction</div>
             <div class="plat-tab" style="color:#9ca3af;">Bid Accepted Today</div>
           </div>
           <div class="plat-filters">
@@ -713,27 +738,29 @@
             <button class="plat-filter">Amount: ▾</button>
             <span class="plat-clear">Clear All</span>
           </div>
-          <div class="plat-tbl" id="s2-tbl-cp">
-            <div class="plat-thead plat-cols-std">
-              <div></div><div>Factoring Unit</div><div>Buyer</div><div>Supplier</div>
-              <div>Amount</div><div>Due Date</div><div>Tenor*</div>
-              <div>My Bid</div><div>Lowest Bid</div><div>Status</div>
+          <div class="plat-tbl">
+            <div class="plat-thead gc-cp">
+              <div></div>
+              <div>Factoring Unit</div>
+              <div>Buyer</div>
+              <div>My Bid</div>
+              <div>Lowest Bid</div>
+              <div>Status</div>
             </div>
-            <div class="plat-tbody" id="s2-tbody-cp"></div>
+            <div class="plat-tbody" id="s2-tw"></div>
           </div>
-          <div class="plat-tbl" id="s2-tbl-mba" style="display:none;">
-            <div class="plat-thead plat-cols-std">
-              <div></div><div>Factoring Unit</div><div>Buyer</div><div>Supplier</div>
-              <div>Amount</div><div>Due Date</div><div>Tenor*</div>
-              <div>My Bid</div><div>Lowest Bid</div><div>Status</div>
+          <!-- Centered notification overlay -->
+          <div class="plat-ov gone" id="s2-ov">
+            <div class="ov-card">
+              <div class="ov-hdr">
+                <div class="ov-tag">Checker Approved</div>
+                <div class="ov-title">✓ Your bid is now live in auction</div>
+              </div>
+              <div class="ov-body">Your bid of <strong>5.5%</strong> on 13 FTUs from Bharat Metals Ltd. has been approved and is now competing in the auction.</div>
+              <div class="ov-foot">
+                <button class="plat-modal-confirm" onclick="simToMBIA()">View in Auction →</button>
+              </div>
             </div>
-            <div class="plat-tbody">
-              <div class="plat-empty"><div class="plat-empty-icon">📋</div><div class="plat-empty-txt">No Active Bids currently.</div></div>
-            </div>
-          </div>
-          <div class="plat-notif" id="s2-notif">
-            <div class="plat-notif-title">✓ Bid Approved &amp; Live</div>
-            <div class="plat-notif-body">Your bid of 5.5% on IOCL is now active in the auction.</div>
           </div>
         </div>
       </div>
@@ -747,29 +774,33 @@
         <div class="lbl">The Incident · The Critical Moment</div>
         <h1 class="h1" style="font-size:clamp(34px,3.8vw,56px);">Your bid is live.<br>Check your position.</h1>
         <div class="body">
-          <p>Checker approved. You switch to <strong>My Bid In Auction</strong>. The screen looks right. Both columns show 5.5%.</p>
+          <p>Checker approved. You switch to <strong>My Bid In Auction</strong>. The screen looks right — both columns show <strong>5.5%</strong>.</p>
         </div>
         <div class="sim-decision" id="s3-decision">
           <div class="sim-decision-q">"Are you leading this auction?"</div>
           <div class="sim-decision-btns">
             <button class="sim-btn yes" onclick="s3Answer()">Yes — I'm leading</button>
-            <button class="sim-btn no" onclick="s3Answer()">No — I'm not sure</button>
+            <button class="sim-btn no" onclick="s3Answer()">No — can't tell</button>
           </div>
         </div>
-        <div class="sim-reveal" id="s3-reveal">
+        <div class="sim-reveal" id="s3-reveal" style="display:none;opacity:0;transition:opacity .4s;">
           The auction just closed. Bank A's Checker approved 3 seconds before yours. Check <strong>Bid Accepted Today →</strong>
         </div>
       </div>
       <div class="rgt">
         <div class="plat">
-          <div class="plat-topbar">
-            <button class="plat-btn-p">🗑 Withdraw</button>
-            <button class="plat-btn-p">↺ Revise Bid</button>
+          <div class="plat-topbar" style="justify-content:space-between;align-items:center;">
+            <span style="font-size:11px;font-weight:700;color:#1a2744;letter-spacing:.04em;">myTReDS</span>
+            <div style="display:flex;gap:6px;">
+              <button class="plat-btn-p">🗑 Withdraw</button>
+              <button class="plat-btn-p">↺ Revise Bid</button>
+            </div>
           </div>
+          <div class="plat-tbar"><div class="plat-tfill" style="width:100%;"></div></div>
           <div class="plat-tabs">
             <div class="plat-tab" style="color:#9ca3af;">Open For Bid</div>
             <div class="plat-tab" style="color:#9ca3af;">Checker Pending</div>
-            <div class="plat-tab active">My Bid In Auction</div>
+            <div class="plat-tab act">My Bid In Auction</div>
             <div class="plat-tab" style="color:#9ca3af;">Bid Accepted Today</div>
           </div>
           <div class="plat-filters">
@@ -778,12 +809,15 @@
             <span class="plat-clear">Clear All</span>
           </div>
           <div class="plat-tbl">
-            <div class="plat-thead plat-cols-std">
-              <div></div><div>Factoring Unit</div><div>Buyer</div><div>Supplier</div>
-              <div>Amount</div><div>Due Date</div><div>Tenor*</div>
-              <div>My Bid</div><div>Lowest Bid</div><div>Status</div>
+            <div class="plat-thead gc-mbia">
+              <div></div>
+              <div>Factoring Unit</div>
+              <div>Buyer</div>
+              <div>My Bid</div>
+              <div>Lowest Bid</div>
+              <div>Status</div>
             </div>
-            <div class="plat-tbody" id="s3-tbody"></div>
+            <div class="plat-tbody" id="s3-tw"></div>
           </div>
         </div>
       </div>
@@ -798,21 +832,22 @@
         <h1 class="h1" style="font-size:clamp(34px,3.8vw,56px); color:var(--red);">₹8.97 Cr.<br>Gone.</h1>
         <div class="body">
           <p>The buyer accepted bids. The auction closed. You check Bid Accepted Today.</p>
-          <p>My Bid: 5.5%. Lowest Bid: 5.5%. Status: <strong style="color:var(--red);">Bid Lost.</strong></p>
+          <p>My Bid: 5.5%. Winning Bid: 5.5%. Status: <strong style="color:var(--red);">Bid Lost.</strong></p>
           <p>Same rate. Same column. Lost every single FU. The platform never told you why.</p>
-          <p style="color:var(--t3); font-size:13px; margin-top:8px;">Bank A's Checker approved 3 seconds before yours. That timestamp — invisible to you, undocumented anywhere in the UI — determined the entire outcome.</p>
+          <p style="color:var(--t3); font-size:13px; margin-top:8px;">Bank A's Checker approved 3 seconds before yours. That timestamp — invisible to you, undocumented in the UI — decided the entire outcome.</p>
         </div>
       </div>
       <div class="rgt">
         <div class="plat">
           <div class="plat-topbar" style="justify-content:flex-start;">
-            <span style="font-size:11px; color:#dc2626; font-weight:600; padding:5px 12px; background:#fef2f2; border-radius:100px; border:1px solid #fecaca;">● Auction Closed</span>
+            <span style="font-size:11px;color:#dc2626;font-weight:600;padding:4px 12px;background:#fef2f2;border-radius:100px;border:1px solid #fecaca;">● Auction Closed</span>
           </div>
+          <div class="plat-tbar"><div class="plat-tfill" style="width:100%;background:#dc2626;"></div></div>
           <div class="plat-tabs">
             <div class="plat-tab" style="color:#9ca3af;">Open For Bid</div>
             <div class="plat-tab" style="color:#9ca3af;">Checker Pending</div>
             <div class="plat-tab" style="color:#9ca3af;">My Bid In Auction</div>
-            <div class="plat-tab active">Bid Accepted Today</div>
+            <div class="plat-tab act">Bid Accepted Today</div>
           </div>
           <div class="plat-filters">
             <button class="plat-filter">Buyer: All ▾</button>
@@ -820,12 +855,32 @@
             <span class="plat-clear">Clear All</span>
           </div>
           <div class="plat-tbl">
-            <div class="plat-thead plat-cols-bat">
-              <div></div><div>Factoring Unit</div><div>Buyer</div><div>Supplier</div>
-              <div>Amount</div><div>Due Date</div><div>Tenor*</div>
-              <div>My Bid</div><div>Lowest Bid</div><div>Status</div>
+            <div class="plat-thead gc-bat">
+              <div></div>
+              <div>Factoring Unit</div>
+              <div>Buyer</div>
+              <div>My Bid</div>
+              <div>Winning Bid</div>
+              <div>Status</div>
             </div>
-            <div class="plat-tbody" id="s4-tbody"></div>
+            <div class="plat-tbody" id="s4-tw"></div>
+          </div>
+          <!-- Loss overlay -->
+          <div class="sim-loss" id="s4-loss">
+            <div class="sim-loss-card">
+              <div class="sim-loss-top">
+                <div class="sim-loss-amt">₹8.97 Cr</div>
+                <div class="sim-loss-lbl">Total bid value · Bid Lost</div>
+              </div>
+              <div class="sim-loss-body">
+                <strong>My Bid:</strong> 5.5% &nbsp;·&nbsp; <strong>Winning Bid:</strong> 5.5%<br>
+                Status on all 13 FTUs: <strong style="color:#dc2626;">Bid Lost</strong><br><br>
+                Same rate. Bank A's Checker approved 3 seconds before yours. The platform never told you why.
+              </div>
+              <div class="sim-loss-foot">
+                <button class="plat-modal-confirm" onclick="simSeekTruth()">See what I found →</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1456,7 +1511,7 @@
 </div>
 
 <script>
-  const TOTAL = 23;
+  const TOTAL = 21;
   let cur = 0, busy = false;
   const slides = Array.from(document.querySelectorAll('.slide'));
   const counter = document.getElementById('counter');
@@ -1508,7 +1563,8 @@
       });
       busy = false;
       // Simulation scene inits
-      if (cur === 3) s1Init();
+      if (cur === 3) simInit();
+      if (cur === 4) s2Init();
       if (cur === 5) s3Init();
       if (cur === 6) s4Init();
     }, 520);
@@ -1546,186 +1602,314 @@
   }
 
   /* ══════════════════════════════════════════════════════════
-     SIMULATION ENGINE
+     SIMULATION ENGINE v2
+     OFB(idx 3) → CP(idx 4) → MBIA(idx 5) → BAT(idx 6)
      ══════════════════════════════════════════════════════════ */
 
   const SIM_FTUS = [
-    { id:'FTU000164440', amt:'₹68,63,372', date:'Apr 23rd, 2026', tenor:33 },
-    { id:'FTU000164402', amt:'₹68,63,370', date:'Apr 23rd, 2026', tenor:33 },
-    { id:'FTU000164438', amt:'₹68,63,368', date:'Apr 23rd, 2026', tenor:33 },
-    { id:'FTU000164435', amt:'₹68,63,365', date:'Apr 23rd, 2026', tenor:33 },
-    { id:'FTU000164430', amt:'₹68,63,362', date:'Apr 23rd, 2026', tenor:33 },
-    { id:'FTU000164425', amt:'₹68,63,360', date:'Apr 23rd, 2026', tenor:33 },
-    { id:'FTU000164420', amt:'₹68,63,358', date:'Apr 23rd, 2026', tenor:33 },
-    { id:'FTU000164418', amt:'₹68,63,355', date:'Apr 23rd, 2026', tenor:33 },
-    { id:'FTU000164415', amt:'₹68,63,352', date:'Apr 23rd, 2026', tenor:33 },
-    { id:'FTU000164410', amt:'₹68,63,349', date:'Apr 23rd, 2026', tenor:33 },
-    { id:'FTU000164408', amt:'₹68,63,346', date:'Apr 23rd, 2026', tenor:33 },
-    { id:'FTU000164405', amt:'₹68,63,343', date:'Apr 23rd, 2026', tenor:33 },
-    { id:'FTU000164400', amt:'₹68,63,340', date:'Apr 23rd, 2026', tenor:33 },
+    { id:'FTU000164440', buyer:'Bharat Metals Ltd.', amt:'₹71,25,000' },
+    { id:'FTU000164402', buyer:'Bharat Metals Ltd.', amt:'₹68,90,000' },
+    { id:'FTU000164398', buyer:'Bharat Metals Ltd.', amt:'₹70,00,000' },
+    { id:'FTU000164382', buyer:'Bharat Metals Ltd.', amt:'₹67,50,000' },
+    { id:'FTU000164374', buyer:'Bharat Metals Ltd.', amt:'₹69,35,000' },
   ];
 
-  function makePlatRow(cols, cells) {
+  function simRow(colCls, cells) {
     const d = document.createElement('div');
-    d.className = 'plat-row ' + cols;
-    d.innerHTML = cells; return d;
+    d.className = 'plat-row ' + colCls;
+    d.innerHTML = cells;
+    return d;
   }
 
-  /* ── SCENE 1 — Open For Bid ── */
-  let s1Sel = new Set();
+  /* ── SCENE OFB — slide index 3 ── */
+  let simSel = new Set();
 
-  function s1Init() {
-    const tb = document.getElementById('s1-tbody');
-    if (!tb || tb.children.length > 0) return;
+  function simInit() {
+    simSel.clear();
+    // Reset table
+    const tw = document.getElementById('sim-tw');
+    if (!tw) return;
+    tw.innerHTML = '';
+    // Reset header checkbox
+    const hcb = document.getElementById('sim-hcb');
+    if (hcb) { hcb.classList.remove('on'); hcb.classList.add('cue'); }
+    // Reset banner
+    const banner = document.getElementById('sim-banner');
+    if (banner) banner.classList.remove('show');
+    // Reset topbar
+    const topbtns = document.getElementById('sim-topbtns');
+    if (topbtns) topbtns.innerHTML = '';
+    // Reset step label
+    const step = document.getElementById('sim-step');
+    if (step) { step.style.opacity = '1'; step.innerHTML = '← Use the header checkbox to select all 13 FTUs, then click <strong>Place Bid</strong>'; }
+    // Reset overlay
+    const ov = document.getElementById('sim-ov');
+    if (ov) { ov.classList.remove('show'); ov.classList.add('gone'); }
+
+    // Render 5 rows
     SIM_FTUS.forEach((f, i) => {
-      const r = makePlatRow('plat-cols-ofb', `
-        <div class="plat-cb" id="cb${i}"></div>
-        <div><div class="plat-ftu">${f.id}</div><div class="plat-ftu-sub">ERP Source</div></div>
-        <div class="plat-cell">INDIAN OIL CORPORATION LIMITED</div>
-        <div class="plat-cell">IOCL Supplier 1<br><span style="font-size:8px;color:#9ca3af;">MICRO</span></div>
-        <div class="plat-cell">${f.amt}</div>
-        <div class="plat-cell">${f.date}</div>
-        <div class="plat-cell">${f.tenor}</div>
-        <div class="plat-rate">5.5%</div>
-        <div><button class="plat-btn-p" style="font-size:9px;padding:3px 8px;">Place Bid</button></div>
-        <div><span class="plat-badge auction">In Auction</span></div>
+      const r = simRow('gc-ofb', `
+        <div class="plat-cb" id="scb${i}" onclick="simToggle(${i});event.stopPropagation()"></div>
+        <div><div class="plat-ftu">${f.id}</div><div class="plat-ftu-sub">MSME</div></div>
+        <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;">${f.buyer}</div>
+        <div class="plat-cell" style="font-size:9px;">${f.amt}</div>
+        <div style="text-align:center;color:#9ca3af;font-size:11px;">—</div>
+        <div><button class="pb sm cue" onclick="simOpenModal();event.stopPropagation()">Place Bid</button></div>
       `);
-      r.onclick = () => s1Toggle(i, r);
-      document.getElementById('s1-tbody').appendChild(r);
+      r.onclick = () => simToggle(i);
+      tw.appendChild(r);
     });
+    // "+8 more" indicator
+    const more = document.createElement('div');
+    more.className = 'plat-more';
+    more.textContent = '+ 8 more Factoring Units';
+    tw.appendChild(more);
   }
 
-  function s1Toggle(i, row) {
-    if (s1Sel.has(i)) { s1Sel.delete(i); row.classList.remove('sel'); document.getElementById('cb'+i).classList.remove('on'); }
-    else { s1Sel.add(i); row.classList.add('sel'); document.getElementById('cb'+i).classList.add('on'); }
-    const n = s1Sel.size;
-    const banner = document.getElementById('s1-banner');
-    const btn = document.getElementById('s1-place');
-    if (n > 0) { banner.classList.add('show'); document.getElementById('s1-count').textContent = n; btn.disabled = false; }
-    else { banner.classList.remove('show'); btn.disabled = true; }
-    document.getElementById('s1-hint').style.opacity = n >= 13 ? '0' : '1';
+  function simToggle(i) {
+    const rows = document.querySelectorAll('#sim-tw .plat-row');
+    if (simSel.has(i)) {
+      simSel.delete(i);
+      document.getElementById('scb'+i)?.classList.remove('on');
+      rows[i]?.classList.remove('sel');
+    } else {
+      simSel.add(i);
+      document.getElementById('scb'+i)?.classList.add('on');
+      rows[i]?.classList.add('sel');
+    }
+    simUpdateBanner();
   }
 
-  function s1PlaceBid() { document.getElementById('s1-overlay').classList.add('show'); }
-  function s1CloseModal() { document.getElementById('s1-overlay').classList.remove('show'); }
-  function s1Confirm() {
-    s1CloseModal();
+  function simSelectAll() {
+    const hcb = document.getElementById('sim-hcb');
+    if (simSel.size >= 13) {
+      // deselect all
+      simSel.clear();
+      for (let i = 0; i < 5; i++) {
+        document.getElementById('scb'+i)?.classList.remove('on');
+        document.querySelectorAll('#sim-tw .plat-row')[i]?.classList.remove('sel');
+      }
+      if (hcb) { hcb.classList.remove('on'); hcb.classList.add('cue'); }
+      const topbtns = document.getElementById('sim-topbtns');
+      if (topbtns) topbtns.innerHTML = '';
+      const step = document.getElementById('sim-step');
+      if (step) step.innerHTML = '← Use the header checkbox to select all 13 FTUs, then click <strong>Place Bid</strong>';
+    } else {
+      // select all 13
+      for (let j = 0; j < 13; j++) simSel.add(j);
+      for (let i = 0; i < 5; i++) {
+        document.getElementById('scb'+i)?.classList.add('on');
+        document.querySelectorAll('#sim-tw .plat-row')[i]?.classList.add('sel');
+      }
+      if (hcb) { hcb.classList.add('on'); hcb.classList.remove('cue'); }
+      // Show Place Bid in topbar with cue
+      const topbtns = document.getElementById('sim-topbtns');
+      if (topbtns) topbtns.innerHTML = '<button class="pb dk cue" id="sim-pb" onclick="simOpenModal()">✓ Place Bid</button>';
+      const step = document.getElementById('sim-step');
+      if (step) step.innerHTML = '13 FTUs selected. Now click <strong>Place Bid</strong> to submit the bulk bid.';
+    }
+    simUpdateBanner();
+  }
+
+  function simUpdateBanner() {
+    const banner = document.getElementById('sim-banner');
+    const count = document.getElementById('sim-bcount');
+    if (simSel.size > 0) {
+      if (banner) banner.classList.add('show');
+      if (count) count.textContent = Math.min(simSel.size, 13);
+    } else {
+      if (banner) banner.classList.remove('show');
+    }
+  }
+
+  function simOpenModal() {
+    if (simSel.size === 0) { simSelectAll(); return; }
+    const ov = document.getElementById('sim-ov');
+    const card = document.getElementById('sim-ov-card');
+    if (!ov || !card) return;
+    card.innerHTML = `
+      <div class="plat-modal-hdr">Place Bid — 13 Factoring Units</div>
+      <div class="plat-modal-amt">
+        <div class="plat-modal-amt-num">₹ 8,97,23,840.00</div>
+        <div class="plat-modal-amt-lbl">Total Factoring Unit Amount</div>
+        <div class="plat-modal-amt-sub">13 FTUs · Bharat Metals Ltd.</div>
+      </div>
+      <div class="plat-modal-body">
+        <div class="plat-modal-row">
+          <span class="plat-modal-lbl">Bid Rate (%)</span>
+          <input class="plat-modal-input" id="sim-rate" type="number" step="0.1" min="0" max="20" value="5.5">
+        </div>
+        <div class="plat-modal-row">
+          <span class="plat-modal-lbl">Tenor</span>
+          <span class="plat-modal-val">33 Days</span>
+        </div>
+        <div id="sim-rate-err" style="display:none;padding:7px 10px;background:#fef2f2;border:1px solid #fecaca;border-radius:7px;font-size:10px;color:#dc2626;">⚠ Rate must be 5.5% per bank strategy</div>
+        <div class="plat-modal-info">ⓘ Bid moves to Checker Pending until your Checker approves.</div>
+      </div>
+      <div class="plat-modal-footer">
+        <button class="plat-modal-cancel" onclick="simCloseModal()">Cancel</button>
+        <button class="plat-modal-confirm" onclick="simSubmit()">Place Bid</button>
+      </div>
+    `;
+    ov.classList.remove('gone');
+    requestAnimationFrame(() => ov.classList.add('show'));
+  }
+
+  function simCloseModal() {
+    const ov = document.getElementById('sim-ov');
+    if (ov) { ov.classList.remove('show'); setTimeout(() => ov.classList.add('gone'), 300); }
+  }
+
+  function simSubmit() {
+    const inp = document.getElementById('sim-rate');
+    const err = document.getElementById('sim-rate-err');
+    const val = parseFloat(inp?.value);
+    if (isNaN(val) || Math.abs(val - 5.5) > 0.01) {
+      if (inp) { inp.style.borderColor = '#dc2626'; inp.style.boxShadow = '0 0 0 2px rgba(220,38,38,.15)'; }
+      if (err) err.style.display = 'block';
+      setTimeout(() => {
+        if (inp) { inp.style.borderColor = ''; inp.style.boxShadow = ''; }
+        if (err) err.style.display = 'none';
+      }, 1800);
+      return;
+    }
+    simCloseModal();
     bn.disabled = true; bp.disabled = true;
-    setTimeout(() => { go(cur + 1, 1); setTimeout(s2Start, 600); }, 300);
+    setTimeout(() => { go(cur + 1, 1); }, 450);
   }
 
-  /* ── SCENE 2 — Checker Pending ── */
+  /* ── SCENE CP — slide index 4 ── */
   function s2Init() {
-    const tb = document.getElementById('s2-tbody-cp');
-    if (!tb || tb.children.length > 0) return;
-    SIM_FTUS.slice(0, 4).forEach(f => {
-      tb.appendChild(makePlatRow('plat-cols-std', `
-        <div></div>
-        <div><div class="plat-ftu">${f.id}</div><div class="plat-ftu-sub">ERP Source</div></div>
-        <div class="plat-cell">INDIAN OIL CORPORATION LIMITED</div>
-        <div class="plat-cell">IOCL Supplier 1<br><span style="font-size:8px;color:#9ca3af;">MICRO</span></div>
-        <div class="plat-cell">${f.amt}</div>
-        <div class="plat-cell">${f.date}</div>
-        <div class="plat-cell">${f.tenor}</div>
-        <div class="plat-rate">5.5%</div>
-        <div class="plat-cell" style="color:#9ca3af;">—</div>
-        <div><span class="plat-badge pending">Pending</span></div>
+    const tw = document.getElementById('s2-tw');
+    if (!tw) return;
+    tw.innerHTML = '';
+    SIM_FTUS.forEach(f => {
+      tw.appendChild(simRow('gc-cp', `
+        <div class="plat-cb on"></div>
+        <div><div class="plat-ftu">${f.id}</div><div class="plat-ftu-sub">MSME</div></div>
+        <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;">${f.buyer}</div>
+        <div class="plat-rate" style="font-size:11px;">5.5%</div>
+        <div style="text-align:center;color:#9ca3af;font-size:11px;">—</div>
+        <div><span class="plat-badge pending">Checker Pending</span></div>
       `));
     });
     const more = document.createElement('div');
-    more.className = 'plat-more'; more.textContent = '+ 9 more Factoring Units pending approval';
-    tb.appendChild(more);
+    more.className = 'plat-more';
+    more.textContent = '+ 8 more Factoring Units pending approval';
+    tw.appendChild(more);
+    // Start the 10-second timer
+    s2StartTimer();
   }
 
-  function s2Start() {
-    s2Init();
-    const stat = document.getElementById('s2-status');
-    const notif = document.getElementById('s2-notif');
-    // After 3s — checker approves
-    setTimeout(() => {
-      if (notif) notif.classList.add('show');
-      if (stat) { stat.style.background='rgba(102,187,106,0.08)'; stat.style.borderColor='rgba(102,187,106,0.2)'; stat.style.color='rgba(102,187,106,0.9)'; stat.textContent='✓ Checker approved. Your bid is now live.'; }
-      // After 2s — dismiss, switch to My Bid In Auction tab
-      setTimeout(() => {
-        if (notif) notif.classList.remove('show');
-        setTimeout(() => {
-          const tcp = document.getElementById('s2-tab-cp');
-          const tmba = document.getElementById('s2-tab-mba');
-          const tblcp = document.getElementById('s2-tbl-cp');
-          const tblmba = document.getElementById('s2-tbl-mba');
-          if (tcp) { tcp.classList.remove('active'); tcp.style.color='#9ca3af'; }
-          if (tmba) { tmba.classList.add('active'); tmba.style.color=''; }
-          if (tblcp) tblcp.style.display='none';
-          if (tblmba) tblmba.style.display='flex';
-          // After 1.5s — advance to scene 3
-          setTimeout(() => { go(cur + 1, 1); setTimeout(s3Init, 600); }, 1500);
-        }, 400);
-      }, 2200);
-    }, 3000);
+  function s2StartTimer() {
+    const fill = document.getElementById('s2-tfill');
+    if (!fill) return;
+    const duration = 10000;
+    const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      fill.style.width = (p * 100) + '%';
+      if (p < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        simShowNotif();
+      }
+    }
+    requestAnimationFrame(tick);
   }
 
-  /* ── SCENE 3 — My Bid In Auction (critical moment) ── */
+  function simShowNotif() {
+    const ov = document.getElementById('s2-ov');
+    if (!ov) return;
+    ov.classList.remove('gone');
+    requestAnimationFrame(() => ov.classList.add('show'));
+  }
+
+  function simToMBIA() {
+    const ov = document.getElementById('s2-ov');
+    if (ov) { ov.classList.remove('show'); setTimeout(() => ov.classList.add('gone'), 300); }
+    bn.disabled = false; bp.disabled = false;
+    setTimeout(() => { go(cur + 1, 1); }, 450);
+  }
+
+  /* ── SCENE MBIA — slide index 5 ── */
   function s3Init() {
-    const tb = document.getElementById('s3-tbody');
-    if (!tb || tb.children.length > 0) return;
-    SIM_FTUS.slice(0, 4).forEach(f => {
-      tb.appendChild(makePlatRow('plat-cols-std', `
-        <div></div>
-        <div><div class="plat-ftu">${f.id}</div><div class="plat-ftu-sub">ERP Source</div></div>
-        <div class="plat-cell">INDIAN OIL CORPORATION LIMITED</div>
-        <div class="plat-cell">IOCL Supplier 1<br><span style="font-size:8px;color:#9ca3af;">MICRO</span></div>
-        <div class="plat-cell">${f.amt}</div>
-        <div class="plat-cell">${f.date}</div>
-        <div class="plat-cell">${f.tenor}</div>
-        <div class="plat-rate" style="color:#1a2744;">5.5%</div>
-        <div class="plat-rate" style="color:#1a2744;">5.5%</div>
+    const tw = document.getElementById('s3-tw');
+    if (!tw) return;
+    tw.innerHTML = '';
+    SIM_FTUS.forEach(f => {
+      tw.appendChild(simRow('gc-mbia', `
+        <div class="plat-cb on"></div>
+        <div><div class="plat-ftu">${f.id}</div><div class="plat-ftu-sub">MSME</div></div>
+        <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;">${f.buyer}</div>
+        <div class="plat-rate" style="font-size:11px;">5.5%</div>
+        <div class="plat-rate" style="font-size:11px;">5.5%</div>
         <div><span class="plat-badge auction">In Auction</span></div>
       `));
     });
     const more = document.createElement('div');
-    more.className = 'plat-more'; more.textContent = '+ 9 more Factoring Units';
-    tb.appendChild(more);
+    more.className = 'plat-more';
+    more.textContent = '+ 8 more Factoring Units in auction';
+    tw.appendChild(more);
+    // Reset decision UI
+    const dec = document.getElementById('s3-decision');
+    const rev = document.getElementById('s3-reveal');
+    if (dec) { dec.style.display = 'block'; dec.style.opacity = '1'; }
+    if (rev) { rev.style.display = 'none'; rev.style.opacity = '0'; }
     bn.disabled = false; bp.disabled = false;
   }
 
   function s3Answer() {
     const dec = document.getElementById('s3-decision');
     const rev = document.getElementById('s3-reveal');
-    if (dec) dec.style.display = 'none';
-    if (rev) rev.style.display = 'block';
-    // Flash the rate cells red
-    document.querySelectorAll('#s3-tbody .plat-rate').forEach(c => { c.style.transition='color 0.3s'; c.style.color='#dc2626'; });
+    if (dec) { dec.style.opacity = '0'; setTimeout(() => dec.style.display = 'none', 300); }
+    setTimeout(() => {
+      if (rev) { rev.style.display = 'block'; requestAnimationFrame(() => rev.style.opacity = '1'); }
+    }, 350);
+    // Flash the 5.5% cells red — the identical values that mean nothing
+    document.querySelectorAll('#s3-tw .plat-rate').forEach(c => {
+      c.style.transition = 'color .35s';
+      c.style.color = '#dc2626';
+    });
     bn.disabled = true;
-    setTimeout(() => { go(cur + 1, 1); setTimeout(s4Init, 600); }, 2200);
+    setTimeout(() => { go(cur + 1, 1); }, 2800);
   }
 
-  /* ── SCENE 4 — Bid Accepted Today (Bid Lost) ── */
+  /* ── SCENE BAT — slide index 6 ── */
   function s4Init() {
-    const tb = document.getElementById('s4-tbody');
-    if (!tb || tb.children.length > 0) return;
-    SIM_FTUS.slice(0, 4).forEach(f => {
-      tb.appendChild(makePlatRow('plat-cols-bat', `
-        <div></div>
-        <div><div class="plat-ftu">${f.id}</div><div class="plat-ftu-sub">ERP Source</div></div>
-        <div class="plat-cell">INDIAN OIL CORPORATION LIMITED</div>
-        <div class="plat-cell">IOCL Supplier 1<br><span style="font-size:8px;color:#9ca3af;">MICRO</span></div>
-        <div class="plat-cell">${f.amt}</div>
-        <div class="plat-cell">${f.date}</div>
-        <div class="plat-cell">${f.tenor}</div>
-        <div class="plat-rate" style="color:#1a2744;">5.5%</div>
-        <div class="plat-rate" style="color:#1a2744;">5.5%</div>
+    const tw = document.getElementById('s4-tw');
+    if (!tw) return;
+    tw.innerHTML = '';
+    SIM_FTUS.forEach(f => {
+      tw.appendChild(simRow('gc-bat', `
+        <div class="plat-cb on"></div>
+        <div><div class="plat-ftu">${f.id}</div><div class="plat-ftu-sub">MSME</div></div>
+        <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;">${f.buyer}</div>
+        <div class="plat-rate" style="font-size:11px;color:#dc2626;">5.5%</div>
+        <div class="plat-rate" style="font-size:11px;">5.5%</div>
         <div><span class="plat-badge lost">Bid Lost</span></div>
       `));
     });
     const more = document.createElement('div');
-    more.className = 'plat-more'; more.textContent = '+ 9 more Factoring Units — all Bid Lost';
-    tb.appendChild(more);
+    more.className = 'plat-more';
+    more.textContent = '+ 8 more Factoring Units — all Bid Lost';
+    tw.appendChild(more);
     bn.disabled = false; bp.disabled = false;
+    // Show loss overlay after a pause — let user see the table first
+    setTimeout(() => {
+      const loss = document.getElementById('s4-loss');
+      if (loss) loss.classList.add('show');
+    }, 2000);
+  }
+
+  function simSeekTruth() {
+    bn.disabled = false; bp.disabled = false;
+    go(cur + 1, 1);
   }
 
   /* ── INIT ── */
   place();
-  s1Init();
+  simInit();
   setTimeout(hero, 500);
 </script>
 </body>
