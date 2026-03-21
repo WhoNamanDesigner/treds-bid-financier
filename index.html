@@ -160,15 +160,25 @@
     .mc-box-name { font-family:var(--serif); font-style:italic; font-size:17px; color:var(--t); }
     .mc-box-sub { font-size:11px; color:var(--t3); margin-top:4px; }
     .mc-arr { text-align:center; font-size:13px; color:var(--t3); }
-    /* ── mc2: light-theme step rows for Slide 02 ── */
-    .mc2-row { display:flex; align-items:center; gap:11px; padding:11px 16px; background:#fff; }
-    .mc2-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
-    .mc2-body { flex:1; min-width:0; }
-    .mc2-title { font-size:12px; font-weight:600; color:#1a2744; margin-bottom:2px; }
+    /* ── mc2: light-theme timeline for Slide 02 ── */
+    .mc2-wrap { padding:14px 16px 6px; display:flex; flex-direction:column; }
+    .mc2-step { display:grid; grid-template-columns:20px 1fr auto; gap:0 10px; position:relative; }
+    /* vertical track */
+    .mc2-track { display:flex; flex-direction:column; align-items:center; }
+    .mc2-dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; margin-top:3px; }
+    .mc2-line { width:1px; flex:1; min-height:10px; }
+    /* content */
+    .mc2-body { padding-bottom:6px; }
+    .mc2-title { font-size:11px; font-weight:600; color:#1a2744; margin-bottom:3px; }
+    .mc2-meta { font-size:9.5px; color:#9ca3af; display:flex; gap:8px; flex-wrap:wrap; margin-bottom:4px; }
+    .mc2-meta span { display:flex; align-items:center; gap:3px; }
     .mc2-sub { font-size:10px; color:#6b7280; line-height:1.5; }
-    .mc2-badge { font-size:9px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:100px; border:1px solid transparent; flex-shrink:0; }
-    .mc2-connector { height:1px; background:#f3f4f6; margin:0 16px; position:relative; }
-    .mc2-connector::after { content:''; position:absolute; left:50%; top:-4px; transform:translateX(-50%); width:1px; height:8px; background:#e5e7eb; }
+    .mc2-badge { font-size:8.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:100px; border:1px solid transparent; flex-shrink:0; align-self:start; margin-top:2px; }
+    /* gap connector pill */
+    .mc2-gap { display:grid; grid-template-columns:20px 1fr; gap:0 10px; }
+    .mc2-gap-track { display:flex; flex-direction:column; align-items:center; }
+    .mc2-gap-line { width:1px; flex:1; min-height:8px; background:repeating-linear-gradient(to bottom,#fbbf24 0,#fbbf24 3px,transparent 3px,transparent 7px); }
+    .mc2-gap-pill { display:inline-flex; align-items:center; gap:4px; margin:3px 0; font-size:9px; font-weight:600; color:#d97706; background:#fef3c7; border:1px solid #fde68a; border-radius:100px; padding:2px 8px; letter-spacing:.03em; }
 
     /* ── TIMELINE ── */
     .timeline { padding:28px; width:100%; height:100%; display:flex; flex-direction:column; justify-content:center; gap:0; }
@@ -711,8 +721,9 @@
         </div>
       </div>
       <div class="rgt">
-        <div class="plat" style="max-width:420px; width:100%; height:auto;">
-          <!-- Header -->
+        <div class="plat" style="max-width:400px; width:100%; height:auto;">
+
+          <!-- Platform header -->
           <div class="hp-logo-row">
             <span class="hp-logo">c2treds</span>
             <div style="display:flex;gap:6px;">
@@ -721,41 +732,95 @@
             </div>
           </div>
           <div class="hp-div"></div>
+
           <!-- Section label -->
-          <div style="padding:9px 16px 6px; font-size:9px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#9ca3af;">Bid Lifecycle — How it works</div>
-          <!-- Step rows -->
-          <div class="mc2-row">
-            <div class="mc2-dot" style="background:#6366f1;"></div>
-            <div class="mc2-body">
-              <div class="mc2-title">Maker places bid</div>
-              <div class="mc2-sub">Bid is saved as a draft — not submitted to the auction</div>
+          <div style="padding:10px 16px 4px; font-size:9px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:#9ca3af;">Bid Lifecycle · FTU000187234</div>
+
+          <!-- Timeline -->
+          <div class="mc2-wrap">
+
+            <!-- Step 1: Maker places bid -->
+            <div class="mc2-step">
+              <div class="mc2-track">
+                <div class="mc2-dot" style="background:#6366f1;box-shadow:0 0 0 3px #ede9fe;"></div>
+                <div class="mc2-line" style="background:#e5e7eb;"></div>
+              </div>
+              <div class="mc2-body">
+                <div class="mc2-title">Maker places bid</div>
+                <div class="mc2-meta">
+                  <span>🕐 11:42 AM</span>
+                  <span>₹42,50,000</span>
+                  <span>Rate: <strong style="color:#1a2744;">5.50%</strong></span>
+                </div>
+                <div class="mc2-sub">Saved as draft — not submitted to the auction yet</div>
+              </div>
+              <div class="mc2-badge" style="background:#ede9fe;color:#6366f1;">Draft</div>
             </div>
-            <div class="mc2-badge" style="background:#ede9fe; color:#6366f1;">Draft</div>
-          </div>
-          <div class="mc2-connector"></div>
-          <div class="mc2-row" style="background:#fffbeb;">
-            <div class="mc2-dot" style="background:#f59e0b;"></div>
-            <div class="mc2-body">
-              <div class="mc2-title" style="color:#92400e;">Checker pending</div>
-              <div class="mc2-sub" style="color:#b45309;">Auction is live. This bid is not. The gap begins here.</div>
+
+            <!-- Gap connector -->
+            <div class="mc2-gap">
+              <div class="mc2-gap-track">
+                <div class="mc2-gap-line" style="min-height:30px;"></div>
+              </div>
+              <div style="display:flex;align-items:center;padding:4px 0;">
+                <div class="mc2-gap-pill">⏱ 23 min — auction is running, bid is inactive</div>
+              </div>
             </div>
-            <div class="mc2-badge" style="background:#fef3c7; color:#d97706; border-color:#fde68a;">Waiting</div>
-          </div>
-          <div class="mc2-connector"></div>
-          <div class="mc2-row">
-            <div class="mc2-dot" style="background:#10b981;"></div>
-            <div class="mc2-body">
-              <div class="mc2-title">Checker approves</div>
-              <div class="mc2-sub">Bid goes live. Visible to all auction participants.</div>
+
+            <!-- Step 2: Checker pending -->
+            <div class="mc2-step" style="background:transparent;">
+              <div class="mc2-track">
+                <div class="mc2-dot" style="background:#f59e0b;box-shadow:0 0 0 3px #fef3c7;"></div>
+                <div class="mc2-line" style="background:#fde68a;"></div>
+              </div>
+              <div class="mc2-body" style="background:#fffbeb;border-radius:8px;padding:7px 9px 7px;margin-bottom:6px;">
+                <div class="mc2-title" style="color:#92400e;">Checker pending</div>
+                <div class="mc2-meta" style="color:#d97706;">
+                  <span>🕐 11:42 – 12:05 AM</span>
+                  <span>₹42,50,000 idle</span>
+                </div>
+                <div class="mc2-sub" style="color:#b45309;">Auction live. This bid is invisible to all participants. Lowest competing bid is 5.48%.</div>
+              </div>
+              <div class="mc2-badge" style="background:#fef3c7;color:#d97706;border-color:#fde68a;">Waiting</div>
             </div>
-            <div class="mc2-badge" style="background:#d1fae5; color:#065f46;">Live</div>
-          </div>
-          <div class="hp-div" style="margin-top:4px;"></div>
+
+            <!-- Gap connector -->
+            <div class="mc2-gap">
+              <div class="mc2-gap-track">
+                <div class="mc2-gap-line" style="min-height:30px;"></div>
+              </div>
+              <div style="display:flex;align-items:center;padding:4px 0;">
+                <div class="mc2-gap-pill" style="background:#d1fae5;color:#065f46;border-color:#6ee7b7;">✓ Checker approves at 12:05 PM</div>
+              </div>
+            </div>
+
+            <!-- Step 3: Bid live -->
+            <div class="mc2-step">
+              <div class="mc2-track">
+                <div class="mc2-dot" style="background:#10b981;box-shadow:0 0 0 3px #d1fae5;"></div>
+                <div class="mc2-line" style="background:transparent;"></div>
+              </div>
+              <div class="mc2-body">
+                <div class="mc2-title">Bid goes live</div>
+                <div class="mc2-meta">
+                  <span>🕐 12:05 PM</span>
+                  <span>₹42,50,000</span>
+                  <span>Rate: <strong style="color:#1a2744;">5.50%</strong></span>
+                </div>
+                <div class="mc2-sub">Visible to all auction participants. But auction closes at 12:10 PM.</div>
+              </div>
+              <div class="mc2-badge" style="background:#d1fae5;color:#065f46;">Live</div>
+            </div>
+
+          </div><!-- /mc2-wrap -->
+
+          <div class="hp-div"></div>
           <!-- Note ribbon -->
-          <div style="padding:9px 16px; background:#fef9ec; display:flex; align-items:flex-start; gap:8px;">
-            <span style="font-size:11px; color:#d97706; margin-top:1px; flex-shrink:0;">⚠</span>
-            <span style="font-size:10px; color:#92400e; line-height:1.6;">The gap between Draft and Approval is where ₹8.97 Cr went unnoticed.</span>
+          <div style="padding:8px 16px 10px; background:#fef9ec; display:flex; align-items:flex-start; gap:8px;">
+            <span style="font-size:11px;color:#d97706;margin-top:1px;flex-shrink:0;">⚠</span>
+            <span style="font-size:10px;color:#92400e;line-height:1.6;">23 minutes of auction ran while this bid sat invisible. This is where ₹8.97 Cr was lost.</span>
           </div>
+
         </div>
       </div>
     </div>
