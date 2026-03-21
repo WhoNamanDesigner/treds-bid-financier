@@ -385,7 +385,9 @@
     /* ── HERO SLIDE COPY ── */
     .hero-copy { margin-bottom:32px; }
     .hc-big { font-family:var(--serif); font-style:italic; font-weight:500; font-size:clamp(32px,3.6vw,50px); line-height:1.1; letter-spacing:-0.015em; color:var(--t); margin-bottom:20px; }
-    .hc-lines { display:flex; flex-direction:column; gap:0; font-size:clamp(15px,1.6vw,19px); }
+    .hc-lines { display:flex; flex-direction:column; gap:0; }
+    .hc-facts { margin-bottom:18px; display:flex; flex-direction:column; gap:2px; }
+    .hc-facts span { display:block; font-size:clamp(13px,1.25vw,15px); color:rgba(240,235,228,0.50); line-height:1.72; font-weight:400; letter-spacing:0.008em; }
     .hc-amt { color:var(--red); text-decoration:underline; text-decoration-color:rgba(229,57,53,0.35); text-decoration-thickness:2px; text-underline-offset:6px; }
     .hcl-fact { display:block; color:rgba(240,235,228,0.72); line-height:1.8; font-weight:400; }
     .hcl-tag  { display:block; color:var(--t3); font-size:0.82em; font-style:italic; line-height:1.6; margin-top:10px; letter-spacing:0.01em; }
@@ -569,8 +571,10 @@
         <div class="hero-copy">
           <div class="hc-big"><span class="hc-amt">₹8.97 Cr</span> lost — in a single auction</div>
           <div class="hc-lines">
-            <span class="hcl-fact">A financier placed the lowest bid</span>
-            <span class="hcl-fact">But couldn't tell it was theirs</span>
+            <div class="hc-facts">
+              <span>A financier placed the lowest bid</span>
+              <span>But couldn't tell it was theirs</span>
+            </div>
             <span class="hcl-tag">They thought they were winning</span>
             <strong class="hcl-bold">They lost every bid</strong>
           </div>
