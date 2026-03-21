@@ -399,11 +399,12 @@
     .hp-ctas { display:flex; justify-content:flex-end; gap:6px; padding:5px 14px; flex-shrink:0; }
     .hp-filters { display:flex; gap:5px; padding:6px 14px; flex-shrink:0; align-items:center; }
     .hp-filter { border:1px solid #e5e7eb; background:#fff; border-radius:100px; padding:3px 9px; font-size:9px; color:#374151; cursor:default; font-family:var(--sans); white-space:nowrap; }
-    /* ── Hero 9-col grid — checkbox fixed, 8 data cols equal 1fr ── */
-    .gc-hero { grid-template-columns: 16px repeat(8,1fr); gap:6px; }
-    /* All hero cells truncate — no overflow bleed */
-    #hero-tw .plat-cell, #hero-tw .plat-ftu, #hero-tw [data-hr],
+    /* ── Hero 9-col grid — cb 16px, FU fixed 88px, 7 cols equal 1fr ── */
+    .gc-hero { grid-template-columns: 16px 88px repeat(7,1fr); gap:6px; }
+    /* Buyer/supplier/bid cells truncate; FU always fully visible */
+    #hero-tw .plat-cell, #hero-tw [data-hr],
     #hero-plat .plat-thead.gc-hero > div { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    #hero-tw .plat-ftu { overflow:visible; white-space:nowrap; }
     /* ── Bottom ribbon ── */
     .hero-ribbon { flex-shrink:0; border-top:1.5px solid #e8eaed; background:#f9fafb; padding:7px 14px; display:flex; align-items:center; gap:8px; font-size:10px; color:#6b7280; font-family:var(--sans); }
     .hero-ribbon strong { color:#1a2744; font-weight:700; }
@@ -1717,7 +1718,7 @@
     // Build rows with stagger fade-in
     HERO_FTUS.forEach((f, i) => {
       const r = simRow('gc-hero', `
-        <div class="plat-cb on"></div>
+        <div class="plat-cb"></div>
         <div class="plat-ftu" style="font-size:9px;">${f.id}</div>
         <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.buyer}</div>
         <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.sup}</div>
