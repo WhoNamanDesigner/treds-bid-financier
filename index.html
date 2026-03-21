@@ -160,6 +160,15 @@
     .mc-box-name { font-family:var(--serif); font-style:italic; font-size:17px; color:var(--t); }
     .mc-box-sub { font-size:11px; color:var(--t3); margin-top:4px; }
     .mc-arr { text-align:center; font-size:13px; color:var(--t3); }
+    /* ── mc2: light-theme step rows for Slide 02 ── */
+    .mc2-row { display:flex; align-items:center; gap:11px; padding:11px 16px; background:#fff; }
+    .mc2-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+    .mc2-body { flex:1; min-width:0; }
+    .mc2-title { font-size:12px; font-weight:600; color:#1a2744; margin-bottom:2px; }
+    .mc2-sub { font-size:10px; color:#6b7280; line-height:1.5; }
+    .mc2-badge { font-size:9px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:100px; border:1px solid transparent; flex-shrink:0; }
+    .mc2-connector { height:1px; background:#f3f4f6; margin:0 16px; position:relative; }
+    .mc2-connector::after { content:''; position:absolute; left:50%; top:-4px; transform:translateX(-50%); width:1px; height:8px; background:#e5e7eb; }
 
     /* ── TIMELINE ── */
     .timeline { padding:28px; width:100%; height:100%; display:flex; flex-direction:column; justify-content:center; gap:0; }
@@ -398,6 +407,7 @@
     .hp-div { height:1px; background:#e8eaed; flex-shrink:0; }
     .hp-ctas { display:flex; justify-content:flex-end; gap:6px; padding:5px 14px; flex-shrink:0; }
     .hp-filters { display:flex; gap:5px; padding:6px 14px; flex-shrink:0; align-items:center; }
+    .hp-filter-ico { display:flex; align-items:center; margin-right:2px; flex-shrink:0; }
     .hp-filter { border:1px solid #e5e7eb; background:#fff; border-radius:100px; padding:3px 9px; font-size:9px; color:#374151; cursor:default; font-family:var(--sans); white-space:nowrap; }
     /* ── Hero 9-col grid — cb 16px, FU fixed 88px, 7 cols equal 1fr ── */
     .gc-hero { grid-template-columns: 16px 88px repeat(7,1fr); gap:6px; }
@@ -629,6 +639,11 @@
 
           <!-- Row 4: Filters -->
           <div class="hp-filters">
+            <span class="hp-filter-ico">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 2.5h10L7.2 6.8V10.5L4.8 9.2V6.8L1 2.5z" fill="#9ca3af"/>
+              </svg>
+            </span>
             <button class="hp-filter">All Buyers ▾</button>
             <button class="hp-filter">All Suppliers ▾</button>
             <button class="hp-filter">All Status ▾</button>
@@ -674,7 +689,7 @@
             <div class="hq-question">Are they leading this auction?</div>
             <div class="hq-btns" id="hd-btns">
               <button class="hq-btn" onclick="heroAnswer('no')">Impossible to tell</button>
-              <button class="hq-btn yes cue" onclick="heroAnswer('yes')">Yes — they're leading</button>
+              <button class="hq-btn yes" onclick="heroAnswer('yes')">Yes — they're leading</button>
             </div>
           </div>
 
@@ -696,38 +711,50 @@
         </div>
       </div>
       <div class="rgt">
-        <div class="panel" style="background:#0a0c10;">
-          <div class="mc">
-            <div class="mc-row">
-              <div class="mc-box maker">
-                <div class="mc-box-tag">Maker</div>
-                <div class="mc-box-name">Places Bid</div>
-                <div class="mc-box-sub">Draft — not live</div>
-              </div>
-              <div class="mc-arr">→</div>
-              <div class="mc-box danger">
-                <div class="mc-box-tag" style="color:rgba(255,183,77,0.5);">Gap</div>
-                <div class="mc-box-name" style="color:var(--amber);">Checker Pending</div>
-                <div class="mc-box-sub">Auction continues. Bid inactive.</div>
-              </div>
+        <div class="plat" style="max-width:420px; width:100%; height:auto;">
+          <!-- Header -->
+          <div class="hp-logo-row">
+            <span class="hp-logo">c2treds</span>
+            <div style="display:flex;gap:6px;">
+              <button class="pb" disabled>Withdraw</button>
+              <button class="pb dk" disabled>Approve Bid</button>
             </div>
-            <div style="height:14px; display:flex; justify-content:center; align-items:center; color:var(--t3); font-size:13px;">↓</div>
-            <div class="mc-row">
-              <div class="mc-box checker">
-                <div class="mc-box-tag">Checker</div>
-                <div class="mc-box-name">Approves Bid</div>
-                <div class="mc-box-sub">Now live on platform</div>
-              </div>
-              <div class="mc-arr">→</div>
-              <div class="mc-box" style="border-color:rgba(102,187,106,0.2); background:rgba(102,187,106,0.04);">
-                <div class="mc-box-tag" style="color:rgba(102,187,106,0.5);">Active</div>
-                <div class="mc-box-name" style="color:var(--green);">Bid Competing</div>
-                <div class="mc-box-sub">Visible to all participants</div>
-              </div>
+          </div>
+          <div class="hp-div"></div>
+          <!-- Section label -->
+          <div style="padding:9px 16px 6px; font-size:9px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#9ca3af;">Bid Lifecycle — How it works</div>
+          <!-- Step rows -->
+          <div class="mc2-row">
+            <div class="mc2-dot" style="background:#6366f1;"></div>
+            <div class="mc2-body">
+              <div class="mc2-title">Maker places bid</div>
+              <div class="mc2-sub">Bid is saved as a draft — not submitted to the auction</div>
             </div>
-            <div style="margin-top:14px; padding:12px 16px; background:rgba(255,183,77,0.06); border:1px solid rgba(255,183,77,0.15); border-radius:9px; font-size:11px; color:rgba(255,183,77,0.7); line-height:1.6; text-align:center;">
-              The gap between Maker placement and Checker approval is where the ₹8.97 Cr incident happened.
+            <div class="mc2-badge" style="background:#ede9fe; color:#6366f1;">Draft</div>
+          </div>
+          <div class="mc2-connector"></div>
+          <div class="mc2-row" style="background:#fffbeb;">
+            <div class="mc2-dot" style="background:#f59e0b;"></div>
+            <div class="mc2-body">
+              <div class="mc2-title" style="color:#92400e;">Checker pending</div>
+              <div class="mc2-sub" style="color:#b45309;">Auction is live. This bid is not. The gap begins here.</div>
             </div>
+            <div class="mc2-badge" style="background:#fef3c7; color:#d97706; border-color:#fde68a;">Waiting</div>
+          </div>
+          <div class="mc2-connector"></div>
+          <div class="mc2-row">
+            <div class="mc2-dot" style="background:#10b981;"></div>
+            <div class="mc2-body">
+              <div class="mc2-title">Checker approves</div>
+              <div class="mc2-sub">Bid goes live. Visible to all auction participants.</div>
+            </div>
+            <div class="mc2-badge" style="background:#d1fae5; color:#065f46;">Live</div>
+          </div>
+          <div class="hp-div" style="margin-top:4px;"></div>
+          <!-- Note ribbon -->
+          <div style="padding:9px 16px; background:#fef9ec; display:flex; align-items:flex-start; gap:8px;">
+            <span style="font-size:11px; color:#d97706; margin-top:1px; flex-shrink:0;">⚠</span>
+            <span style="font-size:10px; color:#92400e; line-height:1.6;">The gap between Draft and Approval is where ₹8.97 Cr went unnoticed.</span>
           </div>
         </div>
       </div>
@@ -1740,7 +1767,7 @@
     const btns = document.getElementById('hd-btns');
     if (btns) btns.innerHTML = `
       <button class="hq-btn" onclick="heroAnswer('no')">Impossible to tell</button>
-      <button class="hq-btn yes cue" onclick="heroAnswer('yes')">Yes — they're leading</button>`;
+      <button class="hq-btn yes" onclick="heroAnswer('yes')">Yes — they're leading</button>`;
 
     heroPg = 0;
     heroRenderPage(0, true);
