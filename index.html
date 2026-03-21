@@ -281,9 +281,9 @@
     .plat-banner { background:#eff6ff; padding:7px 14px; font-size:11px; color:#1a2744; font-weight:500; text-align:center; display:none; border-bottom:1px solid #bfdbfe; flex-shrink:0; }
     .plat-banner.show { display:block; }
     .plat-tbl { flex:1; overflow:hidden; display:flex; flex-direction:column; min-height:0; }
-    .plat-thead { display:grid; padding:7px 14px; background:#f5f6f7; border-bottom:1.5px solid #e0e0e0; font-size:10px; font-weight:600; color:#4b5563; flex-shrink:0; }
+    .plat-thead { display:grid; padding:7px 16px; background:#f5f6f7; border-bottom:1.5px solid #e0e0e0; font-size:10px; font-weight:600; color:#4b5563; flex-shrink:0; }
     .plat-tbody { flex:1; overflow-y:auto; }
-    .plat-row { display:grid; padding:9px 14px; border-bottom:1px solid #f0f0f0; align-items:center; cursor:pointer; transition:background 0.12s; }
+    .plat-row { display:grid; padding:9px 16px; border-bottom:1px solid #f0f0f0; align-items:center; cursor:pointer; transition:background 0.12s; }
     .plat-row:hover { background:#fafafa; }
     .plat-row.sel { background:#eff6ff; }
     .plat-cb { width:13px; height:13px; border:1.5px solid #d0d5dd; border-radius:3px; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
@@ -398,8 +398,11 @@
     .hp-ctas { display:flex; justify-content:flex-end; gap:6px; padding:5px 14px; flex-shrink:0; }
     .hp-filters { display:flex; gap:5px; padding:6px 14px; flex-shrink:0; align-items:center; }
     .hp-filter { border:1px solid #e5e7eb; background:#fff; border-radius:100px; padding:3px 9px; font-size:9px; color:#374151; cursor:default; font-family:var(--sans); white-space:nowrap; }
-    /* ── Hero 9-col grid — buyer/supplier flex-grow, rest fixed ── */
-    .gc-hero { grid-template-columns: 13px 76px minmax(72px,1fr) minmax(68px,1fr) 54px 38px 24px 36px 38px; gap:4px; }
+    /* ── Hero 9-col grid — checkbox fixed, 8 data cols equal 1fr ── */
+    .gc-hero { grid-template-columns: 16px repeat(8,1fr); gap:6px; }
+    /* All hero cells truncate — no overflow bleed */
+    #hero-tw .plat-cell, #hero-tw .plat-ftu, #hero-tw [data-hr],
+    #hero-plat .plat-thead.gc-hero > div { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     /* ── Bottom ribbon ── */
     .hero-ribbon { flex-shrink:0; border-top:1.5px solid #e8eaed; background:#f9fafb; padding:7px 14px; display:flex; align-items:center; gap:8px; font-size:10px; color:#6b7280; font-family:var(--sans); }
     .hero-ribbon strong { color:#1a2744; font-weight:700; }
