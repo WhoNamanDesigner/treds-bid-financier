@@ -386,12 +386,11 @@
     .hero-copy { margin-bottom:32px; }
     .hc-big { font-family:var(--serif); font-style:italic; font-weight:500; font-size:clamp(32px,3.6vw,50px); line-height:1.1; letter-spacing:-0.015em; color:var(--t); margin-bottom:20px; }
     .hc-lines { display:flex; flex-direction:column; gap:0; }
-    .hc-facts { margin-bottom:18px; display:flex; flex-direction:column; gap:2px; }
-    .hc-facts span { display:block; font-size:clamp(13px,1.25vw,15px); color:rgba(240,235,228,0.50); line-height:1.72; font-weight:400; letter-spacing:0.008em; }
+    .hc-facts { margin-bottom:20px; font-size:clamp(13px,1.25vw,15px); color:rgba(240,235,228,0.52); line-height:1.72; font-weight:400; letter-spacing:0.008em; max-width:38ch; }
     .hc-amt { color:var(--red); text-decoration:underline; text-decoration-color:rgba(229,57,53,0.35); text-decoration-thickness:2px; text-underline-offset:6px; }
     .hcl-fact { display:block; color:rgba(240,235,228,0.72); line-height:1.8; font-weight:400; }
-    .hcl-tag  { display:inline-block; background:rgba(229,57,53,0.55); color:#fff; font-size:clamp(9px,0.85vw,11px); font-weight:600; text-transform:uppercase; letter-spacing:0.14em; padding:3px 9px; border-radius:3px; font-style:normal; line-height:1.6; }
-    .hcl-bold { display:inline-block; background:var(--red); color:#fff; font-size:clamp(10px,0.95vw,12px); font-weight:700; text-transform:uppercase; letter-spacing:0.14em; padding:4px 10px; border-radius:3px; margin-top:7px; line-height:1.6; }
+    .hcl-tag  { display:inline-block; background:rgba(229,57,53,0.78); color:#fff; font-size:clamp(10px,0.95vw,12px); font-weight:600; text-transform:uppercase; letter-spacing:0.12em; padding:4px 12px; border-radius:4px; font-style:normal; line-height:1.6; }
+    .hcl-bold { display:inline-block; background:var(--red); color:#fff; font-size:clamp(11px,1.05vw,13px); font-weight:700; text-transform:uppercase; letter-spacing:0.12em; padding:5px 12px; border-radius:4px; margin-top:8px; line-height:1.6; }
     /* Zoom layer */
     .hero-zoom { flex-shrink:0; border-top:1px solid #f0f0f0; padding:9px 16px; background:#f9fafb; }
     .hz-inner { display:flex; align-items:center; justify-content:center; gap:24px; }
@@ -571,10 +570,7 @@
         <div class="hero-copy">
           <div class="hc-big"><span class="hc-amt">₹8.97 Cr</span> lost — in a single auction</div>
           <div class="hc-lines">
-            <div class="hc-facts">
-              <span>A financier placed the lowest bid</span>
-              <span>But couldn't tell it was theirs</span>
-            </div>
+            <p class="hc-facts">A financier placed the lowest bid — but couldn't tell it was theirs.</p>
             <span class="hcl-tag">They thought they were winning</span>
             <strong class="hcl-bold">They lost every bid</strong>
           </div>
