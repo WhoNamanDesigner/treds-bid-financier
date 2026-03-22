@@ -789,9 +789,7 @@
               <div class="mc2-gap-track">
                 <div class="mc2-gap-line" style="min-height:30px;"></div>
               </div>
-              <div style="display:flex;align-items:center;padding:4px 0;">
-                <div class="mc2-gap-pill">⏱ 23 min — auction is running, bid is inactive</div>
-              </div>
+            </div>
             </div>
 
             <!-- Step 2: Checker pending -->
@@ -805,14 +803,14 @@
                 <div class="mc2-meta" style="color:#d97706;">
                   <span>11:42 – 12:05 AM</span>
                   <span>·</span>
-                  <span>₹42,50,000 idle</span>
+                  <span>₹42,50,000</span>
                   <span>·</span>
                   <span>My Bid: <strong style="color:#d97706;">5.50%</strong></span>
                 </div>
                 <div class="mc2-sub" style="color:#b45309;">Our bid is invisible — no position held in the auction.</div>
                 <div style="margin-top:7px;padding:6px 9px;background:rgba(251,191,36,0.18);border-radius:5px;border-left:2px solid #d97706;">
-                  <span style="font-size:10px;font-weight:700;color:#92400e;font-family:var(--sans);display:block;margin-bottom:1px;">↳ 12:04 PM — Financier B's Checker approves. Bid goes live at 5.50%.</span>
-                  <span style="font-size:10px;color:#b45309;font-family:var(--sans);line-height:1.5;">Financier B placed their bid at 12:04 PM — no maker-checker delay on their side. Bid went live instantly. Sixty seconds before ours.</span>
+                  <span style="font-size:10px;font-weight:700;color:#92400e;font-family:var(--sans);display:block;margin-bottom:1px;">↳ 12:04 PM — DCB Bank's Checker approves. Bid goes live at 5.50%.</span>
+                  <span style="font-size:10px;color:#b45309;font-family:var(--sans);line-height:1.5;">DCB Bank placed their bid at 12:04 PM — no maker-checker delay on their side. Bid went live instantly. Sixty seconds before ours.</span>
                 </div>
               </div>
               <div class="mc2-badge" style="background:#fef3c7;color:#d97706;border-color:#fde68a;">Waiting</div>
@@ -823,8 +821,11 @@
               <div class="mc2-gap-track">
                 <div class="mc2-gap-line" style="min-height:30px;"></div>
               </div>
-              <div style="display:flex;align-items:center;padding:4px 0;">
-                <div class="mc2-gap-pill" style="background:#d1fae5;color:#065f46;border-color:#6ee7b7;">✓ Checker approves at 12:05 PM</div>
+              <div style="display:flex;flex-direction:column;gap:5px;padding:4px 0;">
+                <div style="padding:5px 9px;background:#fef2f2;border-radius:5px;border-left:2px solid #dc2626;font-size:10px;color:#b91c1c;font-family:var(--sans);line-height:1.5;">
+                  <strong>12:04 PM — DCB Bank's bid is now live at 5.50%.</strong><br>If Barclays' Maker checked the screen right now — Lowest Bid would show 5.50%. No name. No ownership signal. Impossible to know it's a competitor.
+                </div>
+                <div class="mc2-gap-pill" style="background:#d1fae5;color:#065f46;border-color:#6ee7b7;">✓ Barclays' Checker approves at 12:05 PM</div>
               </div>
             </div>
 
@@ -845,7 +846,7 @@
                   <span>·</span>
                   <span>Lowest Bid: <strong style="color:#dc2626;">5.50%</strong></span>
                 </div>
-                <div class="mc2-sub">Our bid enters the auction at 12:05 PM. Financier B was approved at 12:04 PM — seconds earlier. TReDS rule: equal rate, first-in wins. Financier B gets every FTU. Our financier is allocated nothing.</div>
+                <div class="mc2-sub">Our bid enters the auction at 12:05 PM. DCB Bank was approved at 12:04 PM — seconds earlier. TReDS rule: equal rate, first-in wins. DCB Bank gets every FTU. Our financier is allocated nothing.</div>
               </div>
               <div class="mc2-badge" style="background:#d1fae5;color:#065f46;">Live</div>
             </div>
@@ -856,7 +857,7 @@
           <!-- Note ribbon -->
           <div style="padding:8px 16px 10px; background:#fef9ec; display:flex; align-items:flex-start; gap:8px;">
             <span style="font-size:11px;color:#d97706;margin-top:1px;flex-shrink:0;">⚠</span>
-            <span style="font-size:10px;color:#92400e;line-height:1.6;">Same rate. Same amount. Financier B was seconds ahead. TReDS gave them priority — and ₹8.97 Cr went with it.</span>
+            <span style="font-size:10px;color:#92400e;line-height:1.6;">Same rate. Same amount. DCB Bank was seconds ahead. TReDS gave them priority — and ₹8.97 Cr went with it.</span>
           </div>
 
         </div>
@@ -937,7 +938,7 @@
           </div>
           <div class="hero-q-panel fail-panel" id="cp-fail-2">
             <span class="fail-tag">● Failure 02 — Mapped</span>
-            <div class="fail-finding">At 12:04 PM — one minute before our Checker approves — Financier B's bid goes live at 5.50%. Seconds separate first-in from second-in.</div>
+            <div class="fail-finding">At 12:04 PM — one minute before our Checker approves — DCB Bank's bid goes live at 5.50%. Seconds separate first-in from second-in.</div>
             <div class="fail-note">No alert. No visual change. The platform said nothing. TReDS rule: equal rate, first-in wins.</div>
             <button class="pb" style="margin-top:10px;" onclick="resumeCP()">Continue →</button>
           </div>
@@ -976,7 +977,7 @@
           </div>
         </div>
         <div class="sim-reveal" id="s3-reveal">
-          The auction just closed. Both bids show 5.50% — but Financier B entered 23 minutes before you. Check <strong>Bid Accepted Today →</strong>
+          The auction just closed. Both bids show 5.50% — but DCB Bank entered 23 minutes before you. Check <strong>Bid Accepted Today →</strong>
         </div>
       </div>
       <div class="rgt">
@@ -984,8 +985,8 @@
           <div class="hp-logo-row">
             <span class="hp-logo">c2treds</span>
             <div style="display:flex;gap:6px;">
-              <button class="pb">Withdraw</button>
-              <button class="pb dk">Revise Bid</button>
+              <button class="pb" disabled>Withdraw</button>
+              <button class="pb dk" disabled>Revise Bid</button>
             </div>
           </div>
           <div class="hp-div"></div>
@@ -1051,7 +1052,7 @@
         <div class="hc-big" style="color:var(--red);">₹8.97 Cr.<br>Gone.</div>
         <div class="body">
           <p>My Bid: <strong>5.50%</strong>. Winning Bid: <strong>5.50%</strong>. Status: <strong style="color:var(--red);">Bid Lost</strong> — on every single FTU.</p>
-          <p>This is what the financier saw when the auction closed. Same rate. Every FTU lost. Financier B's Checker approved at 12:04 PM — seconds before ours. TReDS rule: equal rate, first-in wins.</p>
+          <p>This is what the financier saw when the auction closed. Same rate. Every FTU lost. DCB Bank's Checker approved at 12:04 PM — seconds before ours. TReDS rule: equal rate, first-in wins.</p>
           <p style="color:var(--t3);font-size:13px;margin-top:6px;">The platform offered no explanation — before, during, or after. Five failures. All mapped.</p>
         </div>
       </div>
@@ -1989,7 +1990,7 @@
     const step = document.getElementById('sim-step');
     if (lbl) lbl.textContent = 'INVESTIGATION · OPEN FOR BID';
     if (h1) h1.innerHTML = 'I mapped every state of the system myself.';
-    if (body) body.innerHTML = '<p>To understand what the financier couldn\'t see, I walked the full bid lifecycle — tab by tab, state by state.</p><p>This is State 01. Bharat Metals Ltd. has opened 13 FTUs. The Maker\'s strategy: <strong>5.50%</strong> across all 13. Select all and place the bid.</p>';
+    if (body) body.innerHTML = '<p>To understand what the financier couldn\'t see, I walked the full bid lifecycle — tab by tab, state by state.</p><p>Bharat Metals Ltd. has opened 13 FTUs. 10 are visible on this page. The Maker\'s strategy: <strong>5.50%</strong> across all. Select all on this page and place the bid.</p>';
     if (step) { step.style.opacity = '1'; step.innerHTML = '← Use the header checkbox to select all 13 FTUs, then click <strong>Place Bid</strong>'; }
 
     // Reset tabs
@@ -2205,9 +2206,9 @@
     const h1   = document.getElementById('sim-h1');
     const body = document.getElementById('sim-body');
     const step = document.getElementById('sim-step');
-    if (lbl)  lbl.textContent = 'INVESTIGATION · STATE 02';
+    if (lbl)  lbl.textContent = 'INVESTIGATION · CHECKER PENDING';
     if (h1)   h1.textContent  = 'Bid submitted. The auction kept running.';
-    if (body) body.innerHTML  = '<p>State 02. Checker Pending. The bid shows in the Maker\'s view — with their rate. But it holds no position in the auction.</p><p>This is the 23-minute window. Another financier entered at 5.50% and went live immediately. The platform said nothing.</p>';
+    if (body) body.innerHTML  = '<p>State 02. Checker Pending. The bid shows in the Maker\'s view — with their rate. But it holds no position in the auction.</p><p>This is the 23-minute window. DCB Bank entered at 5.50% and went live immediately. Barclays Bank's bid was still invisible. The platform said nothing.</p>';
     if (step) step.innerHTML  = '⏳ Bid sits in Checker Pending. Not in the auction. Watch what the platform shows.';
     // Advance the thread — step 01 done, step 02 active
     const thread = document.getElementById('sim-thread');
@@ -2304,7 +2305,7 @@
 
   function showCPFail2() {
     // Just keep the greyout — no column-specific spotlight for failure 2
-    // (failure is about Financier B going live externally — nothing to spotlight in our table)
+    // (failure is about DCB Bank going live externally — nothing to spotlight in our table)
     const p1 = document.getElementById('cp-fail-1');
     const p2 = document.getElementById('cp-fail-2');
     if (p1) p1.classList.remove('show');
@@ -2349,7 +2350,7 @@
 
     HERO_FTUS.slice(0, 10).forEach((f, i) => {
       const r = simRow('gc-hero', `
-        <div class="plat-cb on"></div>
+        <div class="plat-cb"></div>
         <div class="plat-ftu" style="font-size:9px;white-space:nowrap;">${f.id}</div>
         <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.buyer}</div>
         <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.sup}</div>
