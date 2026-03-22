@@ -878,13 +878,13 @@
           <span class="inv-line"></span>
           <span class="inv-step">04</span>
         </div>
-        <div class="lbl" id="sim-lbl">INVESTIGATION · STATE 01</div>
+        <div class="lbl" id="sim-lbl">INVESTIGATION · OPEN FOR BID</div>
         <div class="hc-big" id="sim-h1">I walked every state of the system myself.</div>
         <div class="body" id="sim-body">
           <p>To understand what the financier couldn't see, I mapped the full bid lifecycle — tab by tab, state by state.</p>
-          <p>State 01. 13 FTUs open. Maker places a bulk bid at <strong>5.50%</strong> across all. Select all and place the bid.</p>
+          <p>10 FTUs visible on this page. Maker's strategy: <strong>5.50%</strong> across all. Select all on this page and place the bid.</p>
         </div>
-        <div class="sim-step" id="sim-step">← Use the header checkbox to select all 13 FTUs, then click <strong>Place Bid</strong></div>
+        <div class="sim-step" id="sim-step">← Use the header checkbox to select all 10 visible FTUs, then click <strong>Place Bid</strong></div>
       </div>
       <div class="rgt">
         <div class="plat" id="sim-plat">
@@ -925,14 +925,14 @@
           <div class="hp-pg" id="sim-pg" style="display:none;"></div>
           <div class="hero-q-panel" id="sim-approved" style="border-top:1.5px solid #d1fae5;background:#f0fdf4;">
             <div class="hq-label" style="color:#065f46;">✓ Checker Approved — 12:05 PM</div>
-            <div class="hq-question" style="font-size:13px;color:#1a2744;">Your bid of 5.50% on 13 FTUs is now live in the auction.</div>
+            <div class="hq-question" style="font-size:13px;color:#1a2744;">Your bid of 5.50% on 10 FTUs is now live in the auction.</div>
             <div style="margin-top:10px;">
               <button class="pb dk" onclick="simToMBIA()" style="width:100%;padding:8px 0;font-size:11px;border-radius:8px;">View in Auction →</button>
             </div>
           </div>
           <div class="hero-q-panel fail-panel" id="cp-fail-1">
-            <span class="fail-tag">● Failure 01 — Mapped</span>
-            <div class="fail-finding">The Maker can see their bid rate. The buyer can't. No signal that this bid is in draft or maker approved state — the platform shows it like any other row.</div>
+            <span class="fail-tag">● Failure 03 — Mapped</span>
+            <div class="fail-finding">The Maker can see their bid rate. No signal that this bid is in draft — the platform shows it like any active row.</div>
             <div class="fail-note">Bid sits in Checker Pending. Not live. Not competing. The screen doesn't say so.</div>
             <button class="pb" style="margin-top:10px;" onclick="showCPFail2()">Next failure →</button>
           </div>
@@ -963,10 +963,10 @@
           <span class="inv-line"></span>
           <span class="inv-step">04</span>
         </div>
-        <div class="lbl">INVESTIGATION · STATE 03</div>
+        <div class="lbl">INVESTIGATION · MY BID IN AUCTION</div>
         <div class="hc-big">Bid is live. This is the screen that failed them.</div>
         <div class="body">
-          <p>State 03. Checker approved. Bid enters the auction. My Bid: <strong>5.50%</strong>. Lowest Bid: <strong>5.50%</strong>.</p>
+          <p>Checker approved. Bid is now live in the auction. My Bid: <strong>5.50%</strong>. Lowest Bid: <strong>5.50%</strong>.</p>
           <p>The numbers are identical. The screen looks correct. But it cannot answer the one question that matters during a live auction.</p>
         </div>
         <div class="sim-decision" id="s3-decision">
@@ -977,7 +977,7 @@
           </div>
         </div>
         <div class="sim-reveal" id="s3-reveal">
-          The auction just closed. Both bids show 5.50% — but DCB Bank entered 23 minutes before you. Check <strong>Bid Accepted Today →</strong>
+          The auction just closed. Both bids show 5.50% — but DCB Bank's Checker approved 60 seconds before yours. Check <strong>Bid Accepted Today →</strong>
         </div>
       </div>
       <div class="rgt">
@@ -1025,7 +1025,7 @@
             <span>Lowest Bid <strong style="color:#dc2626;">5.50%</strong></span>
           </div>
           <div class="hero-q-panel fail-panel" id="mbia-fail">
-            <span class="fail-tag">● Failure 03 — Mapped</span>
+            <span class="fail-tag">● Failure 01 — Mapped</span>
             <div class="fail-finding">The column shows a value — not ownership. My Bid: 5.50%. Lowest Bid: 5.50%. Identical. The financier is asking "is the lowest bid mine?" — the system cannot answer.</div>
             <div class="fail-note">No ownership signal exists anywhere on this screen.</div>
             <button class="pb" style="margin-top:10px;" onclick="resumeMBIA()">Continue →</button>
@@ -1048,11 +1048,11 @@
           <span class="inv-line"></span>
           <span class="inv-step act">04</span>
         </div>
-        <div class="lbl">INVESTIGATION · STATE 04</div>
+        <div class="lbl">INVESTIGATION · BID ACCEPTED TODAY</div>
         <div class="hc-big" style="color:var(--red);">₹8.97 Cr.<br>Gone.</div>
         <div class="body">
           <p>My Bid: <strong>5.50%</strong>. Winning Bid: <strong>5.50%</strong>. Status: <strong style="color:var(--red);">Bid Lost</strong> — on every single FTU.</p>
-          <p>This is what the financier saw when the auction closed. Same rate. Every FTU lost. DCB Bank's Checker approved at 12:04 PM — seconds before ours. TReDS rule: equal rate, first-in wins.</p>
+          <p>This is what the financier saw when the auction closed. Same rate. Every FTU lost. DCB Bank's bid went live at 12:04 PM — 60 seconds before ours at 12:05 PM. TReDS rule: equal rate, first-in wins.</p>
           <p style="color:var(--t3);font-size:13px;margin-top:6px;">The platform offered no explanation — before, during, or after. Five failures. All mapped.</p>
         </div>
       </div>
@@ -1991,11 +1991,11 @@
               <span style="font-size:9px;background:rgba(102,187,106,0.12);color:#66bb6a;border:1px solid rgba(102,187,106,0.25);border-radius:100px;padding:2px 8px;font-weight:600;">Shipped ✓</span>
             </div>
 
-            <!-- Failure 03 -->
+            <!-- Failure 01 -->
             <div style="background:#161616;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;margin-bottom:8px;">
               <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px;">
                 <span style="font-size:10px;font-weight:600;color:rgba(240,235,228,0.9);">Bid Position Indicator</span>
-                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.7);white-space:nowrap;flex-shrink:0;">Failure 03</span>
+                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.7);white-space:nowrap;flex-shrink:0;">Failure 01</span>
               </div>
               <div style="font-size:10px;color:rgba(240,235,228,0.38);line-height:1.55;margin-bottom:6px;">My Bid 5.50% = Lowest Bid 5.50% — no ownership signal.</div>
               <div style="font-size:10px;color:#66bb6a;line-height:1.55;">→ Leading / Tied / Behind — inline on every row, live during auction.</div>
@@ -2021,11 +2021,11 @@
               <span style="font-size:9px;background:rgba(255,183,77,0.1);color:#ffb74d;border:1px solid rgba(255,183,77,0.25);border-radius:100px;padding:2px 8px;font-weight:600;">Scoped →</span>
             </div>
 
-            <!-- Failure 01 -->
+            <!-- Failure 03 -->
             <div style="background:#161616;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:11px 14px;margin-bottom:7px;opacity:0.75;">
               <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px;">
                 <span style="font-size:10px;font-weight:600;color:rgba(240,235,228,0.75);">Draft State Visibility</span>
-                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.5);white-space:nowrap;flex-shrink:0;">Failure 01</span>
+                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.5);white-space:nowrap;flex-shrink:0;">Failure 03</span>
               </div>
               <div style="font-size:10px;color:rgba(240,235,228,0.32);line-height:1.55;">Maker sees bid, assumes it's competing. It isn't. → "Not in auction yet" badge on every CP row.</div>
             </div>
@@ -2368,8 +2368,8 @@
     const step = document.getElementById('sim-step');
     if (lbl) lbl.textContent = 'INVESTIGATION · OPEN FOR BID';
     if (h1) h1.innerHTML = 'I mapped every state of the system myself.';
-    if (body) body.innerHTML = '<p>To understand what the financier couldn\'t see, I walked the full bid lifecycle — tab by tab, state by state.</p><p>Bharat Metals Ltd. has opened 13 FTUs. 10 are visible on this page. The Maker\'s strategy: <strong>5.50%</strong> across all. Select all on this page and place the bid.</p>';
-    if (step) { step.style.opacity = '1'; step.innerHTML = '← Use the header checkbox to select all 13 FTUs, then click <strong>Place Bid</strong>'; }
+    if (body) body.innerHTML = '<p>To understand what the financier couldn\'t see, I walked the full bid lifecycle — tab by tab, state by state.</p><p>Bharat Metals Ltd. has 10 FTUs open on this page. The Maker\'s strategy: <strong>5.50%</strong> across all. Select all and place the bid.</p>';
+    if (step) { step.style.opacity = '1'; step.innerHTML = '← Use the header checkbox to select all 10 visible FTUs, then click <strong>Place Bid</strong>'; }
 
     // Reset tabs
     const t0 = document.getElementById('sim-t0');
@@ -2586,7 +2586,7 @@
     const step = document.getElementById('sim-step');
     if (lbl)  lbl.textContent = 'INVESTIGATION · CHECKER PENDING';
     if (h1)   h1.textContent  = 'Bid submitted. The auction kept running.';
-    if (body) body.innerHTML  = '<p>State 02. Checker Pending. The bid shows in the Maker\'s view — with their rate. But it holds no position in the auction.</p><p>This is the 23-minute window. DCB Bank entered at 5.50% and went live immediately. Barclays Bank\'s bid was still invisible. The platform said nothing.</p>';
+    if (body) body.innerHTML  = '<p>Bid submitted. Now sitting in Checker Pending — not live, not competing. The Maker\'s view still shows the rate. The auction continued without them.</p><p>At 12:04 PM — while still in this queue — DCB Bank\'s bid went live at 5.50%. Barclays Bank\'s bid was still invisible. The platform said nothing.</p>';
     if (step) step.innerHTML  = '⏳ Bid sits in Checker Pending. Not in the auction. Watch what the platform shows.';
     // Advance the thread — step 01 done, step 02 active
     const thread = document.getElementById('sim-thread');
