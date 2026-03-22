@@ -870,13 +870,13 @@
     <div class="row">
       <div class="lft">
         <div class="inv-thread" id="sim-thread">
-          <span class="inv-step act">01 · Open For Bid</span>
+          <span class="inv-step act">01</span>
           <span class="inv-line"></span>
-          <span class="inv-step">02 · Checker Pending</span>
+          <span class="inv-step">02</span>
           <span class="inv-line"></span>
-          <span class="inv-step">03 · My Bid In Auction</span>
+          <span class="inv-step">03</span>
           <span class="inv-line"></span>
-          <span class="inv-step">04 · Bid Accepted</span>
+          <span class="inv-step">04</span>
         </div>
         <div class="lbl" id="sim-lbl">INVESTIGATION · STATE 01</div>
         <div class="hc-big" id="sim-h1">I walked every state of the system myself.</div>
@@ -961,13 +961,13 @@
     <div class="row">
       <div class="lft">
         <div class="inv-thread">
-          <span class="inv-step done">01 · Open For Bid</span>
+          <span class="inv-step done">01</span>
           <span class="inv-line"></span>
-          <span class="inv-step done">02 · Checker Pending</span>
+          <span class="inv-step done">02</span>
           <span class="inv-line"></span>
-          <span class="inv-step act">03 · My Bid In Auction</span>
+          <span class="inv-step act">03</span>
           <span class="inv-line"></span>
-          <span class="inv-step">04 · Bid Accepted</span>
+          <span class="inv-step">04</span>
         </div>
         <div class="lbl">INVESTIGATION · STATE 03</div>
         <div class="hc-big">Bid is live. This is the screen that failed them.</div>
@@ -1045,13 +1045,13 @@
     <div class="row">
       <div class="lft">
         <div class="inv-thread">
-          <span class="inv-step done">01 · Open For Bid</span>
+          <span class="inv-step done">01</span>
           <span class="inv-line"></span>
-          <span class="inv-step done">02 · Checker Pending</span>
+          <span class="inv-step done">02</span>
           <span class="inv-line"></span>
-          <span class="inv-step done">03 · My Bid In Auction</span>
+          <span class="inv-step done">03</span>
           <span class="inv-line"></span>
-          <span class="inv-step act">04 · Bid Accepted</span>
+          <span class="inv-step act">04</span>
         </div>
         <div class="lbl">INVESTIGATION · STATE 04</div>
         <div class="hc-big" style="color:var(--red);">₹8.97 Cr.<br>Gone.</div>
@@ -2198,8 +2198,8 @@
     const step = document.getElementById('sim-step');
     if (lbl)  lbl.textContent = 'INVESTIGATION · STATE 02';
     if (h1)   h1.textContent  = 'Bid submitted. The auction kept running.';
-    if (body) body.innerHTML  = '<p>State 02. The bid is in Checker Pending. It shows in the Maker\'s view — with their rate. But it holds no position in the auction.</p><p>This is the 23-minute window. The auction ran. Another financier entered at 5.50% and went live immediately.</p>';
-    if (step) step.innerHTML  = '⏳ Bid submitted. Sits in Checker Pending — not in the auction. Watch what the platform shows.';
+    if (body) body.innerHTML  = '<p>State 02. Checker Pending. The bid shows in the Maker\'s view — with their rate. But it holds no position in the auction.</p><p>This is the 23-minute window. Another financier entered at 5.50% and went live immediately. The platform said nothing.</p>';
+    if (step) step.innerHTML  = '⏳ Bid sits in Checker Pending. Not in the auction. Watch what the platform shows.';
     // Advance the thread — step 01 done, step 02 active
     const thread = document.getElementById('sim-thread');
     if (thread) {
