@@ -448,8 +448,8 @@
     .hero-ribbon strong { color:#1a2744; font-weight:700; }
     .hr-dot { color:#d1d5db; }
     /* ── Inline question panel below ribbon ── */
-    .hero-q-panel { flex-shrink:0; border-top:1.5px solid #f0f0f0; background:#fff; padding:10px 14px 12px; opacity:0; transform:translateY(5px); transition:opacity .4s,transform .4s; pointer-events:none; }
-    .hero-q-panel.show { opacity:1; transform:translateY(0); pointer-events:all; }
+    .hero-q-panel { flex-shrink:0; border-top:1.5px solid #f0f0f0; background:#fff; padding:0 14px; max-height:0; overflow:hidden; opacity:0; transform:translateY(5px); transition:opacity .4s,transform .4s,max-height .4s,padding .4s; pointer-events:none; }
+    .hero-q-panel.show { opacity:1; transform:translateY(0); pointer-events:all; max-height:300px; padding:10px 14px 12px; }
     .hq-label { font-size:9px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#9ca3af; margin-bottom:4px; }
     .hq-question { font-size:12px; font-weight:600; color:#1a2744; margin-bottom:9px; }
     .hq-btns { display:flex; gap:7px; }
@@ -2294,7 +2294,7 @@
     const thead = document.getElementById('s3-thead');
     if (thead) Array.from(thead.children).forEach(c => { c.style.color = ''; c.style.fontWeight = ''; });
 
-    SIM_FTUS.forEach((f, i) => {
+    HERO_FTUS.slice(0, 5).forEach((f, i) => {
       const r = simRow('gc-hero', `
         <div class="plat-cb on"></div>
         <div class="plat-ftu" style="font-size:9px;white-space:nowrap;">${f.id}</div>
@@ -2310,10 +2310,6 @@
       setTimeout(() => { r.style.opacity='1'; r.style.transform='translateY(0)'; }, 150 + i * 120);
       tw.appendChild(r);
     });
-    const more = document.createElement('div');
-    more.className = 'plat-more';
-    more.textContent = '+ 8 more Factoring Units in auction';
-    tw.appendChild(more);
 
     // Reset decision UI — hide until after failure is dismissed
     const dec = document.getElementById('s3-decision');
@@ -2387,7 +2383,7 @@
     const tw = document.getElementById('s4-tw');
     if (!tw) return;
     tw.innerHTML = '';
-    SIM_FTUS.forEach((f, i) => {
+    HERO_FTUS.slice(0, 5).forEach((f, i) => {
       const r = simRow('gc-bat', `
         <div class="plat-cb on" style="background:#fecaca;border-color:#fca5a5;"></div>
         <div class="plat-ftu" style="font-size:9px;white-space:nowrap;">${f.id}</div>
@@ -2402,11 +2398,6 @@
       setTimeout(() => { r.style.opacity='1'; }, 200 + i * 100);
       tw.appendChild(r);
     });
-    const more = document.createElement('div');
-    more.className = 'plat-more';
-    more.style.color = '#dc2626';
-    more.textContent = '+ 8 more Factoring Units — all Bid Lost';
-    tw.appendChild(more);
     bn.disabled = false; bp.disabled = false;
     // Show failure panel after rows appear
     setTimeout(() => showBATFail(), 1800);
