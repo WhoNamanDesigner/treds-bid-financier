@@ -1147,86 +1147,18 @@
         </div>
       </div>
       <div class="rgt">
-        <div class="plat" style="height:100%;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
-          <div class="hp-logo-row">
-            <span class="hp-logo">c2treds</span>
-            <div style="display:flex;gap:6px;">
-              <button class="pb" disabled>Withdraw</button>
-              <button class="pb dk" disabled>Revise Bid</button>
-            </div>
+        <div class="panel" style="background:#0c0c0c;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:8px;">What the platform assumed</div>
+            <div style="font-size:13px;color:var(--t2);line-height:1.65;">Users need to see the current lowest bid rate. That is enough to gauge how competitive their position is.</div>
           </div>
-          <div class="hp-div"></div>
-          <div class="plat-tabs">
-            <span class="plat-tab" style="color:#9ca3af;">Open For Bid</span>
-            <span class="plat-tab" style="color:#9ca3af;">Checker Pending</span>
-            <span class="plat-tab act">My Bid In Auction</span>
-            <span class="plat-tab" style="color:#9ca3af;">Bid Accepted</span>
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:8px;">What the user experienced</div>
+            <div style="font-size:13px;color:var(--t2);line-height:1.65;">My Bid: 5.50%. Lowest Bid: 5.50%. The numbers match — so I must be leading. I was not.</div>
           </div>
-          <div class="hp-div"></div>
-          <div class="hp-filters">
-            <span class="hp-filter-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 2.5h10L7.2 6.8V10.5L4.8 9.2V6.8L1 2.5z" fill="#9ca3af"/></svg></span>
-            <button class="hp-filter">All Buyers ▾</button>
-            <button class="hp-filter">All Suppliers ▾</button>
-          </div>
-          <div class="plat-tbl">
-            <div class="plat-thead" style="display:grid;grid-template-columns:16px 80px 1fr 1fr 70px 40px 32px 46px 46px;gap:5px;padding:5px 14px;background:#f9fafb;border-bottom:1px solid #e8eaed;">
-              <div class="plat-cb" style="margin:auto;"></div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Factoring Unit</div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Buyer</div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Supplier</div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Amount</div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Due</div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Tenor</div>
-              <div style="font-size:9px;font-weight:700;" class="fail-col">My Bid</div>
-              <div style="font-size:9px;font-weight:700;" class="fail-col">Lowest Bid</div>
-            </div>
-            <div class="plat-tbody greyout">
-              <div class="plat-row" style="display:grid;grid-template-columns:16px 80px 1fr 1fr 70px 40px 32px 46px 46px;gap:5px;padding:6px 14px;border-bottom:1px solid #f3f4f6;align-items:center;">
-                <div class="plat-cb"></div>
-                <div class="plat-ftu" style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">FTU000187234</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Bharat Met...</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Arjun Forg...</div>
-                <div class="plat-cell" style="font-size:9px;">₹42,50,000</div>
-                <div class="plat-cell" style="font-size:9px;">15 Apr</div>
-                <div class="plat-cell" style="font-size:9px;">25d</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-              </div>
-              <div class="plat-row" style="display:grid;grid-template-columns:16px 80px 1fr 1fr 70px 40px 32px 46px 46px;gap:5px;padding:6px 14px;border-bottom:1px solid #f3f4f6;align-items:center;">
-                <div class="plat-cb"></div>
-                <div class="plat-ftu" style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">FTU000187198</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Bharat Met...</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Arjun Forg...</div>
-                <div class="plat-cell" style="font-size:9px;">₹38,75,000</div>
-                <div class="plat-cell" style="font-size:9px;">28 Apr</div>
-                <div class="plat-cell" style="font-size:9px;">38d</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-              </div>
-              <div class="plat-row" style="display:grid;grid-template-columns:16px 80px 1fr 1fr 70px 40px 32px 46px 46px;gap:5px;padding:6px 14px;align-items:center;">
-                <div class="plat-cb"></div>
-                <div class="plat-ftu" style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">FTU000187156</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Bharat Met...</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Arjun Forg...</div>
-                <div class="plat-cell" style="font-size:9px;">₹51,20,000</div>
-                <div class="plat-cell" style="font-size:9px;">12 May</div>
-                <div class="plat-cell" style="font-size:9px;">52d</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-              </div>
-            </div>
-          </div>
-          <div style="flex-shrink:0;border-top:1.5px solid #dc2626;background:#fef2f2;padding:10px 14px 12px;">
-            <span style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#dc2626;">● The failure</span>
-            <div style="font-size:11px;color:#1a2744;font-weight:500;margin:6px 0 3px;line-height:1.5;">My Bid: 5.50%. Lowest Bid: 5.50%. Two numbers. Zero ownership signal.</div>
-            <div style="font-size:10px;color:#6b7280;line-height:1.55;">The financier is asking "Am I winning?" — the platform is answering "What is the lowest rate?" Different questions. The system conflated them.</div>
-          </div>
-          <div class="hero-ribbon">
-            <span>10 Factoring Units</span>
-            <span class="hr-dot">·</span>
-            <span>My Bid <strong>5.50%</strong></span>
-            <span class="hr-dot">·</span>
-            <span>Lowest Bid <strong>5.50%</strong></span>
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:8px;">First question</div>
+            <div style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--t);line-height:1.4;">"What does a financier need to know to act — not just see data, but make a decision?"</div>
           </div>
         </div>
       </div>
@@ -1246,87 +1178,18 @@
         </div>
       </div>
       <div class="rgt">
-        <div class="plat" style="height:100%;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
-          <div class="hp-logo-row">
-            <span class="hp-logo">c2treds</span>
-            <div style="display:flex;gap:6px;align-items:center;">
-              <span style="font-size:15px;color:#d1d5db;line-height:1;" title="No notifications">🔔</span>
-              <button class="pb" disabled>Withdraw</button>
-              <button class="pb dk" disabled>Revise Bid</button>
-            </div>
+        <div class="panel" style="background:#0c0c0c;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:8px;">What the platform assumed</div>
+            <div style="font-size:13px;color:var(--t2);line-height:1.65;">The data is live and always current. If a user checks the screen, they will see any changes. Visibility is sufficient.</div>
           </div>
-          <div class="hp-div"></div>
-          <div class="plat-tabs">
-            <span class="plat-tab" style="color:#9ca3af;">Open For Bid</span>
-            <span class="plat-tab" style="color:#9ca3af;">Checker Pending</span>
-            <span class="plat-tab act">My Bid In Auction</span>
-            <span class="plat-tab" style="color:#9ca3af;">Bid Accepted</span>
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:8px;">What the user experienced</div>
+            <div style="font-size:13px;color:var(--t2);line-height:1.65;">I was watching 20 other FTUs. DCB Bank entered at the same rate. I had 60 seconds to respond. Nothing told me.</div>
           </div>
-          <div class="hp-div"></div>
-          <div class="hp-filters">
-            <span class="hp-filter-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 2.5h10L7.2 6.8V10.5L4.8 9.2V6.8L1 2.5z" fill="#9ca3af"/></svg></span>
-            <button class="hp-filter">All Buyers ▾</button>
-            <button class="hp-filter">All Suppliers ▾</button>
-          </div>
-          <div class="plat-tbl">
-            <div class="plat-thead" style="display:grid;grid-template-columns:16px 80px 1fr 1fr 70px 40px 32px 46px 46px;gap:5px;padding:5px 14px;background:#f9fafb;border-bottom:1px solid #e8eaed;">
-              <div class="plat-cb" style="margin:auto;"></div>
-              <div style="font-size:9px;font-weight:600;color:#6b7280;">Factoring Unit</div>
-              <div style="font-size:9px;font-weight:600;color:#6b7280;">Buyer</div>
-              <div style="font-size:9px;font-weight:600;color:#6b7280;">Supplier</div>
-              <div style="font-size:9px;font-weight:600;color:#6b7280;">Amount</div>
-              <div style="font-size:9px;font-weight:600;color:#6b7280;">Due</div>
-              <div style="font-size:9px;font-weight:600;color:#6b7280;">Tenor</div>
-              <div style="font-size:9px;font-weight:600;color:#6b7280;">My Bid</div>
-              <div style="font-size:9px;font-weight:600;color:#6b7280;">Lowest Bid</div>
-            </div>
-            <div class="plat-tbody">
-              <div class="plat-row" style="display:grid;grid-template-columns:16px 80px 1fr 1fr 70px 40px 32px 46px 46px;gap:5px;padding:6px 14px;border-bottom:1px solid #f3f4f6;align-items:center;">
-                <div class="plat-cb"></div>
-                <div class="plat-ftu" style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">FTU000187234</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Bharat Met...</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Arjun Forg...</div>
-                <div class="plat-cell" style="font-size:9px;">₹42,50,000</div>
-                <div class="plat-cell" style="font-size:9px;color:#6b7280;">15 Apr</div>
-                <div class="plat-cell" style="font-size:9px;color:#9ca3af;">25d</div>
-                <div class="plat-rate" style="font-size:10px;">5.50%</div>
-                <div class="plat-rate" style="font-size:10px;">5.50%</div>
-              </div>
-              <div class="plat-row" style="display:grid;grid-template-columns:16px 80px 1fr 1fr 70px 40px 32px 46px 46px;gap:5px;padding:6px 14px;border-bottom:1px solid #f3f4f6;align-items:center;">
-                <div class="plat-cb"></div>
-                <div class="plat-ftu" style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">FTU000187198</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Bharat Met...</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Arjun Forg...</div>
-                <div class="plat-cell" style="font-size:9px;">₹38,75,000</div>
-                <div class="plat-cell" style="font-size:9px;color:#6b7280;">28 Apr</div>
-                <div class="plat-cell" style="font-size:9px;color:#9ca3af;">38d</div>
-                <div class="plat-rate" style="font-size:10px;">5.50%</div>
-                <div class="plat-rate" style="font-size:10px;">5.50%</div>
-              </div>
-              <div class="plat-row" style="display:grid;grid-template-columns:16px 80px 1fr 1fr 70px 40px 32px 46px 46px;gap:5px;padding:6px 14px;align-items:center;">
-                <div class="plat-cb"></div>
-                <div class="plat-ftu" style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">FTU000187156</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Bharat Met...</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Arjun Forg...</div>
-                <div class="plat-cell" style="font-size:9px;">₹51,20,000</div>
-                <div class="plat-cell" style="font-size:9px;color:#6b7280;">12 May</div>
-                <div class="plat-cell" style="font-size:9px;color:#9ca3af;">52d</div>
-                <div class="plat-rate" style="font-size:10px;">5.50%</div>
-                <div class="plat-rate" style="font-size:10px;">5.50%</div>
-              </div>
-            </div>
-          </div>
-          <div style="flex-shrink:0;border-top:1.5px solid #dc2626;background:#fef2f2;padding:10px 14px 12px;">
-            <span style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#dc2626;">● The failure</span>
-            <div style="font-size:11px;color:#1a2744;font-weight:500;margin:6px 0 3px;line-height:1.5;">DCB Bank's bid went live at 12:04 PM at the same rate. The numbers didn't change. Nothing fired.</div>
-            <div style="font-size:10px;color:#6b7280;line-height:1.55;">No in-app alert. No email. No visual change anywhere on this screen. A competitive event happened — silently.</div>
-          </div>
-          <div class="hero-ribbon">
-            <span>10 Factoring Units</span>
-            <span class="hr-dot">·</span>
-            <span>My Bid <strong>5.50%</strong></span>
-            <span class="hr-dot">·</span>
-            <span>Lowest Bid <strong>5.50%</strong></span>
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:8px;">First question</div>
+            <div style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--t);line-height:1.4;">"Which competitive events are too critical to rely on a user's attention — what actually earns an interruption?"</div>
           </div>
         </div>
       </div>
@@ -1345,16 +1208,23 @@
           <p>This was the exact window where the ₹8.97 Cr incident happened — two bids sitting in separate Checker Pending queues, neither party knowing the other existed.</p>
         </div>
       </div>
-      <div class="rgt">
-        <div class="plat" style="height:100%;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
-          <div class="hp-logo-row">
-            <span class="hp-logo">c2treds</span>
-            <div style="display:flex;gap:6px;">
-              <button class="pb" disabled>Withdraw</button>
-              <button class="pb dk" disabled>Revise Bid</button>
-            </div>
+            <div class="rgt">
+        <div class="panel" style="background:#0c0c0c;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:8px;">What the platform assumed</div>
+            <div style="font-size:13px;color:var(--t2);line-height:1.65;">The bid is queued for Checker approval. The system knows it is not live yet. This is a workflow state, not a user concern.</div>
           </div>
-          <div class="hp-div"></div>
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:8px;">What the user experienced</div>
+            <div style="font-size:13px;color:var(--t2);line-height:1.65;">I placed my bid. I can see my rate on screen. I assumed I was competing in the auction. For 23 minutes, I was not.</div>
+          </div>
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:8px;">First question</div>
+            <div style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--t);line-height:1.4;">"Where does the user's mental model diverge from system reality — and whose job is it to close that gap?"</div>
+          </div>
+        </div>
+      </div>
+        <div style="display:none;">
           <div class="plat-tabs">
             <span class="plat-tab" style="color:#9ca3af;">Open For Bid</span>
             <span class="plat-tab act">Checker Pending</span>
@@ -1444,55 +1314,19 @@
           <p><strong>They were making a financial approval with a fraction of the information they needed.</strong></p>
         </div>
       </div>
-      <div class="rgt">
-        <div class="plat" style="height:100%;box-shadow:0 4px 32px rgba(0,0,0,0.13);position:relative;">
-          <div class="hp-logo-row">
-            <span class="hp-logo">c2treds</span>
-            <div style="display:flex;gap:6px;">
-              <button class="pb" disabled>Withdraw</button>
-              <button class="pb dk" style="background:#1a2744;color:#fff;opacity:1;">Approve Bid</button>
-            </div>
+            <div class="rgt">
+        <div class="panel" style="background:#0c0c0c;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:8px;">What the platform assumed</div>
+            <div style="font-size:13px;color:var(--t2);line-height:1.65;">The Checker&#39;s role is to validate the bid submitted by the Maker — approve or reject the number.</div>
           </div>
-          <div class="hp-div"></div>
-          <div class="plat-tabs">
-            <span class="plat-tab" style="color:#9ca3af;">Open For Bid</span>
-            <span class="plat-tab act">Checker Pending</span>
-            <span class="plat-tab" style="color:#9ca3af;">My Bid In Auction</span>
-            <span class="plat-tab" style="color:#9ca3af;">Bid Accepted</span>
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:8px;">What the user experienced</div>
+            <div style="font-size:13px;color:var(--t2);line-height:1.65;">I saw one number: 5.50%. I approved it. I had no idea a competitor was already live at the same rate, 60 seconds ahead.</div>
           </div>
-          <div class="hp-div"></div>
-          <div style="position:relative;flex:1;overflow:hidden;">
-            <div style="position:absolute;inset:0;background:rgba(26,39,68,0.18);display:flex;align-items:center;justify-content:center;padding:12px;">
-              <div style="background:#fff;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,0.18);width:100%;max-width:300px;overflow:hidden;">
-                <div style="padding:14px 16px 10px;border-bottom:1px solid #f0f0f0;">
-                  <div style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6b7280;margin-bottom:4px;">Approve Bid — FTU000187198</div>
-                  <div style="font-size:18px;font-weight:700;color:#1a2744;">₹38,75,000</div>
-                </div>
-                <div style="padding:12px 16px;display:flex;flex-direction:column;gap:0;">
-                  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #f3f4f6;">
-                    <span style="font-size:11px;color:#6b7280;">Bid Rate</span>
-                    <span style="font-size:13px;font-weight:700;color:#1a2744;">5.50%</span>
-                  </div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #f3f4f6;">
-                    <span style="font-size:11px;color:#6b7280;">Buyer</span>
-                    <span style="font-size:11px;font-weight:600;color:#1a2744;">Bharat Metals Ltd.</span>
-                  </div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;">
-                    <span style="font-size:11px;color:#6b7280;">Supplier</span>
-                    <span style="font-size:11px;font-weight:600;color:#1a2744;">Arjun Forge Pvt. Ltd.</span>
-                  </div>
-                </div>
-                <div style="padding:10px 16px 14px;display:flex;gap:8px;">
-                  <button style="flex:1;padding:8px;border:1px solid #e5e7eb;border-radius:8px;background:#fff;font-size:11px;color:#374151;cursor:pointer;">Cancel</button>
-                  <button style="flex:1;padding:8px;border:none;border-radius:8px;background:#1a2744;font-size:11px;color:#fff;font-weight:600;cursor:pointer;">Approve Bid</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style="flex-shrink:0;border-top:1.5px solid #dc2626;background:#fef2f2;padding:10px 14px 12px;">
-            <span style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#dc2626;">● The failure</span>
-            <div style="font-size:11px;color:#1a2744;font-weight:500;margin:6px 0 3px;line-height:1.5;">This is everything the Checker saw. One number. No market context.</div>
-            <div style="font-size:10px;color:#6b7280;line-height:1.55;">No lowest bid. No competitive position. No indication that an equal-rate competitor was already live. The Checker approved into the dark.</div>
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:8px;">First question</div>
+            <div style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--t);line-height:1.4;">"Is the Checker approving a form field — or making a market decision? That answer changes everything they need to see."</div>
           </div>
         </div>
       </div>
@@ -1511,76 +1345,19 @@
           <p><strong>On a financial platform, every time something disappears without explanation — a bid, an FU, a pending action — the user fills the silence with their worst assumption.</strong></p>
         </div>
       </div>
-      <div class="rgt">
-        <div class="plat" style="height:100%;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
-          <div class="hp-logo-row">
-            <span class="hp-logo">c2treds</span>
-            <span style="font-size:10px;color:#dc2626;font-weight:600;padding:3px 10px;background:#fef2f2;border-radius:100px;border:1px solid #fecaca;">● Auction Closed</span>
+            <div class="rgt">
+        <div class="panel" style="background:#0c0c0c;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:8px;">What the platform assumed</div>
+            <div style="font-size:13px;color:var(--t2);line-height:1.65;">Tab transitions are system events. FUs move when conditions are met. Users follow the data to its next state.</div>
           </div>
-          <div class="hp-div"></div>
-          <div class="plat-tabs">
-            <span class="plat-tab" style="color:#9ca3af;">Open For Bid</span>
-            <span class="plat-tab" style="color:#9ca3af;">Checker Pending</span>
-            <span class="plat-tab" style="color:#9ca3af;">My Bid In Auction</span>
-            <span class="plat-tab act">Bid Accepted Today</span>
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:8px;">What the user experienced</div>
+            <div style="font-size:13px;color:var(--t2);line-height:1.65;">My FU disappeared from the tab. I don&#39;t know what happened to it, what bid was honored, or what I should do.</div>
           </div>
-          <div class="hp-div"></div>
-          <div class="hp-filters">
-            <span class="hp-filter-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 2.5h10L7.2 6.8V10.5L4.8 9.2V6.8L1 2.5z" fill="#9ca3af"/></svg></span>
-            <button class="hp-filter">All Buyers ▾</button>
-            <button class="hp-filter">All Suppliers ▾</button>
-          </div>
-          <div class="plat-tbl">
-            <div class="plat-thead" style="display:grid;grid-template-columns:80px 1fr 1fr 70px 52px 52px 76px;gap:5px;padding:5px 14px;background:#f9fafb;border-bottom:1px solid #e8eaed;">
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Factoring Unit</div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Buyer</div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Supplier</div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Amount</div>
-              <div style="font-size:9px;font-weight:700;" class="fail-col">My Bid</div>
-              <div style="font-size:9px;font-weight:700;" class="fail-col">Winning</div>
-              <div style="font-size:9px;font-weight:700;" class="fail-col">Status</div>
-            </div>
-            <div class="plat-tbody greyout">
-              <div class="plat-row" style="display:grid;grid-template-columns:80px 1fr 1fr 70px 52px 52px 76px;gap:5px;padding:6px 14px;border-bottom:1px solid #f3f4f6;align-items:center;">
-                <div class="plat-ftu" style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">FTU000187234</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Bharat Met...</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Arjun Forg...</div>
-                <div class="plat-cell" style="font-size:9px;">₹42,50,000</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-                <div><span class="plat-badge lost fail-hi" style="opacity:1;">Bid Lost</span></div>
-              </div>
-              <div class="plat-row" style="display:grid;grid-template-columns:80px 1fr 1fr 70px 52px 52px 76px;gap:5px;padding:6px 14px;border-bottom:1px solid #f3f4f6;align-items:center;">
-                <div class="plat-ftu" style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">FTU000187198</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Bharat Met...</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Arjun Forg...</div>
-                <div class="plat-cell" style="font-size:9px;">₹38,75,000</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-                <div><span class="plat-badge lost fail-hi" style="opacity:1;">Bid Lost</span></div>
-              </div>
-              <div class="plat-row" style="display:grid;grid-template-columns:80px 1fr 1fr 70px 52px 52px 76px;gap:5px;padding:6px 14px;align-items:center;">
-                <div class="plat-ftu" style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">FTU000187156</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Bharat Met...</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Arjun Forg...</div>
-                <div class="plat-cell" style="font-size:9px;">₹51,20,000</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-                <div><span class="plat-badge lost fail-hi" style="opacity:1;">Bid Lost</span></div>
-              </div>
-            </div>
-          </div>
-          <div style="flex-shrink:0;border-top:1.5px solid #dc2626;background:#fef2f2;padding:10px 14px 12px;">
-            <span style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#dc2626;">● The failure</span>
-            <div style="font-size:11px;color:#1a2744;font-weight:500;margin:6px 0 3px;line-height:1.5;">My Bid: 5.50%. Winning: 5.50%. Status: Bid Lost. No explanation.</div>
-            <div style="font-size:10px;color:#6b7280;line-height:1.55;">Same rate. Every FTU gone. No reason given. No rule cited. No closure. The platform treated a financially significant loss as a routine row change.</div>
-          </div>
-          <div class="hero-ribbon" style="background:#fef2f2;border-top-color:#fecaca;">
-            <span>10 Factoring Units</span>
-            <span class="hr-dot">·</span>
-            <span style="color:#dc2626;">My Bid <strong>5.50%</strong></span>
-            <span class="hr-dot">·</span>
-            <span style="color:#dc2626;font-weight:500;">All Lost</span>
+          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:8px;">First question</div>
+            <div style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--t);line-height:1.4;">"Every time something moves or disappears — can the platform answer: why did it move, what was honored, what happens next?"</div>
           </div>
         </div>
       </div>
