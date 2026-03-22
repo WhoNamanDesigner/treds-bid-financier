@@ -363,7 +363,7 @@
     /* ── SIM grids ── */
     /* OFB reuses gc-hero (9 cols: cb + FU + 7×1fr) */
     .gc-cp   { grid-template-columns: 16px 88px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 80px; gap:6px; }
-    .gc-bat  { grid-template-columns: 16px 88px 1fr 1fr 82px 54px 54px 78px; gap:6px; }
+    .gc-bat  { grid-template-columns: 88px 1fr 1fr 82px 54px 54px 78px; gap:6px; }
     /* MBIA reuses gc-hero */
     /* Compact pill button */
     .pb { padding:4px 11px; border-radius:100px; border:1px solid #d1d5db; background:#fff; color:#6b7280; font-size:10px; font-weight:500; cursor:pointer; font-family:var(--sans); white-space:nowrap; }
@@ -812,7 +812,7 @@
                 </div>
                 <div class="mc2-sub" style="color:#b45309;">Our bid is invisible — no position held in the auction.</div>
                 <div style="margin-top:7px;padding:6px 9px;background:rgba(251,191,36,0.18);border-radius:5px;border-left:2px solid #d97706;">
-                  <span style="font-size:10px;font-weight:700;color:#92400e;font-family:var(--sans);display:block;margin-bottom:1px;">↳ 11:42 AM — Financier B places bid at 5.50%</span>
+                  <span style="font-size:10px;font-weight:700;color:#92400e;font-family:var(--sans);display:block;margin-bottom:1px;">↳ 12:04 PM — Financier B's Checker approves. Bid goes live at 5.50%.</span>
                   <span style="font-size:10px;color:#b45309;font-family:var(--sans);line-height:1.5;">Same moment. No maker-checker delay on their side — bid goes live instantly. They hold the 5.50% position for the full 23 minutes while ours doesn't exist.</span>
                 </div>
               </div>
@@ -846,7 +846,7 @@
                   <span>·</span>
                   <span>Lowest Bid: <strong style="color:#dc2626;">5.50%</strong></span>
                 </div>
-                <div class="mc2-sub">Our bid enters the auction — but Financier B has held 5.50% since 11:42 AM. TReDS rule: equal rate, first-in wins. Buyer accepts 5.50% and Financier B gets every FTU. Our financier is allocated nothing.</div>
+                <div class="mc2-sub">Our bid enters the auction at 12:05 PM. Financier B was approved at 12:04 PM — seconds earlier. TReDS rule: equal rate, first-in wins. Financier B gets every FTU. Our financier is allocated nothing.</div>
               </div>
               <div class="mc2-badge" style="background:#d1fae5;color:#065f46;">Live</div>
             </div>
@@ -857,7 +857,7 @@
           <!-- Note ribbon -->
           <div style="padding:8px 16px 10px; background:#fef9ec; display:flex; align-items:flex-start; gap:8px;">
             <span style="font-size:11px;color:#d97706;margin-top:1px;flex-shrink:0;">⚠</span>
-            <span style="font-size:10px;color:#92400e;line-height:1.6;">Same rate. Same amount. Financier B was 23 minutes earlier. TReDS gave them priority — and ₹8.97 Cr went with it.</span>
+            <span style="font-size:10px;color:#92400e;line-height:1.6;">Same rate. Same amount. Financier B was seconds ahead. TReDS gave them priority — and ₹8.97 Cr went with it.</span>
           </div>
 
         </div>
@@ -922,13 +922,7 @@
             </div>
             <div class="plat-tbody" id="sim-tw"></div>
           </div>
-          <div class="hp-pg" id="sim-pg">
-            <span class="hp-pg-info" id="sim-pg-info">1–5 of 13</span>
-            <div style="display:flex;gap:4px;">
-              <button class="hp-pg-btn" id="sim-prev" onclick="simPrevPage()" disabled>←</button>
-              <button class="hp-pg-btn" id="sim-next" onclick="simNextPage()">→</button>
-            </div>
-          </div>
+          <div class="hp-pg" id="sim-pg" style="display:none;"></div>
           <div class="hero-q-panel" id="sim-approved" style="border-top:1.5px solid #d1fae5;background:#f0fdf4;">
             <div class="hq-label" style="color:#065f46;">✓ Checker Approved — 12:05 PM</div>
             <div class="hq-question" style="font-size:13px;color:#1a2744;">Your bid of 5.50% on 13 FTUs is now live in the auction.</div>
@@ -938,14 +932,14 @@
           </div>
           <div class="hero-q-panel fail-panel" id="cp-fail-1">
             <span class="fail-tag">● Failure 01 — Mapped</span>
-            <div class="fail-finding">The Maker can see their bid rate. The auction can't. No signal that this bid is inactive — the platform shows it like any other row.</div>
+            <div class="fail-finding">The Maker can see their bid rate. The buyer can't. No signal that this bid is in draft or maker approved state — the platform shows it like any other row.</div>
             <div class="fail-note">Bid sits in Checker Pending. Not live. Not competing. The screen doesn't say so.</div>
             <button class="pb" style="margin-top:10px;" onclick="showCPFail2()">Next failure →</button>
           </div>
           <div class="hero-q-panel fail-panel" id="cp-fail-2">
             <span class="fail-tag">● Failure 02 — Mapped</span>
-            <div class="fail-finding">During this window, Financier B placed their bid at 5.50% and went live immediately.</div>
-            <div class="fail-note">No in-app alert. No email. No visual change. The competitive landscape shifted — the platform said nothing.</div>
+            <div class="fail-finding">At 12:04 PM — one minute before our Checker approves — Financier B's bid goes live at 5.50%. Seconds separate first-in from second-in.</div>
+            <div class="fail-note">No alert. No visual change. The platform said nothing. TReDS rule: equal rate, first-in wins.</div>
             <button class="pb" style="margin-top:10px;" onclick="resumeCP()">Continue →</button>
           </div>
           <div class="plat-ov gone" id="sim-ov">
@@ -1010,7 +1004,7 @@
           </div>
           <div class="plat-tbl">
             <div class="plat-thead gc-hero" id="s3-thead">
-              <div></div>
+              <div class="plat-cb" style="margin:auto;"></div>
               <div>Factoring Unit</div>
               <div>Buyer</div>
               <div>Supplier</div>
@@ -1057,7 +1051,7 @@
         <div class="hc-big" style="color:var(--red);">₹8.97 Cr.<br>Gone.</div>
         <div class="body">
           <p>My Bid: <strong>5.50%</strong>. Winning Bid: <strong>5.50%</strong>. Status: <strong style="color:var(--red);">Bid Lost</strong> — on every single FTU.</p>
-          <p>This is what the financier saw when the auction closed. Same rate. Every FTU lost. Financier B was live 23 minutes earlier — TReDS rule: equal rate, first-in wins.</p>
+          <p>This is what the financier saw when the auction closed. Same rate. Every FTU lost. Financier B's Checker approved at 12:04 PM — seconds before ours. TReDS rule: equal rate, first-in wins.</p>
           <p style="color:var(--t3);font-size:13px;margin-top:6px;">The platform offered no explanation — before, during, or after. Five failures. All mapped.</p>
         </div>
       </div>
@@ -1082,7 +1076,6 @@
           </div>
           <div class="plat-tbl">
             <div class="plat-thead gc-bat">
-              <div></div>
               <div>Factoring Unit</div>
               <div>Buyer</div>
               <div>Supplier</div>
@@ -2051,13 +2044,11 @@
     const tw = document.getElementById('sim-tw');
     if (!tw) return;
     tw.innerHTML = '';
-    const start = page * SIM_PER_PAGE;
-    const slice = HERO_FTUS.slice(start, start + SIM_PER_PAGE);
-    slice.forEach((f, i) => {
-      const absIdx = start + i;
-      const isSelected = simSel.has(absIdx);
+    // Show all 13 FUs — tbody scrolls internally, no pagination needed
+    HERO_FTUS.forEach((f, i) => {
+      const isSelected = simSel.has(i);
       const r = simRow('gc-hero', `
-        <div class="plat-cb${isSelected ? ' on' : ''}" id="scb${absIdx}" onclick="simToggle(${absIdx});event.stopPropagation()"></div>
+        <div class="plat-cb${isSelected ? ' on' : ''}" id="scb${i}" onclick="simToggle(${i});event.stopPropagation()"></div>
         <div class="plat-ftu" style="font-size:9px;white-space:nowrap;overflow:visible;">${f.id}</div>
         <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.buyer}</div>
         <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.sup}</div>
@@ -2068,25 +2059,14 @@
         <div class="plat-cell" style="font-size:9px;color:#9ca3af;text-align:center;">—</div>
       `);
       if (isSelected) r.classList.add('sel');
-      r.onclick = () => simToggle(absIdx);
+      r.onclick = () => simToggle(i);
       if (stagger) {
         r.style.cssText += 'opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s;';
-        setTimeout(() => { r.style.opacity='1'; r.style.transform='translateY(0)'; }, 150 + i * 100);
+        setTimeout(() => { r.style.opacity='1'; r.style.transform='translateY(0)'; }, 80 + i * 60);
       }
       tw.appendChild(r);
     });
-    // Update pagination
-    const total = HERO_FTUS.length;
-    const info = document.getElementById('sim-pg-info');
-    const prev = document.getElementById('sim-prev');
-    const next = document.getElementById('sim-next');
-    if (info) info.textContent = `${start+1}–${Math.min(start+SIM_PER_PAGE,total)} of ${total}`;
-    if (prev) prev.disabled = page === 0;
-    if (next) next.disabled = start + SIM_PER_PAGE >= total;
   }
-
-  function simPrevPage() { simPg--; simRenderOFBPage(simPg, false); }
-  function simNextPage() { simPg++; simRenderOFBPage(simPg, false); }
 
   function simToggle(i) {
     const cb = document.getElementById('scb'+i);
@@ -2243,11 +2223,11 @@
         <div>Status</div>`;
     }
 
-    // Rebuild rows as CP — all 13 FTUs shown as pages, first 5 visible + pagination hidden
+    // Rebuild rows as CP — all 13 FTUs, tbody scrolls internally
     const tw = document.getElementById('sim-tw');
     if (tw) {
       tw.innerHTML = '';
-      HERO_FTUS.slice(0, 5).forEach(f => {
+      HERO_FTUS.forEach(f => {
         tw.appendChild(simRow('gc-cp', `
           <div class="plat-cb on"></div>
           <div class="plat-ftu" style="font-size:9px;white-space:nowrap;">${f.id}</div>
@@ -2261,10 +2241,6 @@
           <div><span class="plat-badge pending">Checker Pending</span></div>
         `));
       });
-      const more = document.createElement('div');
-      more.className = 'plat-more';
-      more.textContent = '+ 8 more Factoring Units pending approval';
-      tw.appendChild(more);
     }
 
     // Show failure 01 after 1.5s
@@ -2437,7 +2413,6 @@
     tw.innerHTML = '';
     HERO_FTUS.slice(0, 5).forEach((f, i) => {
       const r = simRow('gc-bat', `
-        <div class="plat-cb on" style="background:#fecaca;border-color:#fca5a5;"></div>
         <div class="plat-ftu" style="font-size:9px;white-space:nowrap;">${f.id}</div>
         <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.buyer}</div>
         <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.sup}</div>
@@ -2459,22 +2434,21 @@
     const tw = document.getElementById('s4-tw');
     if (tw) {
       tw.classList.add('greyout');
-      // Highlight My Bid cells (red rate — index 5), Winning Bid (index 6), Bid Lost badges (index 7)
+      // gc-bat cols (no checkbox): 0=FU 1=buyer 2=sup 3=amt 4=myBid 5=winBid 6=status
       tw.querySelectorAll('.plat-row').forEach(row => {
         const cells = row.children;
+        if (cells[4]) cells[4].classList.add('fail-hi');
         if (cells[5]) cells[5].classList.add('fail-hi');
-        if (cells[6]) cells[6].classList.add('fail-hi');
-        if (cells[7]) {
-          const badge = cells[7].querySelector('.plat-badge');
+        if (cells[6]) {
+          const badge = cells[6].querySelector('.plat-badge');
           if (badge) badge.classList.add('fail-hi');
         }
       });
-      // Highlight headers
       const thead = document.querySelector('#s4-tw').closest('.plat-tbl').querySelector('.plat-thead');
       if (thead) {
+        if (thead.children[4]) thead.children[4].classList.add('fail-col');
         if (thead.children[5]) thead.children[5].classList.add('fail-col');
         if (thead.children[6]) thead.children[6].classList.add('fail-col');
-        if (thead.children[7]) thead.children[7].classList.add('fail-col');
       }
     }
     const bf = document.getElementById('bat-fail');
