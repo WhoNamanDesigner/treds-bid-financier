@@ -2220,20 +2220,17 @@
   }
 
   function showCPFail1() {
-    // Grey out tbody
     const tw = document.getElementById('sim-tw');
     if (tw) {
       tw.classList.add('greyout');
-      // Highlight My Bid column cells (6th cell in each row, index 5)
+      // CP grid cols: 0=cb 1=FU 2=buyer 3=sup 4=amt 5=due 6=tenor 7=myBid 8=lowestBid 9=status
+      // Spotlight: My Bid column (index 7)
       tw.querySelectorAll('.plat-row').forEach(row => {
-        const cells = row.children;
-        if (cells[5]) cells[5].classList.add('fail-hi', 'plat-rate');
+        if (row.children[7]) row.children[7].classList.add('fail-hi');
       });
-      // Highlight My Bid header
       const thead = document.getElementById('sim-thead');
-      if (thead && thead.children[5]) thead.children[5].classList.add('fail-col');
+      if (thead && thead.children[7]) thead.children[7].classList.add('fail-col');
     }
-    // Show failure panel 1
     const p1 = document.getElementById('cp-fail-1');
     if (p1) p1.classList.add('show');
   }
@@ -2241,20 +2238,18 @@
   function showCPFail2() {
     const tw = document.getElementById('sim-tw');
     if (tw) {
-      // Remove My Bid highlight, add badge highlight
+      // Remove My Bid highlight → spotlight Status badge (index 9)
       tw.querySelectorAll('.plat-row').forEach(row => {
-        const cells = row.children;
-        if (cells[5]) cells[5].classList.remove('fail-hi', 'plat-rate');
-        if (cells[6]) {
-          const badge = cells[6].querySelector('.plat-badge');
+        if (row.children[7]) row.children[7].classList.remove('fail-hi');
+        if (row.children[9]) {
+          const badge = row.children[9].querySelector('.plat-badge');
           if (badge) badge.classList.add('fail-hi');
         }
       });
-      // Update header highlight
       const thead = document.getElementById('sim-thead');
       if (thead) {
-        if (thead.children[5]) thead.children[5].classList.remove('fail-col');
-        if (thead.children[6]) thead.children[6].classList.add('fail-col');
+        if (thead.children[7]) thead.children[7].classList.remove('fail-col');
+        if (thead.children[9]) thead.children[9].classList.add('fail-col');
       }
     }
     const p1 = document.getElementById('cp-fail-1');
