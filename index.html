@@ -388,6 +388,12 @@
     .ov-foot { display:flex; justify-content:flex-end; gap:8px; padding:9px 15px 13px; border-top:1px solid #f0f0f0; }
     /* Step hint in left panel */
     .sim-step { margin-top:20px; padding:10px 14px; background:rgba(79,195,247,0.08); border:1px solid rgba(79,195,247,0.18); border-radius:9px; font-size:12px; color:rgba(79,195,247,0.8); line-height:1.5; transition:opacity .4s; }
+    /* Investigation thread — step progress dots */
+    .inv-thread { display:flex; align-items:center; gap:5px; margin-bottom:20px; }
+    .inv-step { font-size:8px; font-weight:700; letter-spacing:0.08em; color:rgba(240,235,228,0.2); border:1px solid rgba(240,235,228,0.1); border-radius:100px; padding:2px 8px; transition:color .3s,border-color .3s; white-space:nowrap; }
+    .inv-step.act { color:rgba(240,235,228,0.72); border-color:rgba(240,235,228,0.32); }
+    .inv-step.done { color:rgba(240,235,228,0.36); border-color:rgba(240,235,228,0.16); }
+    .inv-line { flex:0 0 14px; height:1px; background:rgba(240,235,228,0.1); }
     /* Loss overlay on platform */
     .sim-loss { position:absolute; inset:0; background:rgba(0,0,0,.58); display:flex; align-items:center; justify-content:center; z-index:40; opacity:0; transition:opacity .5s; pointer-events:none; border-radius:16px; }
     .sim-loss.show { opacity:1; pointer-events:all; }
@@ -863,11 +869,20 @@
   <div class="slide" data-s="THE INCIDENT">
     <div class="row">
       <div class="lft">
-        <div class="lbl" id="sim-lbl">INVESTIGATION · OPEN FOR BID</div>
-        <h1 class="h1" style="font-size:clamp(28px,3.2vw,44px);" id="sim-h1">I mapped every state of the system myself.</h1>
+        <div class="inv-thread" id="sim-thread">
+          <span class="inv-step act">01 · Open For Bid</span>
+          <span class="inv-line"></span>
+          <span class="inv-step">02 · Checker Pending</span>
+          <span class="inv-line"></span>
+          <span class="inv-step">03 · My Bid In Auction</span>
+          <span class="inv-line"></span>
+          <span class="inv-step">04 · Bid Accepted</span>
+        </div>
+        <div class="lbl" id="sim-lbl">INVESTIGATION · STATE 01</div>
+        <div class="hc-big" id="sim-h1">I walked every state of the system myself.</div>
         <div class="body" id="sim-body">
-          <p>To understand what the financier couldn't see, I walked the full bid lifecycle — tab by tab, state by state.</p>
-          <p>This is State 01. Bharat Metals Ltd. has opened 13 FTUs. The Maker's bank strategy: <strong>5.50%</strong> across all 13. Select all and place the bid.</p>
+          <p>To understand what the financier couldn't see, I mapped the full bid lifecycle — tab by tab, state by state.</p>
+          <p>State 01. 13 FTUs open. Maker places a bulk bid at <strong>5.50%</strong> across all. Select all and place the bid.</p>
         </div>
         <div class="sim-step" id="sim-step">← Use the header checkbox to select all 13 FTUs, then click <strong>Place Bid</strong></div>
       </div>
@@ -945,11 +960,20 @@
   <div class="slide" data-s="THE INCIDENT">
     <div class="row">
       <div class="lft">
-        <div class="lbl">INVESTIGATION · MY BID IN AUCTION</div>
-        <h1 class="h1" style="font-size:clamp(28px,3.2vw,44px);">Bid is live. This is the screen that failed them.</h1>
+        <div class="inv-thread">
+          <span class="inv-step done">01 · Open For Bid</span>
+          <span class="inv-line"></span>
+          <span class="inv-step done">02 · Checker Pending</span>
+          <span class="inv-line"></span>
+          <span class="inv-step act">03 · My Bid In Auction</span>
+          <span class="inv-line"></span>
+          <span class="inv-step">04 · Bid Accepted</span>
+        </div>
+        <div class="lbl">INVESTIGATION · STATE 03</div>
+        <div class="hc-big">Bid is live. This is the screen that failed them.</div>
         <div class="body">
-          <p>Checker approved. The bid enters the auction. My Bid: <strong>5.50%</strong>. Lowest Bid: <strong>5.50%</strong>.</p>
-          <p>The screen looks correct. But it cannot answer the one question that matters during a live auction.</p>
+          <p>State 03. Checker approved. Bid enters the auction. My Bid: <strong>5.50%</strong>. Lowest Bid: <strong>5.50%</strong>.</p>
+          <p>The numbers are identical. The screen looks correct. But it cannot answer the one question that matters during a live auction.</p>
         </div>
         <div class="sim-decision" id="s3-decision">
           <div class="sim-decision-q">"Are you leading this auction?"</div>
@@ -1020,8 +1044,17 @@
   <div class="slide" data-s="THE INCIDENT">
     <div class="row">
       <div class="lft">
-        <div class="lbl">INVESTIGATION · BID ACCEPTED TODAY</div>
-        <h1 class="h1" style="font-size:clamp(28px,3.2vw,44px);color:var(--red);">₹8.97 Cr.<br>Gone.</h1>
+        <div class="inv-thread">
+          <span class="inv-step done">01 · Open For Bid</span>
+          <span class="inv-line"></span>
+          <span class="inv-step done">02 · Checker Pending</span>
+          <span class="inv-line"></span>
+          <span class="inv-step done">03 · My Bid In Auction</span>
+          <span class="inv-line"></span>
+          <span class="inv-step act">04 · Bid Accepted</span>
+        </div>
+        <div class="lbl">INVESTIGATION · STATE 04</div>
+        <div class="hc-big" style="color:var(--red);">₹8.97 Cr.<br>Gone.</div>
         <div class="body">
           <p>My Bid: <strong>5.50%</strong>. Winning Bid: <strong>5.50%</strong>. Status: <strong style="color:var(--red);">Bid Lost</strong> — on every single FTU.</p>
           <p>This is what the financier saw when the auction closed. Same rate. Every FTU lost. Financier B was live 23 minutes earlier — TReDS rule: equal rate, first-in wins.</p>
@@ -2158,11 +2191,22 @@
 
   /* ── INLINE CP STATE — same slide, index 2 ── */
   function simToCP() {
-    // Update left panel
-    const lbl = document.getElementById('sim-lbl');
+    // Update left panel — label, headline, body, step hint
+    const lbl  = document.getElementById('sim-lbl');
+    const h1   = document.getElementById('sim-h1');
+    const body = document.getElementById('sim-body');
     const step = document.getElementById('sim-step');
-    if (lbl) lbl.textContent = 'INVESTIGATION · CHECKER PENDING';
-    if (step) step.innerHTML = '⏳ Bid submitted. Sits in Checker Pending — not in the auction yet. The auction is running.';
+    if (lbl)  lbl.textContent = 'INVESTIGATION · STATE 02';
+    if (h1)   h1.textContent  = 'Bid submitted. The auction kept running.';
+    if (body) body.innerHTML  = '<p>State 02. The bid is in Checker Pending. It shows in the Maker\'s view — with their rate. But it holds no position in the auction.</p><p>This is the 23-minute window. The auction ran. Another financier entered at 5.50% and went live immediately.</p>';
+    if (step) step.innerHTML  = '⏳ Bid submitted. Sits in Checker Pending — not in the auction. Watch what the platform shows.';
+    // Advance the thread — step 01 done, step 02 active
+    const thread = document.getElementById('sim-thread');
+    if (thread) {
+      const steps = thread.querySelectorAll('.inv-step');
+      if (steps[0]) { steps[0].classList.remove('act'); steps[0].classList.add('done'); }
+      if (steps[1]) steps[1].classList.add('act');
+    }
 
     // Switch active tab
     const t0 = document.getElementById('sim-t0');
