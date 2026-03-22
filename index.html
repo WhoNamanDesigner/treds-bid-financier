@@ -1121,16 +1121,83 @@
         </div>
       </div>
       <div class="rgt">
-        <div class="panel" style="background:#0c0c0c;">
-          <div class="card-grid">
-            <div class="card red"><div class="card-tag">Failure 01</div><div class="card-title">Column showed a value — not ownership</div></div>
-            <div class="card red"><div class="card-tag">Failure 02</div><div class="card-title">No notification when a counter-bid was placed</div></div>
-            <div class="card red"><div class="card-tag">Failure 03</div><div class="card-title">Bid status invisible during Checker Pending</div></div>
-            <div class="card red"><div class="card-tag">Failure 04</div><div class="card-title">Checker approved without context</div></div>
-            <div class="card red span2"><div class="card-tag">Failure 05</div><div class="card-title">State transitions happened silently across every tab</div></div>
+      <div class="panel" style="background:#0c0c0c;padding:28px 32px;display:flex;flex-direction:column;justify-content:center;overflow-y:auto;">
+        <div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:22px;">Five failures — in the order they struck</div>
+        <div style="position:relative;display:flex;flex-direction:column;">
+          <div style="position:absolute;left:10px;top:13px;width:1px;bottom:13px;background:linear-gradient(to bottom,rgba(229,57,53,0.4) 0%,rgba(229,57,53,0.06) 100%);"></div>
+
+          <!-- F03 — first to strike -->
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="flex-shrink:0;width:21px;height:21px;border-radius:50%;background:#140808;border:1.5px solid rgba(229,57,53,0.5);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:rgba(229,57,53,0.8);position:relative;z-index:1;margin-top:2px;">03</div>
+            <div style="padding-bottom:2px;">
+              <div style="font-size:8.5px;color:rgba(255,255,255,0.22);margin-bottom:2px;font-family:var(--sans);">11:42 AM — Maker places bid</div>
+              <div style="font-size:12px;font-weight:600;color:rgba(240,235,228,0.9);line-height:1.35;">Bid invisible during Checker Pending</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;padding:5px 0;">
+            <div style="flex-shrink:0;width:21px;"></div>
+            <div style="font-size:9px;font-style:italic;color:rgba(229,57,53,0.4);line-height:1.4;">23 minutes of vulnerability — auction running, bid not in it.</div>
+          </div>
+
+          <!-- F02 -->
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="flex-shrink:0;width:21px;height:21px;border-radius:50%;background:#140808;border:1.5px solid rgba(229,57,53,0.5);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:rgba(229,57,53,0.8);position:relative;z-index:1;margin-top:2px;">02</div>
+            <div style="padding-bottom:2px;">
+              <div style="font-size:8.5px;color:rgba(255,255,255,0.22);margin-bottom:2px;font-family:var(--sans);">12:04 PM — DCB Bank's bid goes live</div>
+              <div style="font-size:12px;font-weight:600;color:rgba(240,235,228,0.9);line-height:1.35;">No notification when a counter-bid was placed</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;padding:5px 0;">
+            <div style="flex-shrink:0;width:21px;"></div>
+            <div style="font-size:9px;font-style:italic;color:rgba(229,57,53,0.4);line-height:1.4;">Competitive event fired. 60 seconds to respond. Nobody told.</div>
+          </div>
+
+          <!-- F04 -->
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="flex-shrink:0;width:21px;height:21px;border-radius:50%;background:#140808;border:1.5px solid rgba(229,57,53,0.5);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:rgba(229,57,53,0.8);position:relative;z-index:1;margin-top:2px;">04</div>
+            <div style="padding-bottom:2px;">
+              <div style="font-size:8.5px;color:rgba(255,255,255,0.22);margin-bottom:2px;font-family:var(--sans);">12:05 PM — Checker approval window</div>
+              <div style="font-size:12px;font-weight:600;color:rgba(240,235,228,0.9);line-height:1.35;">Checker approved without context</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;padding:5px 0;">
+            <div style="flex-shrink:0;width:21px;"></div>
+            <div style="font-size:9px;font-style:italic;color:rgba(229,57,53,0.4);line-height:1.4;">Last checkpoint. One number. Two buttons. Approved.</div>
+          </div>
+
+          <!-- F01 -->
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="flex-shrink:0;width:21px;height:21px;border-radius:50%;background:#140808;border:1.5px solid rgba(229,57,53,0.5);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:rgba(229,57,53,0.8);position:relative;z-index:1;margin-top:2px;">01</div>
+            <div style="padding-bottom:2px;">
+              <div style="font-size:8.5px;color:rgba(255,255,255,0.22);margin-bottom:2px;font-family:var(--sans);">12:05 PM — Bid live in auction</div>
+              <div style="font-size:12px;font-weight:600;color:rgba(240,235,228,0.9);line-height:1.35;">Column showed a value — not ownership</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;padding:5px 0;">
+            <div style="flex-shrink:0;width:21px;"></div>
+            <div style="font-size:9px;font-style:italic;color:rgba(229,57,53,0.4);line-height:1.4;">My Bid 5.50%. Lowest Bid 5.50%. Identical. Unreadable.</div>
+          </div>
+
+          <!-- F05 -->
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="flex-shrink:0;width:21px;height:21px;border-radius:50%;background:#140808;border:1.5px solid rgba(229,57,53,0.5);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:rgba(229,57,53,0.8);position:relative;z-index:1;margin-top:2px;">05</div>
+            <div>
+              <div style="font-size:8.5px;color:rgba(255,255,255,0.22);margin-bottom:2px;font-family:var(--sans);">Auction close — FUs disappear</div>
+              <div style="font-size:12px;font-weight:600;color:rgba(240,235,228,0.9);line-height:1.35;">State transitions happened silently</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result bar -->
+        <div style="margin-top:18px;padding:11px 14px;border:1px solid rgba(229,57,53,0.18);border-radius:10px;background:rgba(229,57,53,0.04);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+          <div style="font-size:10px;color:rgba(240,235,228,0.3);line-height:1.6;">Not a freak accident.<br>The predictable result of five compounding gaps.</div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div style="font-size:20px;font-weight:800;color:rgba(229,57,53,0.8);font-family:var(--sans);letter-spacing:-.02em;">₹8.97 Cr</div>
+            <div style="font-size:8px;color:rgba(229,57,53,0.4);font-weight:700;letter-spacing:.1em;text-transform:uppercase;">lost</div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 
@@ -1295,80 +1362,6 @@
         </div>
       </div>
     </div>
-        <div style="display:none;">
-          <div class="plat-tabs">
-            <span class="plat-tab" style="color:#9ca3af;">Open For Bid</span>
-            <span class="plat-tab act">Checker Pending</span>
-            <span class="plat-tab" style="color:#9ca3af;">My Bid In Auction</span>
-            <span class="plat-tab" style="color:#9ca3af;">Bid Accepted</span>
-          </div>
-          <div class="hp-div"></div>
-          <div class="hp-filters">
-            <span class="hp-filter-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 2.5h10L7.2 6.8V10.5L4.8 9.2V6.8L1 2.5z" fill="#9ca3af"/></svg></span>
-            <button class="hp-filter">All Buyers ▾</button>
-            <button class="hp-filter">All Suppliers ▾</button>
-          </div>
-          <div class="plat-tbl">
-            <div class="plat-thead" style="display:grid;grid-template-columns:16px 80px 1fr 1fr 70px 40px 32px 56px 80px;gap:5px;padding:5px 14px;background:#f9fafb;border-bottom:1px solid #e8eaed;">
-              <div class="plat-cb" style="margin:auto;"></div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Factoring Unit</div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Buyer</div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Supplier</div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Amount</div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Due</div>
-              <div style="font-size:9px;font-weight:600;color:#d1d5db;">Tenor</div>
-              <div style="font-size:9px;font-weight:700;" class="fail-col">My Bid</div>
-              <div style="font-size:9px;font-weight:700;" class="fail-col">Status</div>
-            </div>
-            <div class="plat-tbody greyout">
-              <div class="plat-row" style="display:grid;grid-template-columns:16px 80px 1fr 1fr 70px 40px 32px 56px 80px;gap:5px;padding:6px 14px;border-bottom:1px solid #f3f4f6;align-items:center;">
-                <div class="plat-cb"></div>
-                <div class="plat-ftu" style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">FTU000187234</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Bharat Met...</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Arjun Forg...</div>
-                <div class="plat-cell" style="font-size:9px;">₹42,50,000</div>
-                <div class="plat-cell" style="font-size:9px;">15 Apr</div>
-                <div class="plat-cell" style="font-size:9px;">25d</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-                <div style="opacity:1;"><span class="plat-badge" style="background:#f3f4f6;color:#6b7280;border:1px solid #e5e7eb;border-radius:4px;padding:2px 6px;font-size:8px;font-weight:500;">Pending Approval</span></div>
-              </div>
-              <div class="plat-row" style="display:grid;grid-template-columns:16px 80px 1fr 1fr 70px 40px 32px 56px 80px;gap:5px;padding:6px 14px;border-bottom:1px solid #f3f4f6;align-items:center;">
-                <div class="plat-cb"></div>
-                <div class="plat-ftu" style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">FTU000187198</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Bharat Met...</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Arjun Forg...</div>
-                <div class="plat-cell" style="font-size:9px;">₹38,75,000</div>
-                <div class="plat-cell" style="font-size:9px;">28 Apr</div>
-                <div class="plat-cell" style="font-size:9px;">38d</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-                <div style="opacity:1;"><span class="plat-badge" style="background:#f3f4f6;color:#6b7280;border:1px solid #e5e7eb;border-radius:4px;padding:2px 6px;font-size:8px;font-weight:500;">Pending Approval</span></div>
-              </div>
-              <div class="plat-row" style="display:grid;grid-template-columns:16px 80px 1fr 1fr 70px 40px 32px 56px 80px;gap:5px;padding:6px 14px;align-items:center;">
-                <div class="plat-cb"></div>
-                <div class="plat-ftu" style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">FTU000187156</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Bharat Met...</div>
-                <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Arjun Forg...</div>
-                <div class="plat-cell" style="font-size:9px;">₹51,20,000</div>
-                <div class="plat-cell" style="font-size:9px;">12 May</div>
-                <div class="plat-cell" style="font-size:9px;">52d</div>
-                <div class="plat-rate fail-hi" style="font-size:10px;">5.50%</div>
-                <div style="opacity:1;"><span class="plat-badge" style="background:#f3f4f6;color:#6b7280;border:1px solid #e5e7eb;border-radius:4px;padding:2px 6px;font-size:8px;font-weight:500;">Pending Approval</span></div>
-              </div>
-            </div>
-          </div>
-          <div style="flex-shrink:0;border-top:1.5px solid #dc2626;background:#fef2f2;padding:10px 14px 12px;">
-            <span style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#dc2626;">● The failure</span>
-            <div style="font-size:11px;color:#1a2744;font-weight:500;margin:6px 0 3px;line-height:1.5;">The Maker sees 5.50% and "Pending Approval". Nothing here says the bid is inactive.</div>
-            <div style="font-size:10px;color:#6b7280;line-height:1.55;">"Pending Approval" describes a workflow state — not a competitive state. The bid is not in the auction. The screen does not say so.</div>
-          </div>
-          <div class="hero-ribbon">
-            <span>10 Factoring Units</span>
-            <span class="hr-dot">·</span>
-            <span>My Bid <strong>5.50%</strong></span>
-            <span class="hr-dot">·</span>
-            <span style="color:#9ca3af;">Awaiting Checker</span>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -1434,6 +1427,7 @@
           <p>FUs moved between tabs with no explanation of why, what bid was honored, or what happened to pending actions.</p>
           <p>The platform treated every transition as a technical event. The user experienced it as a disappearance.</p>
           <p><strong>On a financial platform, every time something disappears without explanation — a bid, an FU, a pending action — the user fills the silence with their worst assumption.</strong></p>
+          <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--b);font-size:12px;color:var(--t3);line-height:1.65;">The pattern was consistent across all five. The platform tracked financial state accurately — but never communicated it to the people making financial decisions.</div>
         </div>
       </div>
             <div class="rgt">
