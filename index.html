@@ -1626,51 +1626,83 @@
   <div class="slide" data-s="OUTCOME">
     <div class="row">
       <div class="lft">
-        <div class="lbl">Outcome</div>
-        <h1 class="h1">Six specific failures. Six specific fixes.</h1>
+        <div class="lbl">OUTCOME · DELIVERY</div>
+        <h1 class="h1" style="font-size:clamp(36px,4vw,58px);">Five failures.<br>Two phases.</h1>
         <div class="body">
-          <p>Every change maps directly to a failure found during investigation. Nothing added for completeness. Nothing left unaddressed.</p>
+          <p>Phase 1 shipped. The financier can now tell — in a single glance — whether they are leading, tied, or behind. The post-auction gap that cost ₹8.97 Cr is closed.</p>
+          <p style="margin-top:14px;padding:12px 14px;background:rgba(102,187,106,0.08);border:1px solid rgba(102,187,106,0.22);border-radius:10px;font-size:13px;color:rgba(240,235,228,0.72);">
+            <span style="color:#66bb6a;font-weight:600;">✓ No repeat incident.</span> User satisfied with updated UI. Phase 2 scoped for next sprint.
+          </p>
         </div>
       </div>
       <div class="rgt">
-        <div class="panel" style="background:#0c0c0c;">
-          <div class="bat-wrap">
-            <div class="bat-row header">
-              <div class="bat-hdr">Area</div>
-              <div class="bat-hdr bad">Before</div>
-              <div class="bat-hdr good">After</div>
+        <div class="panel" style="background:#0d0d0d;padding:0;overflow-y:auto;justify-content:flex-start;align-items:stretch;">
+
+          <!-- Phase 1 -->
+          <div style="padding:14px 18px 8px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+              <span style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#66bb6a;">Phase 1</span>
+              <span style="font-size:9px;background:rgba(102,187,106,0.12);color:#66bb6a;border:1px solid rgba(102,187,106,0.25);border-radius:100px;padding:2px 8px;font-weight:600;">Shipped ✓</span>
             </div>
-            <div class="bat-row">
-              <div class="bat-cell topic">Bid ownership</div>
-              <div class="bat-cell bad">My Bid 5.5% = Lowest Bid 5.5% — ambiguous</div>
-              <div class="bat-cell good">Position indicator — Leading / Matched / Trailing</div>
+
+            <!-- Failure 03 -->
+            <div style="background:#161616;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;margin-bottom:8px;">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px;">
+                <span style="font-size:10px;font-weight:600;color:rgba(240,235,228,0.9);">Bid Position Indicator</span>
+                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.7);white-space:nowrap;flex-shrink:0;">Failure 03</span>
+              </div>
+              <div style="font-size:10px;color:rgba(240,235,228,0.38);line-height:1.55;margin-bottom:6px;">My Bid 5.50% = Lowest Bid 5.50% — no ownership signal.</div>
+              <div style="font-size:10px;color:#66bb6a;line-height:1.55;">→ Leading / Tied / Behind — inline on every row, live during auction.</div>
             </div>
-            <div class="bat-row">
-              <div class="bat-cell topic">Counter-bid alert</div>
-              <div class="bat-cell bad">No notification. Silent loss.</div>
-              <div class="bat-cell good">Dual alert to Maker + Checker on approval</div>
-            </div>
-            <div class="bat-row">
-              <div class="bat-cell topic">Checker context</div>
-              <div class="bat-cell bad">Single rate to approve. No history.</div>
-              <div class="bat-cell good">Type, prev bid, delta, lowest bid, projected position</div>
-            </div>
-            <div class="bat-row">
-              <div class="bat-cell topic">Real-time changes</div>
-              <div class="bat-cell bad">Silent cell update. Never registered.</div>
-              <div class="bat-cell good">Flash → row state → page flag → tab counter</div>
-            </div>
-            <div class="bat-row">
-              <div class="bat-cell topic">State transitions</div>
-              <div class="bat-cell bad">FUs disappear silently between tabs.</div>
-              <div class="bat-cell good">Toast: why moved, what honored, pending actions</div>
-            </div>
-            <div class="bat-row">
-              <div class="bat-cell topic">Draft bid edge</div>
-              <div class="bat-cell bad">Bid Lost shows draft value — unexplained.</div>
-              <div class="bat-cell good">Both confirmed + draft shown with plain-language explanation</div>
+
+            <!-- Failure 05 -->
+            <div style="background:#161616;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;margin-bottom:4px;">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px;">
+                <span style="font-size:10px;font-weight:600;color:rgba(240,235,228,0.9);">Post-auction Explanation</span>
+                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.7);white-space:nowrap;flex-shrink:0;">Failure 05</span>
+              </div>
+              <div style="font-size:10px;color:rgba(240,235,228,0.38);line-height:1.55;margin-bottom:6px;">Bid Lost at 5.50%. No explanation why. No closure.</div>
+              <div style="font-size:10px;color:#66bb6a;line-height:1.55;">→ "Equal rate — first-in wins. DCB Bank entered 60 seconds before you."</div>
             </div>
           </div>
+
+          <div style="height:1px;background:rgba(255,255,255,0.06);margin:4px 0;"></div>
+
+          <!-- Phase 2 -->
+          <div style="padding:8px 18px 16px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+              <span style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ffb74d;">Phase 2</span>
+              <span style="font-size:9px;background:rgba(255,183,77,0.1);color:#ffb74d;border:1px solid rgba(255,183,77,0.25);border-radius:100px;padding:2px 8px;font-weight:600;">Scoped →</span>
+            </div>
+
+            <!-- Failure 01 -->
+            <div style="background:#161616;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:11px 14px;margin-bottom:7px;opacity:0.75;">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px;">
+                <span style="font-size:10px;font-weight:600;color:rgba(240,235,228,0.75);">Draft State Visibility</span>
+                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.5);white-space:nowrap;flex-shrink:0;">Failure 01</span>
+              </div>
+              <div style="font-size:10px;color:rgba(240,235,228,0.32);line-height:1.55;">Maker sees bid, assumes it's competing. It isn't. → "Not in auction yet" badge on every CP row.</div>
+            </div>
+
+            <!-- Failure 04 -->
+            <div style="background:#161616;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:11px 14px;margin-bottom:7px;opacity:0.75;">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px;">
+                <span style="font-size:10px;font-weight:600;color:rgba(240,235,228,0.75);">Checker Context Panel</span>
+                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.5);white-space:nowrap;flex-shrink:0;">Failure 04</span>
+              </div>
+              <div style="font-size:10px;color:rgba(240,235,228,0.32);line-height:1.55;">Checker approves blind — no market context. → Current lowest bid + timing risk shown before approval.</div>
+            </div>
+
+            <!-- Failure 02 -->
+            <div style="background:#161616;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:11px 14px;opacity:0.75;">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px;">
+                <span style="font-size:10px;font-weight:600;color:rgba(240,235,228,0.75);">Competitor Alert</span>
+                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.5);white-space:nowrap;flex-shrink:0;">Failure 02</span>
+              </div>
+              <div style="font-size:10px;color:rgba(240,235,228,0.32);line-height:1.55;">DCB Bank entered during CP window. Zero signal. → Real-time push to Maker + Checker when same-rate bid goes live.</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
