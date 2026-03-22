@@ -1147,21 +1147,47 @@
         </div>
       </div>
       <div class="rgt">
-        <div class="panel" style="background:#0c0c0c;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:8px;">What the platform assumed</div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.65;">Users need to see the current lowest bid rate. That is enough to gauge how competitive their position is.</div>
-          </div>
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:8px;">What the user experienced</div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.65;">My Bid: 5.50%. Lowest Bid: 5.50%. The numbers match — so I must be leading. I was not.</div>
-          </div>
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:8px;">First question</div>
-            <div style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--t);line-height:1.4;">"What does a financier need to know to act — not just see data, but make a decision?"</div>
+      <div class="panel" style="background:#0c0c0c;padding:22px 24px;display:flex;flex-direction:column;justify-content:center;gap:12px;overflow-y:auto;">
+        <div>
+          <div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:7px;">What the screen showed</div>
+          <div style="background:#fff;border-radius:9px;overflow:hidden;font-family:'Inter',sans-serif;color:#1a2744;">
+            <div style="display:flex;border-bottom:1px solid #e8eaed;padding:0 10px;">
+              <span style="padding:6px 8px;font-size:8.5px;font-weight:500;color:#6b7280;border-bottom:2px solid transparent;margin-bottom:-1px;">Open For Bid</span>
+              <span style="padding:6px 8px;font-size:8.5px;font-weight:500;color:#6b7280;border-bottom:2px solid transparent;margin-bottom:-1px;">Checker Pending</span>
+              <span style="padding:6px 8px;font-size:8.5px;font-weight:600;color:#1a2744;border-bottom:2px solid #1a2744;margin-bottom:-1px;">My Bid In Auction</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 48px 52px;gap:4px;padding:5px 10px;background:#f5f6f7;border-bottom:1.5px solid #e0e0e0;font-size:7.5px;font-weight:600;color:#4b5563;">
+              <div>Factoring Unit</div><div style="color:#dc2626;">My Bid</div><div style="color:#dc2626;">Lowest Bid</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 48px 52px;gap:4px;padding:6px 10px;align-items:center;border-bottom:1px solid #f0f0f0;">
+              <div style="font-size:8px;color:#2563eb;font-weight:600;">FTU000187234</div>
+              <div style="font-size:9px;font-weight:700;color:#1a2744;">5.50%</div>
+              <div style="font-size:9px;font-weight:700;color:#1a2744;">5.50%</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 48px 52px;gap:4px;padding:6px 10px;align-items:center;border-bottom:1px solid #f0f0f0;">
+              <div style="font-size:8px;color:#2563eb;font-weight:600;">FTU000187198</div>
+              <div style="font-size:9px;font-weight:700;color:#1a2744;">5.50%</div>
+              <div style="font-size:9px;font-weight:700;color:#1a2744;">5.50%</div>
+            </div>
+            <div style="padding:6px 10px;background:#fef2f2;border-top:1px solid #fecaca;">
+              <span style="font-size:7.5px;color:#dc2626;font-weight:600;">No ownership signal — both columns identical, no answer to "Am I leading?"</span>
+            </div>
           </div>
         </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:6px;">What the platform assumed</div>
+          <div style="font-size:12px;color:var(--t2);line-height:1.6;">Users need to see the current lowest bid rate. That is enough to gauge how competitive their position is.</div>
+        </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:6px;">What the user experienced</div>
+          <div style="font-size:12px;color:var(--t2);line-height:1.6;">My Bid: 5.50%. Lowest Bid: 5.50%. The numbers match — so I must be leading. I was not.</div>
+        </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:6px;">First question</div>
+          <div style="font-family:var(--serif);font-style:italic;font-size:16px;color:var(--t);line-height:1.4;">"What does a financier need to know to act — not just see data, but make a decision?"</div>
+        </div>
       </div>
+    </div>
     </div>
   </div>
 
@@ -1178,21 +1204,45 @@
         </div>
       </div>
       <div class="rgt">
-        <div class="panel" style="background:#0c0c0c;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:8px;">What the platform assumed</div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.65;">The data is live and always current. If a user checks the screen, they will see any changes. Visibility is sufficient.</div>
-          </div>
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:8px;">What the user experienced</div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.65;">I was watching 20 other FTUs. DCB Bank entered at the same rate. I had 60 seconds to respond. Nothing told me.</div>
-          </div>
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:8px;">First question</div>
-            <div style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--t);line-height:1.4;">"Which competitive events are too critical to rely on a user's attention — what actually earns an interruption?"</div>
+      <div class="panel" style="background:#0c0c0c;padding:22px 24px;display:flex;flex-direction:column;justify-content:center;gap:12px;overflow-y:auto;">
+        <div>
+          <div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:7px;">What the screen showed</div>
+          <div style="background:#fff;border-radius:9px;overflow:hidden;font-family:'Inter',sans-serif;color:#1a2744;">
+            <div style="display:flex;border-bottom:1px solid #e8eaed;padding:0 10px;">
+              <span style="padding:6px 8px;font-size:8.5px;font-weight:600;color:#1a2744;border-bottom:2px solid #1a2744;margin-bottom:-1px;">My Bid In Auction</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 48px 52px;gap:4px;padding:5px 10px;background:#f5f6f7;border-bottom:1.5px solid #e0e0e0;font-size:7.5px;font-weight:600;color:#4b5563;">
+              <div>Factoring Unit</div><div>My Bid</div><div>Lowest Bid</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 48px 52px;gap:4px;padding:6px 10px;align-items:center;border-bottom:1px solid #f0f0f0;">
+              <div style="font-size:8px;color:#2563eb;font-weight:600;">FTU000187234</div>
+              <div style="font-size:9px;font-weight:700;color:#1a2744;">5.50%</div>
+              <div style="font-size:9px;font-weight:700;color:#1a2744;">5.50%</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:6px 10px;background:#fafafa;border-bottom:1px solid #f0f0f0;">
+              <span style="font-size:7.5px;color:#9ca3af;flex-shrink:0;">12:04 PM</span>
+              <span style="font-size:7.5px;color:#6b7280;">DCB Bank entered at 5.50% on the same FTU</span>
+              <span style="margin-left:auto;font-size:7.5px;color:#dc2626;font-weight:700;white-space:nowrap;">No alert</span>
+            </div>
+            <div style="padding:6px 10px;background:#fef2f2;border-top:1px solid #fecaca;">
+              <span style="font-size:7.5px;color:#dc2626;font-weight:600;">Competitive event fired. Nothing on screen changed.</span>
+            </div>
           </div>
         </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:6px;">What the platform assumed</div>
+          <div style="font-size:12px;color:var(--t2);line-height:1.6;">The data is live and always current. If a user checks the screen, they will see any changes. Visibility is sufficient.</div>
+        </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:6px;">What the user experienced</div>
+          <div style="font-size:12px;color:var(--t2);line-height:1.6;">I was watching 20 other FTUs. DCB Bank entered at the same rate. I had 60 seconds to respond. Nothing told me.</div>
+        </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:6px;">First question</div>
+          <div style="font-family:var(--serif);font-style:italic;font-size:16px;color:var(--t);line-height:1.4;">"Which competitive events are too critical to rely on a user's attention — what actually earns an interruption?"</div>
+        </div>
       </div>
+    </div>
     </div>
   </div>
 
@@ -1209,21 +1259,42 @@
         </div>
       </div>
             <div class="rgt">
-        <div class="panel" style="background:#0c0c0c;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:8px;">What the platform assumed</div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.65;">The bid is queued for Checker approval. The system knows it is not live yet. This is a workflow state, not a user concern.</div>
-          </div>
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:8px;">What the user experienced</div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.65;">I placed my bid. I can see my rate on screen. I assumed I was competing in the auction. For 23 minutes, I was not.</div>
-          </div>
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:8px;">First question</div>
-            <div style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--t);line-height:1.4;">"Where does the user's mental model diverge from system reality — and whose job is it to close that gap?"</div>
+      <div class="panel" style="background:#0c0c0c;padding:22px 24px;display:flex;flex-direction:column;justify-content:center;gap:12px;overflow-y:auto;">
+        <div>
+          <div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:7px;">What the screen showed</div>
+          <div style="background:#fff;border-radius:9px;overflow:hidden;font-family:'Inter',sans-serif;color:#1a2744;">
+            <div style="display:flex;border-bottom:1px solid #e8eaed;padding:0 10px;">
+              <span style="padding:6px 8px;font-size:8.5px;font-weight:500;color:#6b7280;border-bottom:2px solid transparent;margin-bottom:-1px;">Open For Bid</span>
+              <span style="padding:6px 8px;font-size:8.5px;font-weight:600;color:#1a2744;border-bottom:2px solid #1a2744;margin-bottom:-1px;">Checker Pending</span>
+              <span style="padding:6px 8px;font-size:8.5px;font-weight:500;color:#6b7280;border-bottom:2px solid transparent;margin-bottom:-1px;">My Bid In Auction</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 48px 84px;gap:4px;padding:5px 10px;background:#f5f6f7;border-bottom:1.5px solid #e0e0e0;font-size:7.5px;font-weight:600;color:#4b5563;">
+              <div>Factoring Unit</div><div style="color:#dc2626;">My Bid</div><div style="color:#dc2626;">Status</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 48px 84px;gap:4px;padding:6px 10px;align-items:center;border-bottom:1px solid #f0f0f0;">
+              <div style="font-size:8px;color:#2563eb;font-weight:600;">FTU000187234</div>
+              <div style="font-size:9px;font-weight:700;color:#1a2744;">5.50%</div>
+              <div><span style="display:inline-flex;padding:2px 6px;border-radius:4px;font-size:7px;font-weight:500;background:#f3f4f6;color:#6b7280;border:1px solid #e5e7eb;">Pending Approval</span></div>
+            </div>
+            <div style="padding:6px 10px;background:#fef2f2;border-top:1px solid #fecaca;">
+              <span style="font-size:7.5px;color:#dc2626;font-weight:600;">Bid visible, rate visible — not live, not competing. Screen doesn't say so.</span>
+            </div>
           </div>
         </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:6px;">What the platform assumed</div>
+          <div style="font-size:12px;color:var(--t2);line-height:1.6;">The bid is queued for Checker approval. The system knows it is not live yet. This is a workflow state, not a user concern.</div>
+        </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:6px;">What the user experienced</div>
+          <div style="font-size:12px;color:var(--t2);line-height:1.6;">I placed my bid. I can see my rate on screen. I assumed I was competing in the auction. For 23 minutes, I was not.</div>
+        </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:6px;">First question</div>
+          <div style="font-family:var(--serif);font-style:italic;font-size:16px;color:var(--t);line-height:1.4;">"Where does the user's mental model diverge from system reality — and whose job is it to close that gap?"</div>
+        </div>
       </div>
+    </div>
         <div style="display:none;">
           <div class="plat-tabs">
             <span class="plat-tab" style="color:#9ca3af;">Open For Bid</span>
@@ -1315,21 +1386,41 @@
         </div>
       </div>
             <div class="rgt">
-        <div class="panel" style="background:#0c0c0c;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:8px;">What the platform assumed</div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.65;">The Checker&#39;s role is to validate the bid submitted by the Maker — approve or reject the number.</div>
-          </div>
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:8px;">What the user experienced</div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.65;">I saw one number: 5.50%. I approved it. I had no idea a competitor was already live at the same rate, 60 seconds ahead.</div>
-          </div>
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:8px;">First question</div>
-            <div style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--t);line-height:1.4;">"Is the Checker approving a form field — or making a market decision? That answer changes everything they need to see."</div>
+      <div class="panel" style="background:#0c0c0c;padding:22px 24px;display:flex;flex-direction:column;justify-content:center;gap:12px;overflow-y:auto;">
+        <div>
+          <div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:7px;">What the screen showed</div>
+          <div style="background:#fff;border-radius:9px;overflow:hidden;font-family:'Inter',sans-serif;color:#1a2744;">
+            <div style="padding:8px 12px;font-size:8.5px;color:#9ca3af;font-weight:500;border-bottom:1px solid #f0f0f0;">Pending Review — FTU000187234</div>
+            <div style="padding:10px 12px;background:#f5f6f7;">
+              <div style="font-size:18px;font-weight:700;color:#1a2744;">5.50%</div>
+              <div style="font-size:8px;font-weight:600;color:#1a2744;margin-top:2px;">Bid Rate</div>
+              <div style="font-size:7.5px;color:#9ca3af;margin-top:1px;">₹42,50,000 · 25 day tenor</div>
+            </div>
+            <div style="padding:8px 12px;display:flex;flex-direction:column;gap:6px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:6px;border-bottom:1px solid #f0f0f0;">
+                <span style="font-size:8px;color:#6b7280;">Submitted by</span>
+                <span style="font-size:8px;font-weight:600;color:#1a2744;">Maker · 11:42 AM</span>
+              </div>
+            </div>
+            <div style="padding:6px 12px;background:#fef2f2;border-top:1px solid #fecaca;">
+              <span style="font-size:7.5px;color:#dc2626;font-weight:600;">No market position. No competitive context. One number, two buttons.</span>
+            </div>
           </div>
         </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:6px;">What the platform assumed</div>
+          <div style="font-size:12px;color:var(--t2);line-height:1.6;">The Checker&#39;s role is to validate the bid submitted by the Maker — approve or reject the number.</div>
+        </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:6px;">What the user experienced</div>
+          <div style="font-size:12px;color:var(--t2);line-height:1.6;">I saw one number: 5.50%. I approved it. I had no idea a competitor was already live at the same rate, 60 seconds ahead.</div>
+        </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:6px;">First question</div>
+          <div style="font-family:var(--serif);font-style:italic;font-size:16px;color:var(--t);line-height:1.4;">"Is the Checker approving a form field — or making a market decision? That answer changes everything they need to see."</div>
+        </div>
       </div>
+    </div>
     </div>
   </div>
 
@@ -1346,21 +1437,41 @@
         </div>
       </div>
             <div class="rgt">
-        <div class="panel" style="background:#0c0c0c;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:8px;">What the platform assumed</div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.65;">Tab transitions are system events. FUs move when conditions are met. Users follow the data to its next state.</div>
-          </div>
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:8px;">What the user experienced</div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.65;">My FU disappeared from the tab. I don&#39;t know what happened to it, what bid was honored, or what I should do.</div>
-          </div>
-          <div style="padding:18px 20px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:8px;">First question</div>
-            <div style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--t);line-height:1.4;">"Every time something moves or disappears — can the platform answer: why did it move, what was honored, what happens next?"</div>
+      <div class="panel" style="background:#0c0c0c;padding:22px 24px;display:flex;flex-direction:column;justify-content:center;gap:12px;overflow-y:auto;">
+        <div>
+          <div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:7px;">What the screen showed</div>
+          <div style="background:#fff;border-radius:9px;overflow:hidden;font-family:'Inter',sans-serif;color:#1a2744;">
+            <div style="display:flex;border-bottom:1px solid #e8eaed;padding:0 10px;">
+              <span style="padding:6px 8px;font-size:8.5px;font-weight:500;color:#6b7280;border-bottom:2px solid transparent;margin-bottom:-1px;">Open For Bid</span>
+              <span style="padding:6px 8px;font-size:8.5px;font-weight:600;color:#1a2744;border-bottom:2px solid #1a2744;margin-bottom:-1px;">Checker Pending</span>
+              <span style="padding:6px 8px;font-size:8.5px;font-weight:500;color:#6b7280;border-bottom:2px solid transparent;margin-bottom:-1px;">My Bid In Auction</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 48px 84px;gap:4px;padding:5px 10px;background:#f5f6f7;border-bottom:1.5px solid #e0e0e0;font-size:7.5px;font-weight:600;color:#4b5563;">
+              <div>Factoring Unit</div><div>My Bid</div><div>Status</div>
+            </div>
+            <div style="padding:18px;display:flex;flex-direction:column;align-items:center;gap:5px;">
+              <div style="font-size:20px;opacity:0.18;line-height:1;">&#128203;</div>
+              <div style="font-size:8.5px;color:#9ca3af;text-align:center;">No pending approvals</div>
+            </div>
+            <div style="padding:6px 10px;background:#fef2f2;border-top:1px solid #fecaca;">
+              <span style="font-size:7.5px;color:#dc2626;font-weight:600;">FU moved to next state. No explanation, no trace, no confirmation.</span>
+            </div>
           </div>
         </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(255,255,255,0.07);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:6px;">What the platform assumed</div>
+          <div style="font-size:12px;color:var(--t2);line-height:1.6;">Tab transitions are system events. FUs move when conditions are met. Users follow the data to its next state.</div>
+        </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(229,57,53,0.2);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,57,53,0.55);margin-bottom:6px;">What the user experienced</div>
+          <div style="font-size:12px;color:var(--t2);line-height:1.6;">My FU disappeared from the tab. I don&#39;t know what happened to it, what bid was honored, or what I should do.</div>
+        </div>
+        <div style="padding:14px 16px;background:var(--surf2);border:1px solid rgba(255,183,77,0.2);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.55);margin-bottom:6px;">First question</div>
+          <div style="font-family:var(--serif);font-style:italic;font-size:16px;color:var(--t);line-height:1.4;">"Every time something moves or disappears — can the platform answer: why did it move, what was honored, what happens next?"</div>
+        </div>
       </div>
+    </div>
     </div>
   </div>
 
