@@ -682,7 +682,6 @@
             </span>
             <button class="hp-filter">All Buyers ▾</button>
             <button class="hp-filter">All Suppliers ▾</button>
-            <button class="hp-filter">All Status ▾</button>
           </div>
 
           <!-- Table -->
@@ -1016,6 +1015,7 @@
             </div>
             <div class="plat-tbody" id="s3-tw"></div>
           </div>
+          <div class="hp-pg" id="s3-pg" style="display:none;"></div>
           <div class="hero-ribbon">
             <span>13 Factoring Units</span>
             <span class="hr-dot">·</span>
@@ -1086,6 +1086,7 @@
             </div>
             <div class="plat-tbody" id="s4-tw"></div>
           </div>
+          <div class="hp-pg" id="s4-pg" style="display:none;"></div>
           <div class="hero-ribbon" style="background:#fef2f2;border-top-color:#fecaca;">
             <span>13 Factoring Units</span>
             <span class="hr-dot">·</span>
@@ -1814,7 +1815,7 @@
     { id:'FTU000186887', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹35,60,000', due:'18 Apr', tenor:'28d' },
     { id:'FTU000186865', buyer:'Bharat Metals Ltd.', sup:'Arjun Forge Pvt. Ltd.', amt:'₹58,25,000', due:'05 May', tenor:'45d' },
   ];
-  const HERO_PER_PAGE = 5;
+  const HERO_PER_PAGE = 10;
   let heroPg = 0;
 
   let heroTimer = null;
@@ -1973,7 +1974,7 @@
   }
 
   /* ── SCENE OFB — slide index 2 ── */
-  const SIM_PER_PAGE = 5;
+  const SIM_PER_PAGE = 10;
   let simPg = 0;
 
   function simInit() {
@@ -2044,8 +2045,10 @@
     const tw = document.getElementById('sim-tw');
     if (!tw) return;
     tw.innerHTML = '';
-    // Show all 13 FUs — tbody scrolls internally, no pagination needed
-    HERO_FTUS.forEach((f, i) => {
+    const start = page * SIM_PER_PAGE;
+    const slice = HERO_FTUS.slice(start, start + SIM_PER_PAGE);
+    slice.forEach((f, idx) => {
+      const i = start + idx;
       const isSelected = simSel.has(i);
       const r = simRow('gc-hero', `
         <div class="plat-cb${isSelected ? ' on' : ''}" id="scb${i}" onclick="simToggle(${i});event.stopPropagation()"></div>
@@ -2062,10 +2065,22 @@
       r.onclick = () => simToggle(i);
       if (stagger) {
         r.style.cssText += 'opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s;';
-        setTimeout(() => { r.style.opacity='1'; r.style.transform='translateY(0)'; }, 80 + i * 60);
+        setTimeout(() => { r.style.opacity='1'; r.style.transform='translateY(0)'; }, 80 + idx * 60);
       }
       tw.appendChild(r);
     });
+    // Update pagination — locked (next always disabled in sim story)
+    const total = HERO_FTUS.length;
+    const pg = document.getElementById('sim-pg');
+    if (pg) {
+      pg.style.display = 'flex';
+      pg.innerHTML = `
+        <span class="hp-pg-info">${start+1}–${Math.min(start+SIM_PER_PAGE,total)} of ${total}</span>
+        <div style="display:flex;gap:4px;">
+          <button class="hp-pg-btn" disabled>←</button>
+          <button class="hp-pg-btn" disabled>→</button>
+        </div>`;
+    }
   }
 
   function simToggle(i) {
@@ -2087,19 +2102,23 @@
     const hcb = document.getElementById('sim-hcb');
     const pb = document.getElementById('sim-place-bid');
     const step = document.getElementById('sim-step');
-    if (simSel.size >= 13) {
-      // Deselect all
-      simSel.clear();
+    const start = simPg * SIM_PER_PAGE;
+    const end = Math.min(start + SIM_PER_PAGE, HERO_FTUS.length);
+    const pageCount = end - start;
+    const allSelected = Array.from({length: pageCount}, (_, k) => start + k).every(j => simSel.has(j));
+    if (allSelected && simSel.size > 0) {
+      // Deselect current page
+      for (let j = start; j < end; j++) simSel.delete(j);
       if (hcb) { hcb.classList.remove('on'); hcb.classList.add('cue'); }
       if (pb) { pb.disabled = true; pb.textContent = 'Place Bid'; pb.classList.remove('cue'); }
-      if (step) step.innerHTML = '← Use the header checkbox to select all 13 FTUs, then click <strong>Place Bid</strong>';
+      if (step) step.innerHTML = '← Use the header checkbox to select all FTUs on this page, then click <strong>Place Bid</strong>';
       simRenderOFBPage(simPg, false);
     } else {
-      // Select all 13
-      for (let j = 0; j < 13; j++) simSel.add(j);
+      // Select current page
+      for (let j = start; j < end; j++) simSel.add(j);
       if (hcb) { hcb.classList.add('on'); hcb.classList.remove('cue'); }
-      if (pb) { pb.disabled = false; pb.textContent = '✓ Place Bid'; pb.classList.add('cue'); }
-      if (step) step.innerHTML = '13 FTUs selected. Now click <strong>Place Bid</strong> to submit.';
+      if (pb) { pb.disabled = false; pb.textContent = `✓ Place Bid (${simSel.size} FTUs)`; pb.classList.add('cue'); }
+      if (step) step.innerHTML = `${simSel.size} FTUs selected. Now click <strong>Place Bid</strong> to submit.`;
       simRenderOFBPage(simPg, false);
     }
     simUpdateBanner();
@@ -2197,21 +2216,19 @@
     // Swap header to Withdraw + Revise Bid
     const hdrBtns = document.getElementById('sim-hdr-btns');
     if (hdrBtns) hdrBtns.innerHTML = `
-      <button class="pb">Withdraw</button>
-      <button class="pb dk">Revise Bid</button>`;
+      <button class="pb" disabled>Withdraw</button>
+      <button class="pb dk" disabled>Revise Bid</button>`;
 
-    // Hide banner and pagination
+    // Hide banner
     const banner = document.getElementById('sim-banner');
     if (banner) banner.classList.remove('show');
-    const pg = document.getElementById('sim-pg');
-    if (pg) pg.style.display = 'none';
 
     // Switch thead to CP columns (10 cols: same as OFB + Status)
     const thead = document.getElementById('sim-thead');
     if (thead) {
       thead.className = 'plat-thead gc-cp';
       thead.innerHTML = `
-        <div class="plat-cb on" style="background:#16a34a;border-color:#16a34a;"></div>
+        <div class="plat-cb"></div>
         <div>Factoring Unit</div>
         <div>Buyer</div>
         <div>Supplier</div>
@@ -2223,13 +2240,13 @@
         <div>Status</div>`;
     }
 
-    // Rebuild rows as CP — all 13 FTUs, tbody scrolls internally
+    // Rebuild rows as CP — first 10 FTUs, with pagination
     const tw = document.getElementById('sim-tw');
     if (tw) {
       tw.innerHTML = '';
-      HERO_FTUS.forEach(f => {
+      HERO_FTUS.slice(0, 10).forEach(f => {
         tw.appendChild(simRow('gc-cp', `
-          <div class="plat-cb on"></div>
+          <div class="plat-cb"></div>
           <div class="plat-ftu" style="font-size:9px;white-space:nowrap;">${f.id}</div>
           <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.buyer}</div>
           <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.sup}</div>
@@ -2241,6 +2258,18 @@
           <div><span class="plat-badge pending">Checker Pending</span></div>
         `));
       });
+    }
+
+    const pg = document.getElementById('sim-pg');
+    if (pg) {
+      pg.style.display = 'flex';
+      const total = HERO_FTUS.length;
+      pg.innerHTML = `
+        <span class="hp-pg-info">1–10 of ${total}</span>
+        <div style="display:flex;gap:4px;">
+          <button class="hp-pg-btn" disabled>←</button>
+          <button class="hp-pg-btn" disabled>→</button>
+        </div>`;
     }
 
     // Show failure 01 after 1.5s
@@ -2264,22 +2293,8 @@
   }
 
   function showCPFail2() {
-    const tw = document.getElementById('sim-tw');
-    if (tw) {
-      // Remove My Bid highlight → spotlight Status badge (index 9)
-      tw.querySelectorAll('.plat-row').forEach(row => {
-        if (row.children[7]) row.children[7].classList.remove('fail-hi');
-        if (row.children[9]) {
-          const badge = row.children[9].querySelector('.plat-badge');
-          if (badge) badge.classList.add('fail-hi');
-        }
-      });
-      const thead = document.getElementById('sim-thead');
-      if (thead) {
-        if (thead.children[7]) thead.children[7].classList.remove('fail-col');
-        if (thead.children[9]) thead.children[9].classList.add('fail-col');
-      }
-    }
+    // Just keep the greyout — no column-specific spotlight for failure 2
+    // (failure is about Financier B going live externally — nothing to spotlight in our table)
     const p1 = document.getElementById('cp-fail-1');
     const p2 = document.getElementById('cp-fail-2');
     if (p1) p1.classList.remove('show');
@@ -2322,7 +2337,7 @@
     const thead = document.getElementById('s3-thead');
     if (thead) Array.from(thead.children).forEach(c => { c.style.color = ''; c.style.fontWeight = ''; });
 
-    HERO_FTUS.slice(0, 5).forEach((f, i) => {
+    HERO_FTUS.slice(0, 10).forEach((f, i) => {
       const r = simRow('gc-hero', `
         <div class="plat-cb on"></div>
         <div class="plat-ftu" style="font-size:9px;white-space:nowrap;">${f.id}</div>
@@ -2338,6 +2353,19 @@
       setTimeout(() => { r.style.opacity='1'; r.style.transform='translateY(0)'; }, 150 + i * 120);
       tw.appendChild(r);
     });
+
+    // Show pagination
+    const s3pg = document.getElementById('s3-pg');
+    if (s3pg) {
+      s3pg.style.display = 'flex';
+      const total = HERO_FTUS.length;
+      s3pg.innerHTML = `
+        <span class="hp-pg-info">1–10 of ${total}</span>
+        <div style="display:flex;gap:4px;">
+          <button class="hp-pg-btn" disabled>←</button>
+          <button class="hp-pg-btn" disabled>→</button>
+        </div>`;
+    }
 
     // Reset decision UI — hide until after failure is dismissed
     const dec = document.getElementById('s3-decision');
@@ -2411,7 +2439,7 @@
     const tw = document.getElementById('s4-tw');
     if (!tw) return;
     tw.innerHTML = '';
-    HERO_FTUS.slice(0, 5).forEach((f, i) => {
+    HERO_FTUS.slice(0, 10).forEach((f, i) => {
       const r = simRow('gc-bat', `
         <div class="plat-ftu" style="font-size:9px;white-space:nowrap;">${f.id}</div>
         <div class="plat-cell" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.buyer}</div>
@@ -2425,6 +2453,18 @@
       setTimeout(() => { r.style.opacity='1'; }, 200 + i * 100);
       tw.appendChild(r);
     });
+    // Show pagination
+    const s4pg = document.getElementById('s4-pg');
+    if (s4pg) {
+      s4pg.style.display = 'flex';
+      const total = HERO_FTUS.length;
+      s4pg.innerHTML = `
+        <span class="hp-pg-info">1–10 of ${total}</span>
+        <div style="display:flex;gap:4px;">
+          <button class="hp-pg-btn" disabled>←</button>
+          <button class="hp-pg-btn" disabled>→</button>
+        </div>`;
+    }
     bn.disabled = false; bp.disabled = false;
     // Show failure panel after rows appear
     setTimeout(() => showBATFail(), 1800);
