@@ -398,6 +398,21 @@
     .sim-loss-body { padding:12px 15px; font-size:11px; color:#6b7280; line-height:1.55; }
     .sim-loss-foot { padding:9px 15px 13px; display:flex; justify-content:center; border-top:1px solid #f0f0f0; }
 
+    /* ── FAILURE SPOTLIGHT ── */
+    .plat-tbody.greyout .plat-cell,
+    .plat-tbody.greyout .plat-ftu { color:rgba(26,39,68,0.12) !important; transition:color .35s; }
+    .plat-tbody.greyout .plat-rate { color:rgba(26,39,68,0.12) !important; font-weight:400 !important; transition:color .35s; }
+    .plat-tbody.greyout .plat-cb { opacity:0.1; transition:opacity .35s; }
+    .plat-tbody.greyout .plat-badge { opacity:0.1; transition:opacity .35s; }
+    .plat-tbody.greyout .fail-hi.plat-rate { color:#dc2626 !important; font-weight:700 !important; opacity:1 !important; }
+    .plat-tbody.greyout .fail-hi.plat-badge { opacity:1 !important; }
+    .plat-tbody.greyout .fail-hi.plat-cell { color:#1a2744 !important; }
+    .plat-thead .fail-col { color:#dc2626 !important; font-weight:700 !important; }
+    .fail-panel { border-top:2px solid rgba(220,38,38,0.22) !important; background:#fff8f8 !important; }
+    .fail-tag { font-size:9px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:#dc2626; display:block; margin-bottom:6px; }
+    .fail-finding { font-size:12px; color:#1a2744; line-height:1.65; font-weight:500; }
+    .fail-note { font-size:10px; color:#6b7280; margin-top:4px; line-height:1.55; }
+
     /* ── HERO SLIDE COPY ── */
     .hero-copy { margin-bottom:32px; }
     .hc-big { font-family:var(--serif); font-style:italic; font-weight:500; font-size:clamp(32px,3.6vw,50px); line-height:1.1; letter-spacing:-0.015em; color:var(--t); margin-bottom:20px; }
@@ -890,6 +905,18 @@
               <button class="pb dk" onclick="simToMBIA()" style="width:100%;padding:8px 0;font-size:11px;border-radius:8px;">View in Auction →</button>
             </div>
           </div>
+          <div class="hero-q-panel fail-panel" id="cp-fail-1">
+            <span class="fail-tag">● Failure 01 — Mapped</span>
+            <div class="fail-finding">The Maker can see their bid rate. The auction can't. No signal that this bid is inactive — the platform shows it like any other row.</div>
+            <div class="fail-note">Bid sits in Checker Pending. Not live. Not competing. The screen doesn't say so.</div>
+            <button class="pb" style="margin-top:10px;" onclick="showCPFail2()">Next failure →</button>
+          </div>
+          <div class="hero-q-panel fail-panel" id="cp-fail-2">
+            <span class="fail-tag">● Failure 02 — Mapped</span>
+            <div class="fail-finding">During this window, Financier B placed their bid at 5.50% and went live immediately.</div>
+            <div class="fail-note">No in-app alert. No email. No visual change. The competitive landscape shifted — the platform said nothing.</div>
+            <button class="pb" style="margin-top:10px;" onclick="resumeCP()">Continue →</button>
+          </div>
           <div class="plat-ov gone" id="sim-ov">
             <div class="ov-card" id="sim-ov-card"></div>
           </div>
@@ -962,6 +989,12 @@
             <span class="hr-dot">·</span>
             <span>Lowest Bid <strong style="color:#dc2626;">5.50%</strong></span>
           </div>
+          <div class="hero-q-panel fail-panel" id="mbia-fail">
+            <span class="fail-tag">● Failure 03 — Mapped</span>
+            <div class="fail-finding">The column shows a value — not ownership. My Bid: 5.50%. Lowest Bid: 5.50%. Identical. The financier is asking "is the lowest bid mine?" — the system cannot answer.</div>
+            <div class="fail-note">No ownership signal exists anywhere on this screen.</div>
+            <button class="pb" style="margin-top:10px;" onclick="resumeMBIA()">Continue →</button>
+          </div>
         </div>
       </div>
     </div>
@@ -1020,21 +1053,11 @@
             <span class="hr-dot">·</span>
             <span style="color:#dc2626;font-weight:700;">All Lost</span>
           </div>
-          <div class="sim-loss" id="s4-loss">
-            <div class="sim-loss-card">
-              <div class="sim-loss-top">
-                <div class="sim-loss-amt">₹8.97 Cr</div>
-                <div class="sim-loss-lbl">Total bid value · Bid Lost</div>
-              </div>
-              <div class="sim-loss-body">
-                <strong>My Bid:</strong> 5.50% &nbsp;·&nbsp; <strong>Winning Bid:</strong> 5.50%<br>
-                Status on all 13 FTUs: <strong style="color:#dc2626;">Bid Lost</strong><br><br>
-                Same rate. Financier B was live 23 minutes before you. First-in wins. The platform never told you.
-              </div>
-              <div class="sim-loss-foot">
-                <button class="plat-modal-confirm" onclick="simSeekTruth()">See what I found →</button>
-              </div>
-            </div>
+          <div class="hero-q-panel fail-panel" id="bat-fail">
+            <span class="fail-tag">● Failures 04 + 05 — Mapped</span>
+            <div class="fail-finding">The Checker approved without knowing a competitor was already live at the same rate. After the loss — no explanation. Same rate. Every FTU gone.</div>
+            <div class="fail-note">The platform had no language for what happened — before, during, or after.</div>
+            <button class="pb dk" style="margin-top:10px;width:100%;border-radius:8px;padding:7px 0;font-size:11px;" onclick="simSeekTruth()">See what I found →</button>
           </div>
         </div>
       </div>
@@ -2157,7 +2180,65 @@
       tw.appendChild(more);
     }
 
-    // Start 8s timer then show approval
+    // Show failure 01 after 1.5s
+    simCPTimer = setTimeout(showCPFail1, 1500);
+  }
+
+  function showCPFail1() {
+    // Grey out tbody
+    const tw = document.getElementById('sim-tw');
+    if (tw) {
+      tw.classList.add('greyout');
+      // Highlight My Bid column cells (6th cell in each row, index 5)
+      tw.querySelectorAll('.plat-row').forEach(row => {
+        const cells = row.children;
+        if (cells[5]) cells[5].classList.add('fail-hi', 'plat-rate');
+      });
+      // Highlight My Bid header
+      const thead = document.getElementById('sim-thead');
+      if (thead && thead.children[5]) thead.children[5].classList.add('fail-col');
+    }
+    // Show failure panel 1
+    const p1 = document.getElementById('cp-fail-1');
+    if (p1) p1.classList.add('show');
+  }
+
+  function showCPFail2() {
+    const tw = document.getElementById('sim-tw');
+    if (tw) {
+      // Remove My Bid highlight, add badge highlight
+      tw.querySelectorAll('.plat-row').forEach(row => {
+        const cells = row.children;
+        if (cells[5]) cells[5].classList.remove('fail-hi', 'plat-rate');
+        if (cells[6]) {
+          const badge = cells[6].querySelector('.plat-badge');
+          if (badge) badge.classList.add('fail-hi');
+        }
+      });
+      // Update header highlight
+      const thead = document.getElementById('sim-thead');
+      if (thead) {
+        if (thead.children[5]) thead.children[5].classList.remove('fail-col');
+        if (thead.children[6]) thead.children[6].classList.add('fail-col');
+      }
+    }
+    const p1 = document.getElementById('cp-fail-1');
+    const p2 = document.getElementById('cp-fail-2');
+    if (p1) p1.classList.remove('show');
+    if (p2) p2.classList.add('show');
+  }
+
+  function resumeCP() {
+    const tw = document.getElementById('sim-tw');
+    if (tw) {
+      tw.classList.remove('greyout');
+      tw.querySelectorAll('.fail-hi').forEach(el => el.classList.remove('fail-hi'));
+    }
+    const thead = document.getElementById('sim-thead');
+    if (thead) Array.from(thead.children).forEach(c => c.classList.remove('fail-col'));
+    const p2 = document.getElementById('cp-fail-2');
+    if (p2) p2.classList.remove('show');
+    // Now start the 8s approval timer
     simCPTimer = setTimeout(simShowApproved, 8000);
   }
 
@@ -2204,12 +2285,49 @@
     more.textContent = '+ 8 more Factoring Units in auction';
     tw.appendChild(more);
 
-    // Reset decision UI
+    // Reset decision UI — hide until after failure is dismissed
     const dec = document.getElementById('s3-decision');
     const rev = document.getElementById('s3-reveal');
-    if (dec) { dec.style.display = 'block'; dec.style.opacity = '1'; }
+    if (dec) { dec.style.display = 'none'; dec.style.opacity = '0'; }
     if (rev) { rev.style.display = 'none'; rev.style.opacity = '0'; }
+    // Reset mbia-fail panel
+    const mf = document.getElementById('mbia-fail');
+    if (mf) mf.classList.remove('show');
     bn.disabled = false; bp.disabled = false;
+    // Show failure after stagger completes (~1.5s)
+    setTimeout(showMBIAFail, 1800);
+  }
+
+  function showMBIAFail() {
+    const tw = document.getElementById('s3-tw');
+    if (tw) {
+      tw.classList.add('greyout');
+      // Highlight My Bid and Lowest Bid cells (data-s3 attribute)
+      tw.querySelectorAll('[data-s3]').forEach(c => c.classList.add('fail-hi'));
+      // Highlight headers
+      const thead = document.getElementById('s3-thead');
+      if (thead) {
+        if (thead.children[7]) thead.children[7].classList.add('fail-col');
+        if (thead.children[8]) thead.children[8].classList.add('fail-col');
+      }
+    }
+    const mf = document.getElementById('mbia-fail');
+    if (mf) mf.classList.add('show');
+  }
+
+  function resumeMBIA() {
+    const tw = document.getElementById('s3-tw');
+    if (tw) {
+      tw.classList.remove('greyout');
+      tw.querySelectorAll('.fail-hi').forEach(el => el.classList.remove('fail-hi'));
+    }
+    const thead = document.getElementById('s3-thead');
+    if (thead) Array.from(thead.children).forEach(c => c.classList.remove('fail-col'));
+    const mf = document.getElementById('mbia-fail');
+    if (mf) mf.classList.remove('show');
+    // Now show the decision
+    const dec = document.getElementById('s3-decision');
+    if (dec) { dec.style.display = 'block'; requestAnimationFrame(() => dec.style.opacity = '1'); }
   }
 
   function s3Answer(ans) {
@@ -2260,10 +2378,34 @@
     more.textContent = '+ 8 more Factoring Units — all Bid Lost';
     tw.appendChild(more);
     bn.disabled = false; bp.disabled = false;
-    setTimeout(() => {
-      const loss = document.getElementById('s4-loss');
-      if (loss) loss.classList.add('show');
-    }, 2200);
+    // Show failure panel after rows appear
+    setTimeout(() => showBATFail(), 1800);
+  }
+
+  function showBATFail() {
+    const tw = document.getElementById('s4-tw');
+    if (tw) {
+      tw.classList.add('greyout');
+      // Highlight My Bid cells (red rate — index 5), Winning Bid (index 6), Bid Lost badges (index 7)
+      tw.querySelectorAll('.plat-row').forEach(row => {
+        const cells = row.children;
+        if (cells[5]) cells[5].classList.add('fail-hi');
+        if (cells[6]) cells[6].classList.add('fail-hi');
+        if (cells[7]) {
+          const badge = cells[7].querySelector('.plat-badge');
+          if (badge) badge.classList.add('fail-hi');
+        }
+      });
+      // Highlight headers
+      const thead = document.querySelector('#s4-tw').closest('.plat-tbl').querySelector('.plat-thead');
+      if (thead) {
+        if (thead.children[5]) thead.children[5].classList.add('fail-col');
+        if (thead.children[6]) thead.children[6].classList.add('fail-col');
+        if (thead.children[7]) thead.children[7].classList.add('fail-col');
+      }
+    }
+    const bf = document.getElementById('bat-fail');
+    if (bf) bf.classList.add('show');
   }
 
   function simSeekTruth() {
