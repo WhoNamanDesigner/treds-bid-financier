@@ -2140,10 +2140,20 @@
     const ov = document.getElementById('sim-ov');
     const card = document.getElementById('sim-ov-card');
     if (!ov || !card) return;
+    // Calculate total from selected FTU amounts
+    let totalAmt = 0;
+    simSel.forEach(i => {
+      if (HERO_FTUS[i]) {
+        const n = parseInt(HERO_FTUS[i].amt.replace(/[₹,]/g, ''));
+        if (!isNaN(n)) totalAmt += n;
+      }
+    });
+    const fmtAmt = totalAmt.toLocaleString('en-IN');
+    const selCount = simSel.size;
     card.innerHTML = `
       <div class="ov-hdr">
-        <div class="ov-tag">Place Bid — 13 Factoring Units</div>
-        <div class="ov-title">₹ 8,97,23,840.00</div>
+        <div class="ov-tag">Place Bid — ${selCount} Factoring Unit${selCount !== 1 ? 's' : ''}</div>
+        <div class="ov-title">₹ ${fmtAmt}.00</div>
       </div>
       <div class="ov-body">
         <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0f0;">
