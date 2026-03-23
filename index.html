@@ -636,25 +636,55 @@
 
 <div id="deck">
 
-  <!-- ═══ 01 · HOOK ═══════════════════════════════════════════ -->
+  <!-- ═══ 01 · HERO ══════════════════════════════════════════ -->
   <div class="slide is-visible" data-s="">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;text-align:center;padding:40px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--t3);margin-bottom:40px;">FINTECH · UX · MYTREDS · 2026</div>
+      <h1 style="font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(48px,6vw,90px);line-height:1.06;letter-spacing:-0.02em;color:var(--t);max-width:16ch;margin-bottom:32px;">
+        The system knew.<br>It didn't say.
+      </h1>
+      <p style="font-size:16px;line-height:1.75;color:var(--t2);max-width:44ch;margin-bottom:48px;">A financier placed the lowest bid — and lost every FTU in a&nbsp;single auction. The platform had all the data. It said nothing.</p>
+      <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:center;">
+        <div style="text-align:center;">
+          <div style="font-family:var(--serif);font-style:italic;font-size:clamp(36px,4vw,56px);color:var(--red);line-height:1;">₹8.97 Cr</div>
+          <div style="font-size:9px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--t3);margin-top:6px;">single-day loss</div>
+        </div>
+        <div style="width:1px;height:44px;background:var(--b);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:var(--serif);font-style:italic;font-size:clamp(36px,4vw,56px);color:var(--t);line-height:1;">60 sec</div>
+          <div style="font-size:9px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--t3);margin-top:6px;">earlier, they would have won</div>
+        </div>
+        <div style="width:1px;height:44px;background:var(--b);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:var(--serif);font-style:italic;font-size:clamp(36px,4vw,56px);color:var(--t);line-height:1;">5</div>
+          <div style="font-size:9px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--t3);margin-top:6px;">compounding failures</div>
+        </div>
+      </div>
+      <div style="margin-top:52px;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--t3);">NAMAN MUDGIL &nbsp;·&nbsp; PRODUCT DESIGNER</div>
+    </div>
+  </div>
+
+  <!-- ═══ 02 · STAKES ════════════════════════════════════════ -->
+  <div class="slide" data-s="THE INCIDENT">
     <div class="row">
       <div class="lft">
-        <div class="lbl">FINTECH · UX FAILURE · 2026</div>
-        <div class="hero-copy">
-          <div class="hc-big"><span class="hc-amt">₹8.97 Cr</span> lost — in a single auction</div>
-          <div class="hc-lines">
-            <p class="hc-facts">A financier placed the lowest bid — but couldn't tell it was theirs.</p>
-            <span class="hcl-tag">They thought they were winning</span>
-            <strong class="hcl-bold">They lost every bid</strong>
+        <div class="lbl">THE INCIDENT · MARCH 2026</div>
+        <div class="h1"><span class="red">₹8.97 Cr</span><br>lost in silence.</div>
+        <div class="body">
+          <p>A financier at a major bank bid <strong>5.50%</strong> across 10 Factoring Units in a TReDS auction. The platform showed <em>My Bid: 5.50%. Lowest Bid: 5.50%.</em> They assumed they were leading.</p>
+          <p>They were not. DCB Bank's Checker had approved an identical bid <strong>60 seconds earlier</strong>. Under TReDS rules: equal rate, first-in wins. Every FTU went to DCB Bank.</p>
+          <p>The financier escalated to VPs. Operations were suspended. The platform had all the data to prevent this. It shared none of it.</p>
+        </div>
+        <div style="margin-top:24px;padding:16px 18px;background:rgba(229,57,53,0.06);border:1px solid rgba(229,57,53,0.18);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(229,57,53,0.5);margin-bottom:8px;">PLACEHOLDER — User Voice</div>
+          <div style="font-family:var(--serif);font-style:italic;font-size:16px;color:rgba(240,235,228,0.45);line-height:1.55;border:1.5px dashed rgba(255,183,77,0.35);border-radius:8px;padding:14px 16px;">
+            <span style="font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,183,77,0.6);display:block;margin-bottom:8px;">ADD: Direct quote from the Maker or Checker — the exact words from the escalation email</span>
+            "[ Quote from financier's escalation email to leadership ]"
           </div>
         </div>
-        <div class="byline">NAMAN MUDGIL &nbsp;·&nbsp; PRODUCT DESIGNER &nbsp;·&nbsp; MYTREDS &nbsp;·&nbsp; BID POSITION AWARENESS</div>
       </div>
       <div class="rgt">
         <div class="plat" id="hero-plat">
-
-          <!-- Row 1: Logo left · CTAs right (disabled — no bid selected yet) -->
           <div class="hp-logo-row">
             <span class="hp-logo">c2treds</span>
             <div style="display:flex;gap:6px;">
@@ -663,8 +693,6 @@
             </div>
           </div>
           <div class="hp-div"></div>
-
-          <!-- Row 2: Tabs -->
           <div class="plat-tabs">
             <div class="plat-tab">Open For Bid</div>
             <div class="plat-tab">Checker Pending</div>
@@ -672,19 +700,11 @@
             <div class="plat-tab">Bid Accepted Today</div>
           </div>
           <div class="hp-div"></div>
-
-          <!-- Row 4: Filters -->
           <div class="hp-filters">
-            <span class="hp-filter-ico">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 2.5h10L7.2 6.8V10.5L4.8 9.2V6.8L1 2.5z" fill="#9ca3af"/>
-              </svg>
-            </span>
+            <span class="hp-filter-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 2.5h10L7.2 6.8V10.5L4.8 9.2V6.8L1 2.5z" fill="#9ca3af"/></svg></span>
             <button class="hp-filter">All Buyers ▾</button>
             <button class="hp-filter">All Suppliers ▾</button>
           </div>
-
-          <!-- Table -->
           <div class="plat-tbl">
             <div class="plat-thead gc-hero">
               <div class="plat-cb" style="margin:auto;"></div>
@@ -699,8 +719,6 @@
             </div>
             <div class="plat-tbody" id="hero-tw"></div>
           </div>
-
-          <!-- Pagination -->
           <div class="hp-pg" id="hero-pg">
             <span class="hp-pg-info" id="hp-pg-info">1–5 of 13</span>
             <div style="display:flex;gap:4px;">
@@ -708,17 +726,15 @@
               <button class="hp-pg-btn" id="hp-next" onclick="heroNextPage()">→</button>
             </div>
           </div>
-
-          <!-- Bottom ribbon -->
           <div class="hero-ribbon">
             <span>10 Factoring Units</span>
             <span class="hr-dot">·</span>
             <span>My Bid <strong>5.50%</strong></span>
             <span class="hr-dot">·</span>
             <span>Lowest Bid <strong>5.50%</strong></span>
+            <span class="hr-dot">·</span>
+            <span style="color:#dc2626;font-weight:600;">All lost to DCB Bank</span>
           </div>
-
-          <!-- Question panel — inline below ribbon -->
           <div class="hero-q-panel" id="hero-q-panel">
             <div class="hq-label">One question</div>
             <div class="hq-question">Are they leading this auction?</div>
@@ -727,13 +743,11 @@
               <button class="hq-btn yes" onclick="heroAnswer('yes')">Yes — they're leading</button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ 02 · THE PLATFORM ════════════════════════════════════ -->
   <div class="slide" data-s="CONTEXT">
     <div class="row">
       <div class="lft">
@@ -866,6 +880,7 @@
   </div>
 
   <!-- ═══ 03 · SIM — OPEN FOR BID + CHECKER PENDING ═══════════ -->
+
   <div class="slide" data-s="THE INCIDENT">
     <div class="row">
       <div class="lft">
@@ -951,6 +966,7 @@
   </div>
 
   <!-- ═══ 04 · SIM — MY BID IN AUCTION ════════════════════════ -->
+
   <div class="slide" data-s="THE INCIDENT">
     <div class="row">
       <div class="lft">
@@ -1036,6 +1052,7 @@
   </div>
 
   <!-- ═══ 05 · SIM — BID ACCEPTED TODAY ══════════════════════ -->
+
   <div class="slide" data-s="THE INCIDENT">
     <div class="row">
       <div class="lft">
@@ -1109,15 +1126,40 @@
   </div>
 
   <!-- ═══ 06 · FIVE FAILURES ═══════════════════════════════════ -->
-  <div class="slide" data-s="INVESTIGATION">
+
+  <!-- ═══ 07 · THE REALIZATION ════════════════════════════════ -->
+  <div class="slide" data-s="THE REALIZATION">
     <div class="row">
       <div class="lft">
-        <div class="lbl">Investigation</div>
-        <h1 class="h1">Five failures. No single villain.</h1>
+        <div class="lbl">THE REALIZATION · FIVE FAILURES</div>
+        <h1 class="h1">Not one problem.<br>Five compounding gaps.</h1>
         <div class="body">
           <p>My first instinct — like everyone else's — was a notification problem. Add an alert, close the ticket.</p>
-          <p><strong>I was wrong. And I am glad I didn't stop there.</strong></p>
-          <p>When I mapped the full bid lifecycle with the staff engineer — every tab, every state, every transition for Maker and Checker — what emerged was not one problem but five compounding failures that had been invisible because nobody had mapped the system end to end before.</p>
+          <p><strong>I was wrong. And I'm glad I didn't stop there.</strong></p>
+          <p>When I mapped the full bid lifecycle with the staff engineer — every tab, every state, every transition for Maker and Checker — five distinct failure modes emerged. Each invisible on its own. Together, lethal.</p>
+        </div>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:7px;">
+          <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--t3);margin-bottom:4px;">Each failure asks a different design question</div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--surf2);border:1px solid var(--b);border-radius:8px;">
+            <span style="font-size:8px;font-weight:700;color:rgba(229,57,53,0.6);letter-spacing:.1em;">F01</span>
+            <span style="font-size:11px;color:var(--t2);">Column showed a value — not ownership</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--surf2);border:1px solid var(--b);border-radius:8px;">
+            <span style="font-size:8px;font-weight:700;color:rgba(229,57,53,0.6);letter-spacing:.1em;">F02</span>
+            <span style="font-size:11px;color:var(--t2);">No notification when counter-bid fired</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--surf2);border:1px solid var(--b);border-radius:8px;">
+            <span style="font-size:8px;font-weight:700;color:rgba(229,57,53,0.6);letter-spacing:.1em;">F03</span>
+            <span style="font-size:11px;color:var(--t2);">Bid invisible during Checker Pending</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--surf2);border:1px solid var(--b);border-radius:8px;">
+            <span style="font-size:8px;font-weight:700;color:rgba(229,57,53,0.6);letter-spacing:.1em;">F04</span>
+            <span style="font-size:11px;color:var(--t2);">Checker approved blind — no context</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--surf2);border:1px solid var(--b);border-radius:8px;">
+            <span style="font-size:8px;font-weight:700;color:rgba(229,57,53,0.6);letter-spacing:.1em;">F05</span>
+            <span style="font-size:11px;color:var(--t2);">State transitions happened silently</span>
+          </div>
         </div>
       </div>
       <div class="rgt">
@@ -1201,7 +1243,6 @@
     </div>
   </div>
 
-  <!-- ═══ 07 · FAILURE 01 ══════════════════════════════════════ -->
   <div class="slide" data-s="FAILURE 01">
     <div class="row">
       <div class="lft">
@@ -1259,6 +1300,7 @@
   </div>
 
   <!-- ═══ 08 · FAILURE 02 ══════════════════════════════════════ -->
+
   <div class="slide" data-s="FAILURE 02">
     <div class="row">
       <div class="lft">
@@ -1314,6 +1356,7 @@
   </div>
 
   <!-- ═══ 09 · FAILURE 03 ══════════════════════════════════════ -->
+
   <div class="slide" data-s="FAILURE 03">
     <div class="row">
       <div class="lft">
@@ -1367,6 +1410,7 @@
   </div>
 
   <!-- ═══ 10 · FAILURE 04 ══════════════════════════════════════ -->
+
   <div class="slide" data-s="FAILURE 04">
     <div class="row">
       <div class="lft">
@@ -1418,6 +1462,7 @@
   </div>
 
   <!-- ═══ 11 · FAILURE 05 ══════════════════════════════════════ -->
+
   <div class="slide" data-s="FAILURE 05">
     <div class="row">
       <div class="lft">
@@ -1470,152 +1515,52 @@
   </div>
 
   <!-- ═══ 12 · THE RULE ════════════════════════════════════════ -->
-  <div class="slide" data-s="THE RULE">
-    <div class="row">
-      <div class="lft">
-        <div class="lbl">The Rule</div>
-        <h1 class="h1">I stopped designing individual fixes.</h1>
-        <div class="body">
-          <p>After mapping all five failures, a pattern emerged. The draft state invisibility, the silent Checker Pending window, the disappearing FU — these were not separate problems. They were symptoms of the same underlying failure.</p>
-          <p><strong>The platform had no consistent rule for how to communicate state changes.</strong> Every time an FU moved between tabs it simply disappeared. No explanation. No confirmation. No record of what had been honored.</p>
-          <p>I stopped designing individual fixes and proposed a platform-wide design rule instead. Expanding scope mid-sprint. A harder conversation. The right one.</p>
+
+  <!-- ═══ 13 · THE STANDARD ═══════════════════════════════════ -->
+  <div class="slide" data-s="THE STANDARD">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;text-align:center;padding:52px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--t3);margin-bottom:36px;">THE RULE THAT CHANGED EVERYTHING</div>
+      <blockquote style="font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(28px,3.5vw,52px);line-height:1.2;letter-spacing:-0.01em;color:var(--t);max-width:22ch;margin:0 0 36px;">
+        "Equal bids are awarded to the financier whose Checker approved first."
+      </blockquote>
+      <p style="font-size:14px;color:var(--t2);line-height:1.8;max-width:52ch;margin-bottom:40px;">
+        This rule is printed in the TReDS guidelines. It was never surfaced in the UI. The platform collected timestamps. It never showed them.<br>
+        The Maker, the Checker, the financier — none of them knew this rule existed at the moment it mattered.
+      </p>
+      <div style="display:flex;gap:32px;flex-wrap:wrap;justify-content:center;">
+        <div style="text-align:center;">
+          <div style="font-family:var(--serif);font-style:italic;font-size:32px;color:var(--red);">60 sec</div>
+          <div style="font-size:9px;color:var(--t3);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px;">DCB Bank was earlier</div>
+        </div>
+        <div style="width:1px;height:40px;background:var(--b);align-self:center;"></div>
+        <div style="text-align:center;">
+          <div style="font-family:var(--serif);font-style:italic;font-size:32px;color:var(--red);">₹8.97 Cr</div>
+          <div style="font-size:9px;color:var(--t3);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px;">went with that 60 seconds</div>
+        </div>
+        <div style="width:1px;height:40px;background:var(--b);align-self:center;"></div>
+        <div style="text-align:center;">
+          <div style="font-family:var(--serif);font-style:italic;font-size:32px;color:var(--t);">0</div>
+          <div style="font-size:9px;color:var(--t3);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px;">UI signals about this rule</div>
         </div>
       </div>
-      <div class="rgt">
-        <div class="panel" style="background:#0c0c0c;">
-          <div class="rule-wrap">
-            <div class="rule-inner">
-              <div class="rule-tag">Platform UX Standard — Established post-incident</div>
-              <div class="rule-text">"Every time an FU moves between tabs or disappears from a tab, the system must never let it transition silently."</div>
-              <div class="rule-qs">
-                <div class="rule-q"><strong>Why did this move?</strong> — Every transition must be explained.</div>
-                <div class="rule-q"><strong>What was honored?</strong> — The confirmed bid always made explicit.</div>
-                <div class="rule-q"><strong>What happened to pending actions?</strong> — No action disappears without resolution.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div style="margin-top:44px;font-size:13px;color:var(--t3);font-style:italic;">This is not a notification problem. This is a transparency problem — and it reshaped every solution that followed.</div>
     </div>
   </div>
 
-  <!-- ═══ 13 · TRANSLATION BRIDGE ══════════════════════════════ -->
-  <div class="slide" data-s="REFRAME">
+  <!-- ═══ 14 · SOLUTION 1 — BID POSITION INDICATOR ═══════════ -->
+  <div class="slide" data-s="SOLUTION 1">
     <div class="row">
       <div class="lft">
-        <div class="lbl">Process · Reframe</div>
-        <h1 class="h1">From five failures to five design questions.</h1>
+        <div class="lbl">Solution · Layer 1 of 3</div>
+        <h1 class="h1">The column needed to answer "Am I winning?" — not "What's the rate?"</h1>
         <div class="body">
-          <p>Naming what was broken was the first half. Before designing anything, each failure needed to be translated into a question with a solution space.</p>
-          <p>The questions determined what the solutions had to do. Not "fix this" — but "answer this."</p>
+          <p>The Lowest Bid column was redesigned from a value display into a <strong>competitive position signal</strong>. Four states: Leading (sole), Leading (matched, first timestamp), Matched (not first), Trailing.</p>
+          <p>For the exact state that caused the ₹8.97 Cr loss — equal bid, not first — the tiebreaker rule surfaces inline, at the exact moment it matters.</p>
+          <p style="font-size:12px;color:var(--t3);">Backend requirement: one new output per FU per session. The data to compute it already existed.</p>
         </div>
-      </div>
-      <div class="rgt">
-        <div class="panel" style="background:#0c0c0c;padding:28px 32px;display:flex;flex-direction:column;justify-content:center;gap:9px;">
-          <div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:6px;">The questions that drove the design</div>
-
-          <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 14px;background:var(--surf2);border-radius:10px;border:1px solid rgba(255,255,255,0.06);">
-            <span style="flex-shrink:0;font-size:8px;font-weight:700;letter-spacing:.1em;color:rgba(229,57,53,0.55);text-transform:uppercase;padding-top:2px;min-width:22px;">F01</span>
-            <div style="font-size:12px;color:var(--t2);line-height:1.55;">How do you show competitive position without exposing any competitor data?</div>
-          </div>
-
-          <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 14px;background:var(--surf2);border-radius:10px;border:1px solid rgba(255,255,255,0.06);">
-            <span style="flex-shrink:0;font-size:8px;font-weight:700;letter-spacing:.1em;color:rgba(229,57,53,0.55);text-transform:uppercase;padding-top:2px;min-width:22px;">F02</span>
-            <div style="font-size:12px;color:var(--t2);line-height:1.55;">What earns an interruption on a financial platform — and what doesn't?</div>
-          </div>
-
-          <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 14px;background:var(--surf2);border-radius:10px;border:1px solid rgba(255,255,255,0.06);">
-            <span style="flex-shrink:0;font-size:8px;font-weight:700;letter-spacing:.1em;color:rgba(229,57,53,0.55);text-transform:uppercase;padding-top:2px;min-width:22px;">F03</span>
-            <div style="font-size:12px;color:var(--t2);line-height:1.55;">How do you surface a workflow state without breaking the user's mental model of where their bid is?</div>
-          </div>
-
-          <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 14px;background:var(--surf2);border-radius:10px;border:1px solid rgba(255,255,255,0.06);">
-            <span style="flex-shrink:0;font-size:8px;font-weight:700;letter-spacing:.1em;color:rgba(229,57,53,0.55);text-transform:uppercase;padding-top:2px;min-width:22px;">F04</span>
-            <div style="font-size:12px;color:var(--t2);line-height:1.55;">What does a Checker need to make a market decision — not just approve a form field?</div>
-          </div>
-
-          <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 14px;background:var(--surf2);border-radius:10px;border:1px solid rgba(255,255,255,0.06);">
-            <span style="flex-shrink:0;font-size:8px;font-weight:700;letter-spacing:.1em;color:rgba(229,57,53,0.55);text-transform:uppercase;padding-top:2px;min-width:22px;">F05</span>
-            <div style="font-size:12px;color:var(--t2);line-height:1.55;">What does the platform owe a user every time an FU moves, disappears, or changes state?</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ 14 · THE PUSHBACKS ═══════════════════════════════════ -->
-  <div class="slide" data-s="THE PUSHBACKS">
-    <div class="row">
-      <div class="lft">
-        <div class="lbl">The Pushbacks</div>
-        <h1 class="h1">Not everything was immediately accepted.</h1>
-        <div class="body">
-          <p>Two pushbacks shaped the final design significantly. Both forced a better solution than I would have built without the resistance.</p>
-        </div>
-      </div>
-      <div class="rgt">
-        <div class="panel" style="background:#0c0c0c; padding:28px; display:flex; flex-direction:column; justify-content:center; gap:16px;">
-          <div style="padding:22px; background:var(--surf2); border:1px solid var(--b); border-radius:12px;">
-            <div style="font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,183,77,0.55); margin-bottom:10px;">Pushback 01</div>
-            <div style="font-family:var(--serif); font-style:italic; font-size:16px; color:var(--t); margin-bottom:10px;">"Just add a notification — that's all we need."</div>
-            <div style="font-size:12px; color:var(--t2); line-height:1.65;">A notification would solve Failure 2. It would leave Failures 1, 3, 4, and 5 untouched. A financier could receive the alert, check the platform, see My Bid 5.5% and Lowest Bid 5.5%, and still not know they were losing.</div>
-          </div>
-          <div style="padding:22px; background:var(--surf2); border:1px solid var(--b); border-radius:12px;">
-            <div style="font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,183,77,0.55); margin-bottom:10px;">Pushback 02</div>
-            <div style="font-family:var(--serif); font-style:italic; font-size:16px; color:var(--t); margin-bottom:10px;">"We can't show competitor information."</div>
-            <div style="font-size:12px; color:var(--t2); line-height:1.65;">The position indicator requires zero competitor data. The session knows the financier's own approved bids. The platform knows the lowest bid. The comparison is a simple binary — is this mine or not? No competitor name. No competitor rate. The constraint was real. The solution worked within it completely.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ 15 · THE EDGE CASE ═══════════════════════════════════ -->
-  <div class="slide" data-s="THE EDGE CASE">
-    <div class="row">
-      <div class="lft">
-        <div class="lbl">The Edge Case</div>
-        <h1 class="h1">While mapping the revision flow — I caught something nobody had.</h1>
-        <div class="body">
-          <p>If a buyer closes an auction while a revised bid is sitting in Checker Pending — the system correctly honors the last confirmed approved bid, not the draft revision.</p>
-          <p>But the Bid Lost tab was showing the <strong>draft value</strong> — not the confirmed bid that was actually honored.</p>
-          <p>A financier could bid 5.5%, revise to 5.4%, lose the auction at 5.5%, and see 5.4% on their Bid Lost screen — a bid the platform never treated as real.</p>
-          <p>I flagged it as P0 critical. It was not in the original brief. It would have shipped undetected.</p>
-        </div>
-      </div>
-      <div class="rgt">
-        <div class="panel" style="background:#0f0a08; padding:28px; display:flex; flex-direction:column; justify-content:center; gap:14px;">
-          <div style="font-size:9px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--t3);">The draft bid edge case</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <div style="border-radius:10px; border:1px solid rgba(79,195,247,0.15); background:rgba(79,195,247,0.04); padding:14px 16px;">
-              <div style="font-size:9px; font-weight:700; color:rgba(79,195,247,0.5); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Step 1 — Approved bid</div>
-              <div style="font-size:13px; color:var(--t2);">Financier places and checker approves bid at <strong style="color:var(--t);">5.5%</strong> — now live on platform.</div>
-            </div>
-            <div style="border-radius:10px; border:1px solid rgba(255,183,77,0.15); background:rgba(255,183,77,0.04); padding:14px 16px;">
-              <div style="font-size:9px; font-weight:700; color:rgba(255,183,77,0.5); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Step 2 — Revision in Checker Pending</div>
-              <div style="font-size:13px; color:var(--t2);">Maker revises to <strong style="color:var(--t);">5.4%</strong>. Awaiting Checker approval. Still a draft.</div>
-            </div>
-            <div style="border-radius:10px; border:1px solid rgba(229,57,53,0.15); background:rgba(229,57,53,0.05); padding:14px 16px;">
-              <div style="font-size:9px; font-weight:700; color:rgba(229,57,53,0.5); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Step 3 — Auction closes during pending</div>
-              <div style="font-size:13px; color:var(--t2);">Buyer closes auction. 5.5% is honored (correct). But Bid Lost tab shows <strong style="color:var(--red);">5.4%</strong> — the draft that was never real.</div>
-            </div>
-            <div style="padding:10px 14px; background:rgba(229,57,53,0.07); border:1px solid rgba(229,57,53,0.18); border-radius:8px; font-size:11px; color:rgba(229,57,53,0.7); line-height:1.55;">A trust and audit problem. In a regulated financial platform, this is not a minor UX gap.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ 16 · SOLUTION — BID POSITION ═════════════════════════ -->
-  <div class="slide" data-s="SOLUTION">
-    <div class="row">
-      <div class="lft">
-        <div class="lbl">Solution · Layer 1</div>
-        <h1 class="h1">Bid Position Indicator.</h1>
-        <div class="body">
-          <p>The Lowest Bid column was redesigned from a value display into a competitive position signal. Zero competitor data required.</p>
-          <p>The system compares the financier's own approved bid against the platform's lowest bid and returns one of four states. For equal-bid situations — the exact state that caused ₹8.97 Cr in losses — the tiebreaker rule surfaces inline at the exact moment it matters.</p>
-          <p style="font-size:13px; color:var(--t3);">Backend requirement: one new output — a four-state position flag per FU per session. LEADING, MATCHED_FIRST, MATCHED_NOT_FIRST, TRAILING. No competitor data. The data to compute it already existed.</p>
+        <div style="margin-top:20px;padding:16px 18px;background:rgba(255,183,77,0.06);border:1.5px dashed rgba(255,183,77,0.35);border-radius:12px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,183,77,0.6);margin-bottom:8px;">PLACEHOLDER — Alternatives Considered</div>
+          <div style="font-size:12px;color:rgba(240,235,228,0.38);line-height:1.65;">Add 2–3 alternatives you explored before landing on the four-state flag. e.g. tooltip approach, colour-only indicator, separate "Position" column — and why each was rejected.</div>
         </div>
       </div>
       <div class="rgt">
@@ -1660,100 +1605,25 @@
     </div>
   </div>
 
-  <!-- ═══ 17 · SOLUTION — NOTIFICATION ════════════════════════ -->
-  <div class="slide" data-s="SOLUTION">
+  <!-- ═══ 15 · SOLUTION 2 — CHECKER + LAYERS ═════════════════ -->
+  <div class="slide" data-s="SOLUTION 2">
     <div class="row">
       <div class="lft">
-        <div class="lbl">Solution · Layer 2</div>
-        <h1 class="h1">Counter-bid Notification.</h1>
-        <div class="body">
-          <p>When a competitor's Checker approves a bid on an FU where the financier has an active approved bid — a notification fires to <strong>both the Maker and the Checker</strong>.</p>
-          <p>The trigger is deliberate: not on Maker placement (that's a draft), but on Checker approval — the moment a bid becomes real.</p>
-          <p>I chose not to notify on routine transitions. When everything is urgent, nothing is urgent. <strong>The counter-bid notification needs to land with weight.</strong></p>
-        </div>
-      </div>
-      <div class="rgt">
-        <div class="panel" style="background:#0a0c10;">
-          <div class="notif-wrap">
-            <div class="notif-card">
-              <div class="notif-persona maker">For the Maker</div>
-              <div class="notif-title">Counter-bid on FU #4892</div>
-              <div class="notif-body">A competing bid has been approved on Large-Cap Manufacturing Buyer. Your current position: <strong>Matched – not first timestamp</strong>.<br><br>Note: Any revision requires Checker re-approval before going live.</div>
-              <span class="notif-action">Review FU →</span>
-            </div>
-            <div class="notif-divider"><span>and</span></div>
-            <div class="notif-card">
-              <div class="notif-persona checker">For the Checker</div>
-              <div class="notif-title">Heads-up: counter-bid on FU #4892</div>
-              <div class="notif-body">A competing bid has been approved on an FU you approved. Your Maker may submit a revision — be ready to review promptly to preserve your position.</div>
-              <span class="notif-action">View pending →</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ 18 · SOLUTION — ATTENTION ═══════════════════════════ -->
-  <div class="slide" data-s="SOLUTION">
-    <div class="row">
-      <div class="lft">
-        <div class="lbl">Solution · Layer 3</div>
-        <h1 class="h1">Real-time Attention Hierarchy.</h1>
-        <div class="body">
-          <p>The Lowest Bid column already updated in real time. The problem was that the update happened so fast — a silent number swap in a cell — that a Maker scanning other rows would never register it.</p>
-          <p><strong>Real-time data that updates silently is not a feature. It is noise.</strong></p>
-          <p>I designed a four-level attention cascade. A Maker can be looking at any level of the interface — cell, row, page, tab — and the signal will find them.</p>
-        </div>
-      </div>
-      <div class="rgt">
-        <div class="panel" style="background:#0a0c10;">
-          <div class="attn-wrap">
-            <div style="font-size:9px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--t3); margin-bottom:4px;">Four-level cascade — signal finds the user at any zoom</div>
-            <div class="attn-level">
-              <div class="attn-num">1</div>
-              <div>
-                <div class="attn-info-label">Cell — Flash animation</div>
-                <div class="attn-info-desc">The cell flashes amber when the Lowest Bid value changes. Immediate, local signal.</div>
-              </div>
-            </div>
-            <div class="attn-level">
-              <div class="attn-num">2</div>
-              <div>
-                <div class="attn-info-label">Row — Persistent state</div>
-                <div class="attn-info-desc">If position deteriorates, the row holds a persistent visual state. It does not silently return to normal.</div>
-              </div>
-            </div>
-            <div class="attn-level">
-              <div class="attn-num">3</div>
-              <div>
-                <div class="attn-info-label">Pagination — Page flag</div>
-                <div class="attn-info-desc">Pages where competitive events occurred on FUs the Maker isn't viewing are flagged.</div>
-              </div>
-            </div>
-            <div class="attn-level">
-              <div class="attn-num">4</div>
-              <div>
-                <div class="attn-info-label">Tab — Counter badge</div>
-                <div class="attn-info-desc">The tab itself carries a count of how many FUs need attention, visible from anywhere in the session.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ 19 · CHECKER REDESIGN ════════════════════════════════ -->
-  <div class="slide" data-s="SOLUTION">
-    <div class="row">
-      <div class="lft">
-        <div class="lbl">Solution · Checker Flow</div>
+        <div class="lbl">Solution · Layers 2 &amp; 3</div>
         <h1 class="h1">The Checker went from approving a number to making a decision.</h1>
         <div class="body">
-          <p>Mapping the Checker experience separately — not assuming it mirrored the Maker — revealed its own set of failures.</p>
-          <p>The backend already held both bids as separate records. This was not a data problem. It was a visibility problem. <strong>The data existed. Nobody had thought to surface it to the Checker.</strong></p>
-          <p>I also redesigned the rejection flow. When a Checker rejected a revision, the original approved bid remained live — but the Checker didn't know that. The redesigned rejection confirmation makes the invisible safety net visible.</p>
+          <p>Mapping the Checker separately revealed its own failure mode: they approved with a single number and two buttons. The backend already held both the active and pending bid as separate records.</p>
+          <p><strong>The data existed. Nobody had surfaced it.</strong> The redesigned confirmation shows: bid type (revision vs. first), previously approved bid, competitive position if approved, and — on rejection — that the original live bid is unaffected.</p>
+        </div>
+        <div style="margin-top:18px;display:flex;flex-direction:column;gap:8px;">
+          <div style="padding:10px 14px;background:var(--surf2);border:1px solid var(--b);border-radius:9px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(79,195,247,0.5);margin-bottom:4px;">Layer 2 — Counter-bid Notification</div>
+            <div style="font-size:11px;color:var(--t2);line-height:1.55;">Push to Maker + Checker the moment a competitor's bid goes live on an FU where they hold an approved bid. Trigger: Checker approval, not Maker placement.</div>
+          </div>
+          <div style="padding:10px 14px;background:var(--surf2);border:1px solid var(--b);border-radius:9px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,183,77,0.5);margin-bottom:4px;">Layer 3 — Attention Hierarchy</div>
+            <div style="font-size:11px;color:var(--t2);line-height:1.55;">Four-level cascade: cell flash → row persistent state → page flag → tab counter. A Maker at any zoom level sees the signal.</div>
+          </div>
         </div>
       </div>
       <div class="rgt">
@@ -1787,99 +1657,13 @@
     </div>
   </div>
 
-  <!-- ═══ 20 · WHAT CHANGED ════════════════════════════════════ -->
-  <div class="slide" data-s="OUTCOME">
-    <div class="row">
-      <div class="lft">
-        <div class="lbl">OUTCOME · DELIVERY</div>
-        <h1 class="h1" style="font-size:clamp(36px,4vw,58px);">Five failures.<br>Two phases.</h1>
-        <div class="body">
-          <p>Phase 1 shipped. The financier can now tell — in a single glance — whether they are leading, tied, or behind. The post-auction gap that cost ₹8.97 Cr is closed.</p>
-          <p style="margin-top:14px;padding:12px 14px;background:rgba(102,187,106,0.08);border:1px solid rgba(102,187,106,0.22);border-radius:10px;font-size:13px;color:rgba(240,235,228,0.72);">
-            <span style="color:#66bb6a;font-weight:600;">✓ No repeat incident.</span> User satisfied with updated UI. Phase 2 scoped for next sprint.
-          </p>
-        </div>
-      </div>
-      <div class="rgt">
-        <div class="panel" style="background:#0d0d0d;padding:0;overflow-y:auto;justify-content:flex-start;align-items:stretch;">
-
-          <!-- Phase 1 -->
-          <div style="padding:14px 18px 8px;">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-              <span style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#66bb6a;">Phase 1</span>
-              <span style="font-size:9px;background:rgba(102,187,106,0.12);color:#66bb6a;border:1px solid rgba(102,187,106,0.25);border-radius:100px;padding:2px 8px;font-weight:600;">Shipped ✓</span>
-            </div>
-
-            <!-- Failure 01 -->
-            <div style="background:#161616;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;margin-bottom:8px;">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px;">
-                <span style="font-size:10px;font-weight:600;color:rgba(240,235,228,0.9);">Bid Position Indicator</span>
-                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.7);white-space:nowrap;flex-shrink:0;">Failure 01</span>
-              </div>
-              <div style="font-size:10px;color:rgba(240,235,228,0.38);line-height:1.55;margin-bottom:6px;">My Bid 5.50% = Lowest Bid 5.50% — no ownership signal.</div>
-              <div style="font-size:10px;color:#66bb6a;line-height:1.55;">→ Leading / Tied / Behind — inline on every row, live during auction.</div>
-            </div>
-
-            <!-- Failure 05 -->
-            <div style="background:#161616;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;margin-bottom:4px;">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px;">
-                <span style="font-size:10px;font-weight:600;color:rgba(240,235,228,0.9);">Post-auction Explanation</span>
-                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.7);white-space:nowrap;flex-shrink:0;">Failure 05</span>
-              </div>
-              <div style="font-size:10px;color:rgba(240,235,228,0.38);line-height:1.55;margin-bottom:6px;">Bid Lost at 5.50%. No explanation why. No closure.</div>
-              <div style="font-size:10px;color:#66bb6a;line-height:1.55;">→ "Equal rate — first-in wins. DCB Bank entered 60 seconds before you."</div>
-            </div>
-          </div>
-
-          <div style="height:1px;background:rgba(255,255,255,0.06);margin:4px 0;"></div>
-
-          <!-- Phase 2 -->
-          <div style="padding:8px 18px 16px;">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-              <span style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ffb74d;">Phase 2</span>
-              <span style="font-size:9px;background:rgba(255,183,77,0.1);color:#ffb74d;border:1px solid rgba(255,183,77,0.25);border-radius:100px;padding:2px 8px;font-weight:600;">Scoped →</span>
-            </div>
-
-            <!-- Failure 03 -->
-            <div style="background:#161616;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:11px 14px;margin-bottom:7px;opacity:0.75;">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px;">
-                <span style="font-size:10px;font-weight:600;color:rgba(240,235,228,0.75);">Draft State Visibility</span>
-                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.5);white-space:nowrap;flex-shrink:0;">Failure 03</span>
-              </div>
-              <div style="font-size:10px;color:rgba(240,235,228,0.32);line-height:1.55;">Maker sees bid, assumes it's competing. It isn't. → "Not in auction yet" badge on every CP row.</div>
-            </div>
-
-            <!-- Failure 04 -->
-            <div style="background:#161616;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:11px 14px;margin-bottom:7px;opacity:0.75;">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px;">
-                <span style="font-size:10px;font-weight:600;color:rgba(240,235,228,0.75);">Checker Context Panel</span>
-                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.5);white-space:nowrap;flex-shrink:0;">Failure 04</span>
-              </div>
-              <div style="font-size:10px;color:rgba(240,235,228,0.32);line-height:1.55;">Checker approves blind — no market context. → Current lowest bid + timing risk shown before approval.</div>
-            </div>
-
-            <!-- Failure 02 -->
-            <div style="background:#161616;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:11px 14px;opacity:0.75;">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px;">
-                <span style="font-size:10px;font-weight:600;color:rgba(240,235,228,0.75);">Competitor Alert</span>
-                <span style="font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(229,57,53,0.5);white-space:nowrap;flex-shrink:0;">Failure 02</span>
-              </div>
-              <div style="font-size:10px;color:rgba(240,235,228,0.32);line-height:1.55;">DCB Bank entered during CP window. Zero signal. → Real-time push to Maker + Checker when same-rate bid goes live.</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ 21 · THE CLOSE ═══════════════════════════════════════ -->
+  <!-- ═══ 16 · THE CLOSE ══════════════════════════════════════ -->
   <div class="slide" data-s="">
     <div class="row">
       <div class="lft">
-        <h1 class="h1">One email. One question. One column.</h1>
+        <h1 class="h1">One column.<br>Five gaps.<br>One standard.</h1>
         <div class="body">
-          <p>The column showed what the lowest bid was. It never showed whose it was. That gap — between a number and its meaning — produced a ₹8.97 Cr loss, a suspended operation, and a leadership escalation that should never have had to happen.</p>
+          <p>The column showed what the lowest bid <em>was</em>. It never showed whose it <em>was</em>. That gap — between a number and its meaning — produced a ₹8.97 Cr loss, a suspended operation, and a leadership escalation that should never have had to happen.</p>
           <p>What we built was not a notification feature. It was a new standard for how the platform communicates with the people who trust it with their money — across every state a bid can be in, for every person involved in placing and approving it.</p>
         </div>
         <div class="byline">NAMAN MUDGIL &nbsp;·&nbsp; PRODUCT DESIGNER &nbsp;·&nbsp; MYTREDS</div>
@@ -1900,13 +1684,13 @@
                   <div class="close-metric-tag">Backend changes needed</div>
                   <div class="close-metric-val green">None</div>
                 </div>
+                <div class="close-metric" style="border:1.5px dashed rgba(255,183,77,0.35);background:rgba(255,183,77,0.03);">
+                  <div class="close-metric-tag" style="color:rgba(255,183,77,0.5);">PLACEHOLDER — Outcome Metric</div>
+                  <div class="close-metric-val" style="font-size:16px;color:rgba(240,235,228,0.28);font-style:italic;">Add post-ship metric:<br>e.g. Checker approval time, revision rate, financier NPS delta</div>
+                </div>
                 <div class="close-metric">
                   <div class="close-metric-tag">Single-day loss triggered</div>
                   <div class="close-metric-val red">₹8.97 Cr</div>
-                </div>
-                <div class="close-metric">
-                  <div class="close-metric-tag">Platform rule established</div>
-                  <div class="close-metric-val" style="font-size:20px; line-height:1.2;">Context<br>First</div>
                 </div>
               </div>
             </div>
@@ -1918,18 +1702,21 @@
 
 </div><!-- /deck -->
 
+
+
 <div id="sec-lbl"></div>
 
 <div id="nav">
   <button id="bp" aria-label="Previous">‹</button>
-  <span id="counter">1 / 21</span>
+  <span id="counter">1 / 16</span>
   <button id="bn" aria-label="Next">›</button>
   <div class="ndiv"></div>
   <button id="br" aria-label="Reset" style="font-size:13px;">↺</button>
 </div>
 
+
 <script>
-  const TOTAL = 21;
+  const TOTAL = 16;
   let cur = 0, busy = false;
   const slides = Array.from(document.querySelectorAll('.slide'));
   const counter = document.getElementById('counter');
@@ -1982,9 +1769,9 @@
       busy = false;
       // Simulation scene inits
       if (cur === 0) heroInit();
-      if (cur === 2) simInit();
-      if (cur === 3) s3Init();
-      if (cur === 4) s4Init();
+      if (cur === 3) simInit();
+      if (cur === 4) s3Init();
+      if (cur === 5) s4Init();
     }, 520);
   }
 
