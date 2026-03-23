@@ -1122,7 +1122,7 @@
       </div>
       <div class="rgt">
       <div class="panel" style="background:#0c0c0c;padding:28px 32px;display:flex;flex-direction:column;justify-content:center;overflow-y:auto;">
-        <div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:22px;">Five failures — in the order they struck</div>
+        <div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:22px;">Five failures — incident timeline order · conceptual order: F01–F05 below</div>
         <div style="position:relative;display:flex;flex-direction:column;">
           <div style="position:absolute;left:10px;top:13px;width:1px;bottom:13px;background:linear-gradient(to bottom,rgba(229,57,53,0.4) 0%,rgba(229,57,53,0.06) 100%);"></div>
 
@@ -1469,7 +1469,81 @@
     </div>
   </div>
 
-  <!-- ═══ 12 · THE PUSHBACKS ═══════════════════════════════════ -->
+  <!-- ═══ 12 · THE RULE ════════════════════════════════════════ -->
+  <div class="slide" data-s="THE RULE">
+    <div class="row">
+      <div class="lft">
+        <div class="lbl">The Rule</div>
+        <h1 class="h1">I stopped designing individual fixes.</h1>
+        <div class="body">
+          <p>After mapping all five failures, a pattern emerged. The draft state invisibility, the silent Checker Pending window, the disappearing FU — these were not separate problems. They were symptoms of the same underlying failure.</p>
+          <p><strong>The platform had no consistent rule for how to communicate state changes.</strong> Every time an FU moved between tabs it simply disappeared. No explanation. No confirmation. No record of what had been honored.</p>
+          <p>I stopped designing individual fixes and proposed a platform-wide design rule instead. Expanding scope mid-sprint. A harder conversation. The right one.</p>
+        </div>
+      </div>
+      <div class="rgt">
+        <div class="panel" style="background:#0c0c0c;">
+          <div class="rule-wrap">
+            <div class="rule-inner">
+              <div class="rule-tag">Platform UX Standard — Established post-incident</div>
+              <div class="rule-text">"Every time an FU moves between tabs or disappears from a tab, the system must never let it transition silently."</div>
+              <div class="rule-qs">
+                <div class="rule-q"><strong>Why did this move?</strong> — Every transition must be explained.</div>
+                <div class="rule-q"><strong>What was honored?</strong> — The confirmed bid always made explicit.</div>
+                <div class="rule-q"><strong>What happened to pending actions?</strong> — No action disappears without resolution.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 13 · TRANSLATION BRIDGE ══════════════════════════════ -->
+  <div class="slide" data-s="REFRAME">
+    <div class="row">
+      <div class="lft">
+        <div class="lbl">Process · Reframe</div>
+        <h1 class="h1">From five failures to five design questions.</h1>
+        <div class="body">
+          <p>Naming what was broken was the first half. Before designing anything, each failure needed to be translated into a question with a solution space.</p>
+          <p>The questions determined what the solutions had to do. Not "fix this" — but "answer this."</p>
+        </div>
+      </div>
+      <div class="rgt">
+        <div class="panel" style="background:#0c0c0c;padding:28px 32px;display:flex;flex-direction:column;justify-content:center;gap:9px;">
+          <div style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:6px;">The questions that drove the design</div>
+
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 14px;background:var(--surf2);border-radius:10px;border:1px solid rgba(255,255,255,0.06);">
+            <span style="flex-shrink:0;font-size:8px;font-weight:700;letter-spacing:.1em;color:rgba(229,57,53,0.55);text-transform:uppercase;padding-top:2px;min-width:22px;">F01</span>
+            <div style="font-size:12px;color:var(--t2);line-height:1.55;">How do you show competitive position without exposing any competitor data?</div>
+          </div>
+
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 14px;background:var(--surf2);border-radius:10px;border:1px solid rgba(255,255,255,0.06);">
+            <span style="flex-shrink:0;font-size:8px;font-weight:700;letter-spacing:.1em;color:rgba(229,57,53,0.55);text-transform:uppercase;padding-top:2px;min-width:22px;">F02</span>
+            <div style="font-size:12px;color:var(--t2);line-height:1.55;">What earns an interruption on a financial platform — and what doesn't?</div>
+          </div>
+
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 14px;background:var(--surf2);border-radius:10px;border:1px solid rgba(255,255,255,0.06);">
+            <span style="flex-shrink:0;font-size:8px;font-weight:700;letter-spacing:.1em;color:rgba(229,57,53,0.55);text-transform:uppercase;padding-top:2px;min-width:22px;">F03</span>
+            <div style="font-size:12px;color:var(--t2);line-height:1.55;">How do you surface a workflow state without breaking the user's mental model of where their bid is?</div>
+          </div>
+
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 14px;background:var(--surf2);border-radius:10px;border:1px solid rgba(255,255,255,0.06);">
+            <span style="flex-shrink:0;font-size:8px;font-weight:700;letter-spacing:.1em;color:rgba(229,57,53,0.55);text-transform:uppercase;padding-top:2px;min-width:22px;">F04</span>
+            <div style="font-size:12px;color:var(--t2);line-height:1.55;">What does a Checker need to make a market decision — not just approve a form field?</div>
+          </div>
+
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:12px 14px;background:var(--surf2);border-radius:10px;border:1px solid rgba(255,255,255,0.06);">
+            <span style="flex-shrink:0;font-size:8px;font-weight:700;letter-spacing:.1em;color:rgba(229,57,53,0.55);text-transform:uppercase;padding-top:2px;min-width:22px;">F05</span>
+            <div style="font-size:12px;color:var(--t2);line-height:1.55;">What does the platform owe a user every time an FU moves, disappears, or changes state?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 14 · THE PUSHBACKS ═══════════════════════════════════ -->
   <div class="slide" data-s="THE PUSHBACKS">
     <div class="row">
       <div class="lft">
@@ -1496,7 +1570,7 @@
     </div>
   </div>
 
-  <!-- ═══ 13 · THE EDGE CASE ═══════════════════════════════════ -->
+  <!-- ═══ 15 · THE EDGE CASE ═══════════════════════════════════ -->
   <div class="slide" data-s="THE EDGE CASE">
     <div class="row">
       <div class="lft">
@@ -1532,7 +1606,7 @@
     </div>
   </div>
 
-  <!-- ═══ 14 · SOLUTION — BID POSITION ═════════════════════════ -->
+  <!-- ═══ 16 · SOLUTION — BID POSITION ═════════════════════════ -->
   <div class="slide" data-s="SOLUTION">
     <div class="row">
       <div class="lft">
@@ -1586,7 +1660,7 @@
     </div>
   </div>
 
-  <!-- ═══ 15 · SOLUTION — NOTIFICATION ════════════════════════ -->
+  <!-- ═══ 17 · SOLUTION — NOTIFICATION ════════════════════════ -->
   <div class="slide" data-s="SOLUTION">
     <div class="row">
       <div class="lft">
@@ -1620,7 +1694,7 @@
     </div>
   </div>
 
-  <!-- ═══ 16 · SOLUTION — ATTENTION ═══════════════════════════ -->
+  <!-- ═══ 18 · SOLUTION — ATTENTION ═══════════════════════════ -->
   <div class="slide" data-s="SOLUTION">
     <div class="row">
       <div class="lft">
@@ -1670,37 +1744,7 @@
     </div>
   </div>
 
-  <!-- ═══ 17 · THE RULE ════════════════════════════════════════ -->
-  <div class="slide" data-s="THE RULE">
-    <div class="row">
-      <div class="lft">
-        <div class="lbl">The Rule</div>
-        <h1 class="h1">I stopped designing individual fixes.</h1>
-        <div class="body">
-          <p>Midway through the tab-by-tab solution, I stopped. The draft edge case, the silent Checker Pending window, the invisible FU disappearance — these were not separate problems. They were symptoms of the same underlying failure.</p>
-          <p><strong>The platform had no consistent rule for how to communicate state changes.</strong> Every time an FU moved between tabs it simply disappeared. No explanation. No confirmation. No record of what had been honored.</p>
-          <p>I stopped designing individual fixes and proposed a platform-wide design rule instead. Expanding scope mid-sprint. A harder conversation. The right one.</p>
-        </div>
-      </div>
-      <div class="rgt">
-        <div class="panel" style="background:#0c0c0c;">
-          <div class="rule-wrap">
-            <div class="rule-inner">
-              <div class="rule-tag">Platform UX Standard — Established post-incident</div>
-              <div class="rule-text">"Every time an FU moves between tabs or disappears from a tab, the system must never let it transition silently."</div>
-              <div class="rule-qs">
-                <div class="rule-q"><strong>Why did this move?</strong> — Every transition must be explained.</div>
-                <div class="rule-q"><strong>What was honored?</strong> — The confirmed bid always made explicit.</div>
-                <div class="rule-q"><strong>What happened to pending actions?</strong> — No action disappears without resolution.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ 18 · CHECKER REDESIGN ════════════════════════════════ -->
+  <!-- ═══ 19 · CHECKER REDESIGN ════════════════════════════════ -->
   <div class="slide" data-s="SOLUTION">
     <div class="row">
       <div class="lft">
@@ -1737,31 +1781,6 @@
                 <strong>On rejection:</strong> "Rejecting this revision will not affect your active bid of 5.5% which remains live."
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ 19 · DESIGN PRINCIPLES ══════════════════════════════ -->
-  <div class="slide" data-s="PRINCIPLES">
-    <div class="row">
-      <div class="lft">
-        <div class="lbl">Principles</div>
-        <h1 class="h1">Six rules that came out of this.</h1>
-        <div class="body">
-          <p>These didn't exist as a set before the incident. They do now — and they apply to every future decision on this platform.</p>
-        </div>
-      </div>
-      <div class="rgt">
-        <div class="panel" style="background:#0c0c0c;">
-          <div class="prin-wrap">
-            <div class="prin-card"><div class="prin-num">01</div><div class="prin-title">Position over value. A number without context is not information.</div></div>
-            <div class="prin-card"><div class="prin-num">02</div><div class="prin-title">Notification restraint. When everything is urgent, nothing is urgent.</div></div>
-            <div class="prin-card"><div class="prin-num">03</div><div class="prin-title">Invisible safety nets create anxiety, not confidence.</div></div>
-            <div class="prin-card"><div class="prin-num">04</div><div class="prin-title">Compliance forces cleverness. The constraint made the design better.</div></div>
-            <div class="prin-card"><div class="prin-num">05</div><div class="prin-title">Attention must be earned. Real-time updates that happen silently are noise.</div></div>
-            <div class="prin-card"><div class="prin-num">06</div><div class="prin-title">Silent transitions are where trust breaks down.</div></div>
           </div>
         </div>
       </div>
