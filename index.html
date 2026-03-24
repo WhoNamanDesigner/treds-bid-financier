@@ -671,8 +671,8 @@
         <div class="lbl">THE INCIDENT · MARCH 2026</div>
         <div class="h1"><span class="red">₹8.97 Cr</span><br>lost in silence.</div>
         <div class="body">
-          <p>A financier at a major bank bid <strong>5.50%</strong> across 10 Factoring Units in a TReDS auction. The platform showed <em>My Bid: 5.50%. Lowest Bid: 5.50%.</em> They assumed they were leading.</p>
-          <p>They were not. DCB Bank's Checker had approved an identical bid <strong>60 seconds earlier</strong>. Under TReDS rules: equal rate, first-in wins. Every FTU went to DCB Bank.</p>
+          <p>A financier at Barclays bid <strong>5.50%</strong> across 10 invoices in a TReDS auction. The platform showed <em>My Bid: 5.50%. Lowest Bid: 5.50%.</em> They assumed they were leading.</p>
+          <p>They were not. DCB Bank's Checker had approved an identical bid <strong>60 seconds earlier</strong>. Under TReDS rules: equal rate, first-in wins. Every deal went to DCB Bank.</p>
           <p>The financier escalated to VPs. Operations were suspended. The platform had all the data to prevent this. It shared none of it.</p>
         </div>
         <div style="margin-top:24px;padding:16px 18px;background:rgba(229,57,53,0.06);border:1px solid rgba(229,57,53,0.18);border-radius:12px;">
@@ -897,9 +897,9 @@
         <div class="hc-big" id="sim-h1">I walked every state of the system myself.</div>
         <div class="body" id="sim-body">
           <p>To understand what the financier couldn't see, I mapped the full bid lifecycle — tab by tab, state by state.</p>
-          <p>10 FTUs visible on this page. Maker's strategy: <strong>5.50%</strong> across all. Select all on this page and place the bid.</p>
+          <p>10 invoices visible on this page. Maker's strategy: <strong>5.50%</strong> across all. Select all and place the bid.</p>
         </div>
-        <div class="sim-step" id="sim-step">← Use the header checkbox to select all 10 visible FTUs, then click <strong>Place Bid</strong></div>
+        <div class="sim-step" id="sim-step">← Use the header checkbox to select all 10 invoices, then click <strong>Place Bid</strong></div>
       </div>
       <div class="rgt">
         <div class="plat" id="sim-plat">
@@ -940,19 +940,17 @@
           <div class="hp-pg" id="sim-pg" style="display:none;"></div>
           <div class="hero-q-panel" id="sim-approved" style="border-top:1.5px solid #d1fae5;background:#f0fdf4;">
             <div class="hq-label" style="color:#065f46;">✓ Checker Approved — 12:05 PM</div>
-            <div class="hq-question" style="font-size:13px;color:#1a2744;">Your bid of 5.50% on 10 FTUs is now live in the auction.</div>
+            <div class="hq-question" style="font-size:13px;color:#1a2744;">Your bid of 5.50% on 10 invoices is now live in the auction.</div>
             <div style="margin-top:10px;">
               <button class="pb dk" onclick="simToMBIA()" style="width:100%;padding:8px 0;font-size:11px;border-radius:8px;">View in Auction →</button>
             </div>
           </div>
           <div class="hero-q-panel fail-panel" id="cp-fail-1">
-            <span class="fail-tag">● Failure 03 — Mapped</span>
             <div class="fail-finding">The Maker can see their bid rate. No signal that this bid is in draft — the platform shows it like any active row.</div>
             <div class="fail-note">Bid sits in Checker Pending. Not live. Not competing. The screen doesn't say so.</div>
             <button class="pb" style="margin-top:10px;" onclick="showCPFail2()">Next failure →</button>
           </div>
           <div class="hero-q-panel fail-panel" id="cp-fail-2">
-            <span class="fail-tag">● Failure 02 — Mapped</span>
             <div class="fail-finding">At 12:04 PM — one minute before our Checker approves — DCB Bank's bid goes live at 5.50%. Seconds separate first-in from second-in.</div>
             <div class="fail-note">No alert. No visual change. The platform said nothing. TReDS rule: equal rate, first-in wins.</div>
             <button class="pb" style="margin-top:10px;" onclick="resumeCP()">Continue →</button>
@@ -1041,7 +1039,6 @@
             <span>Lowest Bid <strong style="color:#dc2626;">5.50%</strong></span>
           </div>
           <div class="hero-q-panel fail-panel" id="mbia-fail">
-            <span class="fail-tag">● Failure 01 — Mapped</span>
             <div class="fail-finding">The column shows a value — not ownership. My Bid: 5.50%. Lowest Bid: 5.50%. Identical. The financier is asking "is the lowest bid mine?" — the system cannot answer.</div>
             <div class="fail-note">No ownership signal exists anywhere on this screen.</div>
             <button class="pb" style="margin-top:10px;" onclick="resumeMBIA()">Continue →</button>
@@ -1068,8 +1065,8 @@
         <div class="lbl">INVESTIGATION · BID ACCEPTED TODAY</div>
         <div class="hc-big" style="color:var(--red);">₹8.97 Cr.<br>Gone.</div>
         <div class="body">
-          <p>My Bid: <strong>5.50%</strong>. Winning Bid: <strong>5.50%</strong>. Status: <strong style="color:var(--red);">Bid Lost</strong> — on every single FTU.</p>
-          <p>This is what the financier saw when the auction closed. Same rate. Every FTU lost. DCB Bank's bid went live at 12:04 PM — 60 seconds before ours at 12:05 PM. TReDS rule: equal rate, first-in wins.</p>
+          <p>My Bid: <strong>5.50%</strong>. Winning Bid: <strong>5.50%</strong>. Status: <strong style="color:var(--red);">Bid Lost</strong> — on every single invoice.</p>
+          <p>This is what the financier saw when the auction closed. Same rate. Every deal lost. DCB Bank's bid went live at 12:04 PM — 60 seconds before ours at 12:05 PM. TReDS rule: equal rate, first-in wins.</p>
           <p style="color:var(--t3);font-size:13px;margin-top:6px;">The platform offered no explanation — before, during, or after. Five failures. All mapped.</p>
         </div>
       </div>
@@ -1115,8 +1112,7 @@
             <span style="color:#dc2626;font-weight:700;">All Lost</span>
           </div>
           <div class="hero-q-panel fail-panel" id="bat-fail">
-            <span class="fail-tag">● Failures 04 + 05 — Mapped</span>
-            <div class="fail-finding">The Checker approved without knowing a competitor was already live at the same rate. After the loss — no explanation. Same rate. Every FTU gone.</div>
+            <div class="fail-finding">The Checker approved without knowing a competitor was already live at the same rate. After the loss — no explanation. Same rate. Every invoice gone.</div>
             <div class="fail-note">The platform had no language for what happened — before, during, or after.</div>
             <button class="pb dk" style="margin-top:10px;width:100%;border-radius:8px;padding:7px 0;font-size:11px;" onclick="simSeekTruth()">See what I found →</button>
           </div>
